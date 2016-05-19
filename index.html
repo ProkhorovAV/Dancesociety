@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Danciety</title><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"><!-- все старые стили--><link rel="stylesheet" href="css/allstyle.css"><!-- стиль для входа--><link rel="stylesheet" href="css/login.css"><!-- доработка стилей--><link rel="stylesheet" href="css/style.css"><!-- стили иконок fa fa--><link rel="stylesheet" href="css/font-awesome.min.css"><link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css"><!-- bower:js--><script src="bower_components/jquery/dist/jquery.min.js"></script><script src="bower_components/bootstrap/js/tooltip.js"></script><script src="bower_components/mustache.js/mustache.min.js"></script><script src="bower_components/angular/angular.js"><!--  ангуляра--></script><!-- Для $resorce--><script src="bower_components/angular-resource/angular-resource.js"></script><!-- для маршрутизации--><script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script><!----><script src="bower_components/angular-ui-select/dist/select.js"><!-- для табы bootstrap--></script><script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"><!-- работа с выплывающими окнами--></script><script src="bower_components/angular-notify/angular-notify.js"></script><link rel="stylesheet" href="bower_components/angular-notify/angular-notify.css"><!--underscore--><script src="bower_components/underscore/underscore.js"><!-- загрузка файлов upload--></script><script src="bower_components/ng-file-upload/angular-file-upload.js"></script><!--script(src='bower_components/angular-ui-select2/src/select2.js')--><!--<script src="../libs/bootstrap-validator/validator.min.js"></script>
+<script src="../libs/date-format/date.format.js"></script>
+<script src="../scripts/custom/login.js"></script>--><!-- endbower--><!-- bower:css--><!-- endbower--><!-- inject:js// главная--><script src="js/app.js"><!-- маршрутизация--></script><script src="js/config/router.js"><!-- контроллеры для собственной странички--></script><script src="js/controls/mainController.js"></script><script src="js/controls/indexController.js"></script><script src="js/controls/newsController.js"></script><script src="js/controls/hederController.js"></script><script src="js/controls/myMessagesController.js"></script><script src="js/controls/jobsController.js"></script><script src="js/controls/videosController.js"></script><script src="js/controls/photosController.js"></script><script src="js/controls/grouplistsController.js"></script><!--script(src='js/controls/myProfileController.js')// груповые контроллеры--><script src="js/controls/group/groupHederController.js"></script><script src="js/controls/group/groupResumeController.js"></script><script src="js/controls/group/groupNewsController.js"></script><script src="js/controls/group/groupVacancyController.js"></script><script src="js/controls/group/groupSubscribersController.js"></script><script src="js/controls/group/groupGalleryController.js"></script><script src="js/controls/group/groupVideoController.js"><!-- контроллер лиц--></script><script src="js/controls/people/peopleHederController.js"></script><script src="js/controls/people/peopleResumeController.js"></script><script src="js/controls/people/peopleNewsController.js"></script><script src="js/controls/people/peopleReviewController.js"></script><script src="js/controls/people/peopleSubscribersController.js"></script><script src="js/controls/people/peopleFollowersController.js"></script><script src="js/controls/people/peopleGalleryController.js"></script><script src="js/controls/people/peopleVacancyController.js"></script><script src="js/controls/people/peopleVideoController.js"></script><script src="js/controls/people/peoplePagesController.js"><!-- сервисы--></script><script src="js/service/userDataService.js"></script><script src="js/service/PHP_serverService.js"></script><script src="js/service/dialogServices.js"><!-- диалоговые окна--></script><script src="js/controls/dialog/newGroupController.js"></script><script src="js/controls/dialog/selectImagController.js"></script><script src="js/controls/dialog/selectVideoController.js"></script><!-- endinject--><!-- inject:css--><!-- endinject--></head><body ng-app="myApp" ,="" ng-controller="IndexCtrl"><!-- Yandex.Metrika counter--><!--script(type='text/javascript').(function(d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter31116733 = new Ya.Metrika({
+                id: 31116733,
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true,
+                trackHash: true
+            });
+        } catch (e) {}
+    });
+    var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function() {
+                n.parentNode.insertBefore(s, n);
+            };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+        f();
+    }
+})(document, window, "yandex_metrika_callbacks");--><!--noscriptdiv
+    img(src='https://mc.yandex.ru/watch/31116733', style='position:absolute; left:-9999px;', alt='')
+--><!-- /Yandex.Metrika counter--><!-- голова--><div ui-view="header_page"></div><!-- тело--><div ui-view="context_page"></div><!-- низ--><div ui-view="food_page"></div><ui-view></ui-view></body></html>

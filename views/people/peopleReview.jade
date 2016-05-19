@@ -1,0 +1,53 @@
+section.info-block.clearfix
+    .col-md-6.col-sm-6.col-reset(ng-hide='user.isMyProfile')
+        section.main-section.add-review.clearfix
+            textarea.form-control.add-review__description-area(type='text',  rows='3', placeholder="Если вы уже работали с этим человеком, можете оставить о нем отзыв.", ng-model='newReview.text')
+            .add-review__control-btns.clearfix
+                .control-btns__add-review_btn(ng-click='newReview();')
+                    span Оставить отзыв
+                .control-btns__select_btn(ng-init='newReview.graduation = true')
+                    label.select_btn__plus(ng-model='newReview.graduation', btn-radio='true')
+                        span +
+                    label.select_btn__minus(ng-model='newReview.graduation', btn-radio='false')
+                        span -
+    .col-md-6.col-sm-6.col-reset(ng-hide='user.isMyProfile')
+        section.main-section.stat-review.clearfix
+            .stat-review_head
+            .stat-review_bottom
+                p.stat-review__total
+                    span Всего отзывов
+                    span :
+                    span(data-ng-bind='reviewsList.summary.total')
+                .stat-review_bottom__stat.clearfix
+                    .stat__graduation
+                        span +
+                    span.stat__num
+                        span Положительные
+                        span :
+                        span(ng-bind='reviewsList.summary.positive')
+                .stat-review_bottom__stat.clearfix
+                    .stat__graduation
+                        span -
+                    span.stat__num
+                        span Отрицательные
+                        span :
+                        span(ng-bind='reviewsList.summary.negative')
+    .col-md-6.col-sm-6.col-reset(ng-repeat='review in reviewsList.data')
+        section.main-section.review-item.clearfix
+            .review-item__remove-btn(ng-if='(review.author._id === meData._id)')
+                i.fa.fa-times.remove-image(ng-click='removeReview($index)')
+            .review-item__header.clearfix
+                .review-item__header_img(ui-sref='#')
+                    a
+                        img(ng-src='{{review.author.userpic}}')
+                .review-item__header_description
+                    .review-author
+                        .author_name
+                            a(ui-sref='#', ng-bind="review.author.firstname + ' ' + review.author.secondname")
+                        .author__post-graduation
+                            span(ng-if='review.positive', ng-bind="'+'")
+                            span(ng-if='!review.positive', ng-bind="'-'")
+                    .review-date
+                        span(ng-bind='review.created')
+            .review-item__bottom
+                p(ng-bind='review.text')

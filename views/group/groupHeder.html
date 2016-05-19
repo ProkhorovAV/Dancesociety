@@ -1,0 +1,24 @@
+<div class="wrapper"><section class="profile-header clearfix"><div class="profile-header__background-image"><img ng-src="{{group.bg}}"/></div><div data-ng-click="selectImage(1, 'bg')" ng-show="group.creator._id == meData._id" class="profile-header__background-button"><i class="fa fa-pencil"></i><span>Сменить фон</span></div><div class="profile-header__bottom-panel clearfix"><div class="profile-header__left-panel"><div ng-click="openImage(group.photo, group.creator)" class="profile-header__photo editable"><img ng-src="{{group.photo}}"/></div><!--<div class="profile-header__subscribe-btn no-select my-profile-element" data-ng-click="selectImage(1, 'userpic')"  ng-show="group.creator._id == meData._id">
+<span>{{'Сменить изображение' | translate}}</span>
+</div>
+<div class="profile-header__subscribe-btn no-select"  ng-if="!user.isFollowing" ng-click="subscribeToUser(user._id, 'subscribe')" ng-show="!group.creator._id == meData._id">
+<span>{{'Подписаться' | translate}}</span>
+<i ng-bind="user.subscribersCount"></i>
+</div>
+<div class="profile-header__subscribe-btn no-select" ng-if="user.isFollowing" ng-click="subscribeToUser(user._id, 'unsubscribe')" ng-show="!group.creator._id == meData._id">
+<span>{{'Отписаться' | translate}}</span>
+<i ng-bind="user.subscribersCount"></i>
+</div>--></div><div class="profile-header__center-panel"><span ng-bind="group.name" class="name"></span><p class="group-header-status"><span ng-bind="group.groupType"></span></p><p contenteditable="{{group.creator._id == meData._id}}" ng-model="group.shortDescription" class="status-text"></p></div><div class="profile-header__right-panel"><div data-ng-click="selectImage(1, 'userpic')" ng-show="group.creator._id == meData._id" class="profile-header__subscribe-btn no-select my-profile-element"><span>Сменить изображение</span></div><div ng-if="!group.dick &amp;&amp; meData._id !== group.creator._id" ng-click="subscribeToGroup(group, true)" class="profile-header__subscribe-btn no-select"><span>Подписаться</span><i ng-bind="group.membersCount"></i></div><div ng-if="group.dick &amp;&amp; meData._id !== group.creator._id" ng-click="subscribeToGroup(group, false)" class="profile-header__subscribe-btn no-select"><span>Отписаться</span><i ng-bind="group.membersCount"></i></div><div ng-click="openUserMessage(user)" class="profile-header__send-message"><!-- <i class="fa fa-envelope"></i>--><span>Начать общение</span></div><!--<div class="profile-header__status" ng-click="user.status = !user.status; changeStatus();" ng-show="group.creator._id == meData._id">
+<i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+<i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+<span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+<span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+</div>
+<div class="profile-header__status" ng-show="!group.creator._id == meData._id">
+<i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+<i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+<span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+<span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+</div>--></div></div><div class="profile-header__menu"><div ui-sref="public.resume" ui-sref-active="active" class="profile-header__menu-btn"><span>Информация</span></div><div ui-sref="public.news" ui-sref-active="active" class="profile-header__menu-btn"><span>Мои новости</span></div><div ui-sref="public.vacancy" ui-sref-active="active" class="profile-header__menu-btn"><span>Мои вакансии</span></div><div ui-sref="public.subscribers" ui-sref-active="active" class="profile-header__menu-btn"><span>Подписчики</span></div><div ui-sref="public.gallery" ui-sref-active="active" class="profile-header__menu-btn"><span>Фото</span></div><!--<div ui-sref="public.video" class="profile-header__menu-btn" ui-sref-active="active">
+<span>{{'Видео' | translate}}</span>
+</div>--></div></section><ui-view></ui-view></div>

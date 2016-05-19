@@ -1,0 +1,46 @@
+.wrapper
+    section.main-section.add-news.vacancy-search.clearfix(ng-init='searchPanel = true;', ng-show='searchPanel')
+        button.videos__sort-btn(type='button', name='button', ng-click="sort = 'date'; changeSortType();", ng-class="{'active': (sort == 'date')}") По дате
+        button.videos__sort-btn(type='button', name='button', ng-click="sort = 'popular'; changeSortType();", ng-class="{'active': (sort == 'popular')}") По популярности
+        // <button type="button" name="button" class="search__hide-btn" ng-click="searchPanel = false;">Свернуть</button>
+    //
+      <section class="show-search-filter" ng-click="searchPanel = true" ng-hide="searchPanel">
+      <span>Показать фильтр</span>
+      </section>
+    section.main-section.videos-panel
+        ul.global-photos.clearfix(infinite-scroll='myPagingFunction()', infinite-scroll-distance='0')
+            li(ng-repeat='photo in photos')
+                //
+                  <div class="photo__image-header">
+                  <i class="fa fa-times remove-image" ng-click="removeVideo(video);"></i>
+                  </div>
+                .user-videos__thumb(img-liquid='', ng-click='openImage(photo, meData, photos)')
+                    img(ng-src='{{photo.path}}', alt='')
+                // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
+                .photo__image-info
+                    .image-info__name(ng-bind='photo.title')
+                    .image-info__buttons.clearfix
+                        //
+                          <div class="image-info__review no-select">
+                          <i class="fa fa-comment"></i>
+                          <span>11</span>
+                          </div>
+                        .image-info__like.no-select(ng-click='likePhoto($index)')
+                            span(ng-bind='photo.likes')
+                            i.image-info__like-btn
+        //
+          <div class="danciety-pagination">
+          <pagination
+          boundary-links="true"
+          total-items="40"
+          max-size="5"
+          items-per-page="getParams.count"
+          ng-model="getParams.currentPage"
+          class="danciety-pagination__list"
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;"
+          first-text="&laquo;"
+          last-text="&raquo;"
+          ng-change="changePage();">
+          </pagination>
+          </div>

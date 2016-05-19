@@ -1,0 +1,99 @@
+.wrapper
+    //
+      <section class="main-section add-news vacancy-search clearfix"
+      ng-init="searchPanel = true;"
+      ng-show="searchPanel">
+      <button type="button" name="button" class="videos__sort-btn"
+      ng-click="sort = 'date'; getVideos();"
+      ng-class="{'active': (sort == 'date')}">По дате</button>
+      <button type="button" name="button" class="videos__sort-btn"
+      ng-click="sort = 'popular'; getVideos();"
+      ng-class="{'active': (sort == 'popular')}">По популярности</button>
+      <button type="button" name="button" class="search__hide-btn" ng-click="searchPanel = false;">Свернуть</button>
+      </section>
+    //
+      <section class="show-search-filter" ng-click="searchPanel = true" ng-hide="searchPanel">
+      <span>Показать фильтр</span>
+      </section>
+    section.main-section.videos-panel
+        .videos-panel__title
+            .videos-panel__title__icon
+                img(src='../img/icon-video-1.png', alt='')
+            span Мои подписки
+        ul.user-videos.clearfix
+            li(ng-repeat='video in videosSubscribers.data')
+                .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
+                    img(src='{{video.thumb}}', alt='')
+                .video__image-info__grid
+                    .video__image-info
+                        .image-info__name(ng-bind='video.title')
+                        .image-info__buttons.clearfix
+                            //
+                              <div class="image-info__review no-select">
+                              <i class="fa fa-comment"></i>
+                              <span>11</span>
+                              </div>
+                            .image-info__like.no-select(ng-click='likeVideo($index, video)')
+                                span(ng-bind='video.likes')
+                                i.image-info__like-btn
+                // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
+                .user-videos__author-name(ui-sref='alien.resume({id: video.author._id})', ng-bind="video.author.firstname + ' ' + video.author.secondname")
+                .user-videos__author-subscribers-count(ng-bind="'Подписчиков: ' + video.author.subscribersCount")
+        .get-new-videos__btn(ng-click='nextSubscribersVideosPage();', ng-show='videosSubscribers.count > videosSubscribers.data.length')
+            | Показать больше
+    section.main-section.videos-panel
+        .videos-panel__title
+            .videos-panel__title__icon
+                img(src='../img/icon-video-2.png', alt='')
+            span Лучшее от ТОП-пользователей
+        .videos-panel__top-users(ng-repeat='user in videosTopUsers')
+            .user-videos__user-grid
+                .user-videos__user-img(ui-sref='#')
+                    img(ng-src='{{user.userpic', alt='')
+                .user-videos__user-info
+                    .user-videos__author-name(ui-sref='#', ng-bind="user.firstname + ' ' + user.secondname")
+                    .user-videos__author-subscribers-count
+                        span Подписчиков
+                        span(ng-bind='user.subscribersCount')
+                .user-videos__user-subscribe_grid
+                    .user-videos__user-subscribe_btn(ng-show='!user.isFollowing && (user._id !== meData._id)', ng-click="subscribeToUser(user, 'subscribe');") Подписаться
+                    .user-videos__user-subscribe_btn(ng-show='user.isFollowing && (user._id !== meData._id)', ng-click="subscribeToUser(user, 'unsubscribe');") Отписаться
+            ul.user-videos.clearfix
+                li(ng-repeat='video in user.videos | limitTo: 3')
+                    .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
+                        img(src='{{video.thumb}}', alt='')
+                    .video__image-info
+                        .image-info__name(ng-bind='video.title')
+                        .image-info__buttons.clearfix
+                            //
+                              <div class="image-info__review no-select">
+                              <i class="fa fa-comment"></i>
+                              <span>11</span>
+                              </div>
+                            .image-info__like.no-select(ng-click='likeVideo($index, video)')
+                                span(ng-bind='video.likes')
+                                i.image-info__like-btn
+    section.main-section.videos-panel
+        .videos-panel__title
+            .videos-panel__title__icon
+                img(src='../img/icon-video-3.png', alt='')
+            span Видео danciety.com
+        ul.user-videos.clearfix
+            li(ng-repeat='video in videos.data')
+                .photo__image-header
+                    i.fa.fa-times.remove-image(ng-click='removeVideo(video);')
+                .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
+                    img(src='{{video.thumb}}', alt='')
+                .video__image-info__grid
+                    .video__image-info
+                        .image-info__name(ng-bind='video.title')
+                        .image-info__buttons.clearfix
+                            //
+                              <div class="image-info__review no-select">
+                              <i class="fa fa-comment"></i>
+                              <span>11</span>
+                              </div>
+                            .image-info__like.no-select(ng-click='likeVideo($index, video)')
+                                span(ng-bind='video.likes')
+                                i.image-info__like-btn
+        .get-new-videos__btn(ng-click='nextVideosPage();', ng-show='videos.count > videos.data.length') Показать больше

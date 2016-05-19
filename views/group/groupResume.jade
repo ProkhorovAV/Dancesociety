@@ -1,0 +1,92 @@
+section.resume-page__about-me.clearfix(ng-show='!editMode', ng-init='editMode = false;')
+    .resume-page__container
+        .clearfix
+            p.resume-page__about-me__title.pull-left О себе
+            .resume-page__edit-mode.pull-right(ng-show='group.creator._id === meData._id', ng-click='editMode = true;')
+                i.fa.fa-pencil Изменить
+        p.resume-page__about-me__text(ng-bind='group.fullDescription')
+    .resume-page__container
+        .resume-page__contacts.clearfix
+            .col-md-6.col-sm-6.col-reset
+                p.resume-page__about-me__title Контактная информация
+                table.resume-page__contacts__table
+                    tr
+                        th(ng-if='group.phone')
+                            span.resume-page__contacts__label
+                                i.fa.fa-phone-square
+                            span.resume-page__contacts__text(ng-bind='group.phone')
+                        th(ng-if='group.country.name')
+                            span.resume-page__contacts__label Страна
+                            span.resume-page__contacts__text(ng-bind='group.country.name')
+                    tr
+                        th(ng-if='group.website')
+                            span.resume-page__contacts__label
+                                i.fa.fa-globe
+                            span.resume-page__contacts__text(ng-bind='group.website')
+                        th(ng-if='group.city')
+                            span.resume-page__contacts__label Город
+                            span.resume-page__contacts__text(ng-bind='group.city')
+                    tr
+                        th(ng-if='group.email')
+                            span.resume-page__contacts__label
+                                i.fa.fa-envelope
+                            span.resume-page__contacts__text(ng-bind='group.email')
+                        th
+    .resume-page__dance-direction
+        .resume-page__container
+            p.resume-page__about-me__title Танцевальные направления:
+            span.dance-direction__text(ng-repeat='style in group.danceStyles', ng-bind='style.name')
+section.resume-page__about-me.clearfix(ng-show='editMode')
+    .resume-page__container
+        .clearfix
+            p.resume-page__about-me__title.pull-left О себе
+            .resume-page__edit-mode.pull-right(ng-click='editMode = false;')
+                i.fa.fa-pencil Просмотр
+        textarea.resume-page__about-me__text__edit-mode.form-control(ng-model='group.fullDescription', write-field='changeStatus(group.fullDescription)')
+    .resume-page__container
+        .resume-page__contacts.clearfix
+            .col-md-12.col-sm-12.col-reset
+                p.resume-page__about-me__title Контактная информация
+                table.resume-page__contacts__table
+                    tr
+                        td
+                            span.resume-page__contacts__label
+                                i.fa.fa-phone-square
+                            input.group-resume_input.form-control(type='text', ng-model='group.phone', write-field='changeInfo()')
+                        td
+                            span.resume-page__contacts__label Страна
+                            // <input class="group-resume_input form-control" type="text" ng-model="group.country.name" write-field="changeInfo()">
+                            ui-select.group-resume_input(ng-model='group.country', theme='bootstrap', ng-change='changeInfo()', ng-disabled='disabled', reset-search-input='false')
+                                ui-select-match(placeholder='Введите страну')
+                                ui-select-choices(repeat='country in countries track by $index', refresh='getCountries($select.search)', refresh-delay='0')
+                                    div(ng-bind-html='country.name')
+                    tr
+                        td
+                            span.resume-page__contacts__label
+                                i.fa.fa-globe
+                            input.group-resume_input.form-control(type='text', ng-model='group.website', write-field='changeInfo()')
+                        td
+                            span.resume-page__contacts__label Город
+                            input.group-resume_input.form-control(type='text', ng-model='group.city', write-field='changeInfo()')
+                    tr
+                        td
+                            span.resume-page__contacts__label
+                                i.fa.fa-envelope
+                            input.group-resume_input.form-control(type='text', ng-model='group.email', write-field='changeInfo()')
+                        td
+    .resume-page__dance-direction
+        .resume-page__container.clearfix
+            p.resume-page__about-me__title Танцевальные направления:
+            .row(ng-repeat='styles in group.danceStyles')
+                .col-md-11
+                    ui-select.dance-direction__edit-mode.col-md-12(ng-model='style', theme='bootstrap', ng-disabled='disabled', reset-search-input='false')
+                        ui-select-match(placeholder='Введите стили')
+                        ui-select-choices(repeat='style in styles track by $index', refresh='loadTags($select.search)', refresh-delay='0')
+                            div(ng-bind-html='style.name')
+                .col-md-1
+                    p.style__remove(ng-click='removeStyle($index);', tooltip-placement='top', tooltip='Удалить')
+                        i.fa.fa-times
+            ui-select.dance-direction__edit-mode.col-md-12(ng-model='group.newStyle', theme='bootstrap', ng-disabled='disabled', reset-search-input='false', on-select='addNewStyle(group.newStyle)')
+                ui-select-match(placeholder='Введите стили')
+                ui-select-choices(repeat='style in styles track by $index', refresh='loadTags($select.search)', refresh-delay='0')
+                    div(ng-bind-html='style.name')

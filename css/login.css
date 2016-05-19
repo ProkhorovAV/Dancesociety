@@ -1,0 +1,577 @@
+/* line 5, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+  height: 100%;
+  background: url("../img/login-image-2.jpg") no-repeat center;
+}
+
+/* line 24, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* CLEARFIX */
+/* line 6, ../styles/login.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 14, ../styles/login.scss */
+.clearfix {
+ /* display: inline-block;*/
+}
+
+/* line 18, ../styles/login.scss */
+* html .clearfix {
+  height: 1%;
+}
+
+/* Hides from IE-mac \*/
+/* line 23, ../styles/login.scss */
+.clearfix {
+  /*display: block;*/
+}
+
+/* line 27, ../styles/login.scss */
+.container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 900px;
+}
+
+/* line 34, ../styles/login.scss */
+html {
+  box-sizing: border-box;
+  color: #292929;
+  font-family: "Myriad Pro", sans-serif;
+}
+
+@font-face {
+  font-family: BebasNeue;
+  src: url("../styles/fonts/BebasNeue.otf");
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../styles/fonts/arial.ttf");
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../styles/fonts/arialbd.ttf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../styles/fonts/MyriadPro-Regular.otf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../styles/fonts/MyriadPro-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../styles/fonts/MyriadPro-It.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../styles/fonts/MyriadPro-Light.otf");
+  font-weight: 200;
+}
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../styles/fonts/MyriadPro-Semibold.otf");
+  font-weight: 600;
+}
+/* line 87, ../styles/login.scss */
+.login {
+  //background: url("../img/login-image-2.jpg") no-repeat center;
+  //background-size: cover;
+  //background-attachment: fixed;
+  background: inherit;
+  padding-top: 44px;
+  padding-bottom: 40px;
+}
+
+/* line 95, ../styles/login.scss */
+.one__login-side {
+  float: right;
+  width: 324px;
+}
+
+/* line 100, ../styles/login.scss */
+.login-form, .register-form {
+  width: 324px;
+  background-color: #fff;
+  border: 1px solid #1999d3;
+  border-radius: 3px;
+  padding: 20px;
+
+}
+/* line 106, ../styles/login.scss */
+.login-form label.control-label, .register-form label.control-label,
+.login-form label,
+.register-form label,
+.login-form .checkbox label,
+.register-form .checkbox label {
+  float: none;
+  text-align: left;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+}
+/* line 116, ../styles/login.scss */
+.login-form .form-group, .register-form .form-group {
+  margin-bottom: 0;
+}
+/* line 120, ../styles/login.scss */
+.login-form input[type="text"], .register-form input[type="text"],
+.login-form input[type="email"],
+.register-form input[type="email"],
+.login-form input[type="password"],
+.register-form input[type="password"] {
+  margin-top: 5px;
+  width: 265px;
+  height: 42px;
+  background-color: #fff;
+  border-radius: 3px;
+  width: 100%;
+}
+/* line 131, ../styles/login.scss */
+.login-form input[type="checkbox"], .register-form input[type="checkbox"] {
+  top: 0;
+}
+/* line 135, ../styles/login.scss */
+.login-form .checkbox, .register-form .checkbox {
+  padding-top: 0;
+  margin-top: 15px;
+}
+/* line 140, ../styles/login.scss */
+.login-form .submit-group, .register-form .submit-group {
+  margin-top: 15px;
+}
+/* line 142, ../styles/login.scss */
+.login-form .submit-group a, .register-form .submit-group a {
+  color: #000;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: underline;
+  float: right;
+  padding-top: 15px;
+}
+/* line 154, ../styles/login.scss */
+.login-form button, .register-form button {
+  width: 135px;
+  height: 45px;
+  background-color: #1da0eb;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 6.9px 0.1px rgba(0, 0, 0, 0.49);
+  color: #fff;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-shadow: 0 2px 5px rgba(2, 2, 2, 0.3);
+}
+/* line 166, ../styles/login.scss */
+.login-form button.disabled, .register-form button.disabled {
+  background-color: #1da0eb;
+  border: none;
+  color: #fff;
+  cursor: default !important;
+}
+/* line 171, ../styles/login.scss */
+.login-form button.disabled:hover, .register-form button.disabled:hover, .login-form button.disabled:focus, .register-form button.disabled:focus {
+  cursor: default !important;
+  box-shadow: none;
+  background-color: #1da0eb;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+/* line 183, ../styles/login.scss */
+.login-form button:hover, .register-form button:hover, .login-form button:focus, .register-form button:focus {
+  box-shadow: 0 2px 2.7px 0.3px rgba(0, 0, 0, 0.24);
+  background-color: #1da0eb;
+  border: none;
+  color: #fff;
+}
+
+/* line 195, ../styles/login.scss */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 1px solid #d7d7d7;
+  box-shadow: inset 0 1px 5px rgba(2, 2, 2, 0.2);
+}
+
+/* line 202, ../styles/login.scss */
+label.control-label,
+label,
+.checkbox label {
+  color: #636363;
+}
+
+/* line 208, ../styles/login.scss */
+.register-form {
+  margin-top: 40px;
+}
+/* line 211, ../styles/login.scss */
+.register-form button {
+  width: 268px;
+  height: 45px;
+  border: 1px solid #89c9ed;
+  border-radius: 5px;
+  background-color: #79b800;
+  border: none;
+  box-shadow: 0 3px 6.9px 0.1px rgba(0, 0, 0, 0.49);
+  color: #fff;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  text-shadow: 0 2px 5px rgba(2, 2, 2, 0.3);
+}
+/* line 224, ../styles/login.scss */
+.register-form button.disabled {
+  background-color: #79b800;
+  border: none;
+  color: #fff;
+  cursor: default !important;
+}
+/* line 229, ../styles/login.scss */
+.register-form button.disabled:hover, .register-form button.disabled:focus {
+  cursor: default !important;
+  box-shadow: none;
+  background-color: #79b800;
+  border: none;
+  color: #fff;
+  outline: none;
+}
+/* line 241, ../styles/login.scss */
+.register-form button:hover, .register-form button:focus {
+  box-shadow: 0 2px 2.7px 0.3px rgba(0, 0, 0, 0.24);
+  background-color: #79b800;
+  border: none;
+  color: #fff;
+}
+
+/* line 253, ../styles/login.scss */
+.login-form__title, .register-form__title {
+  color: #3b3b3b;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 25px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* line 266, ../styles/login.scss */
+.two__header, .three__header, .simple__post, .user__footer {
+  background-color: #fff;
+  border: 1px solid #d1d1d1;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+}
+
+/* line 273, ../styles/login.scss */
+.two {
+  margin-top: -23px;
+}
+
+/* line 277, ../styles/login.scss */
+.two__header, .three__header {
+  max-width: 439px;
+  height: 52px;
+  color: #000;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 52px;
+  padding-left: 20px;
+}
+
+/* line 289, ../styles/login.scss */
+.simple__post {
+  margin-top: 10px;
+}
+
+/* line 294, ../styles/login.scss */
+.post__header {
+  /* height: 100px; */
+  border-bottom: 1px solid #f3f3f3;
+  padding: 20px;
+}
+
+/* line 300, ../styles/login.scss */
+.post__logo {
+  overflow: hidden;
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  display: inline-block;
+}
+/* line 306, ../styles/login.scss */
+.post__logo img {
+  width: 66px;
+  height: 66px;
+}
+
+/* line 313, ../styles/login.scss */
+.post__description {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 10px;
+  max-width: 80%;
+  padding-left: 20px;
+}
+
+/* line 321, ../styles/login.scss */
+.post__title {
+  color: #000;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* line 328, ../styles/login.scss */
+.post__date {
+  color: #c3c3c3;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+/* line 336, ../styles/login.scss */
+.post__bottom {
+  padding: 20px 100px 40px;
+}
+
+/* line 340, ../styles/login.scss */
+.post__title {
+  color: #4c4c4c;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* line 347, ../styles/login.scss */
+.post__text {
+  color: #4c4c4c;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 20px;
+  line-height: 15px;
+}
+
+/* line 356, ../styles/login.scss */
+.three {
+  margin-top: 42px;
+}
+
+/* line 360, ../styles/login.scss */
+.three__header {
+  margin-top: 0;
+}
+
+/* line 369, ../styles/login.scss */
+.three__users li {
+  width: 211px;
+  vertical-align: middle;
+  margin-left: 10px;
+  display: inline-block;
+  margin-top: 20px;
+  /* &:nth-child(4n+1) {
+      margin-left: 0;
+  } */
+}
+
+/* line 380, ../styles/login.scss */
+.user__header {
+  width: 211px;
+  height: 211px;
+  overflow: hidden;
+  border-bottom: 3px solid #da9d00;
+  position: relative;
+  cursor: pointer;
+}
+/* line 387, ../styles/login.scss */
+.user__header:hover .user__title {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+/* line 395, ../styles/login.scss */
+.user__footer {
+  padding: 15px;
+  height: 88px;
+}
+/* line 399, ../styles/login.scss */
+.user__footer p {
+  color: #4c4c4c;
+  font-family: "Myriad Pro";
+  font-size: 13px;
+  font-weight: 400;
+}
+
+/* line 408, ../styles/login.scss */
+.user__title {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  font-family: "Myriad Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  text-shadow: 0 1px 1.7px 0.3px rgba(0, 0, 0, 0.75);
+  line-height: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 60px;
+  transform: translateY(60px);
+  -webkit-transform: translateY(60px);
+  -ms-transform: translateY(60px);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+/* line 430, ../styles/login.scss */
+.user__name {
+  font-weight: 700;
+}
+
+/* line 438, ../styles/login.scss */
+.user__styles {
+  margin-top: 5px;
+}
+
+/* line 444, ../styles/login.scss */
+.user__styles span:after {
+  content: ", ";
+}
+/* line 448, ../styles/login.scss */
+.user__styles span:last-child:after {
+  content: '';
+}
+
+/* line 457, ../styles/login.scss */
+.user__image img {
+  width: 100%;
+}
+
+@media screen and (max-device-width: 900px), screen and (max-width: 900px) {
+  /* line 469, ../styles/login.scss */
+  .one img {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* line 474, ../styles/login.scss */
+  .one__login-side {
+    float: none;
+    margin: 40px auto 0;
+  }
+
+  /* line 479, ../styles/login.scss */
+  .two {
+    margin-top: 20px;
+  }
+
+  /* line 483, ../styles/login.scss */
+  .post__bottom {
+    padding: 10px;
+  }
+}
+/* line 489, ../styles/login.scss */
+#newPassword, #resetPassword {
+  margin: 44px auto;
+}
+/* line 491, ../styles/login.scss */
+#newPassword button, #resetPassword button {
+  width: 100%;
+}
+
+@media screen and (max-device-width: 440px), screen and (max-width: 440px) {
+  /* line 498, ../styles/login.scss */
+  .three__users li {
+    width: 100%;
+    margin: 20px 0 0;
+  }
+
+  /* line 503, ../styles/login.scss */
+  .user__header {
+    width: 100%;
+    height: inherit;
+  }
+
+  /* line 508, ../styles/login.scss */
+  .post__bottom {
+    padding: 5px;
+  }
+}

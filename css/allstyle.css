@@ -1,0 +1,5905 @@
+/* line 5, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.2.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 1, ../styles/blocks/_general.scss */
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* line 9, ../styles/blocks/_general.scss */
+.clearfix {
+  display: inline-block;
+}
+
+/* line 13, ../styles/blocks/_general.scss */
+* html .clearfix {
+  height: 1%;
+}
+
+/* line 17, ../styles/blocks/_general.scss */
+.clearfix {
+  display: block;
+}
+
+/* line 21, ../styles/blocks/_general.scss */
+.container {
+  width: 900px;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* line 28, ../styles/blocks/_general.scss */
+html,
+body {
+  min-width: 900px;
+  background: #e1e1e1;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #292929;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+}
+
+/* line 2, ../styles/_base/_mixins.scss */
+input:-moz-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 8, ../styles/_base/_mixins.scss */
+input::-moz-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 14, ../styles/_base/_mixins.scss */
+input:-ms-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 20, ../styles/_base/_mixins.scss */
+input::-webkit-input-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 26, ../styles/_base/_mixins.scss */
+input.placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
+/* line 43, ../styles/blocks/_general.scss */
+a {
+  text-decoration: none;
+  color: black;
+}
+/* line 46, ../styles/blocks/_general.scss */
+a:focus {
+  text-decoration: none;
+  color: black;
+}
+
+/* line 53, ../styles/blocks/_general.scss */
+.col-reset {
+  padding: 0;
+}
+
+/* line 57, ../styles/blocks/_general.scss */
+.todo-item {
+  -webkit-transition: color 0.6s, background-color 0.3s;
+  -moz-transition: color 0.6s, background-color 0.3s;
+  -ms-transition: color 0.6s, background-color 0.3s;
+  transition: color 0.6s, background-color 0.3s;
+}
+
+/* line 64, ../styles/blocks/_general.scss */
+.todo-item label {
+  display: block;
+}
+
+/* line 68, ../styles/blocks/_general.scss */
+.todo-item.ng-enter {
+  -webkit-animation: rotateInDownRight 1s;
+  -moz-animation: rotateInDownRight 1s;
+  -ms-animation: rotateInDownRight 1s;
+  animation: rotateInDownRight 1s;
+}
+
+/* line 75, ../styles/blocks/_general.scss */
+.todo-item.ng-leave {
+  -webkit-animation: hinge 1s;
+  -moz-animation: hinge 1s;
+  -ms-animation: hinge 1s;
+  animation: hinge 1s;
+}
+
+/* line 82, ../styles/blocks/_general.scss */
+.todo-complete {
+  background: #f3f3f3;
+  color: #777;
+}
+
+/* line 87, ../styles/blocks/_general.scss */
+.todo-complete label {
+  text-decoration: line-through;
+}
+
+/* line 91, ../styles/blocks/_general.scss */
+.no-select {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* line 98, ../styles/blocks/_general.scss */
+.danciety-notify {
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  border: none;
+  background-color: rgba(78, 78, 78, 0);
+  font-size: 13px;
+  font-weight: bold;
+  padding: 2px 8px;
+  color: #fff;
+  padding: 0;
+  top: 0;
+}
+/* line 111, ../styles/blocks/_general.scss */
+.danciety-notify.alert-danger .danciety-notify__header {
+  background-color: rgba(225, 37, 68, 0.8);
+}
+/* line 118, ../styles/blocks/_general.scss */
+.danciety-notify.alert-success .danciety-notify__header {
+  background-color: rgba(113, 170, 3, 0.8);
+}
+/* line 125, ../styles/blocks/_general.scss */
+.danciety-notify.alert-warning .danciety-notify__header {
+  background-color: rgba(252, 195, 0, 0.8);
+}
+/* line 132, ../styles/blocks/_general.scss */
+.danciety-notify.alert-primary .danciety-notify__header {
+  background-color: rgba(46, 107, 233, 0.8);
+}
+
+/* line 140, ../styles/blocks/_general.scss */
+.danciety-notify__header {
+  height: 25px;
+  width: 100%;
+  position: relative;
+}
+/* line 144, ../styles/blocks/_general.scss */
+.danciety-notify__header button {
+  width: 15px;
+  height: 15px;
+  background-color: #292929;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: #fff;
+  opacity: 1;
+  font-size: 15px;
+  top: 5px;
+  right: 5px;
+}
+/* line 156, ../styles/blocks/_general.scss */
+.danciety-notify__header button:hover {
+  background-color: #3e3e3e;
+  text-shadow: none;
+  color: #fff;
+  opacity: 1;
+}
+
+/* line 167, ../styles/blocks/_general.scss */
+.danciety-notify__message {
+  padding: 20px;
+  background-color: rgba(41, 41, 41, 0.8);
+}
+
+/* line 172, ../styles/blocks/_general.scss */
+.danciety-pagination {
+  text-align: center;
+}
+
+/* line 176, ../styles/blocks/_general.scss */
+.group-list, .group-cart {
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+}
+/* line 185, ../styles/blocks/_general.scss */
+.group-list h1, .group-cart h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 195, ../styles/blocks/_general.scss */
+#loading-bar .bar {
+  background: #f7b200;
+}
+
+/* line 199, ../styles/blocks/_general.scss */
+#loading-bar-spinner .spinner-icon {
+  border-top-color: #f7b200;
+  border-left-color: #f7b200;
+}
+
+/* line 204, ../styles/blocks/_general.scss */
+.mt10 {
+  margin-top: 10px;
+}
+
+/* line 208, ../styles/blocks/_general.scss */
+.dropdown-menu a {
+  cursor: pointer;
+}
+
+/* line 212, ../styles/blocks/_general.scss */
+.w100p {
+  width: 100%;
+}
+
+@font-face {
+  font-family: "BebasNeue";
+  src: url("../styles/fonts/BebasNeue.otf");
+}
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../styles/fonts/MyriadPro-Regular.otf");
+}
+@font-face {
+  font-family: "Myriad Pro Bold";
+  src: url("../styles/fonts/MyriadPro-Bold.otf");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Myriad Pro Italic";
+  src: url("../styles/fonts/MyriadPro-It.otf");
+  font-style: italic;
+}
+@font-face {
+  font-family: "Myriad Pro Light";
+  src: url("../styles/fonts/MyriadPro-Light.otf");
+  font-weight: lighter;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../styles/fonts/arial.ttf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial Bold";
+  src: url("../styles/fonts/arialbd.ttf");
+  font-weight: bold;
+}
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+```html
+<!-- `display: block` sprite -->
+<div class="icon-home"></div>
+
+<!-- `display: inline-block` sprite -->
+<img class="icon-home" />
+```
+*/
+/* line 12, ../styles/_sprite.scss */
+.icon-icon-pen-hover {
+  background-image: url(sprite.png);
+  background-position: -20px 0px;
+  width: 11px;
+  height: 11px;
+}
+
+/* line 18, ../styles/_sprite.scss */
+.icon-icon-pen {
+  background-image: url(sprite.png);
+  background-position: 0px -14px;
+  width: 11px;
+  height: 11px;
+}
+
+/* line 24, ../styles/_sprite.scss */
+.icon-icon-trash-hover {
+  background-image: url(sprite.png);
+  background-position: 0px 0px;
+  width: 10px;
+  height: 14px;
+}
+
+/* line 30, ../styles/_sprite.scss */
+.icon-icon-trash {
+  background-image: url(sprite.png);
+  background-position: -10px 0px;
+  width: 10px;
+  height: 14px;
+}
+
+/* line 1, ../styles/blocks/_buttons.scss */
+button.add-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  border: 2px dashed #ebebeb;
+  background: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  color: #292929;
+  line-height: 14px;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+button.add-button:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+button.add-button:hover {
+  background-color: none;
+}
+/* line 12, ../styles/blocks/_buttons.scss */
+button.add-button:hover {
+  border: 2px dashed #f7b200;
+}
+/* line 15, ../styles/blocks/_buttons.scss */
+button.add-button span:after {
+  content: "+";
+  color: #fac02c;
+  line-height: 18px;
+}
+
+/* line 21, ../styles/blocks/_buttons.scss */
+.header__search-panel button[type="submit"], .add-news__confirm-btn, .user-vacancy__publish-btn, .search__apply-btn, .user-videos__user-subscribe_btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  border-radius: 0 2px 2px 0;
+  display: inline-block;
+  background-color: #f7b200;
+  color: #242627;
+  font-family: Arial;
+  font-size: 15px;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+.header__search-panel button[type="submit"]:focus, .add-news__confirm-btn:focus, .user-vacancy__publish-btn:focus, .search__apply-btn:focus, .user-videos__user-subscribe_btn:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+.header__search-panel button[type="submit"]:hover, .add-news__confirm-btn:hover, .user-vacancy__publish-btn:hover, .search__apply-btn:hover, .user-videos__user-subscribe_btn:hover {
+  background-color: none;
+}
+/* line 29, ../styles/blocks/_buttons.scss */
+.header__search-panel button[type="submit"]:focus, .add-news__confirm-btn:focus, .user-vacancy__publish-btn:focus, .search__apply-btn:focus, .user-videos__user-subscribe_btn:focus {
+  background-color: #F7BC00;
+}
+/* line 32, ../styles/blocks/_buttons.scss */
+.header__search-panel button[type="submit"]:hover, .add-news__confirm-btn:hover, .user-vacancy__publish-btn:hover, .search__apply-btn:hover, .user-videos__user-subscribe_btn:hover {
+  background-color: #F7BC00;
+}
+
+/* line 83, ../styles/blocks/_buttons.scss */
+.list__remove-btn {
+  width: 18px;
+  height: 18px;
+  background-color: #f7b200;
+  border: 1px solid #f7b200;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  color: white;
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: lighter;
+  text-align: center;
+  margin-left: 4px;
+  margin-right: 7px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+/* line 99, ../styles/blocks/_buttons.scss */
+.list__remove-btn:hover {
+  color: #f7b200;
+  background: #fff;
+}
+
+/* line 106, ../styles/blocks/_buttons.scss */
+.resume__payment .remove-button, .work__list .input-group .remove-button, .education__list .input-group .remove-button, .dance-direction__list tags-input .tags .tag-item a, .resume__other p .resume__other_tags .tags .tag-item a, .user-vacancy__table tags-input .tags .tag-item a {
+  cursor: pointer;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: 400;
+  color: black;
+}
+/* line 111, ../styles/blocks/_buttons.scss */
+.resume__payment .remove-button:hover, .work__list .input-group .remove-button:hover, .education__list .input-group .remove-button:hover, .dance-direction__list tags-input .tags .tag-item a:hover, .resume__other p .resume__other_tags .tags .tag-item a:hover, .user-vacancy__table tags-input .tags .tag-item a:hover {
+  color: #d21616;
+  text-decoration: none;
+}
+
+/* line 117, ../styles/blocks/_buttons.scss */
+.share-btn, .post__control-btns .control-btns__share .share__btn, .image-modal__description__info .info__control-btns .control-btns__share .share__btn {
+  cursor: pointer;
+  height: 25px;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 6px 9px;
+}
+/* line 123, ../styles/blocks/_buttons.scss */
+.share-btn span, .post__control-btns .control-btns__share .share__btn span, .image-modal__description__info .info__control-btns .control-btns__share .share__btn span {
+  position: relative;
+  top: -3px;
+}
+/* line 126, ../styles/blocks/_buttons.scss */
+.share-btn span:before, .post__control-btns .control-btns__share .share__btn span:before, .image-modal__description__info .info__control-btns .control-btns__share .share__btn span:before {
+  background: url("../images/share-btn.png") no-repeat center;
+  width: 12px;
+  height: 13px;
+  display: inline-block;
+  content: "";
+  margin-right: 3px;
+  position: relative;
+  top: 3px;
+}
+/* line 137, ../styles/blocks/_buttons.scss */
+.share-btn:hover, .post__control-btns .control-btns__share .share__btn:hover, .image-modal__description__info .info__control-btns .control-btns__share .share__btn:hover {
+  background: #c3c3c3;
+}
+/* line 140, ../styles/blocks/_buttons.scss */
+.share-btn:hover span:after, .post__control-btns .control-btns__share .share__btn:hover span:after, .image-modal__description__info .info__control-btns .control-btns__share .share__btn:hover span:after {
+  background: url("../images/share-btn.png") no-repeat center;
+}
+/* line 145, ../styles/blocks/_buttons.scss */
+.active.share-btn, .post__control-btns .control-btns__share .active.share__btn, .image-modal__description__info .info__control-btns .control-btns__share .active.share__btn {
+  /* border: none; */
+  background: #fff;
+}
+/* line 149, ../styles/blocks/_buttons.scss */
+.active.share-btn span:after, .post__control-btns .control-btns__share .active.share__btn span:after, .image-modal__description__info .info__control-btns .control-btns__share .active.share__btn span:after {
+  background: url("../images/share-btn_active.png") no-repeat center;
+}
+
+/* line 157, ../styles/blocks/_buttons.scss */
+.like-btn, .post__control-btns .control-btns__like .like__btn, .image-modal__description__info .info__control-btns .control-btns__like .like__btn {
+  cursor: pointer;
+  height: 25px;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 6px 9px;
+}
+/* line 163, ../styles/blocks/_buttons.scss */
+.like-btn span, .post__control-btns .control-btns__like .like__btn span, .image-modal__description__info .info__control-btns .control-btns__like .like__btn span {
+  position: relative;
+  top: -3px;
+}
+/* line 166, ../styles/blocks/_buttons.scss */
+.like-btn span:after, .post__control-btns .control-btns__like .like__btn span:after, .image-modal__description__info .info__control-btns .control-btns__like .like__btn span:after {
+  background: url("../images/like-btn.png") no-repeat center;
+  width: 27px;
+  height: 14px;
+  display: inline-block;
+  content: "";
+  margin-left: 5px;
+  position: relative;
+  top: 1px;
+}
+/* line 178, ../styles/blocks/_buttons.scss */
+.like-btn:hover, .post__control-btns .control-btns__like .like__btn:hover, .image-modal__description__info .info__control-btns .control-btns__like .like__btn:hover {
+  background: #c3c3c3;
+}
+/* line 181, ../styles/blocks/_buttons.scss */
+.like-btn:hover span:after, .post__control-btns .control-btns__like .like__btn:hover span:after, .image-modal__description__info .info__control-btns .control-btns__like .like__btn:hover span:after {
+  background: url("../images/like-btn_hover.png") no-repeat center;
+}
+/* line 186, ../styles/blocks/_buttons.scss */
+.active.like-btn, .post__control-btns .control-btns__like .active.like__btn, .image-modal__description__info .info__control-btns .control-btns__like .active.like__btn {
+  /* border: none; */
+  background: #fff;
+}
+/* line 190, ../styles/blocks/_buttons.scss */
+.active.like-btn span:after, .post__control-btns .control-btns__like .active.like__btn span:after, .image-modal__description__info .info__control-btns .control-btns__like .active.like__btn span:after {
+  background: url("../images/like-btn_active.png") no-repeat center;
+}
+
+/* line 198, ../styles/blocks/_buttons.scss */
+.control-btns__add-review_btn, .select_btn__plus.active,
+.select_btn__minus.active, .stat-review_bottom__stat .stat__graduation, .review-author .author__post-graduation, .group-list__search-group_btn, .new-group-modal__create_btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #f7b200;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+.control-btns__add-review_btn:focus, .select_btn__plus.active:focus,
+.select_btn__minus.active:focus, .stat-review_bottom__stat .stat__graduation:focus, .review-author .author__post-graduation:focus, .group-list__search-group_btn:focus, .new-group-modal__create_btn:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+.control-btns__add-review_btn:hover, .select_btn__plus.active:hover,
+.select_btn__minus.active:hover, .stat-review_bottom__stat .stat__graduation:hover, .review-author .author__post-graduation:hover, .group-list__search-group_btn:hover, .new-group-modal__create_btn:hover {
+  background-color: none;
+}
+/* line 204, ../styles/blocks/_buttons.scss */
+.control-btns__add-review_btn:focus, .select_btn__plus.active:focus,
+.select_btn__minus.active:focus, .stat-review_bottom__stat .stat__graduation:focus, .review-author .author__post-graduation:focus, .group-list__search-group_btn:focus, .new-group-modal__create_btn:focus {
+  background-color: #F7BC00;
+}
+/* line 207, ../styles/blocks/_buttons.scss */
+.control-btns__add-review_btn:hover, .select_btn__plus.active:hover,
+.select_btn__minus.active:hover, .stat-review_bottom__stat .stat__graduation:hover, .review-author .author__post-graduation:hover, .group-list__search-group_btn:hover, .new-group-modal__create_btn:hover {
+  background-color: #F7BC00;
+}
+
+/* line 212, ../styles/blocks/_buttons.scss */
+.top-entities__buttons .buttons_left,
+.top-entities__buttons .buttons_right, .resume-page__edit-mode, .select_btn__plus,
+.select_btn__minus, .search__hide-btn, .videos__sort-btn, .search__cancel-btn, .group-list__create-group_btn {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+.top-entities__buttons .buttons_left:focus,
+.top-entities__buttons .buttons_right:focus, .resume-page__edit-mode:focus, .select_btn__plus:focus,
+.select_btn__minus:focus, .search__hide-btn:focus, .videos__sort-btn:focus, .search__cancel-btn:focus, .group-list__create-group_btn:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+.top-entities__buttons .buttons_left:hover,
+.top-entities__buttons .buttons_right:hover, .resume-page__edit-mode:hover, .select_btn__plus:hover,
+.select_btn__minus:hover, .search__hide-btn:hover, .videos__sort-btn:hover, .videos__sort-btn.active, .search__cancel-btn:hover, .group-list__create-group_btn:hover {
+  background-color: none;
+}
+/* line 219, ../styles/blocks/_buttons.scss */
+.top-entities__buttons .buttons_left:hover,
+.top-entities__buttons .buttons_right:hover, .resume-page__edit-mode:hover, .select_btn__plus:hover,
+.select_btn__minus:hover, .search__hide-btn:hover, .videos__sort-btn:hover, .videos__sort-btn.active, .search__cancel-btn:hover, .group-list__create-group_btn:hover {
+  color: #000;
+  background-color: #fcfbf9;
+}
+
+/* line 225, ../styles/blocks/_buttons.scss */
+.buttons_write-message, .buttons_subscribe {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #999999;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  color: #fff;
+  font-size: 13px;
+  display: table;
+  text-align: center;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+.buttons_write-message:focus, .buttons_subscribe:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+.buttons_write-message:hover, .buttons_subscribe:hover {
+  background-color: none;
+}
+/* line 236, ../styles/blocks/_buttons.scss */
+.buttons_write-message > span, .buttons_subscribe > span {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 240, ../styles/blocks/_buttons.scss */
+.buttons_write-message > i, .buttons_subscribe > i {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 20px;
+  width: 40px;
+  color: #fff;
+  border-right: 1px solid #fff;
+}
+/* line 248, ../styles/blocks/_buttons.scss */
+.buttons_write-message:hover, .buttons_subscribe:hover {
+  color: #000;
+  background-color: #fac02c;
+}
+
+/* line 254, ../styles/blocks/_buttons.scss */
+.post__create-comment form input[type="submit"], .image__create-comment form input[type="submit"], .jobs__create-comment form input[type="submit"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  cursor: pointer;
+  background-color: #999999;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #FFF;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  margin-left: 12px;
+}
+/* line 57, ../styles/_base/_mixins.scss */
+.post__create-comment form input[type="submit"]:focus, .image__create-comment form input[type="submit"]:focus, .jobs__create-comment form input[type="submit"]:focus {
+  outline: 0;
+  box-shadow: none;
+  background-color: none;
+}
+/* line 62, ../styles/_base/_mixins.scss */
+.post__create-comment form input[type="submit"]:hover, .image__create-comment form input[type="submit"]:hover, .jobs__create-comment form input[type="submit"]:hover {
+  background-color: none;
+}
+/* line 264, ../styles/blocks/_buttons.scss */
+.post__create-comment form input[type="submit"]:hover, .image__create-comment form input[type="submit"]:hover, .jobs__create-comment form input[type="submit"]:hover {
+  background-color: #4C4C4C;
+}
+
+/* line 270, ../styles/blocks/_buttons.scss */
+.image-button__prev, .image-button__next {
+  position: absolute;
+  height: 100%;
+  width: 100px;
+  text-align: center;
+  opacity: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.7);
+}
+/* line 278, ../styles/blocks/_buttons.scss */
+.image-button__prev:hover, .image-button__next:hover {
+  opacity: 1;
+}
+/* line 281, ../styles/blocks/_buttons.scss */
+.image-button__prev i, .image-button__next i {
+  font-size: 100px;
+}
+
+/* line 286, ../styles/blocks/_buttons.scss */
+.subscribe-btn__check {
+  display: table;
+  height: 32px;
+  width: 100%;
+  background: #fac02c;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 294, ../styles/blocks/_buttons.scss */
+.subscribe-btn__check i {
+  display: table-cell;
+  width: 40px;
+  border-right: 1px solid #fff;
+  color: #fff;
+}
+/* line 300, ../styles/blocks/_buttons.scss */
+.subscribe-btn__check span {
+  display: table-cell;
+}
+/* line 303, ../styles/blocks/_buttons.scss */
+.subscribe-btn__check:hover, .subscribe-btn__check:focus {
+  background-color: #ffde00;
+}
+
+/* line 308, ../styles/blocks/_buttons.scss */
+.danciety-multiselect__btn, .dropdown-multiselect {
+  width: 100%;
+}
+
+/* line 2, ../styles/blocks/_form.scss */
+.header__search-panel .form-group {
+  position: relative;
+  display: inline-block;
+  width: 437px;
+  margin-bottom: 0;
+  /* margin-left: 10px; */
+  background-color: white;
+  border: 1px solid #e1e1e1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: none;
+}
+/* line 14, ../styles/blocks/_form.scss */
+.header__search-panel .form-group .input-group-addon {
+  border: none;
+  box-shadow: none;
+  background: #fff;
+  font-size: 21px;
+}
+/* line 19, ../styles/blocks/_form.scss */
+.header__search-panel .form-group .input-group-addon i {
+  color: #f7b200;
+  padding-left: 9px;
+  border-left: 1px solid #b4b4b4;
+}
+/* line 26, ../styles/blocks/_form.scss */
+.header__search-panel input[type="text"] {
+  margin: 0;
+  background-color: white;
+  border: none;
+  box-shadow: none;
+}
+/* line 33, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+}
+/* line 38, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list > a {
+  text-decoration: none;
+  color: inherit;
+}
+/* line 43, ../styles/_base/_mixins.scss */
+.header__search-panel .dropdown-list > a:hover, .header__search-panel .dropdown-list > a:focus {
+  text-decoration: none;
+  color: inherit;
+}
+/* line 40, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list > a:last-child li {
+  border: none;
+}
+/* line 44, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list li {
+  padding: 5px 5px;
+  display: table;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid #f7b200;
+  cursor: pointer;
+}
+/* line 51, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+/* line 55, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list.open {
+  display: block;
+}
+/* line 60, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list__img {
+  width: 31px;
+  height: 31px;
+  display: table-cell;
+  vertical-align: middle;
+  overflow: hidden;
+}
+/* line 65, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list__img img {
+  border-radius: 5px;
+}
+/* line 71, ../styles/blocks/_form.scss */
+.header__search-panel .dropdown-list__name {
+  display: table-cell;
+  font-size: 17px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  vertical-align: middle;
+}
+/* line 78, ../styles/blocks/_form.scss */
+.header__search-panel button[type="submit"] {
+  height: 30px;
+  line-height: 15px;
+  position: relative;
+  vertical-align: top;
+  left: -4px;
+}
+
+/* line 89, ../styles/blocks/_form.scss */
+.payment__input, .value__input {
+  /* width: 74px; */
+  height: 28px;
+  border: 1px solid #f7b200;
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  padding-left: 6px;
+  border-radius: 0;
+}
+/* line 2, ../styles/_base/_mixins.scss */
+.payment__input input:-moz-placeholder, .value__input input:-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 8, ../styles/_base/_mixins.scss */
+.payment__input input::-moz-placeholder, .value__input input::-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 14, ../styles/_base/_mixins.scss */
+.payment__input input:-ms-placeholder, .value__input input:-ms-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 20, ../styles/_base/_mixins.scss */
+.payment__input input::-webkit-input-placeholder, .value__input input::-webkit-input-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 26, ../styles/_base/_mixins.scss */
+.payment__input input.placeholder, .value__input input.placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 103, ../styles/blocks/_form.scss */
+.payment__input:focus, .value__input:focus {
+  outline: none;
+}
+
+/* line 108, ../styles/blocks/_form.scss */
+.user-gallery__tabs, .user-vacancy__tabs {
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 10px 20px;
+  margin-top: 20px;
+  position: relative;
+  font-size: 13px;
+}
+
+/* line 1, ../styles/blocks/_profile.scss */
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+
+/* line 12, ../styles/blocks/_profile.scss */
+.top-entities__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+/* line 15, ../styles/blocks/_profile.scss */
+.top-entities__list li {
+  display: inline-block;
+  margin-left: 16px;
+  width: 210px;
+  height: 71px;
+  padding-right: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: white;
+  border: 1px solid #e8e8e8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 10px;
+}
+/* line 28, ../styles/blocks/_profile.scss */
+.top-entities__list li:first-child {
+  margin-left: 0;
+}
+/* line 31, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__image {
+  height: 100%;
+  width: 53px;
+  overflow: hidden;
+  float: left;
+}
+/* line 36, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__image img {
+  width: 53px;
+}
+/* line 40, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description {
+  float: right;
+}
+/* line 42, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description .description__name {
+  color: #373737;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 47, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description .description__city {
+  color: #898989;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+}
+/* line 52, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description .description__work {
+  color: #898989;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+}
+/* line 58, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description .description__style .style_title {
+  color: #898989;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+}
+/* line 63, ../styles/blocks/_profile.scss */
+.top-entities__list li .list__description .description__style .style_style {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+  color: #1e2022;
+  text-decoration: underline;
+}
+
+/* line 73, ../styles/blocks/_profile.scss */
+.top-entities__banner-block {
+  height: 90px;
+  background-color: #f3f3f3;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  display: table;
+  text-align: center;
+  width: 100%;
+  /* cursor: pointer; */
+}
+/* line 86, ../styles/blocks/_profile.scss */
+.top-entities__banner-block span {
+  display: table-cell;
+  vertical-align: middle;
+  color: #e7e7e7;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 23px;
+}
+
+/* line 94, ../styles/blocks/_profile.scss */
+.top-entities__nav {
+  width: 97px;
+  float: right;
+}
+/* line 97, ../styles/blocks/_profile.scss */
+.top-entities__nav a {
+  display: block;
+  width: 97px;
+  height: 26px;
+  border: 1px solid #e8e8e8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #9c9c9c;
+  font-family: "Myriad Pro";
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  text-align: center;
+  line-height: 26px;
+  font-weight: lighter;
+  cursor: pointer;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+/* line 113, ../styles/blocks/_profile.scss */
+.top-entities__nav a.active {
+  color: #fff;
+  background-color: #f7b200;
+}
+/* line 117, ../styles/blocks/_profile.scss */
+.top-entities__nav a:hover {
+  color: #fff;
+  background-color: #f7b200;
+}
+
+/* line 123, ../styles/blocks/_profile.scss */
+.top-entities__buttons {
+  width: 65px;
+  margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+}
+/* line 128, ../styles/blocks/_profile.scss */
+.top-entities__buttons .buttons_left,
+.top-entities__buttons .buttons_right {
+  display: inline-block;
+  font-size: 17px;
+  width: 23px;
+  height: 23px;
+  text-align: center;
+}
+
+/* line 138, ../styles/blocks/_profile.scss */
+.top-entities_how {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  color: #b4b4b4;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+/*
+
+
+
+ */
+/* line 152, ../styles/blocks/_profile.scss */
+.block-menu__main-menu {
+  background-color: white;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 15px 20px;
+}
+/* line 158, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li {
+  margin-left: 20px;
+  display: inline-block;
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 12px;
+  cursor: pointer;
+  position: relative;
+}
+/* line 165, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li:first-child {
+  margin-left: 0;
+}
+/* line 169, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li.active > span {
+  border-bottom: 3px solid #f7b200;
+}
+/* line 174, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li:hover ul {
+  opacity: 1;
+}
+/* line 177, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li:hover > span {
+  border-bottom: 3px solid #f7b200;
+}
+/* line 183, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li ul {
+  border-top: none;
+  z-index: 2;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  position: absolute;
+  left: -10px;
+  background-color: white;
+  padding: 10px;
+  opacity: 0;
+}
+/* line 192, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li ul li {
+  margin-top: 10px;
+  font-size: 11px;
+}
+/* line 196, ../styles/blocks/_profile.scss */
+.block-menu__main-menu > li ul li:hover span {
+  border-bottom: 1px solid #f7b200;
+}
+
+/* line 204, ../styles/blocks/_profile.scss */
+.info-block {
+  margin-top: 12px;
+}
+
+/* line 207, ../styles/blocks/_profile.scss */
+.info-block__resume {
+  display: inline-block;
+  padding: 24px 20px;
+  width: 440px;
+  margin-top: 20px;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+}
+/* line 216, ../styles/blocks/_profile.scss */
+.info-block__resume h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+/* line 223, ../styles/blocks/_profile.scss */
+.info-block__resume h2 {
+  color: #474747;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 14px;
+}
+/* line 230, ../styles/blocks/_profile.scss */
+.info-block__resume h4 {
+  color: #6e6e6e;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 238, ../styles/blocks/_profile.scss */
+.resume__title__icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* line 243, ../styles/blocks/_profile.scss */
+.resume__title__icon:hover {
+  color: #0d61bf;
+}
+
+/* line 247, ../styles/blocks/_profile.scss */
+.resume__dance-direction {
+  border-top: 1px solid #fac02c;
+  margin-top: 18px;
+  padding-top: 12px;
+}
+
+/* line 253, ../styles/blocks/_profile.scss */
+.dance-direction__list.alien > span {
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  background: none;
+  border: 0;
+  line-height: 14px;
+  height: auto;
+  margin-left: 10px;
+}
+/* line 262, ../styles/blocks/_profile.scss */
+.dance-direction__list.alien > span:first-child {
+  margin-left: 0;
+}
+
+/* line 271, ../styles/blocks/_profile.scss */
+.resume__payment {
+  margin-top: 12px;
+  border-top: 1px solid #fac02c;
+  padding-top: 12px;
+}
+/* line 275, ../styles/blocks/_profile.scss */
+.resume__payment .remove-button {
+  margin-left: 2px;
+}
+
+/* line 280, ../styles/blocks/_profile.scss */
+.payment__block {
+  margin-top: 5px;
+}
+/* line 282, ../styles/blocks/_profile.scss */
+.payment__block .ui-select {
+  width: 66%;
+}
+
+/* line 287, ../styles/blocks/_profile.scss */
+.payment__block_form {
+  display: inline-block;
+  width: 29%;
+}
+/* line 290, ../styles/blocks/_profile.scss */
+.payment__block_form .form-group {
+  height: 27px;
+}
+/* line 293, ../styles/blocks/_profile.scss */
+.payment__block_form .input-group-addon {
+  padding: 5px 12px;
+  line-height: 1.1;
+}
+
+/* line 302, ../styles/blocks/_profile.scss */
+.payment__new-item:after {
+  content: "+";
+  color: #fac02c;
+  line-height: 18px;
+  margin-left: 6px;
+}
+
+/* line 309, ../styles/blocks/_profile.scss */
+.resume__personal-info {
+  margin-top: 20px;
+  border-top: 1px solid #fac02c;
+  padding-top: 12px;
+}
+
+/* line 316, ../styles/blocks/_profile.scss */
+.work__list h3 {
+  margin-top: 5px;
+}
+
+/* line 325, ../styles/blocks/_profile.scss */
+.date-range_block {
+  margin: 5px 0 0;
+  list-style: none;
+}
+/* line 328, ../styles/blocks/_profile.scss */
+.date-range_block > div {
+  padding: 0;
+}
+/* line 330, ../styles/blocks/_profile.scss */
+.date-range_block > div input[type='date'] {
+  line-height: 20px;
+}
+/* line 333, ../styles/blocks/_profile.scss */
+.date-range_block > div:nth-child(2n) {
+  float: right;
+}
+
+/* line 341, ../styles/blocks/_profile.scss */
+.personal-info__header {
+  position: relative;
+  height: 20px;
+}
+/* line 344, ../styles/blocks/_profile.scss */
+.personal-info__header h2 {
+  position: absolute;
+  left: 0;
+}
+/* line 348, ../styles/blocks/_profile.scss */
+.personal-info__header h4 {
+  position: absolute;
+  right: 0;
+}
+
+/* line 356, ../styles/blocks/_profile.scss */
+.personal-info_block {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+/* line 360, ../styles/blocks/_profile.scss */
+.personal-info_block > p {
+  width: 45%;
+  float: left;
+  margin-top: 8px;
+}
+/* line 364, ../styles/blocks/_profile.scss */
+.personal-info_block > p:nth-child(2n) {
+  float: right;
+}
+/* line 367, ../styles/blocks/_profile.scss */
+.personal-info_block > p > span {
+  line-height: 14px;
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 375, ../styles/blocks/_profile.scss */
+.list__item_name {
+  font-weight: 700;
+}
+
+/* line 378, ../styles/blocks/_profile.scss */
+.list__item_value {
+  font-weight: 700;
+  margin-top: 5px;
+  width: 100%;
+}
+/* line 383, ../styles/blocks/_profile.scss */
+.list__item_value:before, .list__item_value:after {
+  content: none;
+}
+
+/* line 391, ../styles/blocks/_profile.scss */
+.resume__work {
+  margin-top: 20px;
+  border-top: 1px solid #fac02c;
+  padding-top: 12px;
+}
+/* line 395, ../styles/blocks/_profile.scss */
+.resume__work h2 {
+  text-align: left;
+  float: left;
+}
+/* line 399, ../styles/blocks/_profile.scss */
+.resume__work h4 {
+  text-align: right;
+  float: right;
+}
+
+/* line 404, ../styles/blocks/_profile.scss */
+.resume__education {
+  margin-top: 20px;
+  border-top: 1px solid #fac02c;
+  padding-top: 12px;
+}
+/* line 408, ../styles/blocks/_profile.scss */
+.resume__education h2 {
+  text-align: left;
+  float: left;
+}
+/* line 412, ../styles/blocks/_profile.scss */
+.resume__education h4 {
+  text-align: right;
+  float: right;
+}
+/* line 416, ../styles/blocks/_profile.scss */
+.resume__education button {
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
+  border: 2px dashed #ebebeb;
+  background: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  outline: none;
+  color: #292929;
+  line-height: 14px;
+  cursor: pointer;
+}
+/* line 429, ../styles/blocks/_profile.scss */
+.resume__education button:hover {
+  border: 2px dashed #f7b200;
+}
+/* line 432, ../styles/blocks/_profile.scss */
+.resume__education button:active {
+  outline: none;
+}
+/* line 435, ../styles/blocks/_profile.scss */
+.resume__education button span:after {
+  content: "+";
+  color: #fac02c;
+  line-height: 18px;
+}
+
+/* line 450, ../styles/blocks/_profile.scss */
+.resume__other {
+  margin-top: 20px;
+  border-top: 1px solid #fac02c;
+  padding-top: 12px;
+}
+/* line 454, ../styles/blocks/_profile.scss */
+.resume__other textarea {
+  resize: none;
+  margin-top: 10px;
+}
+/* line 458, ../styles/blocks/_profile.scss */
+.resume__other p {
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 8px;
+}
+/* line 464, ../styles/blocks/_profile.scss */
+.resume__other p .list__item_name {
+  font-weight: 700;
+}
+/* line 468, ../styles/blocks/_profile.scss */
+.resume__other p a:hover {
+  text-decoration: underline;
+}
+
+/* line 477, ../styles/blocks/_profile.scss */
+.info-block__video-grid {
+  width: 440px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+}
+/* line 486, ../styles/blocks/_profile.scss */
+.info-block__video-grid h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 494, ../styles/blocks/_profile.scss */
+.video-grid__comments {
+  margin-top: 15px;
+}
+
+/* line 497, ../styles/blocks/_profile.scss */
+.comments__list {
+  /* background-color: rgb(243, 243, 243);
+  padding: 10px 11px 26px; */
+}
+/* line 500, ../styles/blocks/_profile.scss */
+.comments__list li {
+  padding: 10px;
+  background-color: #f3f3f3;
+}
+/* line 503, ../styles/blocks/_profile.scss */
+.comments__list li .list__image {
+  width: 31px;
+  height: 31px;
+  float: left;
+  overflow: hidden;
+  border-radius: 50%;
+}
+/* line 509, ../styles/blocks/_profile.scss */
+.comments__list li .list__image img {
+  width: 31px;
+  height: 31px;
+}
+/* line 514, ../styles/blocks/_profile.scss */
+.comments__list li .list__comment {
+  float: right;
+  width: 330px;
+}
+
+/* line 520, ../styles/blocks/_profile.scss */
+.comment__header__name {
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  float: left;
+}
+
+/* line 527, ../styles/blocks/_profile.scss */
+.comment__header__date {
+  color: #c3c3c3;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  float: right;
+}
+
+/* line 534, ../styles/blocks/_profile.scss */
+.comment__description {
+  margin-top: 13px;
+  color: #6e6e6e;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+/* line 542, ../styles/blocks/_profile.scss */
+.comment__footer {
+  float: right;
+}
+/* line 544, ../styles/blocks/_profile.scss */
+.comment__footer a {
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 15px;
+  text-decoration: underline;
+}
+/* line 551, ../styles/blocks/_profile.scss */
+.comment__footer a:hover {
+  color: #fac02c;
+}
+
+/* line 556, ../styles/blocks/_profile.scss */
+.comments__my-comment {
+  margin-top: 21px;
+}
+/* line 558, ../styles/blocks/_profile.scss */
+.comments__my-comment .my-comment__image {
+  width: 31px;
+  height: 31px;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+}
+/* line 564, ../styles/blocks/_profile.scss */
+.comments__my-comment .my-comment__image img {
+  width: 31px;
+  height: 31px;
+}
+/* line 569, ../styles/blocks/_profile.scss */
+.comments__my-comment form {
+  margin-left: 10px;
+  position: relative;
+  float: left;
+  width: 357px;
+  font-size: 0;
+}
+/* line 576, ../styles/blocks/_profile.scss */
+.comments__my-comment input[type='text'] {
+  float: left;
+  width: 90%;
+  height: 30px;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  resize: none;
+  padding-left: 12px;
+  font-size: 12px;
+}
+/* line 2, ../styles/_base/_mixins.scss */
+.comments__my-comment input[type='text']:-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 8, ../styles/_base/_mixins.scss */
+.comments__my-comment input[type='text']::-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 14, ../styles/_base/_mixins.scss */
+.comments__my-comment input[type='text']:-ms-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 20, ../styles/_base/_mixins.scss */
+.comments__my-comment input[type='text']::-webkit-input-placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 26, ../styles/_base/_mixins.scss */
+.comments__my-comment input[type='text'].placeholder {
+  color: #b5b5b5;
+  font-size: 12px;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 588, ../styles/blocks/_profile.scss */
+.comments__my-comment input[type="submit"] {
+  width: 10%;
+  float: left;
+  font-size: 12px;
+  height: 30px;
+  vertical-align: top;
+}
+
+/* line 596, ../styles/blocks/_profile.scss */
+.video-grid__video {
+  margin-top: 15px;
+  border: 1px solid #e8e8e8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding-bottom: 9px;
+}
+/* line 601, ../styles/blocks/_profile.scss */
+.video-grid__video h2 {
+  padding: 0 11px;
+  width: 100%;
+  height: 35px;
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 35px;
+  background-color: #e8e8e8;
+  border: 1px solid #e8e8e8;
+}
+
+/* line 614, ../styles/blocks/_profile.scss */
+.video__grid {
+  width: 100%;
+  margin-top: 7px;
+  height: 254px;
+}
+/* line 618, ../styles/blocks/_profile.scss */
+.video__grid img {
+  width: 100%;
+}
+
+/* line 622, ../styles/blocks/_profile.scss */
+.video__panel {
+  color: #3a3737;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 13px;
+}
+
+/* line 629, ../styles/blocks/_profile.scss */
+.share-btn {
+  float: left;
+  margin-left: 6px;
+}
+
+/* line 634, ../styles/blocks/_profile.scss */
+.like-btn {
+  float: right;
+  margin-right: 6px;
+}
+
+/* line 639, ../styles/blocks/_profile.scss */
+.info-block__portfolio {
+  width: 440px;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+}
+/* line 648, ../styles/blocks/_profile.scss */
+.info-block__portfolio h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 656, ../styles/blocks/_profile.scss */
+.portfolio__gallery {
+  background-color: white;
+  border: 1px solid #e8e8e8;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 13px;
+}
+/* line 661, ../styles/blocks/_profile.scss */
+.portfolio__gallery h2 {
+  padding: 0 11px;
+  width: 100%;
+  height: 35px;
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 35px;
+  background-color: #e8e8e8;
+  border: 1px solid #e8e8e8;
+}
+
+/* line 675, ../styles/blocks/_profile.scss */
+.gallery__images img {
+  width: 100%;
+}
+
+/* line 679, ../styles/blocks/_profile.scss */
+.gallery__images__big {
+  margin: 5px;
+}
+
+/* line 684, ../styles/blocks/_profile.scss */
+.gallery__images__list {
+  /* display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; */
+}
+/* line 689, ../styles/blocks/_profile.scss */
+.gallery__images__list li {
+  max-width: 86px;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+/* line 695, ../styles/blocks/_profile.scss */
+.gallery__images__expand {
+  text-align: center;
+  line-height: 33px;
+  color: #4c4c4c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  width: 100%;
+  height: 33px;
+  border: 1px solid #e8e8e8;
+}
+
+/* line 706, ../styles/blocks/_profile.scss */
+.info-block__about-me {
+  width: 440px;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+}
+/* line 715, ../styles/blocks/_profile.scss */
+.info-block__about-me h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 723, ../styles/blocks/_profile.scss */
+.about-me__quesions {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #fac02c;
+}
+/* line 727, ../styles/blocks/_profile.scss */
+.about-me__quesions li {
+  margin-top: 18px;
+}
+/* line 729, ../styles/blocks/_profile.scss */
+.about-me__quesions li:first-child {
+  margin-top: 0;
+}
+/* line 732, ../styles/blocks/_profile.scss */
+.about-me__quesions li h2 {
+  color: #474747;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 14px;
+}
+/* line 739, ../styles/blocks/_profile.scss */
+.about-me__quesions li .quesions__answer {
+  margin-top: 16px;
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 749, ../styles/blocks/_profile.scss */
+.payment__block .ui-select, .list__item_value, .add-news__post-type .ui-select {
+  display: inline-block;
+}
+/* line 751, ../styles/blocks/_profile.scss */
+.payment__block .ui-select .ui-select-toggle, .list__item_value .ui-select-toggle, .add-news__post-type .ui-select .ui-select-toggle {
+  padding-right: 25px;
+  height: 27px;
+  text-align: left;
+  border: 1px solid #f7b200;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+/* line 762, ../styles/blocks/_profile.scss */
+.dance-direction__list tags-input .tags, .resume__other p .resume__other_tags .tags, .user-vacancy__table tags-input .tags {
+  box-shadow: none;
+  border: 0;
+}
+/* line 770, ../styles/blocks/_profile.scss */
+.dance-direction__list tags-input .tags .tag-item, .resume__other p .resume__other_tags .tags .tag-item, .user-vacancy__table tags-input .tags .tag-item {
+  padding: 0;
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  background: none;
+  border: 0;
+  line-height: 14px;
+  height: auto;
+}
+/* line 784, ../styles/blocks/_profile.scss */
+.dance-direction__list tags-input .tags input, .resume__other p .resume__other_tags .tags input, .user-vacancy__table tags-input .tags input {
+  height: auto;
+}
+
+/* line 791, ../styles/blocks/_profile.scss */
+.work__list > li h3, .education__list > li h3 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  text-decoration: underline;
+}
+/* line 799, ../styles/blocks/_profile.scss */
+.work__list > li p, .education__list > li p {
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 8px;
+}
+/* line 805, ../styles/blocks/_profile.scss */
+.work__list > li p .list__item_name, .education__list > li p .list__item_name {
+  font-weight: 700;
+}
+
+/* line 1, ../styles/blocks/_resume.scss */
+.white-block, .resume-page__about-me,
+.resume-page__work,
+.resume-page__study {
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+}
+
+/* line 17, ../styles/blocks/_resume.scss */
+.resume-page__about-me__title {
+  color: #000;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  margin: 25px 0;
+}
+
+/* line 24, ../styles/blocks/_resume.scss */
+.resume-page__container {
+  padding: 0 20px;
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 20px;
+}
+
+/* line 30, ../styles/blocks/_resume.scss */
+.resume-page__about-me__text {
+  color: #5d5d5d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  line-height: 17px;
+  font-size: 13px;
+}
+
+/* line 37, ../styles/blocks/_resume.scss */
+.resume-page__contacts__table {
+  width: 100%;
+  border-collapse: separate;
+  line-height: 25px;
+  border-spacing: 0 6px;
+}
+/* line 42, ../styles/blocks/_resume.scss */
+.resume-page__contacts__table .fa {
+  width: 14px;
+}
+
+/* line 48, ../styles/blocks/_resume.scss */
+.resume-page__contacts__label {
+  color: #6d6d6d;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* line 52, ../styles/blocks/_resume.scss */
+.resume-page__contacts__label .fa {
+  color: #000;
+}
+
+/* line 58, ../styles/blocks/_resume.scss */
+.resume-page__contacts__text {
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 64, ../styles/blocks/_resume.scss */
+.resume-page__work_list__item {
+  line-height: 25px;
+}
+/* line 66, ../styles/blocks/_resume.scss */
+.resume-page__work_list__item label {
+  width: 100%;
+}
+/* line 70, ../styles/blocks/_resume.scss */
+.resume-page__work_list__item > div {
+  padding: 0 10px;
+}
+
+/* line 76, ../styles/blocks/_resume.scss */
+.dance-direction__text {
+  color: #424242;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 82, ../styles/blocks/_resume.scss */
+.resume-page__payment__label,
+.resume-page__payment__text {
+  color: #424242;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* line 90, ../styles/blocks/_resume.scss */
+.dance-direction__text {
+  margin-right: 3px;
+}
+/* line 92, ../styles/blocks/_resume.scss */
+.dance-direction__text:last-child {
+  margin-right: 0;
+}
+/* line 94, ../styles/blocks/_resume.scss */
+.dance-direction__text:last-child:after {
+  display: none;
+}
+/* line 100, ../styles/blocks/_resume.scss */
+.dance-direction__text:after {
+  content: ',';
+  display: inline;
+}
+
+/* line 107, ../styles/blocks/_resume.scss */
+.resume-page__edit-mode {
+  padding: 6px 10px;
+  margin: 25px 0;
+  font-size: 13px;
+}
+
+/* line 114, ../styles/blocks/_resume.scss */
+.resume-page__about-me__text__edit-mode {
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+  margin-top: 14px;
+  text-align: left;
+}
+/* line 123, ../styles/blocks/_resume.scss */
+.resume-page__about-me__text__edit-mode:focus {
+  background: inherit;
+  border: inherit;
+  outline: none;
+}
+
+/* line 131, ../styles/blocks/_resume.scss */
+.resume-page__contacts__text__edit-mode {
+  display: inline-block;
+  width: 110px;
+  /* height: 20px; */
+  padding-left: 5px;
+}
+
+/* line 138, ../styles/blocks/_resume.scss */
+.group-resume_input {
+  display: inline-block;
+  width: 220px;
+  /* height: 20px; */
+  padding-left: 5px;
+}
+
+/* line 145, ../styles/blocks/_resume.scss */
+.dance-direction__edit-mode {
+  margin-top: 10px;
+}
+
+/* line 157, ../styles/blocks/_resume.scss */
+.payment-grid {
+  margin-top: 10px;
+}
+
+/* line 161, ../styles/blocks/_resume.scss */
+.resume-page__date-input {
+  display: inline-block;
+  height: 20px;
+  width: 25%;
+}
+
+/* line 167, ../styles/blocks/_resume.scss */
+.delete-work-field {
+  color: #1C7DBF;
+  cursor: pointer;
+  font-size: 13px;
+  float: right;
+  display: block;
+}
+/* line 173, ../styles/blocks/_resume.scss */
+.delete-work-field:hover {
+  color: #0d61bf;
+}
+
+/* line 179, ../styles/blocks/_resume.scss */
+.resume-work-select {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 184, ../styles/blocks/_resume.scss */
+.user-resume_select {
+  display: inline-block;
+  width: 135px;
+}
+
+/* line 189, ../styles/blocks/_resume.scss */
+.style__remove {
+  padding-top: 18px;
+  cursor: pointer;
+  text-align: center;
+}
+/* line 193, ../styles/blocks/_resume.scss */
+.style__remove:hover i {
+  color: #0d61bf;
+}
+
+/* line 197, ../styles/blocks/_resume.scss */
+.payment__remove {
+  padding-top: 7px;
+  cursor: pointer;
+  text-align: center;
+}
+/* line 201, ../styles/blocks/_resume.scss */
+.payment__remove:hover i {
+  color: #0d61bf;
+}
+
+/* line 1, ../styles/blocks/_header.scss */
+header {
+  height: 50px;
+  background: #fff;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.38);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.38);
+  padding: 0 20px;
+  z-index: 3;
+  position: fixed;
+  width: 100%;
+}
+/* line 11, ../styles/blocks/_header.scss */
+header .container {
+  /* padding-left: 10px; */
+}
+
+/* line 16, ../styles/blocks/_header.scss */
+.header__logo {
+  float: left;
+  height: 50px;
+  padding: 10px 20px;
+  border-right: 1px solid #cdcdcd;
+}
+
+/* line 23, ../styles/blocks/_header.scss */
+.header__search-panel {
+  padding: 7px 20px;
+  float: left;
+}
+
+/* line 29, ../styles/blocks/_header.scss */
+.header__right {
+  float: right;
+}
+/* line 31, ../styles/blocks/_header.scss */
+.header__right > div {
+  float: left;
+  height: 50px;
+}
+
+/* line 38, ../styles/blocks/_header.scss */
+.header__right_user a {
+  display: table;
+  padding-right: 20px;
+  padding-top: 7px;
+}
+/* line 42, ../styles/blocks/_header.scss */
+.header__right_user a .name {
+  color: #000;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  vertical-align: middle;
+  display: table-cell;
+  padding-right: 10px;
+}
+/* line 50, ../styles/blocks/_header.scss */
+.header__right_user a > img {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+}
+/* line 55, ../styles/blocks/_header.scss */
+.header__right_user a:hover {
+  text-decoration: none;
+}
+
+/* line 61, ../styles/blocks/_header.scss */
+div.header__right_case {
+  cursor: pointer;
+  width: 50px;
+  border-right: 1px solid #b4b4b4;
+  border-left: 1px solid #b4b4b4;
+  text-align: center;
+}
+/* line 67, ../styles/blocks/_header.scss */
+div.header__right_case:hover, div.header__right_case.active {
+  background-color: #EBEBEB;
+}
+/* line 70, ../styles/blocks/_header.scss */
+div.header__right_case a {
+  text-decoration: none;
+  line-height: 50px;
+  width: 100%;
+  display: block;
+  font-size: 16px;
+}
+/* line 76, ../styles/blocks/_header.scss */
+div.header__right_case a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+/* line 81, ../styles/blocks/_header.scss */
+div.header__right_case .dropdown-menu {
+  min-width: 100%;
+  margin: 0;
+  border-radius: 0;
+  border-top: 0;
+  padding: 0;
+  -moz-box-shadow: 0 2px 4.8px 0.2px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0 2px 4.8px 0.2px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 4.8px 0.2px rgba(0, 0, 0, 0.14);
+  border: 0;
+}
+/* line 92, ../styles/blocks/_header.scss */
+div.header__right_case .dropdown-menu li a {
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+/* line 99, ../styles/blocks/_header.scss */
+div.header__right_case i.fa {
+  font-size: 20px;
+  color: #a2a2a2;
+  margin-top: 10px;
+  padding: 2px 10px;
+}
+/* line 104, ../styles/blocks/_header.scss */
+div.header__right_case i.fa:hover {
+  color: #f7b200;
+}
+
+/* line 110, ../styles/blocks/_header.scss */
+.header__right_message {
+  cursor: pointer;
+  width: 50px;
+  border-right: 1px solid #b4b4b4;
+}
+/* line 114, ../styles/blocks/_header.scss */
+.header__right_message i.fa {
+  font-size: 20px;
+  color: #787878;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  /* margin-top: 10px; */
+  /* padding: 2px 10px; */
+}
+/* line 124, ../styles/blocks/_header.scss */
+.header__right_message:hover, .header__right_message.active {
+  background-color: #EBEBEB;
+}
+
+/* line 129, ../styles/blocks/_header.scss */
+.header__right_languages {
+  cursor: pointer;
+  width: 50px;
+  border-right: 1px solid #b4b4b4;
+}
+/* line 133, ../styles/blocks/_header.scss */
+.header__right_languages i.fa {
+  font-size: 20px;
+  color: #787878;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  /* margin-top: 10px; */
+  /* padding: 2px 10px; */
+}
+/* line 143, ../styles/blocks/_header.scss */
+.header__right_languages:hover, .header__right_languages.active {
+  background-color: #EBEBEB;
+}
+
+/* line 148, ../styles/blocks/_header.scss */
+.header__left-menu_btn {
+  float: left;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 58px;
+  font-size: 30px;
+  color: #787878;
+  border-right: 1px solid #cdcdcd;
+  border-left: 1px solid #cdcdcd;
+}
+/* line 159, ../styles/blocks/_header.scss */
+.header__left-menu_btn:hover, .header__left-menu_btn.active {
+  background-color: #EBEBEB;
+}
+
+/* line 1, ../styles/blocks/_postPanel.scss */
+.post-panel {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+}
+
+/* line 12, ../styles/blocks/_postPanel.scss */
+.post-panel__author-grid {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+/* line 16, ../styles/blocks/_postPanel.scss */
+.post-panel__text-grid {
+  padding: 20px 100px;
+  color: #4C4C4C;
+}
+
+/* line 21, ../styles/blocks/_postPanel.scss */
+h2.post_title {
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  margin-bottom: 15px;
+  line-height: 25px;
+}
+
+/* line 28, ../styles/blocks/_postPanel.scss */
+p.post_text {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+/* line 34, ../styles/blocks/_postPanel.scss */
+.post__author {
+  padding: 20px 20px 10px 20px;
+}
+
+/* line 38, ../styles/blocks/_postPanel.scss */
+.post__author__logo {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+}
+/* line 44, ../styles/blocks/_postPanel.scss */
+.post__author__logo img {
+  width: 66px;
+  height: 66px;
+}
+
+/* line 50, ../styles/blocks/_postPanel.scss */
+.post__author__description {
+  float: left;
+  margin-left: 20px;
+}
+
+/* line 55, ../styles/blocks/_postPanel.scss */
+.post__author__name {
+  padding-top: 13px;
+  color: #000;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 12px;
+}
+
+/* line 63, ../styles/blocks/_postPanel.scss */
+.post__date {
+  margin-top: 5px;
+  color: #999999;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 70, ../styles/blocks/_postPanel.scss */
+.post__control-btns {
+  margin-top: 20px;
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 75, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__like {
+  float: right;
+}
+/* line 77, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__like .like__btn {
+  display: inline-block;
+}
+/* line 81, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__like > span {
+  color: #4C4C4C;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  vertical-align: top;
+  line-height: 25px;
+  margin-right: 5px;
+}
+/* line 90, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__share {
+  float: left;
+}
+/* line 92, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__share .share__btn {
+  display: inline-block;
+}
+/* line 96, ../styles/blocks/_postPanel.scss */
+.post__control-btns .control-btns__share > span {
+  color: #4C4C4C;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  vertical-align: top;
+  line-height: 25px;
+  margin-right: 5px;
+}
+
+/* line 107, ../styles/blocks/_postPanel.scss */
+.post__comments, .image__comments {
+  width: 100%;
+  background-color: #F3F3F3;
+}
+/* line 110, ../styles/blocks/_postPanel.scss */
+.post__comments li, .image__comments li {
+  margin-top: 20px;
+}
+/* line 112, ../styles/blocks/_postPanel.scss */
+.post__comments li:first-child, .image__comments li:first-child {
+  margin-top: 0;
+}
+
+/* line 118, ../styles/blocks/_postPanel.scss */
+.post__comments-list {
+  padding: 15px 100px;
+}
+/* line 120, ../styles/blocks/_postPanel.scss */
+.post__comments-list ul {
+  /* margin-top: 30px; */
+}
+
+/* line 125, ../styles/blocks/_postPanel.scss */
+.post__comments-list__show-all {
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+/* line 128, ../styles/blocks/_postPanel.scss */
+.post__comments-list__show-all span {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* line 133, ../styles/blocks/_postPanel.scss */
+.post__comments-list__show-all i {
+  font-weight: bold;
+  font-size: 20px;
+  vertical-align: bottom;
+}
+
+/* line 140, ../styles/blocks/_postPanel.scss */
+.post__comment__image {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  float: left;
+}
+/* line 146, ../styles/blocks/_postPanel.scss */
+.post__comment__image img {
+  height: 30px;
+  width: 30px;
+}
+
+/* line 152, ../styles/blocks/_postPanel.scss */
+.post__comment__description {
+  margin-left: 15px;
+}
+
+/* line 160, ../styles/blocks/_postPanel.scss */
+.post__comment__controls {
+  text-align: center;
+  padding-left: 30px;
+}
+/* line 163, ../styles/blocks/_postPanel.scss */
+.post__comment__controls > div {
+  cursor: pointer;
+}
+/* line 165, ../styles/blocks/_postPanel.scss */
+.post__comment__controls > div:hover {
+  color: #4C4C4C;
+}
+
+/* line 171, ../styles/blocks/_postPanel.scss */
+.post__comment__author-name {
+  color: #4C4C4C;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 177, ../styles/blocks/_postPanel.scss */
+.post__comment__published-date {
+  float: right;
+  color: #a2a2a2;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 184, ../styles/blocks/_postPanel.scss */
+.post__comment__description-footer {
+  margin-top: 5px;
+}
+/* line 186, ../styles/blocks/_postPanel.scss */
+.post__comment__description-footer p {
+  color: #4C4C4C;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  word-wrap: break-word;
+}
+
+/* line 194, ../styles/blocks/_postPanel.scss */
+.post__create-comment, .image__create-comment, .jobs__create-comment {
+  border-top: 1px solid #e8e8e8;
+  padding: 15px 100px;
+  display: table;
+  width: 100%;
+}
+/* line 199, ../styles/blocks/_postPanel.scss */
+.post__create-comment form, .image__create-comment form, .jobs__create-comment form {
+  display: table-cell;
+  vertical-align: top;
+  float: right;
+}
+/* line 203, ../styles/blocks/_postPanel.scss */
+.post__create-comment form input[type="text"], .image__create-comment form input[type="text"], .jobs__create-comment form input[type="text"] {
+  resize: none;
+  float: left;
+  width: 517px;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+}
+/* line 212, ../styles/blocks/_postPanel.scss */
+.post__create-comment form input[type="text"]:focus, .image__create-comment form input[type="text"]:focus, .jobs__create-comment form input[type="text"]:focus {
+  background: #fff;
+  border: inherit;
+  outline: none;
+}
+/* line 218, ../styles/blocks/_postPanel.scss */
+.post__create-comment form input[type="submit"], .image__create-comment form input[type="submit"], .jobs__create-comment form input[type="submit"] {
+  width: 120px;
+  height: 34px;
+  float: left;
+}
+
+/* line 226, ../styles/blocks/_postPanel.scss */
+.create-comment__author-image {
+  display: table-cell;
+  vertical-align: top;
+  width: 33px;
+  height: 33px;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+}
+/* line 234, ../styles/blocks/_postPanel.scss */
+.create-comment__author-image img {
+  width: 33px;
+  height: 33px;
+}
+
+/* line 240, ../styles/blocks/_postPanel.scss */
+.post__comment__remove-btn {
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+/* line 246, ../styles/blocks/_postPanel.scss */
+.tags-grid {
+  margin-top: 20px;
+}
+
+/* line 250, ../styles/blocks/_postPanel.scss */
+.tags-grid_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 252, ../styles/blocks/_postPanel.scss */
+.tags-grid_list li {
+  display: inline-block;
+  margin-left: 15px;
+  color: #1C7DBF;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* line 259, ../styles/blocks/_postPanel.scss */
+.tags-grid_list li:first-child {
+  margin-left: 0;
+}
+/* line 262, ../styles/blocks/_postPanel.scss */
+.tags-grid_list li:hover {
+  color: #0d61bf;
+}
+
+/* line 272, ../styles/blocks/_postPanel.scss */
+.post__remove_btn, .review-item__remove-btn {
+  float: right;
+  cursor: pointer;
+}
+/* line 275, ../styles/blocks/_postPanel.scss */
+.post__remove_btn:hover, .review-item__remove-btn:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 280, ../styles/blocks/_postPanel.scss */
+.post__videos {
+  padding: 0 !important;
+}
+/* line 283, ../styles/blocks/_postPanel.scss */
+.post__videos li {
+  width: 48% !important;
+  float: left;
+}
+/* line 286, ../styles/blocks/_postPanel.scss */
+.post__videos li:nth-child(2n) {
+  float: right;
+}
+
+/* line 292, ../styles/blocks/_postPanel.scss */
+.icon-trash, .icon-pen {
+  height: 15px;
+  width: 15px;
+  display: block;
+  background-image: url(../images/sprite.png);
+  background-position: -10px 0px;
+  width: 10px;
+  height: 14px;
+}
+/* line 300, ../styles/blocks/_postPanel.scss */
+.icon-trash:hover, .icon-pen:hover {
+  background-image: url(../images/sprite.png);
+  background-position: 0px 0px;
+  width: 10px;
+  height: 14px;
+}
+
+/* line 308, ../styles/blocks/_postPanel.scss */
+.icon-pen {
+  background-image: url(../images/sprite.png);
+  background-position: 0px -14px;
+  width: 11px;
+  height: 11px;
+  margin-top: 10px;
+}
+/* line 316, ../styles/blocks/_postPanel.scss */
+.icon-pen:hover {
+  background-image: url(../images/sprite.png);
+  background-position: -20px 0px;
+  width: 11px;
+  height: 11px;
+}
+
+/* line 324, ../styles/blocks/_postPanel.scss */
+.post-share__author {
+  display: table;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* line 330, ../styles/blocks/_postPanel.scss */
+.post-share__icon {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 335, ../styles/blocks/_postPanel.scss */
+.post-share__author-img {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 5px;
+}
+/* line 339, ../styles/blocks/_postPanel.scss */
+.post-share__author-img img {
+  width: 37px;
+  height: 37px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+/* line 347, ../styles/blocks/_postPanel.scss */
+.post-share__author-info {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 10px;
+  line-height: 15px;
+}
+
+/* line 354, ../styles/blocks/_postPanel.scss */
+.post-share__author-name {
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 360, ../styles/blocks/_postPanel.scss */
+.post-share__date {
+  color: #C3C3C3;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 371, ../styles/blocks/_postPanel.scss */
+.post-panel__text-grid .post__repost-vacancy {
+  padding: 0;
+}
+
+/* line 1, ../styles/blocks/_addPost.scss */
+.add-news {
+  width: 100%;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+}
+/* line 10, ../styles/blocks/_addPost.scss */
+.add-news h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 19, ../styles/blocks/_addPost.scss */
+.add-news__title_input, .new-group-modal__city {
+  width: 100%;
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+}
+/* line 27, ../styles/blocks/_addPost.scss */
+.add-news__title_input:focus, .new-group-modal__city:focus {
+  background: inherit;
+  border: inherit;
+  outline: none;
+}
+
+/* line 34, ../styles/blocks/_addPost.scss */
+.add-news__description_area {
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+  margin-top: 14px;
+}
+/* line 42, ../styles/blocks/_addPost.scss */
+.add-news__description_area:focus {
+  background: inherit;
+  border: inherit;
+  outline: none;
+}
+
+/* line 49, ../styles/blocks/_addPost.scss */
+.add-news__posts-add {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  float: right;
+}
+
+/* line 55, ../styles/blocks/_addPost.scss */
+.posts-add__list {
+  margin-left: 20px;
+  display: inline-block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 59, ../styles/blocks/_addPost.scss */
+.posts-add__list li {
+  display: table;
+  float: left;
+  padding: 13px;
+  cursor: pointer;
+  padding: 10px 13px 0 13px;
+}
+/* line 65, ../styles/blocks/_addPost.scss */
+.posts-add__list li i {
+  font-size: 16px;
+  color: #bdbdbd;
+}
+/* line 69, ../styles/blocks/_addPost.scss */
+.posts-add__list li span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 5px;
+}
+/* line 75, ../styles/blocks/_addPost.scss */
+.posts-add__list li.active i, .posts-add__list li:hover i {
+  color: #f3b403;
+}
+
+/* line 82, ../styles/blocks/_addPost.scss */
+.add-news__post-type {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  float: left;
+  margin-top: 5px;
+}
+
+/* line 93, ../styles/blocks/_addPost.scss */
+.add-news__confirm-btn {
+  padding: 10px 27px;
+  float: left;
+  border-radius: 5px;
+}
+
+/* line 100, ../styles/blocks/_addPost.scss */
+.add-news__bottom {
+  margin-top: 10px;
+}
+
+/* line 104, ../styles/blocks/_addPost.scss */
+.add-news__photos, .post__photos, .add-news__videos {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+  font-size: 0;
+}
+/* line 109, ../styles/blocks/_addPost.scss */
+.add-news__photos li, .post__photos li, .add-news__videos li {
+  width: 100%;
+  min-height: 100px;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  margin: 5px;
+  cursor: pointer;
+  background-origin: content-box;
+}
+
+/* line 122, ../styles/blocks/_addPost.scss */
+.add-news__tags {
+  float: left;
+  padding-top: 10px;
+}
+/* line 125, ../styles/blocks/_addPost.scss */
+.add-news__tags a {
+  margin: 0 5px;
+  color: #1C7DBF;
+}
+
+/* line 131, ../styles/blocks/_addPost.scss */
+.add-news__videos {
+  margin: 5px;
+}
+/* line 134, ../styles/blocks/_addPost.scss */
+.add-news__videos li {
+  width: calc(50% - 5px);
+  display: block;
+  float: right;
+  overflow: hidden;
+  margin: 0;
+  vertical-align: top;
+  height: 233px;
+}
+/* line 142, ../styles/blocks/_addPost.scss */
+.add-news__videos li:nth-child(odd) {
+  float: left;
+}
+
+/* line 3, ../styles/blocks/_reviewPanel.scss */
+.info-block > .col-md-6 .main-section {
+  float: left;
+}
+/* line 7, ../styles/blocks/_reviewPanel.scss */
+.info-block > .col-md-6:nth-child(2n) .main-section {
+  float: right;
+}
+
+/* line 13, ../styles/blocks/_reviewPanel.scss */
+.add-review {
+  width: 100%;
+  max-width: 440px;
+  height: 156px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+}
+/* line 24, ../styles/blocks/_reviewPanel.scss */
+.add-review h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 32, ../styles/blocks/_reviewPanel.scss */
+.add-review__description-area {
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+}
+/* line 40, ../styles/blocks/_reviewPanel.scss */
+.add-review__description-area:focus {
+  background: inherit;
+  border: inherit;
+  outline: none;
+}
+
+/* line 46, ../styles/blocks/_reviewPanel.scss */
+.stat-review {
+  width: 100%;
+  max-width: 440px;
+  height: 156px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+}
+/* line 57, ../styles/blocks/_reviewPanel.scss */
+.stat-review h1 {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+/* line 65, ../styles/blocks/_reviewPanel.scss */
+.add-review__control-btns {
+  margin-top: 10px;
+}
+
+/* line 68, ../styles/blocks/_reviewPanel.scss */
+.control-btns__add-review_btn {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  display: table;
+  height: 33px;
+  width: 156px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  float: left;
+  text-align: center;
+}
+/* line 80, ../styles/blocks/_reviewPanel.scss */
+.control-btns__add-review_btn span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 85, ../styles/blocks/_reviewPanel.scss */
+.control-btns__select_btn {
+  display: inline-block;
+  float: right;
+}
+
+/* line 89, ../styles/blocks/_reviewPanel.scss */
+.select_btn__plus,
+.select_btn__minus {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  display: table;
+  cursor: pointer;
+  float: left;
+}
+/* line 103, ../styles/blocks/_reviewPanel.scss */
+.select_btn__plus span,
+.select_btn__minus span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 111, ../styles/blocks/_reviewPanel.scss */
+.select_btn__plus {
+  margin-right: 10px;
+}
+
+/* review-graph.jpg */
+/* line 115, ../styles/blocks/_reviewPanel.scss */
+.stat-review {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* line 119, ../styles/blocks/_reviewPanel.scss */
+.stat-review_head {
+  background: url("../images/review-graph.jpg") no-repeat center;
+  width: 100%;
+  height: 72px;
+}
+
+/* line 124, ../styles/blocks/_reviewPanel.scss */
+.stat-review_bottom {
+  padding: 20px 20px 0;
+}
+
+/* line 127, ../styles/blocks/_reviewPanel.scss */
+.stat-review__total {
+  color: #9f9f9f;
+  font-family: "Myriad Pro Light", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+/* line 132, ../styles/blocks/_reviewPanel.scss */
+.stat-review_bottom__stat {
+  width: 49%;
+  display: inline-block;
+  margin-top: 15px;
+}
+/* line 136, ../styles/blocks/_reviewPanel.scss */
+.stat-review_bottom__stat .stat__graduation {
+  width: 19px;
+  height: 19px;
+  display: table;
+  text-align: center;
+  float: left;
+}
+/* line 143, ../styles/blocks/_reviewPanel.scss */
+.stat-review_bottom__stat .stat__graduation > span {
+  display: table-cell;
+  vertical-align: middle;
+  width: 19px;
+  height: 19px;
+}
+/* line 150, ../styles/blocks/_reviewPanel.scss */
+.stat-review_bottom__stat .stat__num {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  float: left;
+  margin-left: 12px;
+}
+
+/* line 158, ../styles/blocks/_reviewPanel.scss */
+.review-item {
+  width: 100%;
+  max-width: 440px;
+  height: 216px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  padding: 24px 20px;
+  margin-top: 20px;
+  position: relative;
+  display: table;
+}
+
+/* line 172, ../styles/blocks/_reviewPanel.scss */
+.review-item__header_img {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 175, ../styles/blocks/_reviewPanel.scss */
+.review-item__header_img img {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+}
+
+/* line 181, ../styles/blocks/_reviewPanel.scss */
+.review-item__header_description {
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  padding-left: 24px;
+}
+
+/* line 187, ../styles/blocks/_reviewPanel.scss */
+.review-author {
+  border-bottom: 1px solid #f7b200;
+  display: table;
+  width: 100%;
+  padding-bottom: 5px;
+}
+/* line 192, ../styles/blocks/_reviewPanel.scss */
+.review-author .author_name {
+  display: table-cell;
+  vertical-align: middle;
+  color: #000;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 199, ../styles/blocks/_reviewPanel.scss */
+.review-author .author__post-graduation {
+  float: right;
+  text-align: center;
+  width: 32px;
+  height: 32px;
+  display: table;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+}
+/* line 208, ../styles/blocks/_reviewPanel.scss */
+.review-author .author__post-graduation span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 214, ../styles/blocks/_reviewPanel.scss */
+.review-date {
+  color: #c3c3c3;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  margin-top: 5px;
+}
+
+/* line 220, ../styles/blocks/_reviewPanel.scss */
+.review-item__bottom {
+  height: 90px;
+  overflow: hidden;
+  /* -moz-column-width: 400px;
+  -webkit-column-width: 400px;
+  column-width: 400px; */
+  color: #000;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  padding-top: 25px;
+  line-height: 15px;
+}
+/* line 232, ../styles/blocks/_reviewPanel.scss */
+.review-item__bottom p:before {
+  content: "";
+  display: block;
+  width: 400px;
+  height: 30px;
+  position: absolute;
+  bottom: 20px;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #fff 100%, #fff 10%, #fff);
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0), #fff 100%, #fff 10%, #fff);
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0), #fff 100%, #fff 10%, #fff);
+  background: linear-gradient(to "to bottom", rgba(255, 255, 255, 0), #ffffff 100%, #ffffff 10%, #ffffff);
+}
+
+/* line 247, ../styles/blocks/_reviewPanel.scss */
+.review-item__remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* line 1, ../styles/blocks/_subscribersPanel.scss */
+.subscriber-item {
+  width: 100%;
+  max-width: 440px;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+/* line 12, ../styles/blocks/_subscribersPanel.scss */
+.subscriber__photo {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 223px;
+  border-bottom: 3px solid #f7b200;
+}
+
+/* line 23, ../styles/blocks/_subscribersPanel.scss */
+.photo__title {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 8px;
+  text-shadow: 1px 1.7px 0.3px rgba(0, 0, 0, 0.75);
+}
+
+/* line 35, ../styles/blocks/_subscribersPanel.scss */
+.subscibers__description {
+  padding: 18px;
+  height: 85px;
+}
+/* line 38, ../styles/blocks/_subscribersPanel.scss */
+.subscibers__description span {
+  color: #4C4C4C;
+  font-family: "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 45, ../styles/blocks/_subscribersPanel.scss */
+.subscribers_styles {
+  max-height: 30px;
+  overflow: hidden;
+}
+/* line 48, ../styles/blocks/_subscribersPanel.scss */
+.subscribers_styles span.styles_option {
+  text-decoration: underline;
+}
+/* line 50, ../styles/blocks/_subscribersPanel.scss */
+.subscribers_styles span.styles_option:after {
+  content: ",";
+}
+/* line 53, ../styles/blocks/_subscribersPanel.scss */
+.subscribers_styles span.styles_option:last-of-type:after {
+  content: none;
+}
+
+/* line 63, ../styles/blocks/_subscribersPanel.scss */
+.buttons_write-message {
+  width: 161px;
+  height: 32px;
+  margin: 0 auto;
+}
+
+/* line 70, ../styles/blocks/_subscribersPanel.scss */
+.buttons_subscribe {
+  width: 161px;
+  height: 32px;
+  margin: 20px auto;
+}
+
+/* line 78, ../styles/blocks/_subscribersPanel.scss */
+.subscriber__user {
+  width: 23.3%;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+/* line 83, ../styles/blocks/_subscribersPanel.scss */
+.subscriber__user:nth-child(4n+1) {
+  margin-left: 0;
+}
+
+/* line 1, ../styles/blocks/_profileHeader.scss */
+.profile-header {
+  margin-top: 19px;
+  overflow: hidden;
+  position: relative;
+  height: 400px;
+}
+
+/* line 8, ../styles/blocks/_profileHeader.scss */
+.profile-header__background-image {
+  position: absolute;
+  width: 100%;
+  height: 414px;
+  top: 0;
+  left: 0;
+}
+
+/* line 16, ../styles/blocks/_profileHeader.scss */
+.profile-header__bottom-panel {
+  height: 120px;
+  background-color: rgba(2, 2, 2, 0.76);
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  color: #fff;
+  display: table;
+  padding: 10px 20px;
+}
+/* line 25, ../styles/blocks/_profileHeader.scss */
+.profile-header__bottom-panel > div {
+  display: table-cell;
+  vertical-align: top;
+}
+
+/* line 32, ../styles/blocks/_profileHeader.scss */
+.profile-header__photo {
+  top: -43px;
+  left: 20px;
+  position: absolute;
+  width: 185px;
+  height: 185px;
+  overflow: hidden;
+  border: 3px solid #ebebeb;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+}
+/* line 46, ../styles/blocks/_profileHeader.scss */
+.profile-header__photo.editable {
+  cursor: pointer;
+}
+/* line 50, ../styles/blocks/_profileHeader.scss */
+.profile-header__photo img {
+  width: 185px;
+  height: 185px;
+}
+
+/* line 57, ../styles/blocks/_profileHeader.scss */
+.profile-header__left-panel {
+  float: left;
+  margin-top: 40px;
+}
+
+/* line 62, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn {
+  text-align: center;
+  width: 190px;
+  height: 34px;
+  background-color: #f7b200;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  padding: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+/* line 76, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn:hover {
+  background-color: #d89c02;
+}
+/* line 80, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn span {
+  border-right: 1px solid black;
+  padding-right: 10px;
+}
+/* line 85, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn i {
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  padding-left: 10px;
+}
+/* line 91, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn.my-profile-element {
+  text-align: center;
+}
+/* line 93, ../styles/blocks/_profileHeader.scss */
+.profile-header__subscribe-btn.my-profile-element span {
+  border-right: 0;
+}
+
+/* line 101, ../styles/blocks/_profileHeader.scss */
+.profile-header__center-panel {
+  padding-right: 10px;
+  border-right: 1px solid #4c4c4c;
+  width: 472px;
+  float: left;
+  padding-left: 20px;
+  margin-left: 186px;
+  margin-right: 6px;
+}
+/* line 109, ../styles/blocks/_profileHeader.scss */
+.profile-header__center-panel .name {
+  color: #fff;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+}
+/* line 115, ../styles/blocks/_profileHeader.scss */
+.profile-header__center-panel p.status-text {
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 17px;
+  margin-top: 20px;
+  height: 42px;
+  overflow: hidden;
+}
+/* line 123, ../styles/blocks/_profileHeader.scss */
+.profile-header__center-panel p.status-text:focus {
+  outline-color: #4C4C4C;
+}
+
+/* line 131, ../styles/blocks/_profileHeader.scss */
+.profile-header__right-panel {
+  padding-left: 10px;
+}
+
+/* line 135, ../styles/blocks/_profileHeader.scss */
+.profile-header__send-message {
+  width: 190px;
+  height: 34px;
+  background-color: #f6f6f6;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+}
+/* line 148, ../styles/blocks/_profileHeader.scss */
+.profile-header__send-message:hover {
+  background-color: #dcdcdc;
+}
+/* line 152, ../styles/blocks/_profileHeader.scss */
+.profile-header__send-message span {
+  line-height: 34px;
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* line 162, ../styles/blocks/_profileHeader.scss */
+.profile-header__status, .group-header-status {
+  /* margin-top: 20px; */
+  display: table;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 5px;
+}
+/* line 168, ../styles/blocks/_profileHeader.scss */
+.profile-header__status i, .group-header-status i {
+  color: #4EA812;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 17px;
+  padding-left: 5px;
+}
+/* line 174, ../styles/blocks/_profileHeader.scss */
+.profile-header__status i.status1, .group-header-status i.status1 {
+  color: #f7b200;
+}
+/* line 180, ../styles/blocks/_profileHeader.scss */
+.profile-header__status span, .group-header-status span {
+  display: table-cell;
+  vertical-align: middle;
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  /* padding-left: 10px; */
+}
+
+/* line 191, ../styles/blocks/_profileHeader.scss */
+.profile-header__background-button {
+  position: absolute;
+  right: 16px;
+  top: 30px;
+  width: 188px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.4);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  display: table;
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+/* line 206, ../styles/blocks/_profileHeader.scss */
+.profile-header__background-button:hover {
+  background-color: black;
+}
+/* line 210, ../styles/blocks/_profileHeader.scss */
+.profile-header__background-button i {
+  display: table-cell;
+  vertical-align: middle;
+  padding-right: 10px;
+  border-right: 1px solid #dcdcdc;
+}
+/* line 217, ../styles/blocks/_profileHeader.scss */
+.profile-header__background-button span {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+/* line 225, ../styles/blocks/_profileHeader.scss */
+.profile-header__menu {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  width: 100%;
+  padding-left: 230px;
+  background: #fff;
+  font-size: 0;
+}
+
+/* line 235, ../styles/blocks/_profileHeader.scss */
+.profile-header__menu-btn {
+  border-left: 1px solid #ebebeb;
+  display: inline-block;
+  height: 100%;
+  line-height: 40px;
+  color: #000;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  padding: 0 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+/* line 246, ../styles/blocks/_profileHeader.scss */
+.profile-header__menu-btn:last-child {
+  border-right: 1px solid #ebebeb;
+}
+/* line 250, ../styles/blocks/_profileHeader.scss */
+.profile-header__menu-btn.active, .profile-header__menu-btn:hover {
+  background-color: #f6f6f6;
+}
+
+/* line 257, ../styles/blocks/_profileHeader.scss */
+.work-status__text {
+  padding-left: 5px;
+}
+
+/* line 1, ../styles/blocks/_leftMenu.scss */
+.left-menu {
+  position: fixed;
+  z-index: 2;
+  top: 56px;
+  width: 216px;
+  display: none;
+  padding-bottom: 0;
+  left: calc((100% - 900px)/2);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+/* line 11, ../styles/blocks/_leftMenu.scss */
+.left-menu.open {
+  display: block;
+}
+
+/* line 15, ../styles/blocks/_leftMenu.scss */
+.left-menu__top-side {
+  background: #fff;
+}
+/* line 17, ../styles/blocks/_leftMenu.scss */
+.left-menu__top-side .top-side__user {
+  padding: 36px 28px;
+  display: table;
+  width: 100%;
+}
+/* line 22, ../styles/blocks/_leftMenu.scss */
+.left-menu__top-side .user__name {
+  display: table-cell;
+  color: #000;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 20px;
+  vertical-align: middle;
+}
+/* line 29, ../styles/blocks/_leftMenu.scss */
+.left-menu__top-side .user__photo {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* line 40, ../styles/blocks/_leftMenu.scss */
+.top-side__menu li {
+  display: table;
+  cursor: pointer;
+  width: 100%;
+  padding: 13px 28px;
+}
+/* line 45, ../styles/blocks/_leftMenu.scss */
+.top-side__menu li .menu__title {
+  display: table-cell;
+  vertical-align: middle;
+  color: #000;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+}
+/* line 52, ../styles/blocks/_leftMenu.scss */
+.top-side__menu li .menu__icon {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: right;
+  font-size: 19px;
+}
+/* line 58, ../styles/blocks/_leftMenu.scss */
+.top-side__menu li.active {
+  background: #ebebeb;
+}
+/* line 61, ../styles/blocks/_leftMenu.scss */
+.top-side__menu li:hover {
+  background: #ebebeb;
+}
+/* line 65, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color1 {
+  color: #e47d04;
+}
+/* line 68, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color2 {
+  color: #03aa98;
+}
+/* line 71, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color3 {
+  color: #71aa03;
+}
+/* line 74, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color4 {
+  color: #572810;
+}
+/* line 77, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color5 {
+  color: #2e6be9;
+}
+/* line 80, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color6 {
+  color: #e61212;
+}
+/* line 83, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color7 {
+  color: #2e6be9;
+}
+/* line 86, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color8 {
+  color: #e47d04;
+}
+/* line 89, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color9 {
+  color: #572810;
+}
+/* line 92, ../styles/blocks/_leftMenu.scss */
+.top-side__menu .color10 {
+  color: #f7b200;
+}
+
+/* line 97, ../styles/blocks/_leftMenu.scss */
+.left-menu__bottom-side {
+  background: #2d2d2d;
+  color: #dcdcdc;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  padding: 43px 30px;
+  line-height: 20px;
+}
+/* line 104, ../styles/blocks/_leftMenu.scss */
+.left-menu__bottom-side p:before {
+  content: "- ";
+}
+
+/* line 4, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
+/* line 8, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  margin-left: 3px;
+  cursor: pointer;
+}
+/* line 14, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li.new-photo {
+  border: 2px dashed #e8e8e8;
+  width: 210px;
+  height: 210px;
+  font-size: 66px;
+  text-align: center;
+  line-height: 210px;
+  color: #e8e8e8;
+  cursor: pointer;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+/* line 24, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li.new-photo:hover {
+  border: 2px dashed #fac02c;
+  color: #fac02c;
+}
+/* line 29, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li:nth-child(4n+1) {
+  margin-left: 0;
+}
+/* line 33, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li:hover .photo__image-header {
+  top: 0;
+}
+/* line 36, ../styles/blocks/_gallery.scss */
+ul.user-gallery__photos li:hover .photo__image-info, ul.user-gallery__photos li:hover .video__image-info {
+  bottom: 0;
+}
+
+/* line 42, ../styles/blocks/_gallery.scss */
+.photo__image-header {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 33px;
+  top: -33px;
+  position: absolute;
+}
+/* line 48, ../styles/blocks/_gallery.scss */
+.photo__image-header .remove-image {
+  width: 33px;
+  height: 33px;
+  float: right;
+  background-color: rgba(0, 0, 0, 0.63);
+  text-align: center;
+  font-size: 18px;
+  line-height: 33px;
+  color: #fff;
+}
+/* line 57, ../styles/blocks/_gallery.scss */
+.photo__image-header .remove-image:hover {
+  background-color: black;
+}
+
+/* line 62, ../styles/blocks/_gallery.scss */
+.photo__image-block {
+  overflow: hidden;
+  width: 210px;
+  height: 210px;
+}
+
+/* line 67, ../styles/blocks/_gallery.scss */
+.photo__image-info, .video__image-info {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: -70px;
+  height: 70px;
+  width: 100%;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* line 76, ../styles/blocks/_gallery.scss */
+.image-info__name {
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 85, ../styles/blocks/_gallery.scss */
+.image-info__buttons {
+  margin-top: 10px;
+}
+
+/* line 88, ../styles/blocks/_gallery.scss */
+.image-info__review, .image-info__like {
+  float: left;
+  width: 47px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.28);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-align: center;
+  color: #fff;
+  padding-top: 6px;
+  cursor: pointer;
+}
+/* line 100, ../styles/blocks/_gallery.scss */
+.image-info__review:hover, .image-info__like:hover {
+  background-color: rgba(0, 0, 0, 0.48);
+}
+
+/* line 104, ../styles/blocks/_gallery.scss */
+.image-info__like {
+  float: right;
+  display: table;
+  padding-right: 5px;
+}
+/* line 109, ../styles/blocks/_gallery.scss */
+.image-info__like span {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 113, ../styles/blocks/_gallery.scss */
+.image-info__like i {
+  display: table-cell;
+  vertical-align: middle;
+  background: url("../images/like-btn_hover.png") no-repeat center;
+  background-size: contain;
+  width: 21px;
+}
+/* line 122, ../styles/blocks/_gallery.scss */
+.image-info__like:hover i, .image-info__like.active i {
+  background: url("../images/like-btn_hover.png") no-repeat center;
+  background-size: contain;
+}
+
+/* line 128, ../styles/blocks/_gallery.scss */
+.add-photo__button {
+  height: 51px;
+  width: 100%;
+  margin-top: 20px;
+  display: table;
+  background-color: #fff;
+  text-align: center;
+  border: 2px dashed #e8e8e8;
+  cursor: pointer;
+}
+/* line 137, ../styles/blocks/_gallery.scss */
+.add-photo__button:hover {
+  border: 2px dashed #fac02c;
+}
+/* line 140, ../styles/blocks/_gallery.scss */
+.add-photo__button span {
+  display: table-cell;
+  vertical-align: middle;
+  color: #a2a2a2;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+/* line 148, ../styles/blocks/_gallery.scss */
+.add-photo__preview-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 23px;
+  position: relative;
+}
+/* line 152, ../styles/blocks/_gallery.scss */
+.add-photo__preview-list li {
+  display: block;
+  position: relative;
+  width: 420px;
+  float: left;
+  margin-top: 10px;
+  border: 1px solid #dcdcdc;
+}
+/* line 159, ../styles/blocks/_gallery.scss */
+.add-photo__preview-list li > div {
+  display: table;
+  width: 100%;
+}
+/* line 163, ../styles/blocks/_gallery.scss */
+.add-photo__preview-list li:nth-child(2n) {
+  margin-left: 17px;
+}
+
+/* line 168, ../styles/blocks/_gallery.scss */
+.add-photo__image {
+  width: 134px;
+  height: 134px;
+  vertical-align: top;
+  display: table-cell;
+  overflow: hidden;
+  text-align: center;
+  vertical-align: middle;
+}
+/* line 176, ../styles/blocks/_gallery.scss */
+.add-photo__image img.progress {
+  width: 50px;
+  height: 50px;
+  background: none;
+  box-shadow: none;
+}
+/* line 182, ../styles/blocks/_gallery.scss */
+.add-photo__image img.preview {
+  width: 134px;
+  height: 134px;
+}
+
+/* line 187, ../styles/blocks/_gallery.scss */
+.add-photo__info {
+  display: table-cell;
+  vertical-align: top;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* line 193, ../styles/blocks/_gallery.scss */
+.add-photo__name {
+  border: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #dcdcdc;
+  color: #a2a2a2;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 200, ../styles/blocks/_gallery.scss */
+.add-photo__name:focus {
+  outline: none;
+  border-bottom: 1px solid #dcdcdc;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* line 207, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons {
+  margin-top: 30px;
+}
+/* line 209, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons > div {
+  color: #a2a2a2;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+/* line 214, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons > div i {
+  color: #4C4C4C;
+}
+/* line 218, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .rotate-left {
+  float: left;
+}
+/* line 220, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .rotate-left i {
+  margin-left: 5px;
+}
+/* line 224, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .rotate-right {
+  float: left;
+  margin-left: 10px;
+}
+/* line 227, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .rotate-right i {
+  margin-right: 5px;
+}
+/* line 231, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .delete-button {
+  float: right;
+}
+/* line 233, ../styles/blocks/_gallery.scss */
+.add-photo__control-buttons .delete-button i {
+  margin-left: 5px;
+}
+
+/* line 238, ../styles/blocks/_gallery.scss */
+.add-photo__select-album {
+  margin-top: 10px;
+}
+/* line 240, ../styles/blocks/_gallery.scss */
+.add-photo__select-album .btn {
+  text-align: left;
+}
+
+/* line 244, ../styles/blocks/_gallery.scss */
+.add-photo__send-btns, .add-video__send-btns {
+  margin-top: 40px;
+}
+/* line 246, ../styles/blocks/_gallery.scss */
+.add-photo__send-btns .btn, .add-video__send-btns .btn {
+  background: #999999;
+  padding: 6px 35px;
+  text-align: center;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 253, ../styles/blocks/_gallery.scss */
+.add-photo__send-btns .success, .add-video__send-btns .success {
+  color: #fff;
+}
+/* line 256, ../styles/blocks/_gallery.scss */
+.add-photo__send-btns .cancel, .add-video__send-btns .cancel {
+  background: none;
+}
+
+/* line 260, ../styles/blocks/_gallery.scss */
+.progress {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* line 1, ../styles/blocks/_openImageModal.scss */
+.image-modal {
+  background-color: #fff;
+  width: 692px;
+  position: relative;
+}
+
+/* line 7, ../styles/blocks/_openImageModal.scss */
+.image-modal__image {
+  width: 692px;
+  position: relative;
+  /* height: 526px; */
+  text-align: center;
+  height: 100%;
+}
+/* line 13, ../styles/blocks/_openImageModal.scss */
+.image-modal__image img {
+  max-width: 100%;
+  cursor: pointer;
+  max-height: 500px;
+}
+
+/* line 21, ../styles/blocks/_openImageModal.scss */
+.close-modal {
+  position: absolute;
+  right: -38px;
+  cursor: pointer;
+  top: 0;
+  font-size: 22px;
+  color: #fff;
+}
+
+/* line 30, ../styles/blocks/_openImageModal.scss */
+.modal-open .modal {
+  background-color: rgba(0, 0, 0, 0.86);
+}
+
+/* line 34, ../styles/blocks/_openImageModal.scss */
+.modal-dialog {
+  width: 692px;
+}
+
+/* line 38, ../styles/blocks/_openImageModal.scss */
+.image-modal__description {
+  height: 107px;
+  display: table;
+}
+
+/* line 43, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info {
+  width: 438px;
+  display: table-cell;
+  vertical-align: top;
+  padding: 24px 20px;
+  border-right: 1px solid #f7b200;
+}
+/* line 49, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__name {
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+}
+/* line 55, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns {
+  margin-top: 14px;
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 60, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__like {
+  float: left;
+}
+/* line 62, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__like .like__btn {
+  display: inline-block;
+}
+/* line 67, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__like > span {
+  vertical-align: top;
+  line-height: 25px;
+}
+/* line 74, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__share {
+  float: right;
+}
+/* line 76, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__share .share__btn {
+  display: inline-block;
+}
+/* line 81, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__info .info__control-btns .control-btns__share > span {
+  vertical-align: top;
+  line-height: 25px;
+}
+
+/* line 92, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author {
+  display: table-cell;
+  vertical-align: top;
+  padding: 14px;
+  width: 254px;
+}
+/* line 97, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author .author__image {
+  float: left;
+  width: 67px;
+  height: 67px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* line 104, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author .author__image:hover {
+  -moz-filter: brightness(120%);
+  filter: brightness(120%);
+  -o-filter: brightness(120%);
+  -ms-filter: brightness(120%);
+  -webkit-filter: brightness(120%);
+}
+/* line 113, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author .author__data {
+  float: right;
+  width: 120px;
+  padding-top: 10px;
+}
+/* line 117, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author .author__data .author__name {
+  color: #000;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+/* line 124, ../styles/blocks/_openImageModal.scss */
+.image-modal__description__author .author__data .author__date {
+  color: #a2a2a2;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+/* line 135, ../styles/blocks/_openImageModal.scss */
+.image-button__prev {
+  left: 0;
+  top: 0;
+}
+
+/* line 141, ../styles/blocks/_openImageModal.scss */
+.image-button__next {
+  right: 0;
+  top: 0;
+}
+
+/* line 147, ../styles/blocks/_openImageModal.scss */
+.gallery__num {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* line 157, ../styles/blocks/_openImageModal.scss */
+.image__create-comment {
+  padding: 20px;
+}
+/* line 160, ../styles/blocks/_openImageModal.scss */
+.image__create-comment .create-comment__author-image {
+  float: none;
+}
+/* line 164, ../styles/blocks/_openImageModal.scss */
+.image__create-comment form {
+  display: inline-block;
+  float: none;
+}
+/* line 167, ../styles/blocks/_openImageModal.scss */
+.image__create-comment form input[type="text"] {
+  float: none;
+  display: inline-block;
+  width: 414px;
+}
+/* line 173, ../styles/blocks/_openImageModal.scss */
+.image__create-comment form input[type="submit"] {
+  float: none;
+  display: inline-block;
+}
+
+/* line 183, ../styles/blocks/_openImageModal.scss */
+.open-img__post__comments-list {
+  padding: 15px 60px;
+}
+
+/* line 1, ../styles/blocks/_openVideoModal.scss */
+.video-popup {
+  width: 100%;
+}
+
+/* line 1, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__footer {
+  background: #e8e8e8;
+  padding: 12px 23px;
+}
+/* line 4, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__footer .btn {
+  background: #999999;
+  padding: 6px 35px;
+  text-align: center;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 11, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__footer .success {
+  color: #fff;
+}
+/* line 14, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__footer .cancel {
+  background: none;
+}
+
+/* line 19, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__header {
+  height: 60px;
+  padding: 12px 23px;
+  display: table;
+  background: #e8e8e8;
+  width: 100%;
+}
+/* line 25, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__header .close-modal {
+  display: table-cell;
+  position: static;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 25px;
+  color: #a5a5a5;
+}
+/* line 32, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__header .close-modal:hover {
+  color: #4C4C4C;
+}
+
+/* line 38, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__title {
+  display: table-cell;
+  vertical-align: middle;
+  color: #4C4C4C;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+/* line 46, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list {
+  padding: 20px;
+  font-size: 0;
+}
+/* line 49, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li {
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 5px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* line 56, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li img {
+  width: 210px;
+}
+/* line 59, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li:nth-child(3n+1) {
+  margin-left: 0;
+}
+/* line 62, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li:hover .select-image_modal__list__header, .select-image_modal__list li:hover .select-video_modal__list__header {
+  top: 0;
+}
+/* line 66, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li.new-photo {
+  border: 2px dashed #e8e8e8;
+  width: 210px;
+  height: 210px;
+  font-size: 66px;
+  text-align: center;
+  line-height: 210px;
+  color: #e8e8e8;
+  cursor: pointer;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+/* line 76, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list li.new-photo:hover {
+  border: 2px dashed #fac02c;
+  color: #fac02c;
+}
+
+/* line 83, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__header, .select-video_modal__list__header {
+  text-align: right;
+  top: -33px;
+  position: absolute;
+  width: 100%;
+  font-size: 20px;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -ms-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+/* line 90, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__header i, .select-video_modal__list__header i {
+  width: 33px;
+  height: 33px;
+  text-align: center;
+  line-height: 34px;
+  background-color: rgba(232, 232, 232, 0.63);
+  color: rgba(0, 0, 0, 0.63);
+}
+/* line 97, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__header i:hover, .select-video_modal__list__header i:hover {
+  background-color: #4c4c4c;
+  color: #fff;
+}
+/* line 102, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__header.active, .active.select-video_modal__list__header {
+  top: 0;
+}
+/* line 105, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__header.active i, .active.select-video_modal__list__header i {
+  background-color: #4c4c4c;
+  color: #fff;
+}
+
+/* line 111, ../styles/blocks/_selectImageModal.scss */
+.select-image_modal__list__image {
+  width: 210px;
+  height: 210px;
+}
+
+/* line 1, ../styles/blocks/_messageMenu.scss */
+.message-menu {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  top: 50px;
+  left: auto;
+  width: 50px;
+  min-width: 50px;
+  /* display: none; */
+  padding-bottom: 0;
+  height: 100%;
+  padding-right: 5px;
+  /* overflow-y: scroll; */
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+/* line 16, ../styles/blocks/_messageMenu.scss */
+.message-menu::-webkit-scrollbar {
+  display: none;
+}
+/* line 21, ../styles/blocks/_messageMenu.scss */
+.message-menu.open {
+  display: block;
+}
+/* line 25, ../styles/blocks/_messageMenu.scss */
+.message-menu:focus {
+  outline: none;
+}
+
+/* line 31, ../styles/blocks/_messageMenu.scss */
+.messages__title {
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  padding: 20px;
+}
+
+/* line 38, ../styles/blocks/_messageMenu.scss */
+.message__list {
+  margin-top: 5px;
+  margin-bottom: 32px;
+  position: relative;
+}
+/* line 44, ../styles/blocks/_messageMenu.scss */
+.message__list li {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 13px;
+  display: table;
+  cursor: pointer;
+}
+/* line 51, ../styles/blocks/_messageMenu.scss */
+.message__list li .li_head {
+  padding: 14px;
+}
+/* line 55, ../styles/blocks/_messageMenu.scss */
+.message__list li:hover .li_head, .message__list li.active .li_head {
+  background-color: #f3f3f3;
+}
+
+/* line 64, ../styles/blocks/_messageMenu.scss */
+.message__author-photo {
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  width: 49px;
+  height: 49px;
+  float: left;
+  vertical-align: top;
+}
+/* line 73, ../styles/blocks/_messageMenu.scss */
+.message__author-photo img {
+  width: 49px;
+  height: 49px;
+}
+
+/* line 80, ../styles/blocks/_messageMenu.scss */
+.message__info {
+  float: left;
+  width: 240px;
+  vertical-align: top;
+  padding-left: 16px;
+}
+
+/* line 87, ../styles/blocks/_messageMenu.scss */
+.message__author-name {
+  display: inline-block;
+  text-align: left;
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  width: 70%;
+  vertical-align: top;
+}
+
+/* line 97, ../styles/blocks/_messageMenu.scss */
+.message__author-status {
+  display: inline-block;
+  width: 21%;
+  vertical-align: top;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  text-align: right;
+}
+/* line 104, ../styles/blocks/_messageMenu.scss */
+.message__author-status span {
+  color: #b4b4b4;
+}
+/* line 106, ../styles/blocks/_messageMenu.scss */
+.message__author-status span.active {
+  color: #4EA812;
+}
+
+/* line 114, ../styles/blocks/_messageMenu.scss */
+.message__simple-text {
+  width: 100%;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  color: #6D6D6D;
+  margin-top: 10px;
+}
+
+/* line 122, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion {
+  padding: 0 14px;
+  display: none;
+}
+/* line 125, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul {
+  height: 270px;
+  width: 100%;
+  overflow: hidden;
+}
+/* line 129, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li {
+  position: relative;
+}
+/* line 131, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li .simple__message-text {
+  word-wrap: break-word;
+  /* Internet Explorer 5.5+ */
+}
+/* line 137, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li.user .simple__message-text {
+  float: right;
+  padding-left: 30px;
+}
+/* line 142, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li.user .simple__message-author_image {
+  top: 0;
+  left: 0;
+}
+/* line 150, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li.alien .simple__message-text {
+  float: left;
+  padding-right: 30px;
+}
+/* line 155, ../styles/blocks/_messageMenu.scss */
+.message__list__accordion ul li.alien .simple__message-author_image {
+  top: 0;
+  right: 0;
+}
+
+/* line 168, ../styles/blocks/_messageMenu.scss */
+.simple__message-author_image {
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 176, ../styles/blocks/_messageMenu.scss */
+.simple__message-author_image img {
+  width: 36px;
+}
+
+/* line 182, ../styles/blocks/_messageMenu.scss */
+.simple__message-text {
+  width: 264px;
+  background-color: #f8f8f8;
+  border: 1px solid rgba(172, 173, 173, 0.35);
+  padding: 10px 20px;
+}
+/* line 187, ../styles/blocks/_messageMenu.scss */
+.simple__message-text .date {
+  color: #a2a2a2;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  text-align: right;
+}
+
+/* line 196, ../styles/blocks/_messageMenu.scss */
+.message__list__form {
+  margin-top: 14px;
+}
+/* line 198, ../styles/blocks/_messageMenu.scss */
+.message__list__form input {
+  height: 33px;
+}
+
+/* line 204, ../styles/blocks/_messageMenu.scss */
+.message-menu__recently-messages, .message-menu__subscribers-messages {
+  text-align: center;
+}
+
+/* line 212, ../styles/blocks/_messageMenu.scss */
+.message-menu__icon {
+  font-size: 25px;
+  color: #333;
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
+
+/* line 220, ../styles/blocks/_messageMenu.scss */
+.message-menu__chat-list li {
+  overflow: hidden;
+  margin: 8px auto !important;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 3px solid #e1e1e1;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+/* line 229, ../styles/blocks/_messageMenu.scss */
+.message-menu__chat-list li:hover {
+  border: 3px solid #606060;
+}
+/* line 232, ../styles/blocks/_messageMenu.scss */
+.message-menu__chat-list li img {
+  width: 35px;
+  height: 35px;
+  border: 3px solid #e1e1e1;
+  border-radius: 50%;
+  box-sizing: content-box;
+}
+
+/* line 244, ../styles/blocks/_messageMenu.scss */
+.dialog-bar {
+  width: 301px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  right: 60px;
+  border: 1px solid #acacac;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.14);
+}
+
+/* line 257, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__header {
+  width: 100%;
+  height: 39px;
+  background-color: #4e4e4e;
+  display: table;
+}
+
+/* line 264, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__author {
+  display: table-cell;
+  width: 80%;
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  padding-left: 13px;
+  vertical-align: middle;
+}
+
+/* line 274, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__author-status {
+  color: #c3c3c3;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  width: 20%;
+}
+
+/* line 282, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__controls {
+  display: table-cell;
+  text-align: right;
+  padding-right: 13px;
+  vertical-align: middle;
+}
+
+/* line 289, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__controls_settings {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  color: #f0f0f0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* line 298, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__controls__close {
+  display: inline-block;
+  color: #f0f0f0;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* line 305, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list {
+  padding: 15px;
+  padding-right: 20px;
+  height: 345px;
+  background-color: #e1e1e1;
+  box-sizing: border-box;
+  overflow: auto;
+}
+/* line 312, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list:focus {
+  outline: none;
+}
+
+/* line 317, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__message {
+  /* margin-top: 15px; */
+  padding: 10px;
+  box-sizing: content-box;
+}
+/* line 321, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__message:first-child {
+  /* margin-top: 10px; */
+}
+/* line 324, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__message:last-child {
+  /* margin-bottom: 10px; */
+}
+
+/* line 330, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__author-image {
+  width: 100%;
+  height: 35px;
+  overflow: hidden;
+  text-align: left;
+}
+/* line 335, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__author-image img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* line 343, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__text {
+  background-color: #fff;
+  border: 1px solid rgba(172, 173, 173, 0.35);
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 10px;
+  padding: 10px;
+  line-height: 14px;
+  margin-left: 12px;
+  margin-top: 9px;
+  position: relative;
+}
+/* line 356, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__text:before {
+  content: '';
+  display: block;
+  border: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -20px;
+  left: 24px;
+}
+
+/* line 370, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__date {
+  color: #7f7f7f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  margin-left: 22px;
+  margin-top: 5px;
+  float: left;
+}
+
+/* line 380, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__new-message {
+  padding: 15px 10px;
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  resize: none;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  border-top: 1px solid #ACACAC;
+  padding-top: 10px;
+}
+/* line 2, ../styles/_base/_mixins.scss */
+.dialog-bar__new-message:-moz-placeholder {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 8, ../styles/_base/_mixins.scss */
+.dialog-bar__new-message::-moz-placeholder {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 14, ../styles/_base/_mixins.scss */
+.dialog-bar__new-message:-ms-placeholder {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 20, ../styles/_base/_mixins.scss */
+.dialog-bar__new-message::-webkit-input-placeholder {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 26, ../styles/_base/_mixins.scss */
+.dialog-bar__new-message.placeholder {
+  color: #6d6d6d;
+  font-size: 12px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 393, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__new-message:focus {
+  outline: none;
+}
+
+/* line 399, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__my .dialog-bar__message-list__author-image {
+  text-align: right;
+}
+/* line 402, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__my .dialog-bar__message-list__date {
+  float: right;
+  margin-left: 0;
+  margin-right: 22px;
+}
+/* line 407, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__my .dialog-bar__message-list__text {
+  margin-left: 0;
+  margin-right: 14px;
+}
+/* line 410, ../styles/blocks/_messageMenu.scss */
+.dialog-bar__message-list__my .dialog-bar__message-list__text:before {
+  left: auto;
+  right: 24px;
+}
+
+/* line 418, ../styles/blocks/_messageMenu.scss */
+.jspVerticalBar:focus {
+  outline: none;
+}
+
+/* line 1, ../styles/blocks/_vacancy.scss */
+.vacancy-panel, .videos-panel, .news-panel {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+}
+
+/* line 14, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 10px 15px;
+  border-collapse: separate;
+}
+/* line 19, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table span:not(.glyphicon) {
+  color: #6d6d6d;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+/* line 24, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table .age__select {
+  display: inline-block;
+  width: 100%;
+}
+/* line 27, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table .age__select.age__from {
+  /* float: right; */
+}
+/* line 31, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table .age__label {
+  line-height: 34px;
+}
+/* line 36, ../styles/blocks/_vacancy.scss */
+.user-vacancy__table tags-input span {
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* line 43, ../styles/blocks/_vacancy.scss */
+input.user-vacancy__input {
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+  text-align: left;
+  /* &.currency {
+      width: 75px;
+      &:focus {
+          background: inherit;
+          outline: inherit;
+      }
+  } */
+}
+/* line 2, ../styles/_base/_mixins.scss */
+input.user-vacancy__input:-moz-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 8, ../styles/_base/_mixins.scss */
+input.user-vacancy__input::-moz-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 14, ../styles/_base/_mixins.scss */
+input.user-vacancy__input:-ms-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 20, ../styles/_base/_mixins.scss */
+input.user-vacancy__input::-webkit-input-placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 26, ../styles/_base/_mixins.scss */
+input.user-vacancy__input.placeholder {
+  color: inherit;
+  font-size: inherit;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-weight: lighter;
+}
+/* line 52, ../styles/blocks/_vacancy.scss */
+input.user-vacancy__input:focus {
+  background: #fff;
+  outline: none;
+}
+/* line 56, ../styles/blocks/_vacancy.scss */
+input.user-vacancy__input[readonly]:focus {
+  outline: inherit;
+  border: 1px solid #ebebeb;
+  box-shadow: none;
+  background-color: #eee;
+}
+
+/* line 70, ../styles/blocks/_vacancy.scss */
+.user-vacancy__textarea {
+  resize: none;
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  border: 1px solid #ebebeb;
+}
+/* line 78, ../styles/blocks/_vacancy.scss */
+.user-vacancy__textarea:focus {
+  background: inherit;
+  outline: none;
+}
+
+/* line 83, ../styles/blocks/_vacancy.scss */
+.user-vacancy__publish-btn {
+  color: #1c1c1c;
+  font-family: "Arial";
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 160px;
+  text-align: center;
+}
+
+/* line 93, ../styles/blocks/_vacancy.scss */
+.user-vacancy__title {
+  color: #4c4c4c;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  padding: 25px 100px;
+}
+
+/* line 99, ../styles/blocks/_vacancy.scss */
+.user-vacancy__list_left {
+  padding-right: 20px;
+}
+
+/* line 102, ../styles/blocks/_vacancy.scss */
+.user-vacancy__list_right {
+  padding-left: 20px;
+}
+
+/* line 105, ../styles/blocks/_vacancy.scss */
+.user-vacancy__text, .post__repost-vacancy {
+  padding: 0px 100px 20px 100px;
+  color: #6d6d6d;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+}
+/* line 111, ../styles/blocks/_vacancy.scss */
+.user-vacancy__text p, .post__repost-vacancy p {
+  margin-top: 5px;
+}
+/* line 114, ../styles/blocks/_vacancy.scss */
+.user-vacancy__text .list-title, .post__repost-vacancy .list-title {
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+}
+/* line 117, ../styles/blocks/_vacancy.scss */
+.user-vacancy__text .list-description, .post__repost-vacancy .list-description {
+  margin-top: 25px;
+}
+
+/* line 3, ../styles/blocks/_jobs.scss */
+.vacancy-search tags-input .tags {
+  padding-right: 10px;
+}
+
+/* line 8, ../styles/blocks/_jobs.scss */
+.check-button {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #d1d1d1;
+  padding-left: 10px;
+  padding-right: 30px;
+  position: relative;
+  line-height: 40px;
+  cursor: pointer;
+}
+/* line 18, ../styles/blocks/_jobs.scss */
+.check-button.active i.check-button__status {
+  background: #f7b200;
+}
+/* line 22, ../styles/blocks/_jobs.scss */
+.check-button span {
+  color: #9f9f9f;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* line 27, ../styles/blocks/_jobs.scss */
+.check-button i.check-button__status {
+  position: absolute;
+  right: 10px;
+  /* border: 1px solid #adadad; */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  background: #adadad;
+  top: 10px;
+}
+/* line 38, ../styles/blocks/_jobs.scss */
+.check-button i.check-button__status i {
+  color: #fff;
+  font-size: 13px;
+}
+
+/* line 44, ../styles/blocks/_jobs.scss */
+.search__apply-btn {
+  color: #1c1c1c;
+  font-family: "Arial";
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 160px;
+  text-align: center;
+}
+
+/* line 54, ../styles/blocks/_jobs.scss */
+.search__hide-btn, .videos__sort-btn {
+  color: #1c1c1c;
+  font-family: "Arial";
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 160px;
+  text-align: center;
+}
+
+/* line 64, ../styles/blocks/_jobs.scss */
+.search__cancel-btn {
+  color: #1c1c1c;
+  font-family: "Arial";
+  font-size: 13px;
+  font-weight: 400;
+  padding: 10px 0;
+  width: 160px;
+  text-align: center;
+}
+
+/* line 74, ../styles/blocks/_jobs.scss */
+.show-search-filter {
+  text-align: center;
+  width: 100%;
+  height: 44px;
+  position: relative;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+  cursor: pointer;
+}
+/* line 85, ../styles/blocks/_jobs.scss */
+.show-search-filter span {
+  line-height: 44px;
+  color: #1c1c1c;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 93, ../styles/blocks/_jobs.scss */
+.ngrs-range-slider {
+  padding: 0;
+}
+
+/* line 97, ../styles/blocks/_jobs.scss */
+.ngrs-range-slider,
+.ngrs-range-slider * {
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* line 103, ../styles/blocks/_jobs.scss */
+.ngrs-range-slider .ngrs-handle {
+  border: 0;
+  background-color: #fac02c;
+  border-radius: 50%;
+}
+
+/* line 108, ../styles/blocks/_jobs.scss */
+.ngrs-range-slider .ngrs-join {
+  background: #fff;
+  border: 1px solid #fac02c;
+}
+
+/* line 112, ../styles/blocks/_jobs.scss */
+.range-values {
+  width: 100%;
+}
+/* line 114, ../styles/blocks/_jobs.scss */
+.range-values span {
+  color: #6d6d6d;
+  font-family: "Arial";
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* line 121, ../styles/blocks/_jobs.scss */
+.range-values__from {
+  float: left;
+  margin-left: 10px;
+}
+
+/* line 125, ../styles/blocks/_jobs.scss */
+.range-values__to {
+  float: right;
+  margin-right: 10px;
+}
+
+/* line 131, ../styles/blocks/_jobs.scss */
+.jobs__create-comment form input[type="text"] {
+  width: 450px;
+}
+/* line 134, ../styles/blocks/_jobs.scss */
+.jobs__create-comment form input[type="submit"] {
+  width: 180px;
+}
+
+/* line 139, ../styles/blocks/_jobs.scss */
+.jobs__select {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #1c1c1c;
+}
+/* line 144, ../styles/blocks/_jobs.scss */
+.jobs__select .text-muted {
+  color: #1c1c1c;
+}
+
+/* line 149, ../styles/blocks/_jobs.scss */
+.jobs__table {
+  width: 100%;
+  table-layout: fixed;
+  border-spacing: 10px 15px;
+  border-collapse: separate;
+}
+
+/* line 1, ../styles/blocks/_video.scss */
+.add-video__button {
+  width: 100%;
+  margin-top: 20px;
+  display: table;
+  background-color: #fff;
+}
+
+/* line 8, ../styles/blocks/_video.scss */
+.new-video__frame {
+  width: 100%;
+  margin: 20px auto 0;
+}
+
+/* line 13, ../styles/blocks/_video.scss */
+.add-video__send-btns {
+  margin-top: 20px;
+}
+
+/* line 18, ../styles/blocks/_video.scss */
+.user-videos, .post__videos, .global-photos, .select-video-modal__user-videos {
+  /* padding: 0 20px 20px; */
+}
+/* line 20, ../styles/blocks/_video.scss */
+.user-videos li, .post__videos li, .global-photos li, .select-video-modal__user-videos li {
+  display: inline-block;
+  width: 32%;
+  float: left;
+  /* height: 195px; */
+  margin-top: 20px;
+  /* cursor: pointer; */
+  position: relative;
+  overflow: hidden;
+  margin-left: 17px;
+}
+/* line 30, ../styles/blocks/_video.scss */
+.user-videos li:hover, .post__videos li:hover, .global-photos li:hover, .select-video-modal__user-videos li:hover {
+  /* &:after {
+      display: block;
+  } */
+}
+/* line 34, ../styles/blocks/_video.scss */
+.user-videos li:hover .photo__image-header, .post__videos li:hover .photo__image-header, .global-photos li:hover .photo__image-header, .select-video-modal__user-videos li:hover .photo__image-header {
+  top: 0;
+}
+/* line 37, ../styles/blocks/_video.scss */
+.user-videos li:hover .photo__image-info, .post__videos li:hover .photo__image-info, .global-photos li:hover .photo__image-info, .select-video-modal__user-videos li:hover .photo__image-info, .user-videos li:hover .video__image-info, .post__videos li:hover .video__image-info, .global-photos li:hover .video__image-info, .select-video-modal__user-videos li:hover .video__image-info {
+  bottom: 0;
+}
+/* line 41, ../styles/blocks/_video.scss */
+.user-videos li:after, .post__videos li:after, .global-photos li:after, .select-video-modal__user-videos li:after {
+  display: none;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+/* line 49, ../styles/blocks/_video.scss */
+.user-videos li:nth-child(3n+1), .post__videos li:nth-child(3n+1), .global-photos li:nth-child(3n+1), .select-video-modal__user-videos li:nth-child(3n+1) {
+  margin-left: 0;
+}
+
+/* line 55, ../styles/blocks/_video.scss */
+.user-videos__thumb {
+  overflow: hidden;
+  height: 195px;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+/* line 63, ../styles/blocks/_video.scss */
+.videos-panel__title, .news-panel__title {
+  display: table;
+  width: 100%;
+  margin: 20px 20px 0;
+}
+/* line 67, ../styles/blocks/_video.scss */
+.videos-panel__title span, .news-panel__title span {
+  display: table-cell;
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 20px;
+  font-size: 14px;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+}
+
+/* line 77, ../styles/blocks/_video.scss */
+.videos-panel__title__icon {
+  display: table-cell;
+  vertical-align: middle;
+  width: 35px;
+}
+
+/* line 87, ../styles/blocks/_video.scss */
+.video__image-info__grid {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  top: 125px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* line 1, ../styles/blocks/_videos.scss */
+.videos-panel, .news-panel {
+  padding-bottom: 20px;
+}
+/* line 4, ../styles/blocks/_videos.scss */
+.videos-panel .user-videos, .news-panel .user-videos, .videos-panel .post__videos, .news-panel .post__videos, .videos-panel .global-photos, .news-panel .global-photos, .videos-panel .select-video-modal__user-videos, .news-panel .select-video-modal__user-videos {
+  padding: 0 20px 0px;
+}
+
+/* line 9, ../styles/blocks/_videos.scss */
+.videos__sort-btn {
+  cursor: pointer;
+}
+/* line 12, ../styles/blocks/_videos.scss */
+.videos__sort-btn.active {
+  cursor: auto;
+}
+
+/* line 18, ../styles/blocks/_videos.scss */
+.user-videos__author-name {
+  color: #000;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+/* line 26, ../styles/blocks/_videos.scss */
+.user-videos__author-subscribers-count {
+  color: #9F9F9F;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* line 33, ../styles/blocks/_videos.scss */
+.user-videos__user-grid {
+  display: table;
+  padding: 20px 20px 0px 20px;
+  width: 100%;
+}
+
+/* line 39, ../styles/blocks/_videos.scss */
+.user-videos__user-img {
+  display: table-cell;
+  vertical-align: middle;
+  width: 35px;
+  cursor: pointer;
+}
+/* line 44, ../styles/blocks/_videos.scss */
+.user-videos__user-img img {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+/* line 52, ../styles/blocks/_videos.scss */
+.user-videos__user-info {
+  display: table-cell;
+  vertical-align: middle;
+  padding-left: 20px;
+}
+
+/* line 58, ../styles/blocks/_videos.scss */
+.user-videos__user-subscribe_grid {
+  display: table-cell;
+  vertical-align: middle;
+  width: 159px;
+}
+
+/* line 64, ../styles/blocks/_videos.scss */
+.user-videos__user-subscribe_btn {
+  height: 32px;
+  width: 100%;
+  text-align: center;
+  line-height: 32px;
+  border-radius: 5px;
+}
+
+/* line 73, ../styles/blocks/_videos.scss */
+.get-new-videos__btn {
+  cursor: pointer;
+  padding: 0px 20px;
+  margin: 10px auto 0;
+  height: 40px;
+  width: calc(100% - 40px);
+  text-align: center;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 40px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+}
+/* line 89, ../styles/blocks/_videos.scss */
+.get-new-videos__btn:hover {
+  background-color: #dcdcdc;
+}
+
+/* line 1, ../styles/blocks/_news.scss */
+.news-panel {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: none;
+  margin-top: 0px;
+}
+/* line 12, ../styles/blocks/_news.scss */
+.news-panel .post-panel {
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+}
+/* line 31, ../styles/blocks/_news.scss */
+.news-panel .videos-panel, .news-panel .news-panel {
+  padding-bottom: 0;
+}
+
+/* line 37, ../styles/blocks/_news.scss */
+.videos-panel__tabs {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+/* line 42, ../styles/blocks/_news.scss */
+.videos-panel__tabs .nav-tabs > li.active > a {
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+/* line 46, ../styles/blocks/_news.scss */
+.videos-panel__tabs .nav-tabs > li:first-child > a {
+  border-left: 0;
+}
+
+/* line 52, ../styles/blocks/_news.scss */
+.news-panel__title {
+  margin: 0;
+}
+
+/* line 57, ../styles/blocks/_news.scss */
+.nav-tabs > li > a {
+  border-radius: 0;
+}
+
+/* line 61, ../styles/blocks/_news.scss */
+.nav-tabs {
+  background-color: white;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  background-color: white;
+  border: 1px solid #d1d1d1;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  -webkit-box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  box-shadow: 0 1px 1px rgba(2, 2, 2, 0.29);
+  margin-top: 20px;
+}
+
+/* line 78, ../styles/blocks/_news.scss */
+.videos-panel__tabs .nav-tabs > li > a {
+  margin-right: 0;
+}
+
+/* line 82, ../styles/blocks/_news.scss */
+.news-panel .get-new-videos__btn {
+  background: #fff;
+  width: 100%;
+}
+
+/* line 3, ../styles/blocks/_photos.scss */
+.global-photos li {
+  width: 22%;
+  float: none;
+  margin: 10px;
+  height: 188px;
+}
+/* line 8, ../styles/blocks/_photos.scss */
+.global-photos li:nth-child(odd) {
+  float: none;
+}
+/* line 11, ../styles/blocks/_photos.scss */
+.global-photos li:nth-child(3n+1) {
+  margin-left: 10px;
+}
+/* line 14, ../styles/blocks/_photos.scss */
+.global-photos li:nth-child(4n+1) {
+  margin-left: 0;
+}
+
+/* line 4, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos {
+  padding: 0 20px 20px;
+}
+/* line 7, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos li {
+  display: inline-block;
+  width: 200px;
+  float: left;
+  /* height: 195px; */
+  margin-top: 20px;
+  /* cursor: pointer; */
+  position: relative;
+  overflow: hidden;
+  margin-left: 17px;
+  margin-left: calc((100% - 200px*3)/2);
+}
+/* line 18, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos li:nth-child(3n+1) {
+  margin-left: 0;
+}
+/* line 21, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos li:hover .select-video_modal__list__header {
+  top: 0;
+}
+/* line 24, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos li .user-videos__thumb {
+  position: static;
+}
+/* line 28, ../styles/blocks/_selectVideoModal.scss */
+.select-video-modal__user-videos li .select-video_modal__list__header i {
+  cursor: pointer;
+}
+
+/* line 1, ../styles/blocks/_userMessageModal.scss */
+.user-message_modal {
+  padding: 10px;
+}
+/* line 3, ../styles/blocks/_userMessageModal.scss */
+.user-message_modal textarea {
+  resize: none;
+}
+/* line 7, ../styles/blocks/_userMessageModal.scss */
+.user-message_modal form button {
+  width: 100%;
+}
+
+/* line 5, ../styles/blocks/_groupList.scss */
+.group-list__create-group_btn {
+  padding: 10px 0px;
+  width: 100%;
+  text-align: center;
+  color: #292929;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+/* line 16, ../styles/blocks/_groupList.scss */
+.group-list__search-group_btn {
+  padding: 10px 0px;
+  width: 188px;
+  text-align: center;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  color: #1c1c1c;
+  font-size: 13px;
+}
+
+/* line 26, ../styles/blocks/_groupList.scss */
+.group-cart {
+  width: 210px;
+  float: left;
+  height: 330px;
+  padding: 0;
+  margin-left: 20px;
+}
+/* line 33, ../styles/blocks/_groupList.scss */
+.group-cart:nth-child(4n+1) {
+  margin-left: 0;
+}
+
+/* line 42, ../styles/blocks/_groupList.scss */
+.group-carts__photo {
+  height: 220px;
+  position: relative;
+  border-bottom: 3px solid #f7b200;
+  overflow: hidden;
+  cursor: pointer;
+}
+/* line 48, ../styles/blocks/_groupList.scss */
+.group-carts__photo:hover .group-carts__title {
+  bottom: 0;
+}
+
+/* line 53, ../styles/blocks/_groupList.scss */
+.group-carts__title {
+  height: 60px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+  text-align: center;
+  padding-top: 15px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+/* line 65, ../styles/blocks/_groupList.scss */
+.group-carts__title .title__name {
+  text-shadow: 0 1px 1.7px 0.3px rgba(0, 0, 0, 0.75);
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+/* line 70, ../styles/blocks/_groupList.scss */
+.group-carts__title .title__work {
+  margin-top: 5px;
+}
+
+/* line 75, ../styles/blocks/_groupList.scss */
+.group-carts__footer {
+  height: 110px;
+  padding: 22px;
+}
+
+/* line 80, ../styles/blocks/_groupList.scss */
+.group-carts__subscribers {
+  color: #4C4C4C;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* line 86, ../styles/blocks/_groupList.scss */
+.subscribe-btn__check {
+  margin-top: 22px;
+}
+
+/* line 91, ../styles/blocks/_groupList.scss */
+.group-list__filtration_title {
+  margin-bottom: 15px;
+}
+
+/* line 1, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-dialog {
+  width: 462px;
+}
+
+/* line 5, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content {
+  background: #fff;
+  border-radius: 0;
+  border: 0;
+}
+/* line 10, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content *:focus {
+  outline: none;
+}
+/* line 12, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio label:after {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 0;
+  margin-left: -20px;
+  padding-left: 3px;
+  padding-top: 0px;
+  font-size: 11px;
+  color: #555555;
+  border-radius: 0%;
+  background: none;
+}
+/* line 27, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio input[type="radio"]:checked + label:after {
+  font-family: 'FontAwesome';
+  content: "\f00c";
+}
+/* line 32, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  margin-left: -20px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+/* line 47, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio {
+  line-height: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+/* line 52, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio input[type="radio"] {
+  cursor: pointer;
+}
+/* line 54, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio input[type="radio"]:focus {
+  outline: none;
+}
+/* line 56, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal .modal-content .radio label {
+  color: #5D5D5D;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* line 63, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__header {
+  height: 40px;
+  background-color: #FCC300;
+  line-height: 40px;
+  color: #292929;
+  font-size: 13px;
+}
+/* line 69, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__header .pull-left {
+  margin-left: 10px;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+}
+/* line 73, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__header .pull-right {
+  margin-right: 10px;
+  font-family: "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+/* line 80, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__content {
+  padding: 5px 25px;
+}
+
+/* line 84, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__label {
+  margin: 20px 0;
+  color: #292929;
+  font-size: 13px;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+}
+
+/* line 91, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__create_btn {
+  width: 89px;
+  height: 35px;
+  line-height: 35px;
+  color: #292929;
+  font-family: "Arial Bold", "Arial", "Myriad Pro", "Arial", Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0px auto;
+  margin-top: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* line 105, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__city {
+  width: 45%;
+}
+
+/* line 111, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__select-place > .pull-left {
+  padding: 0;
+}
+/* line 113, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__select-place > .pull-left .ui-select-toggle {
+  text-align: left;
+}
+/* line 117, ../styles/blocks/_newGroupModal.scss */
+.new-group-modal__select-place button {
+  width: 45%;
+  text-align: left;
+}
+
+/* line 3, ../styles/blocks/_group.scss */
+.group-header-status span {
+  cursor: text;
+}
+
+/*# sourceMappingURL=main.css.map */

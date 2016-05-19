@@ -1,0 +1,93 @@
+section.profile-header.clearfix
+    .profile-header__background-image()
+        img(ng-src='{{user.bg.path}}')
+    .profile-header__background-button(data-ng-click="selectImage(1, 'bg')", ng-show='user.isMyProfile')
+        i.fa.fa-pencil
+        span Сменить фон
+    .profile-header__bottom-panel.clearfix
+        .profile-header__left-panel
+            .profile-header__photo.editable(ng-click='openImage(user.userpic, user)')
+                img(ng-src='{{user.userpic.path}}')
+            //
+              <div class="profile-header__subscribe-btn no-select my-profile-element" data-ng-click="selectImage(1, 'userpic')"  ng-show="user.isMyProfile">
+              <span>{{'Сменить изображение' | translate}}</span>
+              </div>
+              <div class="profile-header__subscribe-btn no-select"  ng-if="!user.isFollowing" ng-click="subscribeToUser(user._id, 'subscribe')" ng-show="!user.isMyProfile">
+              <span>{{'Подписаться' | translate}}</span>
+              <i ng-bind="user.subscribersCount"></i>
+              </div>
+              <div class="profile-header__subscribe-btn no-select" ng-if="user.isFollowing" ng-click="subscribeToUser(user._id, 'unsubscribe')" ng-show="!user.isMyProfile">
+              <span>{{'Отписаться' | translate}}</span>
+              <i ng-bind="user.subscribersCount"></i>
+              </div>
+        .profile-header__center-panel
+            span.name(ng-bind="user.firstname + ' ' + user.secondname")
+            p.profile-header__status(ng-click='user.status = !user.status; changeStatus();', data-ng-if='user.isMyProfile')
+                span.work-status {{'Статус о работе' | translate}}:
+                i.fa.fa-circle.status0(ng-if='user.status == 0')
+                i.fa.fa-circle.status1(ng-if='user.status == 1')
+                span.work-status__text(ng-if='user.status == 0') Свободен
+                span.work-status__text(ng-if='user.status == 1') Занят
+            p.profile-header__status(data-ng-if='!user.isMyProfile')
+                span.work-status Статус о работе
+                i.fa.fa-circle.status0(ng-if='user.status == 0')
+                i.fa.fa-circle.status1(ng-if='user.status == 1')
+                span.work-status__text(ng-if='user.status == 0') Свободен
+                span.work-status__text(ng-if='user.status == 1') Занят
+            p.status-text(contenteditable='{{user.isMyProfile}}', ng-model='user.statusText')
+        .profile-header__right-panel
+            .profile-header__subscribe-btn.no-select.my-profile-element(data-ng-click="selectImage(1, 'userpic')", ng-show='user.isMyProfile')
+                span Сменить изображение
+            .profile-header__subscribe-btn.no-select(ng-if='!user.isFollowing', ng-click="subscribeToUser(user._id, 'subscribe')", ng-show='!user.isMyProfile')
+                span Подписаться
+                i(ng-bind='user.subscribersCount')
+            .profile-header__subscribe-btn.no-select(ng-if='user.isFollowing', ng-click="subscribeToUser(user._id, 'unsubscribe')", ng-show='!user.isMyProfile')
+                span Отписаться
+                i(ng-bind='user.subscribersCount')
+            .profile-header__send-message(ng-click='openUserMessage(user)')
+                // <i class="fa fa-envelope"></i>
+                span Начать общение
+            //
+              <div class="profile-header__status" ng-click="user.status = !user.status; changeStatus();" ng-show="user.isMyProfile">
+              <i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+              <i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+              <span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+              <span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+              </div>
+              <div class="profile-header__status" ng-show="!user.isMyProfile">
+              <i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+              <i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+              <span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+              <span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+              </div>
+    .profile-header__menu
+        .profile-header__menu-btn(ui-sref='alien.resume', ui-sref-active='active')
+            span Информация
+        .profile-header__menu-btn(ui-sref='alien.news', ui-sref-active='active')
+            span Мои новости
+        .profile-header__menu-btn(ui-sref='alien.vacancy', ui-sref-active='active')
+            span Мои вакансии
+        .profile-header__menu-btn(ui-sref='alien.subscribers', ui-sref-active='active')
+            span Подписчики
+        .profile-header__menu-btn(ui-sref='alien.followers', ui-sref-active='active')
+            span Подписки
+        .profile-header__menu-btn(ui-sref='alien.review', ui-sref-active='active')
+            span Отзывы
+        .profile-header__menu-btn(ui-sref='alien.gallery', ui-sref-active='active')
+            span Фото
+        //
+          <div ui-sref="alien.video" class="profile-header__menu-btn" ui-sref-active="active">
+          <span>{{'Видео' | translate}}</span>
+          </div>
+        .profile-header__menu-btn(dropdown='', dropdown-append-to-body='', dropdown-toggle='')
+            span Ещё
+            .btn-group
+                //
+                  <button id="btn-append-to-body" type="button" class="btn btn-default" >
+                  <span class="caret"></span>
+                  </button>
+                ul.dropdown-menu(role='menu', aria-labelledby='btn-append-to-body')
+                    li(role='menuitem')
+                        a(ui-sref='alien.video', ui-sref-active='active') Видео
+                    li(role='menuitem')
+                        a(ui-sref='alien.pages', ui-sref-active='active') Мои страницы

@@ -1,0 +1,77 @@
+form.form-horizontal.login-form(role='form', data-toggle='validator',ng-show='frm[0]').col-lg-offset-8.col-md-offset-6.col-sm-offset-4.col-xs-offset-1.col-xs-1
+    h2.login-form__title Вход
+    .form-group
+        label.col-sm-12.control-label(for='login-email') логин или адрес электронной почты
+        .col-sm-12
+            input#login-email.form-control(type='email', placeholder='Email', required='', data-toggle='tooltip', title='Укажите электронную почту или логин для входа на сайт', ng-model='user.email' )
+    .form-group
+        label.col-sm-12.control-label(for='login-password') пароль
+        .col-sm-12
+            input#login-password.form-control(type='password', placeholder='Password', required='', data-toggle='tooltip', title='Укажите пароль для входа на сайт', ng-model='user.password' )
+    .form-group
+        .col-sm-12
+            .checkbox
+                label
+                    input(type='checkbox')
+                    |  запомнить меня
+    .form-group.submit-group
+        .col-sm-12
+            button.btn.btn-default(type='submit' ng-click='EnterUser()') Войти
+            a(href='#') забыли пароль?
+    .form-group.submit-group
+        .col-sm-12
+            .col-sm-4(class='_active_login_btn-{{frm[0]}}', ng-click='open_form(0)')
+                .glyphicon.glyphicon-user
+            .col-sm-4(class='_active_login_btn-{{frm[1]}}',ng-click='open_form(1)')
+                .glyphicon.glyphicon-pencil
+            .col-sm-4(class='_active_login_btn-{{frm[2]}}',ng-click='open_form(2)')
+                .glyphicon.glyphicon-ok
+form.form-horizontal.register-form(role='form', data-toggle='validator', ng-show='frm[1]').col-lg-offset-8.col-md-offset-6.col-sm-offset-4.col-xs-offset-1.col-xs-1
+    h2.register-form__title Регистрация
+    .form-group
+        label.col-sm-12.control-label(for='register-name') ваше имя
+        .col-sm-12
+            input#register-name.form-control(type='text', placeholder='', required='', data-toggle='tooltip', title='Укажите Ваше настоящее имя', ng-model='user.firstName')
+    .form-group
+        label.col-sm-12.control-label(for='register-surname') ваша фамилия
+        .col-sm-12
+            input#register-surname.form-control(type='text', placeholder='', required='', data-toggle='tooltip', title='Укажите Вашу настоящую фамилию',ng-model='user.secondName')
+    .form-group
+        label.col-sm-12.control-label(for='register-email') адрес электронной почты
+        .col-sm-12
+            input#register-email.form-control(type='email', placeholder='', required='', data-toggle='tooltip', title='Укажите свой адрес электронной почты. На него прийдет подтверждение.',ng-model='user.email')
+    .form-group
+        label.col-sm-12.control-label(for='register-password') придумайте пароль
+        .col-sm-12
+            input#register-password.form-control(type='password', placeholder='', required='', data-toggle='tooltip', title='Придумайте пароль. Он Вам потребуется для дальнейшего входа на сайт.', ng-model='user.password')
+    .form-group
+        .col-sm-12
+            .checkbox(required='', data-toggle='tooltip', title='Согласитесь с условиями пользования сайтом.')
+                label
+                    input(type='checkbox', required='')
+                    |  Регистрируясь в danciety.com я соглашаетесь с
+                    a(href='#') условиями пользования сайтом
+    .form-group.submit-group
+        .col-sm-12
+            button.btn.btn-default(type='submit') Регистрация
+    .form-group.submit-group
+        .col-sm-12
+            .col-sm-4(class='_active_login_btn-{{frm[0]}}', ng-click='open_form(0)')
+                .glyphicon.glyphicon-user
+            .col-sm-4(class='_active_login_btn-{{frm[1]}}',ng-click='open_form(1)')
+                .glyphicon.glyphicon-pencil
+            .col-sm-4(class='_active_login_btn-{{frm[2]}}',ng-click='open_form(2)')
+                .glyphicon.glyphicon-ok
+form.form-horizontal.enter-form(role='form',ng-show='frm[2]').col-lg-offset-8.col-md-offset-6.col-sm-offset-4.col-xs-offset-1.col-xs-1
+    h2.login-form__title Вход без регистрации
+    .form-group
+        .col-sm-12
+            button.btn.btn-default(ng-click='Enter()') Войти
+    .form-group.submit-group
+        .col-sm-12
+            .col-sm-4(class='_active_login_btn-{{frm[0]}}', ng-click='open_form(0)')
+                .glyphicon.glyphicon-user
+            .col-sm-4(class='_active_login_btn-{{frm[1]}}',ng-click='open_form(1)')
+                .glyphicon.glyphicon-pencil
+            .col-sm-4(class='_active_login_btn-{{frm[2]}}',ng-click='open_form(2)')
+                .glyphicon.glyphicon-ok

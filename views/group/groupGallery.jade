@@ -1,0 +1,23 @@
+section.user-gallery
+    .user-gallery__tabs.clearfix
+        tabset
+            tab(heading="Все фотографии", ng-click='getImages();')
+                ul.user-gallery__photos.clarfix
+                    li.new-photo(data-ng-click="selectImage(10, 'userpic')", ng-show='group.creator._id == meData._id')
+                        span +
+                    li(ng-repeat='photo in allPhoto')
+                        .photo__image-header(ng-show='user.isMyProfile')
+                            i.fa.fa-times.remove-image(ng-click='removeImage(photo);')
+                        .photo__image-block(ng-click='openImage(photo, user, allPhoto)')
+                            img(ng-src='{{photo.path}}')
+                        .photo__image-info
+                            .image-info__name(ng-bind='photo.title')
+                            .image-info__buttons.clearfix
+                                //
+                                  <div class="image-info__review no-select">
+                                  <i class="fa fa-comment"></i>
+                                  <span>11</span>
+                                  </div>
+                                .image-info__like.no-select(ng-click='likeImage($index)')
+                                    span(ng-bind='photo.likes')
+                                    i.image-info__like-btn

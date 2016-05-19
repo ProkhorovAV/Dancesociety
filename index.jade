@@ -1,0 +1,134 @@
+doctype html
+html(lang='ru')
+    head
+        meta(charset='UTF-8')
+        title Danciety
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+        // все старые стили
+        link(rel='stylesheet', href='css/allstyle.css')
+        // стиль для входа
+        link(rel='stylesheet', href='css/login.css')
+        // доработка стилей
+        link(rel='stylesheet', href='css/style.css')
+        // стили иконок fa fa
+        link(rel='stylesheet', href='css/font-awesome.min.css')
+        link(rel='stylesheet', href='bower_components/angular-ui-select/dist/select.css')
+        // bower:js
+        script(src='bower_components/jquery/dist/jquery.min.js')
+        script(src='bower_components/bootstrap/js/tooltip.js')
+        script(src='bower_components/mustache.js/mustache.min.js')
+        script(src='bower_components/angular/angular.js')
+            //  ангуляра
+        // Для $resorce
+        script(src="bower_components/angular-resource/angular-resource.js")
+        // для маршрутизации
+        script(src='bower_components/angular-ui-router/release/angular-ui-router.js')
+        //
+        script(src='bower_components/angular-ui-select/dist/select.js')
+            // для табы bootstrap
+        script(src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js")
+            // работа с выплывающими окнами
+        script(src="bower_components/angular-notify/angular-notify.js")
+        link(rel='stylesheet', href='bower_components/angular-notify/angular-notify.css')
+        //underscore
+        script( src="bower_components/underscore/underscore.js")
+            // загрузка файлов upload
+        script(src="bower_components/ng-file-upload/angular-file-upload.js")
+        //script(src='bower_components/angular-ui-select2/src/select2.js')
+        //
+          <script src="../libs/bootstrap-validator/validator.min.js"></script>
+          <script src="../libs/date-format/date.format.js"></script>
+          <script src="../scripts/custom/login.js"></script>
+        // endbower
+        // bower:css
+        // endbower
+        // inject:js
+            // главная
+        script(src='js/app.js')
+            // маршрутизация
+        script(src='js/config/router.js')
+            // контроллеры для собственной странички
+        script(src='js/controls/mainController.js')
+        script(src='js/controls/indexController.js')
+        script(src='js/controls/newsController.js')
+        script(src='js/controls/hederController.js')
+        script(src='js/controls/myMessagesController.js')
+        script(src='js/controls/jobsController.js')
+        script(src='js/controls/videosController.js')
+        script(src='js/controls/photosController.js')
+        script(src='js/controls/grouplistsController.js')
+        //script(src='js/controls/myProfileController.js')
+            // груповые контроллеры
+        script(src='js/controls/group/groupHederController.js')
+        script(src='js/controls/group/groupResumeController.js')
+        script(src='js/controls/group/groupNewsController.js')
+        script(src='js/controls/group/groupVacancyController.js')
+        script(src='js/controls/group/groupSubscribersController.js')
+        script(src='js/controls/group/groupGalleryController.js')
+        script(src='js/controls/group/groupVideoController.js')
+            // контроллер лиц
+        script(src='js/controls/people/peopleHederController.js')
+        script(src='js/controls/people/peopleResumeController.js')
+        script(src='js/controls/people/peopleNewsController.js')
+        script(src='js/controls/people/peopleReviewController.js')
+        script(src='js/controls/people/peopleSubscribersController.js')
+        script(src='js/controls/people/peopleFollowersController.js')
+        script(src='js/controls/people/peopleGalleryController.js')
+        script(src='js/controls/people/peopleVacancyController.js')
+        script(src='js/controls/people/peopleVideoController.js')
+        script(src='js/controls/people/peoplePagesController.js')
+            // сервисы
+        script(src='js/service/userDataService.js')
+        script(src='js/service/PHP_serverService.js')
+        script(src='js/service/dialogServices.js')
+            // диалоговые окна
+        script(src='js/controls/dialog/newGroupController.js')
+        script(src='js/controls/dialog/selectImagController.js')
+        script(src='js/controls/dialog/selectVideoController.js')
+        // endinject
+        // inject:css
+        // endinject
+    body(ng-app='myApp', ,='', ng-controller='IndexCtrl')
+        // Yandex.Metrika counter
+
+        //script(type='text/javascript').
+            (function(d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter31116733 = new Ya.Metrika({
+                            id: 31116733,
+                            clickmap: true,
+                            trackLinks: true,
+                            accurateTrackBounce: true,
+                            webvisor: true,
+                            trackHash: true
+                        });
+                    } catch (e) {}
+                });
+                var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function() {
+                            n.parentNode.insertBefore(s, n);
+                        };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else {
+                    f();
+                }
+            })(document, window, "yandex_metrika_callbacks");
+        //noscript
+            div
+                img(src='https://mc.yandex.ru/watch/31116733', style='position:absolute; left:-9999px;', alt='')
+
+        // /Yandex.Metrika counter
+        // голова
+        div(ui-view='header_page')
+        // тело
+        div(ui-view='context_page')
+        // низ
+        div(ui-view='food_page')
+        ui-view

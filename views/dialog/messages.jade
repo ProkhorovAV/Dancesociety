@@ -1,0 +1,10 @@
+.danciety-notify.cg-notify-message(ng-click='$close()', \
+    ng-class="[$classes, $position === 'center' ? 'cg-notify-message-center' : '', $position === 'left' ? 'cg-notify-message-left' : '', $position === 'right' ? 'cg-notify-message-right' : '']", \
+    ng-style="{'margin-left': $centerMargin}")
+    .danciety-notify__header
+        button.cg-notify-close(type='button', ng-click='$close()')
+            span(aria-hidden='true') ×
+            span.cg-notify-sr-only Close
+    .danciety-notify__message(ng-show='!$messageTemplate')
+        | {{$message}}
+    .cg-notify-message-template(ng-show='$messageTemplate')

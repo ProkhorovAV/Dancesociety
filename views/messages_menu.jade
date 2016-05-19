@@ -1,0 +1,126 @@
+section.message-menu.clearfix.dropdown-menu
+    .message-menu__recently-messages
+        .message-menu__icon
+            i.fa.fa-history
+        ul.message-menu__chat-list
+            li(ng-repeat='conversation in allConversations', scroll-panel='.message-menu', img-liquid='', ng-click='getConversation(conversation, $index)', tooltip-placement='left', tooltip="{{conversation.opponent.firstname + ' ' + conversation.opponent.secondname}}", tooltip-append-to-body='true')
+                img(ng-src='{{conversation.opponent.userpic}}', alt='')
+    //
+      <div class="message-menu__subscribers-messages">
+      <div class="message-menu__icon">
+      <i class="fa fa-users"></i>
+      </div>
+      <ul class="message-menu__chat-list">
+      <li ng-repeat="follower in followers" scroll-panel=".message-menu" img-liquid ng-click="getConversation(follower, $index)">
+      <img ng-src="{{danceConfig.uploadFolder}}{{follower.userpic.path.micro50}}" alt=""
+      tooltip-placement="left" tooltip="{{follower.firstname + ' ' + follower.secondname}}" tooltip-append-to-body="true">
+      </li>
+      </ul>
+      </div>
+    //
+      <div class="recently-messages">
+      <div class="messages__title">
+      {{'Недавние диалоги' | translate}}
+      </div>
+      <ul class="message__list">
+      <li class="clearfix" show-conversation ng-repeat="conversation in allConversations">
+      <div class="li_head clearfix" ng-init="getConversation(conversation._id, $index)">
+      <div class="message__author-photo">
+      <img ng-src="{{danceConfig.uploadFolder}}{{conversation.opponent.userpic.path.mini100}}" alt="">
+      <img src="../images/user.png" alt=""/>
+      </div>
+      <div class="message__info">
+      <div class="message__author-name"
+      ng-bind="conversation.opponent.firstname + ' ' + conversation.opponent.secondname">
+      </div>
+      <div class="message__author-status">
+      <span ng-if="conversation.opponent.isOnline" class="active" ng-bind="'в сети' | translate"></span>
+      <span ng-if="!conversation.opponent.isOnline" ng-bind="'не в сети' | translate"></span>
+      </div>
+      <div class="message__simple-text">
+      <span ng-bind="conversation.lastMessage.text | limitTo:36"></span><span>...</span>
+      </div>
+      </div>
+      </div>
+      <div class="message__list__accordion">
+      <form class="message__list__form" ng-submit="sendMessage(conversation, $index)">
+      <input type="text" class="form-control" ng-model="conversation.newMessage"/>
+      </form>
+      <ul data-simplebar-direction="vertical" universal-scroll>
+      <li class="clearfix" ng-repeat="message in conversation.messages"
+      ng-class="{'user': message.from._id === meData._id, 'alien': message.from._id !== meData._id}">
+      <div class="simple__message-author_image">
+      <img ng-src="{{danceConfig.uploadFolder}}{{message.from.userpic.path.micro50}}" alt="">
+      </div>
+      <div class="simple__message-text">
+      <p ng-bind="message.text | limitTo:1000"></p>
+      <p class="date" ng-bind="message.created | amCalendar"></p>
+      </div>
+      </li>
+      </ul>
+      </div>
+      </li>
+      </ul>
+      </div>
+      <div class="all-messages">
+      <div class="messages__title">
+      {{'Все контакты' | translate}}
+      </div>
+      <ul class="message__list">
+      <li class="clearfix" show-conversation ng-repeat="follower in followers">
+      <div class="li_head clearfix">
+      <div class="message__author-photo">
+      <img ng-src="{{danceConfig.uploadFolder}}{{follower.userpic.path.mini100}}" alt="">
+      <img src="../images/user.png" alt=""/>
+      </div>
+      <div class="message__info">
+      <div class="message__author-name"
+      ng-bind="follower.firstname + ' ' + follower.secondname">
+      </div>
+      <div class="message__author-status">
+      <span ng-if="follower.isOnline" class="active" ng-bind="'в сети' | translate"></span>
+      <span ng-if="!follower.isOnline" ng-bind="'не в сети' | translate"></span>
+      </div>
+      </div>
+      </div>
+      <div class="message__list__accordion">
+      <form class="message__list__form" ng-submit="sentUserMessage(follower, $index)">
+      <input type="text" class="form-control" ng-model="follower.newMessage"/>
+      </form>
+      </div>
+      </li>
+      </ul>
+      </div>
+//section.dialog-bar(ng-show='currentConverstions')
+    .dialog-bar__header.clearfix
+        .dialog-bar__author
+            p.dialog-bar__author-name(ng-bind="currentConverstions.opponent.firstname + ' ' + currentConverstions.opponent.secondname")
+            p.dialog-bar__author-status(ng-if='currentConverstions.opponent.isOnline') в сети
+            p.dialog-bar__author-status(ng-if='!currentConverstions.opponent.isOnline') не в сети
+        .dialog-bar__controls
+            //
+              <div class="dialog-bar__controls_settings" tooltip-placement="top" tooltip="Параметры"  tooltip-append-to-body="true">
+              <i class="fa fa-cog"></i>
+              </div>
+            .dialog-bar__controls__close(ng-click='closeConversation()', tooltip-placement='top', tooltip='Скрыть', tooltip-append-to-body='true')
+                i.fa.fa-times
+    .dialog-bar__message-list
+        .dialog-bar__message-list__message(ng-repeat='conversation in currentConverstions.messages', watch-model='currentConverstions.messages', ng-class="{'dialog-bar__message-list__my': conversation.from._id === meData._id, 'dialog-bar__message-list__alien': conversation.from._id !== meData._id}", id='conversation-{{ ::$index }}', scroll-to-last='conversation-{{ ::$index }}')
+            .dialog-bar__message-list__author-image(ui-sref='#')
+                img(ng-src='{{conversation.from.userpic}}', alt='')
+            .dialog-bar__message-list__text
+                span(ng-bind='conversation.text')
+            .dialog-bar__message-list__date
+                span(ng-bind='conversation.created')
+        //
+          <div class="dialog-bar__message-list__message dialog-bar__message-list__my">
+          <div class="dialog-bar__message-list__author-image">
+          <img src="../images/user.png" alt="">
+          </div>
+          <div class="dialog-bar__message-list__text">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          </div>
+          <div class="dialog-bar__message-list__date">вчера в   23:47</div>
+          </div>
+    form(ng-submit='sendMessage(currentConverstions, $index)')
+        input.dialog-bar__new-message(placeholder='Отправьте сообщение', ng-model='currentConverstions.newMessage')

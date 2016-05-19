@@ -1,0 +1,4 @@
+<section class="user-gallery"><div class="user-gallery__tabs clearfix"><tabset><tab heading="Все видеозаписи" ng-init="getVideos();" active="tabs[0].active"><ul class="user-videos clearfix"><li ng-repeat="video in allVideos"><div ng-show="user.isMyProfile" class="photo__image-header"><i ng-click="removeVideo(video);" class="fa fa-times remove-image"></i></div><div ng-click="openVideo(video);" class="user-videos__thumb"><img src="{{video.thumb}}"/></div><!-- <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>--><div class="video__image-info"><div ng-bind="video.title" class="image-info__name"></div><div class="image-info__buttons clearfix"><!--<div class="image-info__review no-select">
+<i class="fa fa-comment"></i>
+<span>11</span>
+</div>--><div ng-click="likeVideo($index)" class="image-info__like no-select"><span ng-bind="video.likes"></span><i class="image-info__like-btn"></i></div></div></div></li></ul></tab></tabset></div></section>

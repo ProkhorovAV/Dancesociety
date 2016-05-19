@@ -1,0 +1,69 @@
+.wrapper
+    section.profile-header.clearfix
+        .profile-header__background-image
+            img(ng-src='{{group.bg}}')
+        .profile-header__background-button(data-ng-click="selectImage(1, 'bg')", ng-show='group.creator._id == meData._id')
+            i.fa.fa-pencil
+            span Сменить фон
+        .profile-header__bottom-panel.clearfix
+            .profile-header__left-panel
+                .profile-header__photo.editable(ng-click='openImage(group.photo, group.creator)')
+                    img(ng-src='{{group.photo}}')
+                //
+                  <div class="profile-header__subscribe-btn no-select my-profile-element" data-ng-click="selectImage(1, 'userpic')"  ng-show="group.creator._id == meData._id">
+                  <span>{{'Сменить изображение' | translate}}</span>
+                  </div>
+                  <div class="profile-header__subscribe-btn no-select"  ng-if="!user.isFollowing" ng-click="subscribeToUser(user._id, 'subscribe')" ng-show="!group.creator._id == meData._id">
+                  <span>{{'Подписаться' | translate}}</span>
+                  <i ng-bind="user.subscribersCount"></i>
+                  </div>
+                  <div class="profile-header__subscribe-btn no-select" ng-if="user.isFollowing" ng-click="subscribeToUser(user._id, 'unsubscribe')" ng-show="!group.creator._id == meData._id">
+                  <span>{{'Отписаться' | translate}}</span>
+                  <i ng-bind="user.subscribersCount"></i>
+                  </div>
+            .profile-header__center-panel
+                span.name(ng-bind='group.name')
+                p.group-header-status
+                    span(ng-bind='group.groupType')
+                p.status-text(contenteditable='{{group.creator._id == meData._id}}', ng-model='group.shortDescription')
+            .profile-header__right-panel
+                .profile-header__subscribe-btn.no-select.my-profile-element(data-ng-click="selectImage(1, 'userpic')", ng-show='group.creator._id == meData._id')
+                    span Сменить изображение
+                .profile-header__subscribe-btn.no-select(ng-if='!group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, true)')
+                    span Подписаться
+                    i(ng-bind='group.membersCount')
+                .profile-header__subscribe-btn.no-select(ng-if='group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, false)')
+                    span Отписаться
+                    i(ng-bind='group.membersCount')
+                .profile-header__send-message(ng-click='openUserMessage(user)')
+                    // <i class="fa fa-envelope"></i>
+                    span Начать общение
+                //
+                  <div class="profile-header__status" ng-click="user.status = !user.status; changeStatus();" ng-show="group.creator._id == meData._id">
+                  <i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+                  <i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+                  <span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+                  <span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+                  </div>
+                  <div class="profile-header__status" ng-show="!group.creator._id == meData._id">
+                  <i ng-if="user.status == 0" class="fa fa-circle status0"></i>
+                  <i ng-if="user.status == 1" class="fa fa-circle status1"></i>
+                  <span ng-if="user.status == 0">{{'Свободен' | translate}}</span>
+                  <span ng-if="user.status == 1">{{'Занят' | translate}}</span>
+                  </div>
+        .profile-header__menu
+            .profile-header__menu-btn(ui-sref='public.resume', ui-sref-active='active')
+                span Информация
+            .profile-header__menu-btn(ui-sref='public.news', ui-sref-active='active')
+                span Мои новости
+            .profile-header__menu-btn(ui-sref='public.vacancy', ui-sref-active='active')
+                span Мои вакансии
+            .profile-header__menu-btn(ui-sref='public.subscribers', ui-sref-active='active')
+                span Подписчики
+            .profile-header__menu-btn(ui-sref='public.gallery', ui-sref-active='active')
+                span Фото
+            //
+              <div ui-sref="public.video" class="profile-header__menu-btn" ui-sref-active="active">
+              <span>{{'Видео' | translate}}</span>
+              </div>
+    ui-view

@@ -1,0 +1,17 @@
+.select-image_modal
+    .select-image_modal__header
+        .select-image_modal__title Добавить фотографии
+        .close-modal
+            i.fa.fa-times(ng-click='cancel();')
+    ul.select-image_modal__list
+        li.new-photo(ng-file-select='', ng-file-change='upload($files)', ng-multiple='false')
+            span +
+        li(data-ng-repeat='photo in photoList', ng-click='selectImage($index)')
+            .select-image_modal__list__header(ng-class='{active: photo.selectImage}')
+                i.fa.fa-check.check-image
+            .select-image_modal__list__image(img-liquid='')
+                img(ng-src='{{photo.path}}')
+            .select-image_modal__list-info
+    .select-image_modal__footer
+        button.btn.success(ng-click='ok()') Готово
+        button.btn.cancel(ng-click='cancel();') Отмена

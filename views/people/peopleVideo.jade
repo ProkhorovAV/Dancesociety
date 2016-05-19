@@ -1,0 +1,30 @@
+section.user-gallery
+    .user-gallery__tabs.clearfix
+        tabset
+            tab(heading="Все видеозаписи", ng-init='getVideos();', active='tabs[0].active')
+                ul.user-videos.clearfix
+                    li(ng-repeat='video in allVideos')
+                        .photo__image-header(ng-show='user.isMyProfile')
+                            i.fa.fa-times.remove-image(ng-click='removeVideo(video);')
+                        .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
+                            img(src='{{video.thumb}}')
+                        // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
+                        .video__image-info
+                            .image-info__name(ng-bind='video.title')
+                            .image-info__buttons.clearfix
+                                //
+                                  <div class="image-info__review no-select">
+                                  <i class="fa fa-comment"></i>
+                                  <span>11</span>
+                                  </div>
+                                .image-info__like.no-select(ng-click='likeVideo($index)')
+                                    span(ng-bind='video.likes')
+                                    i.image-info__like-btn
+            tab(heading="Добавить видео", active='tabs[1].active', ng-show='user.isMyProfile')
+                form(name='newVideoForm')
+                    input.form-control.add-video__button(type='text', name='url',  ng-change='changeVideoField(newVideo.url);', ng-model='newVideo.url', ng-pattern='/(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)([a-zA-Z0-9_-]{6,11})/', placeholder="Введите ссылку на видео (прим.: https://www.youtube.com/watch?v=kD-Ml7mMXBg)")
+                    span(ng-show='newVideoForm.url') Not a valid url!
+                youtube-video.new-video__frame(ng-if="(newVideo.url !== '') && newVideoYoutube", video-url='newVideoYoutube')
+                .add-video__send-btns
+                    button.btn.success(ng-click='uploadVideo()') Готово
+                    button.btn.cancel(ng-click='resetUploadVideo();') Отмена

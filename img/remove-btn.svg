@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Avocode 1.1.1 - http://avocode.com -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18" viewBox="0 0 18 18">
+    <desc>Created with Avocode</desc>
+    <path d="M 9 0 C 4.03 0, 0 4.03, 0 9 C 0 13.97, 4.03 18, 9 18 C 13.97 18, 18 13.97, 18 9 C 18 4.03, 13.97 0, 9 0 Z" fill="#fac02c" stroke="#fac02c" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" />
+    <text x="6" y="13" fill="#ffffff" font-family="Arial" font-size="11" font-weight="400">
+        <tspan>X</tspan>
+    </text>
+</svg>

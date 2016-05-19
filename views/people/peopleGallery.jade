@@ -1,0 +1,54 @@
+section.user-gallery
+    .user-gallery__tabs.clearfix
+        tabset
+            tab(heading="Все фотографии", ng-click='getImages();')
+                ul.user-gallery__photos.clarfix
+                    li(ng-repeat='photo in allPhoto')
+                        .photo__image-header(ng-show='user.isMyProfile')
+                            i.fa.fa-times.remove-image(ng-click='removeImage(photo);')
+                        .photo__image-block(ng-click='openImage(photo, user, allPhoto)')
+                            img(ng-src='{{photo.path}}')
+                        .photo__image-info
+                            .image-info__name(ng-bind='photo.title')
+                            .image-info__buttons.clearfix
+                                //
+                                  <div class="image-info__review no-select">
+                                  <i class="fa fa-comment"></i>
+                                  <span>11</span>
+                                  </div>
+                                .image-info__like.no-select(ng-click='likeImage($index)')
+                                    span(ng-bind='photo.likes')
+                                    i.image-info__like-btn
+            tab(heading="Добавить фото", ng-show='user.isMyProfile')
+                .add-photo__button(ng-file-select='', ng-file-change='upload($files)', ng-multiple='true')
+                    span + Добавить фото
+                ul.add-photo__preview-list.clearfix
+                    li.clearfix(ng-repeat='photo in newPhotos')
+                        div
+                            .add-photo__image
+                                img.preview(ng-show='!photo.progress', ng-src='{{photo.data.path}}')
+                                img.progress(ng-show='photo.progress', src='img/loader.gif')
+                            .add-photo__info
+                                input.form-control.add-photo__name(type='text', ng-model='photo.data.title', char-limit='20')
+                                .add-photo__control-buttons.clearfix
+                                    .rotate-left(ng-click='rotatePhoto(photo.data, -90)', image-rotate='photo.data', rotate-class='.add-photo__image .preview')
+                                        span Влево
+                                        i.fa.fa-undo
+                                    .rotate-right(ng-click='rotatePhoto(photo.data, 90)', image-rotate='photo.data', rotate-class='.add-photo__image .preview')
+                                        i.fa.fa-repeat
+                                        span Влево
+                                    .delete-button(ng-click='removeImage(photo.data); removePhotoFromArray(photo);')
+                                        span Удалить
+                                        i.fa.fa-trash
+                                //
+                                  <ui-select class="ui-select add-photo__select-album" ng-model="payments[$index]" ng-disabled="true">
+                                  <ui-select-match placeholder="{{'Добавить в  альбом' | translate}}">{{$select.selected.name}}</ui-select-match>
+                                  <ui-select-choices repeat="payment in availablePayments">
+                                  {{payment.name}}
+                                  </ui-select-choices>
+                                  </ui-select>
+                        progressbar.progress-striped.active(value='photo.progress', max='100', type='info', ng-show='photo.progress')
+                            i photo.progress / 100
+                .add-photo__send-btns
+                    button.btn.success(ng-show='newPhotos.length > 0', ng-click='uploadImages()') Готово
+                    button.btn.cancel(ng-show='newPhotos.length > 0', ng-click='removeAllUploadImages();') Отмена

@@ -1,0 +1,38 @@
+header
+    .container.clearfix
+        .header__left-menu_btn.no-select(ng-class="{'active': status.isopenMenu}", ng-click='toggleDropdown($event);')
+            i.fa.fa-bars
+        .header__logo(ui-sref='#')
+            a
+                img(src='img/logo.png', alt='')
+        .header__search-panel(ng-init='status.isopen = false')
+            .form-group
+                .input-group
+                    input#search_input.form-control(type='text', placeholder='поиск', ng-change='search(searchInput);', ng-model='searchInput')
+                    .input-group-addon
+                        i.fa.fa-search
+                ul.dropdown-list.dropdown-menu(dropdown='', is-open='status.isopen')
+                    a(ui-sref='#', href='', ng-repeat='user in usersSearch')
+                        li.clearfix
+                            .dropdown-list__img
+                                img(ng-src='{{user.userpic}}', alt='')
+                            .dropdown-list__name(ng-bind="user.firstname + ' ' + user.secondname")
+        .header__right.clearfix(ng-init='status.isopenLanguageMenu = false', ng-click='openLanguageMenu($event);')
+            .header__right_user
+                a(ui-sref='#')
+                    span.name(ng-bind='meData.firstname')
+                    img(ng-src='{{meData.userpic}}', alt='')
+            .header__right_case.dropdown(dropdown='', on-toggle='openLanguageMenu(open)')
+                a.dropdown-toggle(href='', dropdown-toggle='', ng-bind='activeLanguage.name')
+                ul.dropdown-menu
+                    li(ng-repeat='lang in languageList', ng-click='changeActiveLanguage(lang)')
+                        a(href='') {{lang.name}}
+            .header__right_languages
+                i.fa.fa-globe
+            //.header__right_message(ng-class="{'active': status.isopenMessageMenu}" ng-click="openMessageMenu($event);")
+                i.fa.fa-comments
+                span
+                    i.fa.fa-envelope
+                    i.case_num 4
+        ng-include(src="'views/left_menu.html'", ng-init='status.isopenMenu = false')
+        ng-include(src="'views/messages_menu.html'", ng-controller='MyMessagesCtrl')

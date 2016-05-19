@@ -1,0 +1,22 @@
+section.user-gallery
+    .user-gallery__tabs.clearfix
+        tabset
+            tab(heading="Все видеозаписи", ng-init='getVideos();', active='tabs[0].active')
+                ul.user-videos.clearfix
+                    li(ng-repeat='video in allVideos')
+                        .photo__image-header(ng-show='user.isMyProfile')
+                            i.fa.fa-times.remove-image(ng-click='removeVideo(video);')
+                        .user-videos__thumb(ng-click='openVideo(video);')
+                            img(src='{{video.thumb}}')
+                        // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
+                        .video__image-info
+                            .image-info__name(ng-bind='video.title')
+                            .image-info__buttons.clearfix
+                                //
+                                  <div class="image-info__review no-select">
+                                  <i class="fa fa-comment"></i>
+                                  <span>11</span>
+                                  </div>
+                                .image-info__like.no-select(ng-click='likeVideo($index)')
+                                    span(ng-bind='video.likes')
+                                    i.image-info__like-btn

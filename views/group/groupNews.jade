@@ -1,0 +1,152 @@
+section.info-block.clearfix
+    .col-md-12.col-sm-12.col-reset
+        section.main-section.add-news.clearfix(ng-show='group.creator._id == meData._id')
+            .add-news__inputs-block
+                input.form-control.add-news__title_input(type='text', ng-model='title', placeholder="Заголовок")
+                textarea.form-control.add-news__description_area(data-type='text', data-ng-model='text', placeholder="Есть, о чем рассказать?", ng-change='writingComment();')
+            ul.add-news__photos.clearfix
+                li(ng-repeat='image in addNewsImages',  ng-click='openImage(image)')
+                    img(ng-src='{{image.path}}')
+            ul.add-news__videos.clearfix
+                li(ng-repeat='video in addNewsVideos',  ng-click='openVideo(video)')
+                    img(src='{{video.thumb}}')
+            .add-news__bottom.clearfix
+                .add-news__confirm-btn.no-select(ng-click='newPost();') Опубликовать
+                .add-news__posts-add
+                    ul.posts-add__list.clearfix
+                        li.active(tab-select='', ng-click='selectImage(8)')
+                            i.fa.fa-camera
+                            span Фото
+                        li(tab-select='', ng-click='selectVideo(2)')
+                            i.fa.fa-video-camera
+                            span Видео
+                        li(tab-select='')
+                            i.fa.fa-briefcase
+                            span Вакансию
+                        li(tab-select='')
+                            i.fa.fa-desktop
+                            span Урок
+            .add-news__tags
+                a(href='#', ng-repeat='tag in newTags track by $index', ng-bind="tag + ' '")
+        section.main-section.post-panel(ng-repeat='post in posts')
+            .post-panel__author-grid
+                .post__author.clearfix
+                    .post__author__logo
+                        a(ui-sref='#')
+                            img(ng-src='{{post.groupAuthor.photo}}')
+                    .post__author__description
+                        .post__author__name
+                            a(ui-sref='#', ng-bind='post.groupAuthor.name')
+                        .post__date(ng-bind='post.created', ng-hide='post.isShare')
+                        .post-share__author(ng-show='post.isShare')
+                            .post-share__icon
+                                img(src='../img/share-author_icon.png')
+                            .post-share__author-img(ui-sref='#')
+                                a
+                                    img(ng-src='{{post.copyEntity.author.userpic}}')
+                            .post-share__author-info
+                                .post-share__author-name(ui-sref='#', ng-bind="post.copyEntity.author.firstname + ' ' + post.copyEntity.author.secondname")
+                                .post-share__date(ng-bind='post.copyEntity.created')
+                    .post__remove_btn(ng-if='post.author._id === meData._id')
+                        i.fa.fa-times.remove-image(ng-click='removePost(post._id, $index);')
+            .post-panel__text-grid
+                h2.post_title(ng-bind='post.title')
+                p.post_text(ng-bind='post.text')
+                .post__repost-vacancy(ng-show="post.copyFromType == 'vacancy'")
+                    p(ng-show='post.copyEntity.country')
+                        span.list-title Страна
+                        span.list-result(ng-bind='post.copyEntity.country.name')
+                    p(ng-show='post.copyEntity.city')
+                        span.list-title Город
+                        span.list-result(ng-bind='post.copyEntity.city')
+                    p(ng-show='post.copyEntity.scopes.length > 0')
+                        span.list-title Сфера
+                        span.list-result(ng-bind='post.copyEntity.scopes')
+                    p(ng-show='post.copyEntity.dances.length > 0')
+                        span.list-title Танцевальные направления
+                        span.list-result(ng-bind='post.copyEntity.dances')
+                    p(ng-show='post.copyEntity.price')
+                        span.list-title Заработок
+                        span.list-result(ng-bind="'от $' + post.copyEntity.price")
+                    p(ng-show='post.copyEntity.startDate || post.copyEntity.endDate')
+                        span.list-title Период работы
+                        span.list-result(ng-bind="'с'")
+                        span.list-result(ng-bind="post.copyEntity.startDate")
+                        span.list-result(ng-bind="'по'")
+                        span.list-result(ng-bind="post.copyEntity.endDate")
+                    p(ng-show='post.copyEntity.startAge || post.copyEntity.endAge')
+                        span.list-title Возраст
+                        span.list-result(ng-bind="'от ' + post.copyEntity.startAge + ' до ' + post.copyEntity.endAge")
+                    p(ng-show='post.copyEntity.startHeight || post.copyEntity.endHeight')
+                        span.list-title Рост
+                        span.list-result(ng-bind="'от ' + post.copyEntity.startHeight + ' до ' + post.copyEntity.endHeight")
+                    p(ng-show='post.copyEntity.text')
+                        span.list-title Описание
+                        span.list-description(ng-bind='post.copyEntity.text')
+                ul.post__photos
+                    li(ng-repeat='image in post.photos',  ng-click='openImage(image)')
+                        img(ng-src='{{image.path}}')
+                ul.post__videos.clearfix
+                    li(ng-repeat='video in post.videos')
+                        .user-videos__thumb( ng-click='openVideo(video);')
+                            img(src='{{video.thumb}}', alt='')
+                        // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
+                        .photo__image-info
+                            .image-info__name(ng-bind='video.title')
+                            .image-info__buttons.clearfix
+                                //
+                                  <div class="image-info__review no-select">
+                                  <i class="fa fa-comment"></i>
+                                  <span>11</span>
+                                  </div>
+                                .image-info__like.no-select(ng-click='likeVideo($index, post)')
+                                    span(ng-bind='video.likes')
+                                    i.image-info__like-btn
+                .post__control-btns.clearfix
+                    .control-btns__share(ng-hide='group.creator._id == meData._id', ng-click='sharePost(post);')
+                        span Поделиться
+                        .share__btn
+                            span(ng-bind='post.reposts')
+                    .control-btns__like
+                        span Круто!
+                        .like__btn(ng-click='likePost($index);', ng-class="{'active' : post.isLiked}")
+                            span(ng-bind='post.likes')
+                //
+                  <div class="tags-grid">
+                  <ul class="tags-grid_list clearfix">
+                  <li>#hello</li>
+                  <li>#my</li>
+                  <li>#world</li>
+                  </ul>
+                  </div>
+            .post__comments
+                .post__comments-list(ng-show='post.comments.data.length > 0')
+                    .post__comments-list__show-all(ng-show='post.configComments.count < post.comments.count', ng-click='showAllComments(post);')
+                        span(ng-bind="(post.comments.count - post.configComments.count) + ' ' + 'коментариев'")
+                        i.fa.fa-angle-down
+                    ul
+                        li.clearfix(ng-repeat='comment in post.comments.data')
+                            .col-md-1.col-sm-1.col-reset.post__comment__image(ui-sref='#')
+                                a
+                                    img(ng-src='{{comment.author.userpic.path}}')
+                            .col-md-10.col-sm-10.col-reset.post__comment__description
+                                .post__comment__description-header.clearfix
+                                    a.post__comment__author-name(ui-sref='#', ng-bind="comment.author.firstname + ' ' + comment.author.secondname")
+                                    span.post__comment__published-date(ng-bind='comment.created')
+                                    // <a href="" ng-if="comment.author._id == meData._id" class="post__comment__remove-btn"
+                                    // ng-click="removeComment(comment._id, $index, $parent.$parent.$index)">удалить</a>
+                                .post__comment__description-footer
+                                    p.post__comment__text(ng-bind='comment.text')
+                            .col-md-1.col-sm-1.col-reset.post__comment__controls(ng-if='comment.author._id == meData._id')
+                                .post__comment__controls_remove(ng-click='removeComment(comment._id, $index, $parent.$parent.$index)')
+                                    i.icon-trash(tooltip-placement='right', tooltip="Удалить")
+                                //
+                                  <div class="post__comment__controls_edit">
+                                  <i class="icon-pen" tooltip-placement="right" tooltip="{{'Редактировать' | translate}}"></i>
+                                  </div>
+                .post__create-comment
+                    .create-comment__author-image
+                        img(ng-src='{{meData.userpic}}')
+                    form.clearfix(ng-submit='newComment($index);')
+                        input.form-control.add-news__title_input(type='text',  ng-model='newComment[$index].text', placeholder="Ваш комментарий", required='')
+                        input(type='submit', value="Отправить")

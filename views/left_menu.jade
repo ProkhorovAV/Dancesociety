@@ -1,0 +1,69 @@
+section.left-menu.clearfix.dropdown-menu(dropdown is-open='status.isopenMenu', auto-close='outsideClick')
+    .left-menu__top-side
+        .top-side__user
+            .user__name(ng-bind='meData.firstname')
+            .user__photo(img-liquid='', ui-sref='#')
+                a
+                    img(ng-src='{{meData.userpic}}', alt='', style='width:100%')
+        ul.top-side__menu
+            //
+              <li>
+              <div class="menu__title">{{'Сообщения' | translate}}</div>
+              <div class="menu__icon color1">
+              <i class="fa fa-envelope"></i>
+              </div>
+              </li>
+            li(ui-sref='news')
+                .menu__title События
+                .menu__icon.color2
+                    i.fa.fa-globe
+            li(ui-sref='videos')
+                .menu__title Видео
+                .menu__icon.color3
+                    i.fa.fa-video-camera
+            li(ui-sref='photos')
+                .menu__title Фото
+                .menu__icon.color4
+                    i.fa.fa-camera
+            li(ui-sref='jobs')
+                .menu__title Работа
+                .menu__icon.color5
+                    i.fa.fa-briefcase
+            //
+              <li>
+              <div class="menu__title">{{'Уроки' | translate}}</div>
+              <div class="menu__icon color6">
+              <i class="fa fa-desktop"></i>
+              </div>
+              </li>
+              <li>
+              <div class="menu__title">{{'Реклама' | translate}}</div>
+              <div class="menu__icon color7">
+              <i class="fa fa-line-chart"></i>
+              </div>
+              </li>
+              <li>
+              <div class="menu__title">{{'Конкурсы' | translate}}</div>
+              <div class="menu__icon color8">
+              <i class="fa fa-trophy"></i>
+              </div>
+              </li>
+              <li>
+              <div class="menu__title">{{'Настройки' | translate}}</div>
+              <div class="menu__icon color9">
+              <i class="fa fa-cog"></i>
+              </div>
+              </li>
+            li(ui-sref='groupslist')
+                .menu__title Общество
+                .menu__icon.color9
+                    i.fa.fa-users
+            li(ng-click='logout();')
+                .menu__title Выйти
+                .menu__icon.color10
+                    i.fa.fa-power-off
+    .left-menu__bottom-side
+        p Написать нам
+        // <p>{{'Обзор возможностей' | translate}}</p>
+        p Помощь
+        // <p>{{'Условия использования' | translate}} </p>

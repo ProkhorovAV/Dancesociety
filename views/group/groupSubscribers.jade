@@ -1,0 +1,31 @@
+section.info-block.clearfix
+    .subscriber__user(ng-repeat='subscriber in subscribers track by $index')
+        section.main-section.subscriber-item.clearfix
+            .subscriber__photo(ui-sref='#')
+                a
+                    img(ng-src='{{subscriber.user.userpic}}')
+                .photo__title
+                    p.title__name(ng-bind="subscriber.user.firstname + ' ' + subscriber.user.secondname")
+                    p.title__work(ng-if='subscriber.user.work[0].company', ng-bind="'„' + subscriber.user.work[0].company + '”'")
+            .subscibers__description
+                p.subscribers_years
+                    span Возраст
+                    span(ng-show='subscriber.user.personalData.age', ng-bind='subscriber.user.personalData.age')
+                    span(ng-show='!subscriber.user.personalData.age') не указано
+                p.subscribers_styles
+                    span.styles_title Стили
+                    span.styles_option(ng-show='subscriber.user.danceStyles.length > 0', ng-bind="style.name + ' '", ng-repeat='style in subscriber.user.danceStyles')
+                    span.styles_option(ng-show='subscriber.user.danceStyles.length <= 0') не указано
+            .subscribers__buttons
+                .buttons_write-message
+                    span Написать сообщение
+                .buttons_subscribe(ng-hide='meData._id === subscriber.user._id', ng-if='!subscriber.user.isFollowing', ng-click="subscribeToUser(subscriber.user._id, 'subscribe', $index)")
+                    i.fa.fa-check
+                    span Подписаться
+                .buttons_subscribe(ng-hide='meData._id === subscriber.user._id', ng-if='subscriber.user.isFollowing', ng-click="subscribeToUser(subscriber.user._id, 'unsubscribe', $index)")
+                    i.fa.fa-times
+                    span Отписаться
+                a(ui-sref='#')
+                    .buttons_subscribe(ng-if='meData._id === subscriber.user._id')
+                        i.fa.fa-desktop
+                        span Моя страница

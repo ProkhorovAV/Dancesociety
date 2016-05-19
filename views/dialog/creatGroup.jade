@@ -1,0 +1,38 @@
+.new-group-modal__header.clearfix
+    p.pull-left Создание публичной страницы
+    p.pull-right(ng-click='cancel();') Закрыть
+.new-group-modal__content
+    .new-group-modal__label Название
+    input.form-control.add-news__title_input(type='text', placeholder='', ng-model='group.name')
+    .new-group-modal__label Выберите тип:
+    .radio
+        input#radio1(type='radio', name='radio2', checked='', value='company', ng-model='group.groupType')
+        label(for="radio1" ng-bind="::groupTypes.company")
+    .radio
+        input#radio2(type='radio', name='radio2', value='organization', ng-model='group.groupType')
+        label(for='radio2' ng-bind="::groupTypes.organization")
+    .radio
+        input#radio3(type='radio', name='radio2', value='entertainment', ng-model='group.groupType')
+        label(for='radio3' ng-bind="::groupTypes.entertainment")
+    .radio
+        input#radio4(type='radio', name='radio2', value='studio', ng-model='group.groupType')
+        label(for='radio4' ng-bind="::groupTypes.studio")
+    .radio
+        input#radio5(type='radio', name='radio2', value='pair', ng-model='group.groupType')
+        label(for='radio5' ng-bind="::groupTypes.pair")
+    .radio
+        input#radio6(type='radio', name='radio2', value='collective', ng-model='group.groupType')
+        label(for='radio6', ng-bind='::groupTypes.collective')
+    .new-group-modal__select-place.clearfix
+        //
+          <button type="button" class="btn btn-default pull-left col-sm-6" ng-model="selectedIcon" data-html="1" bs-options="icon.value as icon.label for icon in icons" bs-select placeholder="{{'Выберите страну' | translate}}">
+          Action
+          <span class="caret"></span>
+          </button>
+        ui-select.pull-left.col-sm-6(ng-model='group.country', theme='bootstrap', ng-disabled='disabled', reset-search-input='false')
+            ui-select-match(placeholder='Введите страну') {{$select.selected.name}}
+            ui-select-choices(repeat='country in countries track by $index', refresh='getCountries($select.search)', refresh-delay='0')
+                div(ng-bind-html='country.name')
+        input.form-control.new-group-modal__city.pull-right.col-sm-6(type='text', ng-model='group.city', placeholder="Введите город")
+    .new-group-modal__create_btn(ng-click='ok();')
+        | Создать
