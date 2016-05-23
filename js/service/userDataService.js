@@ -40,12 +40,35 @@ angular.module('myApp')
         phone:null,
         webside:null,
         addres:null
+
     };
+    var tempint=0;
     return{
         get_id: Data.id,
         get_data:Data,
-        set_data:function(data){
+        SetData:function(data){
             Data=data;
+
+        },
+        GetData:function(){
+            return Data;
+        },
+        SetEmail:function(email){
+            Data.email=email;
+        },
+        SetPassword:function(password){
+            Data.password=password;
+        },
+        // возврат id пользователя
+        getId:function() {
+           return Data.id;
+        },
+        settemp:function(index){
+            tempint=index;
         }
+        ,
+
+
+
     }
 })

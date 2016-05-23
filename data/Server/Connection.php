@@ -3,7 +3,5 @@
 $hostBase="localhost";
 $userBase = "root";
 $passwordBase = "";
-$dbBase="Adminka";
-
-
+$dbBase="Dansociety";
 ?>

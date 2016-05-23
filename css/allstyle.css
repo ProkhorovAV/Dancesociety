@@ -2443,6 +2443,8 @@ p.post_text {
 .post__author__description {
   float: left;
   margin-left: 20px;
+  width: 89%;
+
 }
 
 /* line 55, ../styles/blocks/_postPanel.scss */

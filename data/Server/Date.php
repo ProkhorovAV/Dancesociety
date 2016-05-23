@@ -1,37 +1,72 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+// класс ошибок
+include_once(dirname(__FILE__).'/ErrorClass.php');
+// убрать
 include $_SERVER['DOCUMENT_ROOT'].'/data/Server/videoClass.php';
 
 $action=$_POST["action"];
 // проверка вх данных на json
 if ($action==NULL){
-
     $json=json_decode(file_get_contents('php://input'));
-
-    $action=$json->action;
-
-    $data=$json->data;
-
-    //$user_id=$json->user_id;
-    //$count=$json->counts;
-    //$skip=$json->skip;
-
 } else{
-    $data=$_POST["data"];
-    // сколько вывести значений
-    //$count=$_POST["$count"];
-    // сколько пропустить значений
-    //$skip=$_POST["$skip"];
+    exit('не верный запрос');
 }
 // выбор
 $obj=NULL;
+$action=$json->action;
 switch ($action) {
          // получение данных по юзеру
-         case 'getUserData';
-            include $_SERVER['DOCUMENT_ROOT'].'/data/Server/userClass.php';
+         case 'getUserData':
+            // класс пользователей
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/userClass.php';
             $obj=new User();
-            $obj->setData($data);
+            $data=$json->data;
+            $obj->SetData($data);
+            $obj->GetUserData();
          break;
+         // получение новостей по id user
+         case 'getPostDataCountsIdUser':
+            // класс пользователей
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/postClass.php';
+            $obj=new Post();
+            $obj->SetSkip($json->skip);
+            $obj->SetCount($json->counts);
+            $obj->SetUserId($json->userId);
+            $obj->GetUserDataIdUser();
+         break;
+          // получение Top новостей по наибольшим лайкам 
+         case 'getTopUserPost':
+            // класс новостей
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/postClass.php';
+            $obj=new Post();
+            $obj->SetSkip($json->skip);
+            $obj->SetCount($json->counts);            
+            $obj->GetUserDataTop();
+         break;
+         // получение новостей от топ пользователей
+         case 'getPostFromTopUser':
+            // класс новостей
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/postClass.php';
+            $obj=new Post();
+            $obj->SetSkip($json->skip);
+            $obj->SetCount($json->counts);            
+            $obj->GetPostFromTopUser();
+         break;
+         // получение новостей от сервера  Danciety
+          case 'getPostFromDanciety':
+            // класс новостей
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/postClass.php';
+            $obj=new Post();
+            $obj->SetSkip($json->skip);
+            $obj->SetCount($json->counts);            
+            $obj->getPostFromDanciety();
+         break;
+
+          
+
+
+
          case 'getvideo': $obj=new Video($user_id); break; // как используется в главной так и в видео страничке
          case 'getSubscribers'; $obj=new VideoSubscribers($user_id); break;
          case 'getTopUserVideo'; $obj=new getTopUserVideo($user_id); break;
@@ -106,8 +141,25 @@ switch ($action) {
          case 'unsetGroup '; break; // удалится из группы
 }
 if ($obj==NULL){
-echo ('Нет определения функции. Запрос на '.$action);
+    echo ('Нет определения функции. Запрос на '.$action);
 } else {
-echo json_encode($obj->send());
+    $sendMessages=array();
+    // если статус без ошибок false с ошибками true
+    if ($obj->GetStatusError()){
+        // вывести сообщение об ошибке которое формируется в классе ErrorClass
+        $error=new Error();
+        $sendMessages=array(
+        "error"=>"true",
+        "data"=>$error->SendData($obj->SendData())
+        );
+    }else{
+        $sendMessages=array(
+            "error"=>"false",
+            "data"=>$obj->SendData()
+        );
+
+    }
+    echo json_encode($sendMessages);
+
 }
 ?>

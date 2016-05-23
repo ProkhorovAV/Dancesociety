@@ -44,3 +44,7 @@
   -moz-box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.39);
   box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.39);
 }
+.post__remove_btn {
+  position: relative;
+  top: -46px;
+}

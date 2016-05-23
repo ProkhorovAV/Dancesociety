@@ -53,7 +53,7 @@ form.form-horizontal.register-form(role='form', data-toggle='validator', ng-show
                     a(href='#') условиями пользования сайтом
     .form-group.submit-group
         .col-sm-12
-            button.btn.btn-default(type='submit') Регистрация
+            button.btn.btn-default(type='submit' ng-click='RegistrUser()') Регистрация
     .form-group.submit-group
         .col-sm-12
             .col-sm-4(class='_active_login_btn-{{frm[0]}}', ng-click='open_form(0)')

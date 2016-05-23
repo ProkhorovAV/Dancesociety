@@ -1,6 +1,7 @@
 // запросы на сервер
 angular.module('myApp.services.PHP_server', [])
-    .factory('PHP_server', ['$http', 'SERVER','user_dataService', function($http,SERVER,user_dataService ) {
+    .factory('PHP_server', ['$http', 'SERVER','user_dataService',
+        function($http,SERVER,user_dataService ) {
 
 
         return{
@@ -9,11 +10,28 @@ angular.module('myApp.services.PHP_server', [])
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data}});
             },
+            // все о новостях
+            Post: function(data){
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action,skip:data.skip,counts:data.counts , userId:user_dataService.getId()}});
+            },
+
+
+            /************************************/
+
+
 
             Video: function(data){
+
                 return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,counts:data.counts,skip:data.skip, user_id:user_dataService.get_id}});
+                    data: {action:data.action,counts:data.counts,skip:data.skip, userId:user_dataService.getId}});
             },
+
+
+
+
+
+
             Subscribe: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action, user_id:user_dataService.get_id}});
@@ -91,10 +109,7 @@ angular.module('myApp.services.PHP_server', [])
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
             },
-            Post: function(data){
-                return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
-            },
+
             Vacancy: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});

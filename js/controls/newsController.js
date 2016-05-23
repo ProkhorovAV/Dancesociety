@@ -1,20 +1,25 @@
 angular.module("myApp.controllers.News", [])
     .controller("NewsCtrl", [
-        "$scope",'user_dataService','PHP_server','notify',
-        function ($scope,user_dataService,PHP_server,notify ) {                                                                                     // пользователь который вошел в систему
+        "$scope",'user_dataService','PHP_server','notify','ErrorService',
+        function ($scope,user_dataService,PHP_server,notify,ErrorService ) {
+
+
+            // пользователь который вошел в систему
             $scope.meData={
                 _id:1,
                 userpic:'data/user/face.jpg'
             };
 
             // параметры мои подписки
-           $scope.reqParams= {
-               videosSubscribers: 0,
-               videos:0,
-               videosTopUsers:0
+            $scope.reqParams= {
+                postSubscribers: 0,
+                videos:0,
+                videosTopUsers:0
             };
-                // видео новости
-            $scope.videosSubscribers=[{                                                                                     // видео простое
+            //! видео новости мои
+            $scope.postSubscribers=[{
+                // видео простое
+                /*
                 author:{
                     _id:1,
                     name:"Александр",
@@ -49,10 +54,37 @@ angular.module("myApp.controllers.News", [])
 
                     ]
                 }
+                */
 
             }];
-                // видео топ
-            $scope.videosTopUsers=[{
+            //! функция получения видео мои подписчики
+            $scope.getVideosSubscribers=function(options){
+                var params={
+                    'counts': 6,
+                    'skip': $scope.reqParams.postSubscribers,
+                    'action':'getPostDataCountsIdUser'
+                };
+                this.config = $.extend({}, params, options);
+                return PHP_server.Post(this.config);
+            };
+            //! получение видео от пользователей
+            $scope.getVideosSubscribers()
+                 .then(function(response){
+                     // если ошибка передача ошибки
+                    if (JSON.parse(response.data.error)){
+                        ErrorService.error(response.data)
+                    }else{
+                        // весение данных
+                    $scope.postSubscribers=response.data.data;
+                    }
+                 },function(err) {
+                     console.log('Ошибка в получении жданных');
+                     console.log(err);
+             });
+
+            //!  новости топ user
+            $scope.postsTopUsers=[
+                /*{
                     posts:[{
                         groupAuthor:{
                             _id:1,
@@ -101,9 +133,39 @@ angular.module("myApp.controllers.News", [])
                     isFollowing:true,
                     _id:1
 
-                }];
-                // новости
-            $scope.videos={
+                }*/
+            ];
+
+            //! функция получение новостей в топ сортировка по лайкам
+            $scope.getTopUsersPosts=function(options){
+                var params={
+                    'counts': 6,
+                    'skip': $scope.reqParams.videosTopUsers,
+                    'action':'getPostFromTopUser'
+                };
+                this.config = $.extend({}, params, options);
+                return PHP_server.Post(this.config);
+            };
+            //! получение новости
+            $scope.getTopUsersPosts()
+             .then(function(response){
+                 // если ошибка передачи
+                 if (JSON.parse(response.data.error)){
+                     ErrorService.error(response.data)
+                 }else{
+                     // весение данных
+                     $scope.postsTopUsers=response.data.data;
+
+                 }
+
+             },function(err) {
+                 console.log('Ошибка в получении жданных');
+                 console.log(err);
+             });
+
+            //! новости danciety
+            $scope.postDanciety=[{
+                /*
                 data:[{
                     groupAuthor:{
                         _id:1,
@@ -141,7 +203,34 @@ angular.module("myApp.controllers.News", [])
                         }]
                     }
                 }]
+                */
+            }];
+
+            //! получить видео новости
+            $scope.getpostDanciety = function(options) {                                                                                 // функция запроса к серверу
+                var params={
+                    'counts': 6,
+                    'skip': $scope.reqParams.videos,
+                    'action':'getPostFromDanciety'
+                };
+                this.config = $.extend({}, params, options);
+                return PHP_server.Video(this.config);
             };
+
+            //! функция видео новости
+            $scope.getpostDanciety()
+            // получение видео
+                 .then(function(response) {
+                 console.log(response);
+                 $scope.postDanciety=response.data.data;
+                 }, function(err) {
+                 console.log('Ошибка в получении жданных');
+                 console.log(err);
+             });
+
+
+
+
                 // кнопка удаления
             $scope.removePost=function(id_user,index){
 
@@ -194,7 +283,7 @@ angular.module("myApp.controllers.News", [])
 
             };
 
-                // удаление комантария
+                // удаление коментария
             $scope.removeComment=function(id, index, post){
 
             };
@@ -327,63 +416,6 @@ angular.module("myApp.controllers.News", [])
             };
 
 
-                //функция получение видео от зрителей
-            $scope.getTopUsersVideos=function(options){
-                var params={
-                    'counts': 6,
-                    'skip': $scope.reqParams.videosTopUsers,
-                    'action':'getTopUserVideo'
-                };
-                this.config = $.extend({}, params, options);
-                return PHP_server.Video(this.config);
-            };
-                // получение видео
-            $scope.getTopUsersVideos()
-                .then(function(response){
-                    console.log(response);
-                    $scope.videosTopUsers=response.data;
-                },function(err) {
-                    console.log('Ошибка в получении жданных');
-                    console.log(err);
-                });
-                // функция получения видео мои подписчики
-            $scope.getVideosSubscribers=function(options){
-                var params={
-                    'counts': 6,
-                    'skip': $scope.reqParams.videosSubscribers,
-                    'action':'getSubscribers'
-                };
-                this.config = $.extend({}, params, options);
-                return PHP_server.Video(this.config);
-            };
-                // получение видео от пользователей
-            $scope.getVideosSubscribers()
-                .then(function(response){
-                     $scope.videosSubscribers=response.data;
-                    console.log(response);
-                },function(err) {
-                    console.log('Ошибка в получении жданных');
-                    console.log(err);
-                });
-                // получить видео новости
-            $scope.getVideos = function(options) {                                                                                 // функция запроса к серверу
-                var params={
-                    'counts': 6,
-                    'skip': $scope.reqParams.videos,
-                    'action':'getvideo'
-                };
-                this.config = $.extend({}, params, options);
-                return PHP_server.Video(this.config);
-            };
-                // функция видео новости
-            $scope.getVideos()                                                                                              // получение видео
-                .then(function(response) {
-                    console.log(response);
-                    $scope.videos=response.data;
-                }, function(err) {
-                        console.log('Ошибка в получении жданных');
-                        console.log(err);
-                    });
 
 
 

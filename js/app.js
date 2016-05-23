@@ -37,7 +37,7 @@ angular.module('myApp', [
 	'myApp.controller.SelectVideo'
 ])
 .constant('SERVER', {
-	"DATA":" http://dancietymain:88/data/server/Date.php",
+	"DATA":" http://dancesociety:88/data/server/Date.php",
 	"MAXCOUNT":6
 })
 
