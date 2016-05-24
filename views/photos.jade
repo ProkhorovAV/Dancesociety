@@ -9,13 +9,13 @@
       </section>
     section.main-section.videos-panel
         ul.global-photos.clearfix(infinite-scroll='myPagingFunction()', infinite-scroll-distance='0')
-            li(ng-repeat='photo in photos')
+            li(ng-repeat='photo in photosAll')
                 //
                   <div class="photo__image-header">
                   <i class="fa fa-times remove-image" ng-click="removeVideo(video);"></i>
                   </div>
                 .user-videos__thumb(img-liquid='', ng-click='openImage(photo, meData, photos)')
-                    img(ng-src='{{photo.path}}', alt='')
+                    img(ng-src='{{SERVER.IMAGES_PHOTO}}{{photo.src}}' style='width:100%;height:100%')
                 // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
                 .photo__image-info
                     .image-info__name(ng-bind='photo.title')
@@ -26,7 +26,7 @@
                           <span>11</span>
                           </div>
                         .image-info__like.no-select(ng-click='likePhoto($index)')
-                            span(ng-bind='photo.likes')
+                            span(ng-bind='photo.likes.length')
                             i.image-info__like-btn
         //
           <div class="danciety-pagination">

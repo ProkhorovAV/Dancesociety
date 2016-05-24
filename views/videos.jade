@@ -19,11 +19,11 @@
         .videos-panel__title
             .videos-panel__title__icon
                 img(src='../img/icon-video-1.png', alt='')
-            span Мои подписки
+            span Мои подписки (пока просто мои видео)
         ul.user-videos.clearfix
-            li(ng-repeat='video in videosSubscribers.data')
+            li(ng-repeat='video in videosSubscribers')
                 .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
-                    img(src='{{video.thumb}}', alt='')
+                    img(src='{{SERVER.IMAGES_PHOTO}}{{video.imageSrc}}')
                 .video__image-info__grid
                     .video__image-info
                         .image-info__name(ng-bind='video.title')
@@ -34,34 +34,35 @@
                               <span>11</span>
                               </div>
                             .image-info__like.no-select(ng-click='likeVideo($index, video)')
-                                span(ng-bind='video.likes')
+                                span(ng-bind='video.likes.length')
                                 i.image-info__like-btn
                 // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
-                .user-videos__author-name(ui-sref='alien.resume({id: video.author._id})', ng-bind="video.author.firstname + ' ' + video.author.secondname")
-                .user-videos__author-subscribers-count(ng-bind="'Подписчиков: ' + video.author.subscribersCount")
-        .get-new-videos__btn(ng-click='nextSubscribersVideosPage();', ng-show='videosSubscribers.count > videosSubscribers.data.length')
+                .user-videos__author-name(ui-sref='#', ng-bind="video.autor.firstName + ' ' + video.autor.secondName")
+                .user-videos__author-subscribers-count(ng-bind="'Подписчиков: ' + video.repost.length")
+        .get-new-videos__btn(ng-click='nextSubscribersVideosPage();', ng-show='videosSubscribers.count > videosSubscribers.length')
             | Показать больше
     section.main-section.videos-panel
         .videos-panel__title
             .videos-panel__title__icon
                 img(src='../img/icon-video-2.png', alt='')
             span Лучшее от ТОП-пользователей
-        .videos-panel__top-users(ng-repeat='user in videosTopUsers')
+        .videos-panel__top-users(ng-repeat='video in videosTopUsers')
             .user-videos__user-grid
                 .user-videos__user-img(ui-sref='#')
-                    img(ng-src='{{user.userpic', alt='')
+                    img(ng-src='{{SERVER.IMAGES_PHOTO}}{{video.imageSrc}}')
                 .user-videos__user-info
-                    .user-videos__author-name(ui-sref='#', ng-bind="user.firstname + ' ' + user.secondname")
+                    .user-videos__author-name(ui-sref='#', ng-bind="video.autor.firstName + ' ' + video.autor.secondName")
                     .user-videos__author-subscribers-count
                         span Подписчиков
-                        span(ng-bind='user.subscribersCount')
+                        span(ng-bind='video.repost.length')
                 .user-videos__user-subscribe_grid
                     .user-videos__user-subscribe_btn(ng-show='!user.isFollowing && (user._id !== meData._id)', ng-click="subscribeToUser(user, 'subscribe');") Подписаться
                     .user-videos__user-subscribe_btn(ng-show='user.isFollowing && (user._id !== meData._id)', ng-click="subscribeToUser(user, 'unsubscribe');") Отписаться
             ul.user-videos.clearfix
-                li(ng-repeat='video in user.videos | limitTo: 3')
+                // здесь был лимит на количество видео и структура данных была другая
+                li
                     .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
-                        img(src='{{video.thumb}}', alt='')
+                        img(src='{{SERVER.IMAGES_VIDEO}}{{video.imageSrc}}')
                     .video__image-info
                         .image-info__name(ng-bind='video.title')
                         .image-info__buttons.clearfix
@@ -71,7 +72,7 @@
                               <span>11</span>
                               </div>
                             .image-info__like.no-select(ng-click='likeVideo($index, video)')
-                                span(ng-bind='video.likes')
+                                span(ng-bind='video.likes.length')
                                 i.image-info__like-btn
     section.main-section.videos-panel
         .videos-panel__title
@@ -79,11 +80,11 @@
                 img(src='../img/icon-video-3.png', alt='')
             span Видео danciety.com
         ul.user-videos.clearfix
-            li(ng-repeat='video in videos.data')
+            li(ng-repeat='video in videosDanciety')
                 .photo__image-header
                     i.fa.fa-times.remove-image(ng-click='removeVideo(video);')
                 .user-videos__thumb(img-liquid='', ng-click='openVideo(video);')
-                    img(src='{{video.thumb}}', alt='')
+                    img(src='{{SERVER.IMAGES_VIDEO}}{{video.imageSrc}}')
                 .video__image-info__grid
                     .video__image-info
                         .image-info__name(ng-bind='video.title')
@@ -94,6 +95,6 @@
                               <span>11</span>
                               </div>
                             .image-info__like.no-select(ng-click='likeVideo($index, video)')
-                                span(ng-bind='video.likes')
+                                span(ng-bind='video.likes.length')
                                 i.image-info__like-btn
         .get-new-videos__btn(ng-click='nextVideosPage();', ng-show='videos.count > videos.data.length') Показать больше

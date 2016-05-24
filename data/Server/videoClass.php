@@ -1,175 +1,292 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+//
+//     
+//     
+//       
 
-// новости с видео
+include_once(dirname(__FILE__).'/Connection.php');
+//include $_SERVER['DOCUMENT_ROOT'].'/data/Php/Connection.php';
+// соединение с базой SQL
+$connectionBase = mysql_connect($hostBase,$userBase,$passwordBase);
+// условия ошибки и выхода
+
+if ((!$connectionBase)||(!mysql_select_db($dbBase,$connectionBase)))
+{exit(mysql_error());}
+mysql_query('SET NAMES utf8');
+/***** тест класса********/
+ /*
+$json=json_decode(file_get_contents('php://input'));
+$obj=new Video();
+$obj->SetUserId($json->userId); 
+// получение видео по id
+//$obj->getVideoOnIdUser(); 
+// получение видео от топ пользователей 
+//$obj->getVideoOnTopUser(); 
+// получить видео danciety
+$obj->getVideosDanciety();
+
+echo json_encode($obj->SendData());
+  */
+
+/******коней теста*******/
+
+// данные по пользователю
 class Video{
+    // id пользователя
+    private $idUser=NULL;
+    // отправка данных
+    private $sendArrayData=array();
+    // пересенная установлена - есть ошибка по умолчанию
+    private $statusErr=true;
 
-private $id_user;
+    // получение всех вакансий
+    public function getVideoOnIdUser(){
+        // получить все видео
+        $arrayVacancy=$this->GetVideoDataOnId();
+          // распоковать автора
+        $arrayVacancy=$this->SetAutorInPost($arrayVacancy);
+            // распоковать лайков
+        $arrayVacancy=$this->SetLikesArray($arrayVacancy);
+            // распоковать репостов
+        $arrayVacancy=$this->SetRepostArray($arrayVacancy); 
+        // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayVacancy;
 
-    public function __construct($_id_user){
-        $this->id_user=$_id_user;
     }
-     public function send(){
-        $elem=array();
-        $elem['groupAuthor']=array(
-                                    _id=>1,
-                                     photo=>'data/img/bg1.jpg'
-                                    );
-        $elem['author']= array(
-                                userpic=>'data/user/face.jpg',
-                                firstname=>'Александр',
-                                secondname=>"Прохоров"
-                         );
-        $elem['created']='12.12.2012';
-        $elem['title']='Название';
-        $elem['text']='Просто текст';
-        $elem['photos']=array();
-            $photo1['path']='data/img/bg1.jpg';
-            array_push($elem['photos'], $photo1);
-            $photo1['path']='data/img/bg2.jpg';
-            array_push($elem['photos'],$photo1);
-        $elem['videos']=array();
-            $video=array(
-                    thumb=>'data/img/bg1.jpg',
-                    likes=>10
+    // получение видео от топ пользователей
+    public function getVideoOnTopUser(){
+         // получить все id user top
+        $arrayVacancy=$this->GetTopUserOnVideo();
+        // получить все видео
+        $arrayVacancy=$this->GetOneVideoDataOnIdUser($arrayVacancy);
+        // распоковать автора
+        $arrayVacancy=$this->SetAutorInPost($arrayVacancy);
+            // распоковать лайков
+        $arrayVacancy=$this->SetLikesArray($arrayVacancy);
+            // распоковать репостов
+        $arrayVacancy=$this->SetRepostArray($arrayVacancy); 
+        // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayVacancy;
+
+    }
+    // получить видео Danciety
+    public function getVideosDanciety(){
+        // получить все видео
+        $arrayVacancy=$this->GetAllVideo();
+        // распоковать автора
+        $arrayVacancy=$this->SetAutorInPost($arrayVacancy);
+            // распоковать лайков
+        $arrayVacancy=$this->SetLikesArray($arrayVacancy);
+            // распоковать репостов
+        $arrayVacancy=$this->SetRepostArray($arrayVacancy); 
+         // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayVacancy;
+
+    }
+
+   ///////////////////// дополнительные функции////////
+        // все видео
+        public function GetAllVideo(){
+            // видео   
+            $postArray=array();
+            // запрос на все вакансии
+            $stringQuery="SELECT * FROM Video";            
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными 
+            do {
+                    $postRow=array(
+                        id=>$row['Id'],
+                        title=>$row['Title'],
+                        src=>$row['Src'],
+                        autor=>$row['Autor'],
+                        likes=>$row['Likes'],
+                        created=>$row['Created'],                         
+                        repost=>$row['Repost'],
+                        remove=>$row['Remove'],
+                        imageSrc=>$row['ImageSrc']                                              
                     );
-            array_push($elem['videos'],$video);
-        $elem['reposts']=3;
-        $elem['isLiked']=true;
-        $elem['likes']=10;
-            $data=array();
-            $author=array(userpic=>'data/img/bg1.jpg',
-                                       firstname=>'Александр',
-                                       secondname=>'Прохоров',
-                                       _id=>1);
-            $created=array(created=>'12.12.2019');
-            $text=array(text=>'обычный текст');
-            $data=array(author=>$author,
-                        created=> $created,
-                        text=>$text
+                        // добавление в массив и сформировали ответ по новостям
+                 array_push($postArray,$postRow);
+            } while($row = mysql_fetch_array($query));
+            return $postArray;
+        }
+
+  
+
+        // получить одно видео по топ пользователей
+        public function GetOneVideoDataOnIdUser($_array){
+
+            $resultVideo=array();
+            for ($i=0; $i < count($_array) ; $i++) {                    
+                
+                // строка запроса на вычисления подписчиков
+                $stringQuery="SELECT * FROM Video where Autor=$_array[$i]";
+                // запрос
+                $query = mysql_query($stringQuery);
+                // получение первой строки
+                $row = mysql_fetch_array($query);
+                $postRow=array(
+                        id=>$row['Id'],
+                        title=>$row['Title'],
+                        src=>$row['Src'],
+                        autor=>$row['Autor'],
+                        likes=>$row['Likes'],
+                        created=>$row['Created'],                         
+                        repost=>$row['Repost'],
+                        remove=>$row['Remove'],
+                        imageSrc=>$row['ImageSrc']                                              
+                );
+                // условие при котором у пользователя есть видео
+                if ($row['Id']!=NULL){
+                    array_push($resultVideo, $postRow);  
+                }               
+            }
+            return $resultVideo;
+        
+        }
+
+
+           // получиь топ юзеров
+        public function GetTopUserOnVideo(){
+             // строка запроса на вычисления подписчиков
+            $stringQuery="SELECT Id, Reposts FROM People";
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными по id Peopele и Reposts
+            $peopleSubObj=array();
+            // цикл проверки всех пользователей и внесения id подписчиков в массив
+                do {
+                    // вытащить переменную Likes
+                    $subUserArray= explode("*",$row['Reposts']);
+                    // удалить пустую строку
+                    array_pop($subUserArray);
+                    // создать массив с данными  для id новостей               
+                    $peopleSubObj[$row['Id']]=count($subUserArray);                 
+                    
+                } while($row = mysql_fetch_array($query));
+            // сортировать пользователей           
+            arsort($peopleSubObj);
+            //
+            $postResultArray=array();
+            // вставить в массив id пользователей
+            foreach ($peopleSubObj as $key => $value) {
+                array_push($postResultArray, $key);
+            }
+ 
+            return $postResultArray;
+        }
+
+
+        // получить все видео
+        public function GetVideoDataOnId(){
+            // видео   
+            $postArray=array();
+            // запрос на все вакансии
+            $stringQuery="SELECT * FROM Video where Autor='$this->idUser'";            
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными 
+            do {
+                    $postRow=array(
+                        id=>$row['Id'],
+                        title=>$row['Title'],
+                        src=>$row['Src'],
+                        autor=>$row['Autor'],
+                        likes=>$row['Likes'],
+                        created=>$row['Created'],                         
+                        repost=>$row['Repost'],
+                        remove=>$row['Remove'],
+                        imageSrc=>$row['ImageSrc']                                              
+                    );
+                        // добавление в массив и сформировали ответ по новостям
+                 array_push($postArray,$postRow);
+            } while($row = mysql_fetch_array($query));
+            return $postArray;
+        }
+        // распокавать автора
+        public function SetAutorInPost($_arrayPosts){ 
+           
+                // расщепление массива авторов          
+                 for ($i=0; $i <count($_arrayPosts) ; $i++) {   
+
+                    $idAutors=$_arrayPosts[$i]['autor'];
+                    // строка запроса
+                    $stringQuery="SELECT * FROM People WHERE Id=$idAutors";
+                    // запрос
+                    $query = mysql_query($stringQuery);
+                    // получение данных
+                    $row = mysql_fetch_array($query);
+                    $_arrayPosts[$i]['autor']=array(
+                            id=>$idAutors,
+                            name=>$row['FirstName'],
+                            secondName=>$row['SecondName'],
+                            firstName=>$row['FirstName'],
+                            image=>$row['Image']
                         );
-            $datalist=array();
-            array_push($datalist,$data);
-        $elem['comments']=array(data=>$datalist);
-        $mess=array($elem,$elem);
-        $data=array(data=>$mess);
-        return $data;
-     }
+                 } 
+                return  $_arrayPosts;
+        }
+         // формирования массива лайков
+        public function SetLikesArray($_arrayPosts){
+             // цикл переборки                 
+                for ($i=0;$i< count($_arrayPosts); $i++) { 
+                    // расщипить                
+                    $likeArray=explode("*",$_arrayPosts[$i]['likes']);
+                    // удалеие последнего элемента пустого                       
+                     array_pop($likeArray);
+                    // переопреелить          
+                    $_arrayPosts[$i]['likes']=$likeArray;                                      
+                } 
+               return $_arrayPosts;     
+        }
+        // формирования массива репостов
+        public function SetRepostArray($_arrayPosts){
+             // цикл переборки                 
+                for ($i=0;$i< count($_arrayPosts); $i++) { 
+                    // расщипить                
+                    $repostArray=explode("*",$_arrayPosts[$i]['repost']);
+                    // удалеие последнего элемента пустого                       
+                     array_pop($repostArray);
+                    // переопреелить          
+                    $_arrayPosts[$i]['repost']=$repostArray;                                      
+                } 
+            return $_arrayPosts;     
+        }
+        // установить id пользователя
+        public function SetUserId($_idUser){
+                $this->idUser=$_idUser;
+
+        }
+ 
+
+/////////////// функции обязательные для всех
+
+        // конструктор
+        public function __construct(){
+        }
+        // возврат ошибок
+        public function GetStatusError(){            
+            return $this->statusErr;
+        }
+        // отправка ответа самый конец
+        public function SendData(){
+            return $this->sendArrayData;
+        }
 
 }
-// класс получения данных мои подписки
-class VideoSubscribers{
-
-private $id_user;
-
-    public function __construct($_id_user){
-        $this->id_user=$_id_user;
-    }
-     public function send(){
-        $elem=array();
-            $elem['author']=array(name=>'Александр',
-                                    created=>'12.12/2011',
-                                    firstname=>'Владимирович',
-                                    secondname=>"Прохоров",
-                                    _id=>1
-                                    );
-            $elem['title']='Супер новость1';
-            $elem['photos']=array();
-            array_push($elem['photos'], 'img/bg1.jpg', 'img/bg2.jpg');
-            $elem['videos']=array();
-            $video['thumb']='img/bg2.jpg';
-            $video['title']='Класс видео';
-            $video['likes']=10;
-            array_push($elem['videos'],$video);
-            $elem['reposts']=1;
-            $elem['isLiked']=true;
-            $elem['likes']=1;
-            $author=array(face=>'img/bg2.jpg',
-                          firstname=>"Александр",
-                          secondname=>'Прохоров',
-                          _id=>1);
-            $data=array(author=>$author,
-                        created=>'12.12.2015');
-            $datalist=array();
-            array_push($datalist,$data);
-            $elem['comments']=array(data=>$datalist);
-        $mess=Array($elem,$elem);
-            return $mess;
-     }
-}
-// класс получения данных по user
-class getTopUserVideo{
-
-private $id_user;
-
-    public function __construct($_id_user){
-        $this->id_user=$_id_user;
-    }
-
-     public function send(){
-        $post=array();
-
-             $post['groupAuthor']=array(
-                             _id=>1,
-                             photo=>'data/user/face.jpg',
-                             name=>'Группа 1'
-                            );
-            $post['author']=array(
-                            userpic=>'img/bg2.jpg',
-                            firstname=>'Саша',
-                            secondname=>'Прохоров'
-                            );
-
-            $post['created']='12.12.2013';
-            $post['title']='Супер пупер';
-            $post['text']='просто текст';
-            $photos=array();
-
-            array_push($photos, 'img/bg1.jpg', 'img/bg2.jpg');
-            $post['photos']=$photos;
-            $video=array();
-
-                $data=array(
-                         thumb=>'img/bg4.jpg',
-                         title=>'Видео 1',
-                         likes=>10
-                            );
-
-            array_push($video,$data);
-            $post['video']=$video;
-            $post['reposts']='Репост';
-            $post['isLiked']=23;
-            $author=array(
-                         userpic=>'data/img/bg1.jpg',
-                         firstname=>'Саша',
-                         secondname=>"Прохоров",
-                         _id=>1
-                            );
-            $data=array(
-                        author=>$author,
-                        created=>"12.02.12",
-                        text=>"Просто текст"
-                        );
-            $datalist=array();
-            array_push($datalist,$data);
-            $post['comments']=array(data=>$datalist);
-            $postlist=array();
-            array_push($postlist,$post);
-            $elem=array(
-                        posts=>$postlist,
-                        userpic=>'img/bg1.jpg',
-                        firstname=>"Имя",
-                        secondname=>'Фамилия',
-                        subscribersCount=>10,
-                        isFollowing=>false,
-                        _id=>1
-                            );
-        $mess=Array($elem);
-            return $mess;
-
-     }
-}
-
 
 
 ?>

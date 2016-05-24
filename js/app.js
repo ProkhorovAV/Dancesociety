@@ -13,7 +13,7 @@ angular.module('myApp', [
 	'myApp.controllers.Jobs',
 	'myApp.controllers.Videos',
 	'myApp.controllers.Photos',
-	'myApp.controllers.GroupLists',
+	'myApp.controllers.PagesLists',
 	'myApp.controllers.GroupHeder',
 	'myApp.controller.GroupResume',
 	'myApp.controller.GroupNews',

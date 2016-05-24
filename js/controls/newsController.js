@@ -76,6 +76,7 @@ angular.module("myApp.controllers.News", [])
                     }else{
                         // весение данных
                     $scope.postSubscribers=response.data.data;
+
                     }
                  },function(err) {
                      console.log('Ошибка в получении жданных');
@@ -148,6 +149,7 @@ angular.module("myApp.controllers.News", [])
             };
             //! получение новости
             $scope.getTopUsersPosts()
+
              .then(function(response){
                  // если ошибка передачи
                  if (JSON.parse(response.data.error)){
@@ -155,13 +157,14 @@ angular.module("myApp.controllers.News", [])
                  }else{
                      // весение данных
                      $scope.postsTopUsers=response.data.data;
-
+                        console.log(response.data);
                  }
 
              },function(err) {
                  console.log('Ошибка в получении жданных');
                  console.log(err);
              });
+
 
             //! новости danciety
             $scope.postDanciety=[{
@@ -221,7 +224,6 @@ angular.module("myApp.controllers.News", [])
             $scope.getpostDanciety()
             // получение видео
                  .then(function(response) {
-                 console.log(response);
                  $scope.postDanciety=response.data.data;
                  }, function(err) {
                  console.log('Ошибка в получении жданных');

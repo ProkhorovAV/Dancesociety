@@ -16,6 +16,7 @@ if ($action==NULL){
 $obj=NULL;
 $action=$json->action;
 switch ($action) {
+///////////////////////пользователь////////////////////////////////////////////////////////    
          // получение данных по юзеру
          case 'getUserData':
             // класс пользователей
@@ -25,6 +26,14 @@ switch ($action) {
             $obj->SetData($data);
             $obj->GetUserData();
          break;
+         // получения перечня пользователей
+        case 'getAllUserData':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/userClass.php';
+            $obj=new User();            
+            $obj->getAllUserData();             
+         break; 
+
+//////////////////////новости//////////////////////////////////////////////////////////////////////////////         
          // получение новостей по id user
          case 'getPostDataCountsIdUser':
             // класс пользователей
@@ -62,8 +71,49 @@ switch ($action) {
             $obj->SetCount($json->counts);            
             $obj->getPostFromDanciety();
          break;
+////////////////////////////вакансии//////////////////////////////////////////
+          // получение всех вакансий
+          case 'getAllVacancy':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/vacancyClass.php';
+            $obj=new Vacancy();   
+            $obj->GetAllVacancy();             
+         break; 
+/////////////////////////////////видео////////////////////////////         
+        // получение видеофайлов по id пользователю
+        case 'getVideoOnIdUser':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/videoClass.php';
+            $obj=new Video();  
+            $obj->SetUserId($json->userId);
+            $obj->getVideoOnIdUser();             
+         break; 
+         // получение видеофайлов по Top пользователtq
+        case 'getVideoOnTopUser':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/videoClass.php';
+            $obj=new Video();               
+            $obj->getVideoOnTopUser();             
+         break; 
+            // получение видеофайлов Danciety
+        case 'getVideosDanciety':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/videoClass.php';
+            $obj=new Video();               
+            $obj->getVideosDanciety();             
+         break; 
+//////////////////////////////////////фотографии/////////////////////////
+        // получение всех фотографий
+        case 'getAllPhoto':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/photoClass.php';
+            $obj=new Photo();            
+            $obj->getAllPhoto();             
+         break; 
+/////////////////////////////////публичные страницы////////////
+        // получение всех публичных страниц
+        case 'getAllPublicPages':           
+            include_once $_SERVER['DOCUMENT_ROOT'].'/data/Server/publicClass.php';
+            $obj=new PublicPages();            
+            $obj->getAllPublicPages();             
+         break; 
 
-          
+
 
 
 

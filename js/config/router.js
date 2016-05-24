@@ -68,16 +68,16 @@ angular.module('myApp')
                     }
                 }
             })
-            .state('groupslist', {
-                url: "/groupslist",
+            .state('pageslist', {
+                url: "/pageslist",
                 views: {
                     "header_page":{
                         templateUrl: "../views/heder.html",
                         controller: "HederCtrl"
                     },
                     "context_page": {
-                        templateUrl: "../views/grouplists.html",
-                        controller: "GroupListsCtrl"
+                        templateUrl: "../views/pageslist.html",
+                        controller: "PagesListsCtrl"
                     }
                 }
             })

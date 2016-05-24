@@ -1,5 +1,87 @@
-angular.module('myApp.controllers.GroupLists',[])
-.controller('GroupListsCtrl',["$scope",'PHP_server','notify','$modal', function($scope,PHP_server,notify,$modal){
+angular.module('myApp.controllers.PagesLists',[])
+.controller('PagesListsCtrl',["$scope",'PHP_server','notify','$modal', function($scope,PHP_server,notify,$modal){
+
+    // установка фильтра и окна вида
+    $scope.activeType='public';
+
+    // кнопка смена данных
+    $scope.changeType=function(type){
+        console.log(type);
+        $scope.activeType = type.name;
+
+    };
+    // типы для фильтрации страниц
+    $scope.searchFilterTypes = [{
+        label: 'Публичная страница',
+        name: 'public'
+    },{
+        label: 'Персональная страница',
+        name: 'personal'
+    }];
+
+    // массив публичных страниц
+    $scope.publicPages=[];
+    // массив потльзователей
+    $scope.users=[];
+
+    //  получить список публичных страниц
+    $scope.getPublicPagesList=function(options){
+        var params={
+            action:'getAllPublicPages'
+        };
+        this.config = $.extend({}, params, options);
+       return  PHP_server.PublicPages(this.config);
+    };
+
+    // получение страничек
+
+    $scope.getPublicPagesList()
+        .then(function(response){
+            // если ошибка передачи
+            if (JSON.parse(response.data.error)){
+                ErrorService.error(response.data)
+            }else{
+                // весение данных
+                $scope.publicPages=response.data.data;
+                console.log(response.data);
+                // начальная загрузка в форму данных
+                $scope.viewArray=$scope.publicPages;
+            }
+
+        },function(err) {
+            console.log('Ошибка в получении жданных');
+            console.log(err);
+        });
+
+
+    //  получить список людей
+        $scope.getUsersList=function(options){
+            var params={
+                action:'getAllUserData'
+            };
+            this.config = $.extend({}, params, options);
+            return  PHP_server.User(  this.config);
+        };
+        // получение людей
+        $scope.getUsersList()
+            .then(function(response){
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.users=response.data.data;
+                    console.log(response.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
 
             // пока нет определения
          $scope.vacancyFilter = {};
@@ -76,73 +158,17 @@ angular.module('myApp.controllers.GroupLists',[])
             // нет данных
         };
 
-        //  получить список группы
-        $scope.getGroupList=function(){
-
-        var req = {
-            action:'GetGroup',
-            'route': 'search',
-            'id': 'groups'
-        };
-
-        if($scope.activeType.name == 'personal') {
-            req.id = 'users';
-        }
-
-        req.q = $scope.groupSearch.q;
-
-        if(angular.isDefined($scope.groupSearch.country)) {
-            req.country = $scope.groupSearch.country._id;
-        }
-
-        if(angular.isDefined($scope.groupSearch.city)) {
-            req.city = $scope.groupSearch.city;
-        }
-
-        if(angular.isDefined($scope.multiselectModel.model.type)) {
-            req.groupType = $scope.multiselectModel.model.type;
-        }
-
-        if(angular.isDefined($scope.multiselectDances.model)) {
-            req.danceStyles = [];
-            $scope.multiselectDances.model.map(function(el) {
-                req.danceStyles.push(el._id);
-            });
-        }
-
-        PHP_server.Group(req)
-            .then(function(resolve) {
-
-                //$scope.groupList = resolve.data;
-                console.log(resolve);
-            }, function(err) {
-                console.log(err);
-            });
-
-    };
 
 
 
-    // типы для фильтрации страниц
-    $scope.searchFilterTypes = [{
-        label: 'Публичная страница',
-        name: 'public'
-    },{
-        label: 'Персональная страница',
-        name: 'personal'
-    }];
 
-    // тип фильтра пока баг
-    $scope.activeType=$scope.searchFilterTypes[0];
 
-    // смена типа
-    $scope.changeType=function(type){
-        $scope.activeType = type;
 
-    };
 
-    // инициализация групп
-    $scope.getGroupList();
+
+
+
+
 
     // отмена поиска
     $scope.cancelSearch=function(){

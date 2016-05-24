@@ -2,6 +2,50 @@ angular.module("myApp.controllers.Photos", [])
     .controller("PhotosCtrl", [
         "$scope",'PHP_server',
         function ($scope,PHP_server) {
+
+
+
+            //! массив фотографий
+            $scope.photosAll=[
+                /*{
+                path:'data/img/bg1.jpg',
+                title:'описание картинки',
+                likes:10,
+                isLiked:true
+
+            }
+            */];
+
+            //!  функция получения всех фотографий
+            $scope.getPhotos = function(options) {
+                var params = {
+                    action:'getAllPhoto'
+                }
+                this.config = $.extend({}, params, options);
+                return PHP_server.Photo(this.config);
+            };
+            //! получение фото
+            $scope.getPhotos()
+                .then(function(response){
+
+                    // если ошибка передачи
+                    if (JSON.parse(response.data.error)){
+                        ErrorService.error(response.data)
+                    }else{
+                        // весение данных
+                        $scope.photosAll=response.data.data;
+                    }
+                },function(err) {
+                    console.log('Ошибка в получении жданных');
+                    console.log(err);
+                });
+
+
+
+
+
+
+
             // сортировка
             $scope.sort = 'popular';
             //  параметры для фото
@@ -19,27 +63,6 @@ angular.module("myApp.controllers.Photos", [])
 
             // панель поиска
             $scope.searchPanel=true;
-                //функция получения фотографий
-            $scope.getPhotos = function(options) {
-                var req = {
-                    action:'getPhoto',
-                    data:''
-                    //'route': 'photos',
-                    //'sort': $scope.sort,
-                    //'count': count,
-                    //'skip': skip
-                }
-                this.config = $.extend({}, req, options);
-                return PHP_server.Photo(this.config);
-            }
-
-            $scope.getPhotos()
-                .then(function(resolve) {
-                    //$scope.photos = resolve.data;
-                    console.log(resolve.data);
-                }, function(err) {
-                    console.log('Ошибка приема данных'+err);
-                });
 
 
 
@@ -51,14 +74,7 @@ angular.module("myApp.controllers.Photos", [])
             $scope.changeSortType=function(){
 
             };
-            // массив фотографий
-            $scope.photos=[{
-                path:'data/img/bg1.jpg',
-                title:'описание картинки',
-                likes:10,
-                isLiked:true
 
-            }];
                 // открыть картинку
             $scope.openImage=function(photo, meData, photos){
 

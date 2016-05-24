@@ -1,126 +1,11 @@
 angular.module("myApp.controllers.Jobs", [])
     .controller("JobsCtrl", [
-        "$scope",'PHP_server','notify',
-        function ($scope,PHP_server,notify) {
-            console.log("JobsCtrl");
-            // открытие странички новостй
-            $scope.searchPanel=true;
-            //фильтрация новостей
-            $scope.vacancyFilter={
-              country:"Москва",
-                city:"город"
-            };
-            // перечень городов с сервера
-            $scope.countries=[{
-                name:'Москва'
-            }];
-            // первоначальные данные
-            $scope.multiselectModel={
+        "$scope",'PHP_server','notify','ErrorService',
+        function ($scope,PHP_server,notify,ErrorService) {
 
-                filter:'',
-                data:[],
-                model:[],
-                settings:{
-                    enableSearch: true,
-                    showCheckAll: false,
-                    showUncheckAll: false,
-                    buttonClasses: 'btn btn-default danciety-multiselect__btn jobs__select',
-                    displayProp: 'name',
-                    idProp: '_id',
-                    externalIdProp: ''
-                },
-                translations:{
-                    searchPlaceholder: 'Name',
-                    buttonDefaultText: 'Select a styles'
-                },
-                modelEvents:''   // не нашел
-            };
-            // перечень вакансии
-            $scope.searchResults=[{
-                author:{
-                    userpic:'data/user/face.jpg',
-                    firstname:'Sasha',
-                    secondname:'Prokhorov'
-                },
-                created:"12.12.2001",
-                title:'Вакансия',
-                country:{
-                    name:'вакансия супер',
-                    city:"USA",
-                    scopes:[1,2,3],
-                    dances:[{
-                        name:'name'
-                    }],
-                    price:'12312',
-                    startDate:'12.12.2011',
-                    endDate:'12.12.2016',
-                    startAge:12,
-                    endAge:22,
-                    startHeight:132,
-                    endHeight:123123,
-                    text:'тест',
-                    reposts:10,
-                    isLiked:true,
-                    likes:10,
-                    comments:[{
-                        author:{
-                            userpic:'data/user/face.jpg',
-                            firstname:'Sasha',
-                            secondname:'Prokhorov',
-                            _id:1
-
-
-                        },
-                        created:'12.12.2012',
-                        text:'текст коментария'
-                    }]
-
-                },
-                isLiked:true
-
-            },{
-                author:{
-                    userpic:'data/user/face.jpg',
-                    firstname:'Sasha',
-                    secondname:'Prokhorov'
-                },
-                created:"12.12.2001",
-                title:'Вакансия',
-                country:{
-                    name:'вакансия супер',
-                    city:"USA",
-                    scopes:[1,2,3],
-                    dances:[{
-                        name:'name'
-                    }],
-                    price:'12312',
-                    startDate:'12.12.2011',
-                    endDate:'12.12.2016',
-                    startAge:12,
-                    endAge:22,
-                    startHeight:132,
-                    endHeight:123123,
-                    text:'тест',
-                    reposts:10,
-                    isLiked:true,
-                    likes:10,
-                    comments:[{
-                        author:{
-                            userpic:'data/user/face.jpg',
-                            firstname:'Sasha',
-                            secondname:'Prokhorov',
-                            _id:1
-
-
-                        },
-                        created:'12.12.2012',
-                        text:'текст коментария'
-                    }]
-
-                },
-                isLiked:true
-
-            },
+            //! перечень вакансии с сервера
+            $scope.arrayVacancy=[
+                /*
                 {
                     author:{
                         userpic:'data/user/face.jpg',
@@ -163,11 +48,72 @@ angular.module("myApp.controllers.Jobs", [])
                     },
                     isLiked:true
 
-                }];
-            // переменная для вакансии
-            $scope.newComment=[];
-            // прокоментировать новую вакансию
+                }
+                */
+            ];
 
+            //! волучения вакансий
+            $scope.getVacancy=function(){
+                var req={
+                    action:"getAllVacancy"
+                };
+                return PHP_server.Vacancy(req);
+            };
+            //! получение вакансий
+            $scope.getVacancy()
+                .then(function(response){
+                    // если ошибка передачи
+                    if (JSON.parse(response.data.error)){
+                        ErrorService.error(response.data)
+                    }else{
+                        // весение данных
+                        $scope.arrayVacancy=response.data.data;
+                    }
+                },function(err) {
+                    console.log('Ошибка в получении жданных');
+                    console.log(err);
+                });
+
+
+
+            // открытие странички новостй
+            $scope.searchPanel=true;
+            //фильтрация новостей
+            $scope.vacancyFilter={
+              country:"Москва",
+                city:"город"
+            };
+            // перечень городов с сервера
+            $scope.countries=[{
+                name:'Москва'
+            }];
+            // первоначальные данные
+            $scope.multiselectModel={
+
+                filter:'',
+                data:[],
+                model:[],
+                settings:{
+                    enableSearch: true,
+                    showCheckAll: false,
+                    showUncheckAll: false,
+                    buttonClasses: 'btn btn-default danciety-multiselect__btn jobs__select',
+                    displayProp: 'name',
+                    idProp: '_id',
+                    externalIdProp: ''
+                },
+                translations:{
+                    searchPlaceholder: 'Name',
+                    buttonDefaultText: 'Select a styles'
+                },
+                modelEvents:''   // не нашел
+            };
+
+
+            // переменная для комментарии  вакансии
+            $scope.newComment=[];
+
+            // прокоментировать новую вакансию
             $scope.newVacancyComment=function(index){
                 var req = {
                     action:'newComment',
@@ -318,7 +264,7 @@ angular.module("myApp.controllers.Jobs", [])
                             console.log('Ошибка получения работкников'+err);
                     });
             };
-            // поставить вакансию на свою страничку
+            // разместить вакансию
             $scope.shareVacancy = function(vacancy) {
 
                 var req = {

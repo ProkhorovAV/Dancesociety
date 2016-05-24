@@ -15,17 +15,29 @@ angular.module('myApp.services.PHP_server', [])
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,skip:data.skip,counts:data.counts , userId:user_dataService.getId()}});
             },
+            // все о вакансиях
+            Vacancy: function(data){
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action, user_id:user_dataService.get_id}});
+            },
+            Video: function(data){
+
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action,counts:data.counts,skip:data.skip, userId:1}});
+            },
+            // странички и новости
+            PublicPages: function(data){
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action}});
+            },
+
+
 
 
             /************************************/
 
 
 
-            Video: function(data){
-
-                return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,counts:data.counts,skip:data.skip, userId:user_dataService.getId}});
-            },
 
 
 
@@ -108,12 +120,9 @@ angular.module('myApp.services.PHP_server', [])
             Tag: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
-            },
-
-            Vacancy: function(data){
-                return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
             }
+
+
 
 
         }

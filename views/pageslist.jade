@@ -1,0 +1,92 @@
+.wrapper.clearfix
+    section.main-section.group-list.clearfix
+        .col-md-12.col-reset
+            .row
+                .col-md-3
+                    .danciety-multiselect(ng-dropdown-multiselect='', search-filter='multiselectModel.filter', options='multiselectModel.data', selected-model='multiselectModel.model', extra-settings='multiselectModel.settings', translation-texts='multiselectModel.translations', events='multiselectModel.modelEvents')
+                .col-md-3
+                    ui-select.jobs__select(ng-model='groupSearch.country', theme='bootstrap', ng-disabled='disabled', reset-search-input='false')
+                        ui-select-match(placeholder="Выберите страну")
+                        ui-select-choices(repeat='country in countries track by $index', refresh='getCountries($select.search)', refresh-delay='0')
+                            //div(ng-bind-html='country.name')
+                .col-md-3
+                    input.form-control.user-vacancy__input(type='text', placeholder="Город", data-ng-model='groupSearch.city')
+                .col-md-3
+                    .danciety-multiselect(ng-dropdown-multiselect='', search-filter='multiselectDances.filter', options='multiselectDances.data', selected-model='multiselectDances.model', extra-settings='multiselectDances.settings', translation-texts='multiselectDances.translations', events='multiselectDances.modelEvents')
+        .col-md-12.col-reset
+            .group-list__filtration_title.mt10
+                input.form-control.add-news__title_input(type='text', ng-model='groupSearch.q', placeholder="Имя группы")
+        .col-md-12.col-reset
+            .row
+                .col-md-3
+                    .pull-left.group-list__search-group_btn(ng-click='getGroupList();') Искать
+                .col-md-3
+                    .btn-group.w100p(dropdown='')
+                        button.btn.group-list__create-group_btn(type='button', dropdown-toggle='', ng-disabled='disabled')
+                            span(data-ng-bind='activeType')
+                            span.caret
+                        ul.dropdown-menu(role='menu', aria-labelledby='single-button')
+                            li(role='menuitem', data-ng-repeat='type in searchFilterTypes', data-ng-click='changeType(type);')
+                                a(data-ng-bind='type.label')
+                .col-md-3
+                    .pull-left.group-list__create-group_btn(ng-click='cancelSearch();') Сбросить
+                .col-md-3
+                    .group-list__create-group_btn(ng-click='newGroup();') Создать публ. страницу
+    // открыта когда публичная страница
+    .group-cart__list
+        section.group-cart.clearfix(ng-repeat='view in publicPages', ng-show='activeType=="public"')
+            .group-carts__photo(ui-sref='#')
+                a
+                    img(ng-src='{{SERVER.IMAGES_PHOTO}}{{view.photo}}')
+                .group-carts__title
+                    p.title__name(ng-bind='::view.name')
+                    //p.title__work(ng-bind='::groupTypes[group.groupType]')
+            .group-carts__footer
+                .group-carts__subscribers
+                    span.group-carts__subscribers__label Подписчиков
+                    span.group-carts__subscribers__text(ng-bind='view.repost.length')
+                .subscribe-btn__check(ng-if='!group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, true)')
+                    i.fa.fa-check
+                    span Подписаться
+                .subscribe-btn__check(ng-if='group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, false)')
+                    i.fa.fa-times
+                    span Отписаться
+                .subscribe-btn__check(ng-if='meData._id == group.creator._id', ng-click='deleteGroup(group);')
+                    // <i class="fa fa-times"></i>
+                    span Удалить страницу
+                //
+                  <div class="subscribe-btn__cancel">
+                  <i class="fa fa-check"></i>
+                  <span>Подписаться</span>
+                  </div>
+        //   открыта когда пользователь
+        .subscriber__user(ng-repeat='view in users', ng-show='activeType=="personal"')
+            section.main-section.subscriber-item.clearfix
+                .subscriber__photo(img-liquid='', ui-sref='#')
+                    a
+                        img(ng-src='{{SERVER.IMAGES_USER}}{{view.image}}')
+                    .photo__title
+                        p.title__name(ng-bind="view.firstName + ' ' + view.secondName")
+                        //p.title__work(ng-if='subscriber.work[0].company', ng-bind="'„' + subscriber.work[0].company + '”'")
+                .subscibers__description
+                    p.subscribers_years
+                        span Возраст
+                        span(ng-show='view.age', ng-bind='view.age')
+                        span(ng-show='!view.age')
+                    p.subscribers_styles
+                        span.styles_title Стили
+                        span.styles_option(ng-show='view.danceStyles.length <= 0') нет данных
+                        span.styles_option(ng-show='view.danceStyles.length > 0', ng-bind="style + ' '", ng-repeat='style in view.danceStyles')
+                .subscribers__buttons
+                    .buttons_write-message(ng-click='openUserMessage(view)')
+                        span Написать сообщение
+                    .buttons_subscribe(ng-hide='meData.id === view.id', ng-if='!view.isFollowing', ng-click="subscribeToUser(view.id, 'subscribe', $index)")
+                        i.fa.fa-check
+                        span Подписаться
+                    .buttons_subscribe(ng-hide='meData.id === view.id', ng-if='view.isFollowing', ng-click="subscribeToUser(view.id, 'unsubscribe', $index)")
+                        i.fa.fa-times
+                        span Отписаться
+                    a(ui-sref='alien.resume({id: meData._id})')
+                        .buttons_subscribe(ng-if='meData.id === view.id')
+                            i.fa.fa-desktop
+                            span Моя страница

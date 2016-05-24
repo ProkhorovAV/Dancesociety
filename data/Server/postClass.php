@@ -172,7 +172,8 @@ class Post{
                         remove=>$row['Remove'],
                         photos=>$row['Photos'],
                         videos=>$row['Videos'],
-                        comments=>$row['Comments']
+                        comments=>$row['Comments'],
+                         isPublic=>$row['IsPublic']
                     );
                         // добавление в массив и сформировали ответ по новостям
                  array_push($postArray,$postRow);
@@ -203,7 +204,8 @@ class Post{
                     remove=>$row['Remove'],
                     photos=>$row['Photos'],
                     videos=>$row['Videos'],
-                    comments=>$row['Comments']
+                    comments=>$row['Comments'],
+                    isPublic=>$row['IsPublic']
                     );
                 // добавление в массив и сформировали ответ по новостям
                 array_push($resultPost,$postRow);
@@ -214,17 +216,17 @@ class Post{
         // получения топ пользователей
         public function GetArrayTopUserPost(){
             // строка запроса на вычисления подписчиков
-            $stringQuery="SELECT Id, Subscribers FROM People";
+            $stringQuery="SELECT Id, Reposts FROM People";
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
             $row = mysql_fetch_array($query);
-            // объект с данными по id Peopele и Subscribers
+            // объект с данными по id Peopele и Reposts
             $peopleSubObj=array();
             // цикл проверки всех пользователей и внесения id подписчиков в массив
             do {
                 // вытащить переменную Likes
-                $subUserArray= explode("*",$row['Subscribers']);
+                $subUserArray= explode("*",$row['Reposts']);
                 // удалить пустую строку
                 array_pop($subUserArray);
                 // создать массив с данными  для id новостей               
@@ -264,7 +266,8 @@ class Post{
                     remove=>$row['Remove'],
                     photos=>$row['Photos'],
                     videos=>$row['Videos'],
-                    comments=>$row['Comments']
+                    comments=>$row['Comments'],
+                    isPublic=>$row['IsPublic']
                     );
                 // добавление в массив и сформировали ответ по новостям
                 array_push($resultPost,$postRow);
@@ -478,29 +481,30 @@ class Post{
             // массив новостей
             $postArray=array();
             // запрос
-            $this->stringQuery="SELECT * FROM Post WHERE Id IN (".implode(",", $_postArrayId).")";
+            $stringQuery="SELECT * FROM Post WHERE Id IN (".implode(",", $_postArrayId).")";
             // запрос
-            $this->query = mysql_query($this->stringQuery);
+            $query = mysql_query($stringQuery);
             // получение первой строки
-            $this->row = mysql_fetch_array($this->query);
+            $row = mysql_fetch_array($query);
                     // цикл вывода всех новостей пользователя
                     do {
                         $postRow=array(
-                            id=>$this->row['Id'],
-                            title=>$this->row['Title'],
-                            text=>$this->row['Text'],
-                            autor=>$this->row['Autor'],
-                            likes=>$this->row['Likes'],
-                            repost=>$this->row['Repost'],
-                            created=>$this->row['Created'],
-                            remove=>$this->row['Remove'],
-                            photos=>$this->row['Photos'],
-                            videos=>$this->row['Videos'],
-                            comments=>$this->row['Comments']
+                            id=>$row['Id'],
+                            title=>$row['Title'],
+                            text=>$row['Text'],
+                            autor=>$row['Autor'],
+                            likes=>$row['Likes'],
+                            repost=>$row['Repost'],
+                            created=>$row['Created'],
+                            remove=>$row['Remove'],
+                            photos=>$row['Photos'],
+                            videos=>$row['Videos'],
+                            comments=>$row['Comments'],
+                            isPublic=>$row['IsPublic']
                         );
                         // добавление в массив и сформировали ответ по новостям
                         array_push($postArray,$postRow);
-                    } while($this->row = mysql_fetch_array($this->query));
+                    } while($row = mysql_fetch_array($query));
             return $postArray;
         }
 
@@ -548,7 +552,7 @@ class Post{
         public function SetUserId($userId=NULL){
             $this->userId=$userId;
         }  
-
+            // получить объект новостей
         public function GetObjPost($_row){
             $postRow=array(
                 id=>$_row['Id'],
@@ -561,7 +565,8 @@ class Post{
                 remove=>$_row['Remove'],
                 photos=>$_row['Photos'],
                 videos=>$_row['Videos'],
-                comments=>$_row['Comments']
+                comments=>$_row['Comments'],
+                isPublic=>$_row['IsPublic']
             );
             return $postRow;
         }
