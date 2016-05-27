@@ -25,7 +25,14 @@ angular.module("myApp.controllers.Videos", [])
                 var params={
                     'counts': 6,
                     'skip': 0,
-                    'action':'getVideoOnIdUser'
+                    'action':'getVideoOnIdUser',
+                    data:{
+                        // заменить на текушего пользователя
+                        idPeople:'1'
+
+                    }
+
+
                 };
                 this.config = $.extend({}, params, options);
                 return PHP_server.Video(this.config);

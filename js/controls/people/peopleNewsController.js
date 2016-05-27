@@ -1,6 +1,107 @@
 angular.module('myApp.controllers.PeopleNews',[])
-.controller('PeopleNewsCtrl',['$scope','PHP_server','notify','$modal',
-    function($scope,PHP_server,notify,$modal){
+.controller('PeopleNewsCtrl',['$scope','PHP_server','notify','$modal','$stateParams',
+    function($scope,PHP_server,notify,$modal,$stateParams){
+
+        // новости
+        $scope.posts=[
+            /*
+            {
+            author:{
+                userpic:'data/user/face.jpg',
+                firstname:'Sasha',
+                secondname:'Prokhorov',
+                _id:1
+            },
+            created:'12.12.2000',
+            isShare:true,
+            copyEntity:{
+                author:{
+                    userpic:'data/user/face.jpg',
+                    firstname:'Sasha',
+                    secondname:'Prokhorov'
+                },
+                created:'12.12.2006',
+                country:{
+                    name:'USA'
+                },
+                city:'USA',
+                scopes:[1,2,3],
+                dances:[1,2,3],
+                price:123,
+                startDate:'12.12.2009',
+                endDate:'12.12.2000',
+                startAge:12,
+                endAge:23,
+                startHeight:123,
+                endHeight:123,
+                text:'text'
+            },
+            title:'title',
+            text:'text',
+            copyFromType:'',
+            photos:[{
+                path:'data/img/bg1.jpg'
+            }],
+            videos:[{
+                thumb:'data/img/bg1.jpg',
+                title:'название',
+                likes:1
+            }],
+            reposts:11,
+            isLiked:true,
+            likes:12,
+            comments:{
+                data:[{
+                    author:{
+                        userpic:'data/user/face.jpg',
+                        firstname:'Sasha',
+                        secondname:"Prokhorov",
+                        _id:1
+                    },
+                    created:"12.12.2009",
+                    text:'text'
+
+                }]
+            },
+            configComments:[{
+
+            }
+
+            ]
+
+
+        }*/];
+
+        //! получения user
+        $scope.getPostOnIdUser=function(){
+            var req={
+                action:"getPostDataCountsIdUser",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.Post(req);
+        };
+        //! получение user
+        $scope.getPostOnIdUser()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.posts=response.data.data;
+                    //console.log(response.data.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
 
         var configComments = {
             'count': 3,
@@ -104,71 +205,7 @@ angular.module('myApp.controllers.PeopleNews',[])
     $scope.newTags=[{
 
     }];
-    // посты
-    $scope.posts=[{
-        author:{
-            userpic:'data/user/face.jpg',
-            firstname:'Sasha',
-            secondname:'Prokhorov',
-            _id:1
-        },
-        created:'12.12.2000',
-        isShare:true,
-        copyEntity:{
-            author:{
-                userpic:'data/user/face.jpg',
-                firstname:'Sasha',
-                secondname:'Prokhorov'
-                },
-            created:'12.12.2006',
-            country:{
-                name:'USA'
-            },
-            city:'USA',
-            scopes:[1,2,3],
-            dances:[1,2,3],
-            price:123,
-            startDate:'12.12.2009',
-            endDate:'12.12.2000',
-            startAge:12,
-            endAge:23,
-            startHeight:123,
-            endHeight:123,
-            text:'text'
-        },
-        title:'title',
-        text:'text',
-        copyFromType:'',
-        photos:[{
-            path:'data/img/bg1.jpg'
-        }],
-        videos:[{
-            thumb:'data/img/bg1.jpg',
-            title:'название',
-            likes:1
-        }],
-        reposts:11,
-        isLiked:true,
-        likes:12,
-        comments:{
-            data:[{
-                author:{
-                    userpic:'data/user/face.jpg',
-                    firstname:'Sasha',
-                    secondname:"Prokhorov",
-                    _id:1
-                },
-                created:"12.12.2009",
-                text:'text'
 
-            }]
-        },
-        configComments:[{
-
-        }]
-
-
-    }];
     // удалить пост
     $scope.removePost = function(postId, index) {
         var req ={
@@ -404,68 +441,6 @@ angular.module('myApp.controllers.PeopleNews',[])
                     });
                 });
         }
-
-
-        var getAllPosts = function() {
-            /*
-            var req = {
-                first: 'posts',
-                second: 'user'
-            };
-            if ($stateParams.id) {
-                req.id = $stateParams.id;
-            } else {
-                delete req.id;
-            }
-*/
-            var req={
-                action:'getAllPost'
-            }
-            PHP_server.Post(req)
-                .then(function(response) {
-                    //$scope.posts = response.data;
-                    console.log(response.data);
-                    /*
-                    $scope.posts.forEach(function(el, id) {
-                        el.configComments = angular.copy(configComments);
-                        if(el.copyFromType == 'post') {
-                            el.isShare = true;
-                            el.photos = el.copyEntity.photos;
-                            el.title = el.copyEntity.title;
-                            el.text = el.copyEntity.text;
-                            el.videos = el.copyEntity.videos;
-                        }
-                        if(el.copyFromType == 'vacancy') {
-                            el.isShare = true;
-                            el.title = el.copyEntity.title;
-                            el.text = el.copyEntity.text;
-                            el.copyEntity.dances.map(function(el2, index) {
-                                el.copyEntity.dances[index] = el2.name;
-                                return el2;
-                            });
-                        }
-                        $scope.getComments(el);
-                    });
-                    */
-                });
-        };
-
-
-
-        getAllPosts();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

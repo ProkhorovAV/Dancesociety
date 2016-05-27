@@ -1,29 +1,69 @@
-angular.module('myApp.controllers.GroupSubscribers',[])
-.controller('GroupSubscribersCtrl',['$scope','PHP_server','notify',
-    function($scope,PHP_server,notify){
-    // главная
+angular.module('myApp.controllers.PageSubscribers',[])
+.controller('PageSubscribersCtrl',['$scope','PHP_server','notify','$stateParams',
+    function($scope,PHP_server,notify,$stateParams){
+
+        // подписчики
+        $scope.subscribers=[
+            /*{
+            user:{
+                userpic:'data/user/face.jpg',
+                firstname:'Sasha',
+                secondname:'Prohorov',
+                work:[{
+                    company:'company'
+                }],
+                personalData:{
+                    age:10
+                },
+                danceStyles:[{
+                    name:'Sasha'
+                }],
+                _id:1,
+                isFollowing:false
+            }
+        }
+        */
+        ];
+
+        //! получения новостей от группы
+        $scope.getPublicPageOnId=function(){
+            var req={
+                action:"getSubscribersOnIdPage",
+                data:{
+                    idPage:$stateParams.id
+                }
+            };
+            return PHP_server.Vacancy(req);
+        };
+        //! получение новостей от группы
+        $scope.getPublicPageOnId()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.subscribers=response.data.data;
+                    console.log(response.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
+
+
+
+        // главная
     $scope.meData={
         _id:1
     };
-    // подписчики
-    $scope.subscribers=[{
-        user:{
-            userpic:'data/user/face.jpg',
-            firstname:'Sasha',
-            secondname:'Prohorov',
-            work:[{
-                company:'company'
-            }],
-            personalData:{
-                age:10
-            },
-            danceStyles:[{
-                name:'Sasha'
-            }],
-            _id:1,
-            isFollowing:false
-        }
-    }];
+
     // подписаться
     $scope.subscribeToUser=function(user,action,index){
 

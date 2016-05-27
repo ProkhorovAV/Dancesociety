@@ -6,6 +6,8 @@
 
 
 include_once(dirname(__FILE__).'/Connection.php');
+include_once(dirname(__FILE__).'/packageClass.php'); 
+include_once(dirname(__FILE__).'/querySQLClass.php'); 
 //include $_SERVER['DOCUMENT_ROOT'].'/data/Php/Connection.php';
 // соединение с базой SQL
 $connectionBase = mysql_connect($hostBase,$userBase,$passwordBase);
@@ -15,19 +17,34 @@ if ((!$connectionBase)||(!mysql_select_db($dbBase,$connectionBase)))
 {exit(mysql_error());}
 mysql_query('SET NAMES utf8');
 /***** тест класса********/
-/*
+  /*
 $json=json_decode(file_get_contents('php://input'));
+
 $obj=new Vacancy();
-$obj->GetAllVacancy(); 
- 
+// получение всех вакансий
+//$obj->GetAllVacancy(); 
+// поучение вакансий по id
+//$obj->SetUserId($json->data->idPeople); 
+//$obj->getVacancyOnId();    
+// получение вакансий по id page  
+$obj->SetPageId($json->data->idPage); 
+$obj->getVacancyOnIdPage();
 
 echo json_encode($obj->SendData());
-*/
+*/  
 
 /******коней теста*******/
 
 // данные по пользователю
 class Vacancy{
+    // id page
+    private $idPage=NULL;
+     // id пользователя
+    private $idUser=NULL;
+     // для упаковки
+    private $packege=NULL;
+    // для запросов
+    private $querySQL=NULL;
 
     // отправка данных
     private $sendArrayData=array();
@@ -57,11 +74,61 @@ class Vacancy{
         $this->statusErr=false;
         // отправляем данные
         $this->sendArrayData=$arrayVacancy;
+ 
+    }
+     // получение   вакансий по id people
+    public function GetVacancyOnId(){
+        // получить все вакансии
+        $arrayVacancy=$this->GetVacancyDataOnIdPeople();
+        //  сформировать пользователя
+        $arrayVacancy=$this->SetAutorInPost($arrayVacancy);
+        //  расщипить коментарии
+        $arrayVacancy=$this->SetCommentsArray($arrayVacancy);
+        // расщипить видео
+        $arrayVacancy=$this->SetVideoArray($arrayVacancy);
+        // расщипиь фото
+        $arrayVacancy=$this->SetPhotoArray($arrayVacancy);
+        // рсщипить подписки
+        $arrayVacancy=$this->SetRepostArray($arrayVacancy);
+        // расщипить лайки
+         $arrayVacancy=$this->SetLikesArray($arrayVacancy);
+         // расщипить стили
+        $arrayVacancy=$this->SetStyleArray($arrayVacancy);
+ 
+        // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayVacancy;
+
+    }
+    // получение ваканси по id page
+    public function GetVacancyOnIdPage(){
+        // получить все вакансии
+        $arrayVacancy=$this->GetVacancyDataOnIdPage();
+        //  сформировать пользователя
+        $arrayVacancy['vacancy']=$this->SetAutorInPost($arrayVacancy['vacancy']);
+        //  расщипить коментарии
+        $arrayVacancy['vacancy']=$this->SetCommentsArray($arrayVacancy['vacancy']);
+        // расщипить видео
+        $arrayVacancy['vacancy']=$this->SetVideoArray($arrayVacancy['vacancy']);
+        // расщипиь фото
+        $arrayVacancy['vacancy']=$this->SetPhotoArray($arrayVacancy['vacancy']);
+        // рсщипить подписки
+        $arrayVacancy['vacancy']=$this->SetRepostArray($arrayVacancy['vacancy']);
+        // расщипить лайки
+         $arrayVacancy['vacancy']=$this->SetLikesArray($arrayVacancy['vacancy']);
+         // расщипить стили
+        $arrayVacancy['vacancy']=$this->SetStyleArray($arrayVacancy['vacancy']);
+ 
+        // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayVacancy;
 
     }
 ///////////////////// дополнительные функции////////
-
-        // получить все вакансии
+        
+   // получить все вакансии
         public function  GetVacancyData(){
             // вакансии   
             $postArray=array();
@@ -73,213 +140,120 @@ class Vacancy{
             $row = mysql_fetch_array($query);
             // объект с данными 
             do {
-                    $postRow=array(
-                        id=>$row['Id'],
-                        title=>$row['Title'],
-                        text=>$row['Text'],
-                        autor=>$row['Autor'],
-                        likes=>$row['Likes'],
-                        repost=>$row['Repost'],                         
-                        photos=>$row['Photos'],
-                        videos=>$row['Videos'],
-                        comments=>$row['Comments'],
-                        country=>$row['Country'],                         
-                        city=>$row['City'],
-                        start=>$row['Start'],
-                        end=>$row['End'],
-                        price=>$row['Price'],                         
-                        heightStart=>$row['HeightStart'],
-                        heightEnd=>$row['HeightEnd'],
-                        ageStart=>$row['AgeStart'],
-                        ageEnd=>$row['AgeEnd'],
-                        styles=>$row['Styles'],
-                        isPublic=>$row['IsPublic'],
-                        created=>$row['Created']                        
-                    );
+                    $postRow=$this->packege->vacancy($row);                        
                         // добавление в массив и сформировали ответ по новостям
                  array_push($postArray,$postRow);
             } while($row = mysql_fetch_array($query));
             return $postArray;
         }
-
-        // распоковать стили
-        public function SetStyleArray($_arrayPosts){
-            for ($i=0;$i< count($_arrayPosts); $i++) { 
-                // расщипить                
-                $commentArray=explode("*",$_arrayPosts[$i]['styles']);
-                // удалеие последнего элемента пустого                       
-                array_pop($commentArray);
-                $_arrayPosts[$i]['styles']= $commentArray;
-            }
-            return $_arrayPosts;
-        }
         // распокавать автора
         public function SetAutorInPost($_arrayPosts){
   
-                // расщепление массива авторов          
-                 for ($i=0; $i <count($_arrayPosts) ; $i++) {   
-
-                    $idAutors=$_arrayPosts[$i]['autor'];
-                    // строка запроса
-                    $stringQuery="SELECT * FROM People WHERE Id=$idAutors";
-                    // запрос
-                    $query = mysql_query($stringQuery);
-                    // получение данных
-                    $row = mysql_fetch_array($query);
-                    $_arrayPosts[$i]['autor']=array(
-                            id=>$idAutors,
-                            name=>$row['FirstName'],
-                            secondName=>$row['SecondName'],
-                            firstName=>$row['FirstName'],
-                            image=>$row['Image']
-                        );
-                 } 
+                 $_arrayPosts=$this->querySQL->openDataOnAutor($_arrayPosts);
                 return  $_arrayPosts;
         }
-
         // формирование массива коментариев
         public function SetCommentsArray($_arrayPosts){   
                      
-                // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                     // массив комментариев
-                    $comments=array();       
-                    // расщипить                
-                    $commentArray=explode("*",$_arrayPosts[$i]['comments']);
-                    // удалеие последнего элемента пустого                       
-                    array_pop($commentArray);
-                    // запросы на комментарии  
-                    for ($i1=0; $i1 <count($commentArray); $i1++) { 
-                        // запрос на комментарий с автором
-                        $stringQuery="SELECT People.Id as UserId, People.Image, People.FirstName, People.SecondName, Comment.*
-                                      FROM Comment INNER JOIN People on (Comment.Id=$commentArray[$i1]) where (Comment.Autor=People.Id)";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение данных
-                        $row = mysql_fetch_array($query);
-                        $element=array(
-                            userId=>$row['UserId'],
-                            text=>$row['Text'],
-                            userPhoto=>$row['Image'],
-                            userFirstName=>$row['FirstName'],
-                            userSecondName=>$row['SecondName'],
-                            created=>$row['Created']
-                            );
-                        array_push($comments,$element);  
-                    }
-                    $_arrayPosts[$i]['comments']=$comments;                                      
-                } 
+            $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Comments');    
+                
             return $_arrayPosts;            
-        }        
+        }      
 
         // формирование массива видео
         public function SetVideoArray($_arrayPosts){                 
-               // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $videoArray=explode("*",$_arrayPosts[$i]['videos']);
-                    // удалеие последнего элемента пустого                       
-                    array_pop($videoArray);
-                    // переменная результата
-                    $resultVideoArray=array();
-                    // цикл получения полного перечня данных
-                    for ($i1=0; $i1 < count($videoArray); $i1++) { 
-                         // запрос
-                        $stringQuery="SELECT * FROM Video WHERE Id=$videoArray[$i1]";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение первой строки
-                        $row = mysql_fetch_array($query);
-                        // свормировать лайки
-                        $elementLikes=explode("*",$row['Likes']);
-                        // удалить пустую
-                        array_pop( $elementLikes);
-                        $element=array(
-                                id=>$row['Id'],
-                                src=>$row['Src'],
-                                title=>$row['Title'],
-                                likes=>$elementLikes,                               
-                                autor=>$row['Autor'],
-                                created=>$row['Created'],
-                                repost=>$row['Repost'],
-                                remove=>$row['Remove'],
-                                imageSrc=>$row['ImageSrc']
-                            );
-                        array_push($resultVideoArray, $element);
-                    }    
-                    // переопреелить          
-                    $_arrayPosts[$i]['videos']=$resultVideoArray; 
-                } 
+                             
+            $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Videos');  
+
             return $_arrayPosts;            
-        }        
+        }   
 
         // формирование массива фотографий
         public function SetPhotoArray($_arrayPosts){  
-                // массив переменных id фото
-                 $photoArray=array();                 
-                // цикл получения ссылок на видео файлы                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $photoArray=explode("*",$_arrayPosts[$i]['photos']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($photoArray);  
-                     // массив конечных распакованных фото
-                    $resultPhotoArray=array(); 
-                    // запрос на каждое фото
-                    for ($i1=0; $i1 < count($photoArray); $i1++) { 
-                         // запрос
-                        $stringQuery="SELECT * FROM Photo WHERE Id=$photoArray[$i1]";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение первой строки
-                        $row = mysql_fetch_array($query);
-                        $element=array(
-                                id=>$row['Id'],
-                                src=>$row['Src'],
-                                title=>$row['Title'],
-                                likes=>$row['Likes'],
-                                autor=>$row['Autor'],
-                                created=>$row['Created'],
-                                repost=>$row['Repost'],
-                                remove=>$row['Remove']
-                            );
-                        array_push($resultPhotoArray, $element);
-                    }
-                     // переопреелить
-                    $_arrayPosts[$i]['photos']=$resultPhotoArray;  
-                }
+           
+            $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Photos');  
            
             return $_arrayPosts;            
         }
         // формирования массива репостов
         public function SetRepostArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $repostArray=explode("*",$_arrayPosts[$i]['repost']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($repostArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['repost']=$repostArray;                                      
-                } 
+
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'reposts');
+            
             return $_arrayPosts;     
         }
 
         // формирования массива лайков
         public function SetLikesArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $likeArray=explode("*",$_arrayPosts[$i]['likes']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($likeArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['likes']=$likeArray;                                      
-                } 
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'likes');
+             
             return $_arrayPosts;     
         }
 
+        // распоковать стили
+        public function SetStyleArray($_arrayPosts){
 
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'styles');
+ 
+            return $_arrayPosts;
+        }
+        
+        // получить вакансии по id people
+        public function GetVacancyDataOnIdPeople(){
+            // вакансии   
+            $postArray=array();
+            // запрос на все вакансии
+            $stringQuery="SELECT * FROM Vacancys WHERE Autor=$this->idUser";
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными 
+            do {
+                    $postRow =$this->packege->vacancy($row);
+                        // добавление в массив и сформировали ответ по новостям
+                 array_push($postArray,$postRow);
+            } while($row = mysql_fetch_array($query));
+            return $postArray;
+        }
+  
+        // получить вакансии по id page
+        public function GetVacancyDataOnIdPage(){
+                // вакансии   
+                $postArray=array();
+                // запрос на все вакансии
+                $stringQuery="SELECT * FROM PublicPages WHERE Id=$this->idPage";           
+                // запрос
+                $query = mysql_query($stringQuery);
+                // получение первой строки
+                $row = mysql_fetch_array($query);
+                $posts=$this->packege->arrayData($row,'vacancy');            
+                // сохранение данных о публичной странице
+                $PublicPage=$row;
+                  // запрос на все вакансии
+                $stringQuery="SELECT * FROM Vacancy WHERE Id IN (".implode(",", $posts).")";           
+                // запрос
+                $query = mysql_query($stringQuery);
+                // получение первой строки
+                $row = mysql_fetch_array($query);
+                // объект с данными 
+                do {
+                    $postRow=$this->packege->vacancy($row);
+                    // добавление в массив и сформировали ответ по новостям
+                    array_push($postArray,$postRow);
+                } while($row = mysql_fetch_array($query));
+                $megaData=$this->packege->publicPage($postArray,'vacancy',$PublicPage);  
+            return $megaData;
+        }
+        // установить id пользователя
+        public function SetUserId($_idUser){
+            $this->idUser=$_idUser;
+        }
+
+        // установить id page 
+        public function SetPageId($_idPage){
+            $this->idPage=$_idPage;
+        }
 
 
 
@@ -287,6 +261,10 @@ class Vacancy{
 
         // конструктор
         public function __construct(){
+             // для упаковки
+             $this->packege=new Pack();
+             // для запросов
+             $this->querySQL=new QuerySQL();
         }
         // возврат ошибок
         public function GetStatusError(){            

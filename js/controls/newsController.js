@@ -62,7 +62,10 @@ angular.module("myApp.controllers.News", [])
                 var params={
                     'counts': 6,
                     'skip': $scope.reqParams.postSubscribers,
-                    'action':'getPostDataCountsIdUser'
+                    'action':'getPostDataCountsIdUser',
+                    data:{
+                        idPeople:user_dataService.getId()
+                    }
                 };
                 this.config = $.extend({}, params, options);
                 return PHP_server.Post(this.config);

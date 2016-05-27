@@ -1,40 +1,61 @@
 angular.module('myApp.controllers.PeopleGallery',[])
-.controller('PeopleGalleryCtrl',['$scope','PHP_server','notify',
-    function($scope,PHP_server,notify){
+.controller('PeopleGalleryCtrl',['$scope','PHP_server','notify','$stateParams',
+    function($scope,PHP_server,notify,$stateParams){
     // профайл
     $scope.user={
         isMyProfile:true
     };
     // все фото
-    $scope.allPhoto=[{
+    $scope.allPhoto=[/*{
         path:'data/img/bg1.jpg',
         title:'title',
         likes:11
-    }];
-    $scope.newPhotos=[{
-        progress:true, //50
-        data:{
-            path:'data/user/face.jpg',
-            title:'title'
-        }
-    }];
-        // получить все картнки
-        $scope.getImages = function() {
-            var req = {
-                action:'getAllImages',
-                'first': 'photos',
-                'second': 'user',
-                'id': $scope.user._id,
-                'count': 100
-            };
-            PHP_server.Images(req)
-                .then(function(response) {
-                    console.log(response);
-                    //$scope.allPhoto = response.data;
-                });
-        };
+    }*/];
 
-    $scope.getImages();
+        //! получения фотографий
+        $scope.getPhotoOnId=function(){
+            var req={
+                action:"getAllPhotoOnIdPeople",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.User(req);
+        };
+        //! получение фотографий
+        $scope.getPhotoOnId()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.allPhoto=response.data.data;
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+        $scope.newPhotos=[{
+            progress:true, //50
+            data:{
+                path:'data/user/face.jpg',
+                title:'title'
+            }
+        }];
     // удалить картинку
     $scope.removeImage=function(photo){
         // нет определения функции

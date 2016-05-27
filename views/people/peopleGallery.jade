@@ -7,7 +7,7 @@ section.user-gallery
                         .photo__image-header(ng-show='user.isMyProfile')
                             i.fa.fa-times.remove-image(ng-click='removeImage(photo);')
                         .photo__image-block(ng-click='openImage(photo, user, allPhoto)')
-                            img(ng-src='{{photo.path}}')
+                            img(ng-src='{{SERVER.IMAGES_PHOTO}}{{photo.src}}')
                         .photo__image-info
                             .image-info__name(ng-bind='photo.title')
                             .image-info__buttons.clearfix
@@ -17,7 +17,7 @@ section.user-gallery
                                   <span>11</span>
                                   </div>
                                 .image-info__like.no-select(ng-click='likeImage($index)')
-                                    span(ng-bind='photo.likes')
+                                    span(ng-bind='photo.likes.length')
                                     i.image-info__like-btn
             tab(heading="Добавить фото", ng-show='user.isMyProfile')
                 .add-photo__button(ng-file-select='', ng-file-change='upload($files)', ng-multiple='true')

@@ -1,1 +1,30 @@
-<section class="info-block clearfix"><div ng-hide="user.isMyProfile" class="col-md-6 col-sm-6 col-reset"><section class="main-section add-review clearfix"><textarea type="text" rows="3" placeholder="Если вы уже работали с этим человеком, можете оставить о нем отзыв." ng-model="newReview.text" class="form-control add-review__description-area"></textarea><div class="add-review__control-btns clearfix"><div ng-click="newReview();" class="control-btns__add-review_btn"><span>Оставить отзыв</span></div><div ng-init="newReview.graduation = true" class="control-btns__select_btn"><label ng-model="newReview.graduation" btn-radio="true" class="select_btn__plus"><span>+</span></label><label ng-model="newReview.graduation" btn-radio="false" class="select_btn__minus"><span>-</span></label></div></div></section></div><div ng-hide="user.isMyProfile" class="col-md-6 col-sm-6 col-reset"><section class="main-section stat-review clearfix"><div class="stat-review_head"></div><div class="stat-review_bottom"><p class="stat-review__total"><span>Всего отзывов</span><span>:</span><span data-ng-bind="reviewsList.summary.total"></span></p><div class="stat-review_bottom__stat clearfix"><div class="stat__graduation"><span>+</span></div><span class="stat__num"><span>Положительные</span><span>:</span><span ng-bind="reviewsList.summary.positive"></span></span></div><div class="stat-review_bottom__stat clearfix"><div class="stat__graduation"><span>-</span></div><span class="stat__num"><span>Отрицательные</span><span>:</span><span ng-bind="reviewsList.summary.negative"></span></span></div></div></section></div><div ng-repeat="review in reviewsList.data" class="col-md-6 col-sm-6 col-reset"><section class="main-section review-item clearfix"><div ng-if="(review.author._id === meData._id)" class="review-item__remove-btn"><i ng-click="removeReview($index)" class="fa fa-times remove-image"></i></div><div class="review-item__header clearfix"><div ui-sref="#" class="review-item__header_img"><a><img ng-src="{{review.author.userpic}}"/></a></div><div class="review-item__header_description"><div class="review-author"><div class="author_name"><a ui-sref="#" ng-bind="review.author.firstname + ' ' + review.author.secondname"></a></div><div class="author__post-graduation"><span ng-if="review.positive" ng-bind="'+'"></span><span ng-if="!review.positive" ng-bind="'-'"></span></div></div><div class="review-date"><span ng-bind="review.created"></span></div></div></div><div class="review-item__bottom"><p ng-bind="review.text"></p></div></section></div></section>
+<section class="info-block clearfix"><!-- вкладка открывается в момент не моего профиля--><!--.col-md-6.col-sm-6.col-reset(ng-hide='user.isMyProfile')section.main-section.add-review.clearfix
+    textarea.form-control.add-review__description-area(type='text',  rows='3', placeholder="Если вы уже работали с этим человеком, можете оставить о нем отзыв.", ng-model='newReview.text')
+    .add-review__control-btns.clearfix
+        .control-btns__add-review_btn(ng-click='newReview();')
+            span Оставить отзыв
+        .control-btns__select_btn(ng-init='newReview.graduation = true')
+            label.select_btn__plus(ng-model='newReview.graduation', btn-radio='true')
+                span +
+            label.select_btn__minus(ng-model='newReview.graduation', btn-radio='false')
+                span ---><!--.col-md-6.col-sm-6.col-reset(ng-hide='user.isMyProfile')section.main-section.stat-review.clearfix
+    .stat-review_head
+    .stat-review_bottom
+        p.stat-review__total
+            span Всего отзывов
+            span :
+            span(data-ng-bind='reviewsList.summary.total')
+        .stat-review_bottom__stat.clearfix
+            .stat__graduation
+                span +
+            span.stat__num
+                span Положительные
+                span :
+                span(ng-bind='reviewsList.summary.positive')
+        .stat-review_bottom__stat.clearfix
+            .stat__graduation
+                span -
+            span.stat__num
+                span Отрицательные
+                span :
+                span(ng-bind='reviewsList.summary.negative')--><div ng-repeat="review in reviewsArray" class="col-md-6 col-sm-6 col-reset"><section class="main-section review-item clearfix"><div ng-if="(review.author._id === meData._id)" class="review-item__remove-btn"><i ng-click="removeReview($index)" class="fa fa-times remove-image"></i></div><div class="review-item__header clearfix"><div ui-sref="#" class="review-item__header_img"><a><img ng-src="{{SERVER.IMAGES_USER}}{{review.autor.image}}"/></a></div><div class="review-item__header_description"><div class="review-author"><div class="author_name"><a ui-sref="#" ng-bind="review.author.firstName + ' ' + review.author.secondName"></a></div><div class="author__post-graduation"><span ng-if="review.positive==&quot;0&quot;" ng-bind="'+'"></span><span ng-if="review.positive==&quot;1&quot;" ng-bind="'-'"></span></div></div><div class="review-date"><span ng-bind="review.created"></span></div></div></div><div class="review-item__bottom"><p ng-bind="review.text"></p></div></section></div></section>

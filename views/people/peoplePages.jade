@@ -1,22 +1,22 @@
 .wrapper.clearfix
     .group-cart__list
-        section.group-cart.clearfix(ng-repeat='group in groupList')
+        section.group-cart.clearfix(ng-repeat='public in publicList')
             .group-carts__photo(ui-sref='#')
                 a
-                    img(ng-src='{{group.photo}}')
+                    img(ng-src='{{SERVER.IMAGES_PHOTO}}{{public.photo}}')
                 .group-carts__title
-                    p.title__name(ng-bind='group.name')
-                    p.title__work(ng-bind='groupTypes[group.groupType]')
+                    p.title__name(ng-bind='public.text')
+                    p.title__work(ng-bind='groupTypes[public.groupType]')
             .group-carts__footer
                 .group-carts__subscribers
                     span.group-carts__subscribers__label Подписчиков:
-                    span.group-carts__subscribers__text(ng-bind='group.membersCount')
-                .subscribe-btn__check(ng-if='!group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, true)')
+                    span.group-carts__subscribers__text(ng-bind='public.repost.length')
+                .subscribe-btn__check(ng-if='!public.dick && meData._id !== public.creator._id', ng-click='subscribeToGroup(public, true)')
                     i.fa.fa-check
                     span Подписаться
-                .subscribe-btn__check(ng-if='group.dick && meData._id !== group.creator._id', ng-click='subscribeToGroup(group, false)')
+                .subscribe-btn__check(ng-if='public.dick && meData._id !== public.creator._id', ng-click='subscribeToGroup(public, false)')
                     i.fa.fa-times
                     span Отписаться
-                .subscribe-btn__check(ng-if='meData._id == group.creator._id', ng-click='deleteGroup(group);')
+                .subscribe-btn__check(ng-if='meData._id == public.creator._id', ng-click='deleteGroup(group);')
                     // <i class="fa fa-times"></i>
                     span Удалить страницу

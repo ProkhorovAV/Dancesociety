@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e20c3956-fb70-48c9-92da-7c3f1e23ecaf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/Server/photoClass.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pageslist.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageGallery.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageHeder.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageNews.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageResume.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageSubscribers.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageVacancy.jade" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/pages/pageVideo.jade" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupGallery.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupGallery.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupHeder.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupHeder.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupNews.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupNews.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupResume.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupResume.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupSubscribers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupSubscribers.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupVacancy.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupVacancy.jade" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupVideo.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/views/group/groupVideo.jade" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/Date.php" afterPath="$PROJECT_DIR$/data/Server/Date.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/photoClass.php" afterPath="$PROJECT_DIR$/data/Server/photoClass.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/postClass.php" afterPath="$PROJECT_DIR$/data/Server/postClass.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/publicClass.php" afterPath="$PROJECT_DIR$/data/Server/publicClass.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/userClass.php" afterPath="$PROJECT_DIR$/data/Server/userClass.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/vacancyClass.php" afterPath="$PROJECT_DIR$/data/Server/vacancyClass.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Server/videoClass.php" afterPath="$PROJECT_DIR$/data/Server/videoClass.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.jade" afterPath="$PROJECT_DIR$/index.jade" />
@@ -15,20 +37,46 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/config/router.js" afterPath="$PROJECT_DIR$/js/config/router.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/jobsController.js" afterPath="$PROJECT_DIR$/js/controls/jobsController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/newsController.js" afterPath="$PROJECT_DIR$/js/controls/newsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/photosController.js" afterPath="$PROJECT_DIR$/js/controls/photosController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/pageslistsController.js" afterPath="$PROJECT_DIR$/js/controls/pageslistsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleFollowersController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleFollowersController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleGalleryController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleGalleryController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleHederController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleHederController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleNewsController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleNewsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peoplePagesController.js" afterPath="$PROJECT_DIR$/js/controls/people/peoplePagesController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleResumeController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleResumeController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleReviewController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleReviewController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleVacancyController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleVacancyController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/people/peopleVideoController.js" afterPath="$PROJECT_DIR$/js/controls/people/peopleVideoController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controls/videosController.js" afterPath="$PROJECT_DIR$/js/controls/videosController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/service/PHP_serverService.js" afterPath="$PROJECT_DIR$/js/service/PHP_serverService.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/jobs.html" afterPath="$PROJECT_DIR$/views/jobs.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/jobs.jade" afterPath="$PROJECT_DIR$/views/jobs.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/left_menu.html" afterPath="$PROJECT_DIR$/views/left_menu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/left_menu.jade" afterPath="$PROJECT_DIR$/views/left_menu.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/news_new.html" afterPath="$PROJECT_DIR$/views/news_new.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/news_new.jade" afterPath="$PROJECT_DIR$/views/news_new.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/photos.html" afterPath="$PROJECT_DIR$/views/photos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/photos.jade" afterPath="$PROJECT_DIR$/views/photos.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/videos.html" afterPath="$PROJECT_DIR$/views/videos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/videos.jade" afterPath="$PROJECT_DIR$/views/videos.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/grouplistsController.js" afterPath="$PROJECT_DIR$/js/controls/pageslistsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleFollowers.html" afterPath="$PROJECT_DIR$/views/people/peopleFollowers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleFollowers.jade" afterPath="$PROJECT_DIR$/views/people/peopleFollowers.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleGallery.html" afterPath="$PROJECT_DIR$/views/people/peopleGallery.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleGallery.jade" afterPath="$PROJECT_DIR$/views/people/peopleGallery.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleHeder.html" afterPath="$PROJECT_DIR$/views/people/peopleHeder.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleHeder.jade" afterPath="$PROJECT_DIR$/views/people/peopleHeder.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleNews.html" afterPath="$PROJECT_DIR$/views/people/peopleNews.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleNews.jade" afterPath="$PROJECT_DIR$/views/people/peopleNews.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peoplePages.html" afterPath="$PROJECT_DIR$/views/people/peoplePages.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peoplePages.jade" afterPath="$PROJECT_DIR$/views/people/peoplePages.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleResume.html" afterPath="$PROJECT_DIR$/views/people/peopleResume.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleResume.jade" afterPath="$PROJECT_DIR$/views/people/peopleResume.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleReview.html" afterPath="$PROJECT_DIR$/views/people/peopleReview.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleReview.jade" afterPath="$PROJECT_DIR$/views/people/peopleReview.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleSubscribers.html" afterPath="$PROJECT_DIR$/views/people/peopleSubscribers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleSubscribers.jade" afterPath="$PROJECT_DIR$/views/people/peopleSubscribers.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleVacancy.html" afterPath="$PROJECT_DIR$/views/people/peopleVacancy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleVacancy.jade" afterPath="$PROJECT_DIR$/views/people/peopleVacancy.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleVideo.html" afterPath="$PROJECT_DIR$/views/people/peopleVideo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/people/peopleVideo.jade" afterPath="$PROJECT_DIR$/views/people/peopleVideo.jade" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupGalleryController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageGalleryController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupHederController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageHederController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupNewsController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageNewsController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupResumeController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageResumeController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupSubscribersController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageSubscribersController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupVacancyController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageVacancyController.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/js/controls/group/groupVideoController.js" afterPath="$PROJECT_DIR$/js/controls/page/pageVideoController.js" />
     </list>
     <ignored path="dancietyMain.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,72 +96,56 @@
     <favorites_list name="dancietyMain" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.61977184">
+    <splitter split-orientation="horizontal" split-proportion="0.5538657">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="indexController.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/js/controls/indexController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="7" column="28" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="28" />
+                  <caret line="8" column="29" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="29" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pageslist.jade" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pageslist.jade">
+          <file leaf-file-name="router.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/config/router.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+                  <caret line="195" column="30" selection-start-line="195" selection-start-column="23" selection-end-line="195" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#214#468#0" expanded="false" />
+                    <element signature="e#497#922#0" expanded="false" />
+                    <element signature="e#951#1372#0" expanded="false" />
+                    <element signature="e#1403#1830#0" expanded="false" />
+                    <element signature="e#1861#2288#0" expanded="false" />
+                    <element signature="e#2322#2759#0" expanded="false" />
+                    <element signature="e#2821#3485#0" expanded="false" />
+                    <element signature="e#3523#3683#0" expanded="false" />
+                    <element signature="e#3719#3873#0" expanded="false" />
+                    <element signature="e#3933#4093#0" expanded="false" />
+                    <element signature="e#4162#4336#0" expanded="false" />
+                    <element signature="e#4411#4580#0" expanded="false" />
+                    <element signature="e#4619#4782#0" expanded="false" />
+                    <element signature="e#4821#4984#0" expanded="false" />
+                    <element signature="e#5021#5178#0" expanded="false" />
+                    <element signature="e#5215#5372#0" expanded="false" />
+                    <element signature="e#5433#6182#0" expanded="false" />
+                    <element signature="e#6218#6379#0" expanded="false" />
+                    <element signature="e#6413#6562#0" expanded="false" />
+                    <element signature="e#6599#6757#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pageVideoController.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/js/controls/page/pageVideoController.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.2467344">
+                  <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="pageslistsController.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/js/controls/pageslistsController.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.59216255">
-                  <caret line="24" column="16" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#1062#1482#0" expanded="false" />
-                    <element signature="e#1673#1873#0" expanded="false" />
-                    <element signature="e#6041#6540#0" expanded="false" />
-                    <element signature="e#6583#6604#0" expanded="false" />
-                    <element signature="e#6692#7511#0" expanded="false" />
-                    <element signature="e#7573#8191#0" expanded="false" />
-                    <element signature="e#8265#8273#0" expanded="false" />
-                    <element signature="e#8364#8372#0" expanded="false" />
-                    <element signature="e#8476#8846#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="newsController.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/js/controls/newsController.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="146" column="60" selection-start-line="141" selection-start-column="15" selection-end-line="146" selection-end-column="60" />
-                  <folding>
-                    <element signature="e#460#570#0" expanded="false" />
-                    <element signature="e#642#1770#0" expanded="false" />
-                    <element signature="e#693#1755#0" expanded="false" />
-                    <element signature="e#1885#2212#0" expanded="false" />
-                    <element signature="e#2346#2689#0" expanded="false" />
-                    <element signature="e#2704#2823#0" expanded="false" />
-                    <element signature="e#2894#4672#0" expanded="false" />
-                    <element signature="e#7257#7681#0" expanded="false" />
-                    <element signature="e#7925#8036#0" expanded="false" />
-                    <element signature="e#8540#9846#0" expanded="false" />
-                    <element signature="e#10060#10562#0" expanded="false" />
-                    <element signature="e#10672#11933#0" expanded="false" />
-                    <element signature="e#12124#12869#0" expanded="false" />
-                    <element signature="e#12966#13635#0" expanded="false" />
-                    <element signature="e#13749#14605#0" expanded="false" />
-                    <element signature="e#14703#15161#0" expanded="false" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -125,8 +157,8 @@
           <file leaf-file-name="PHP_serverService.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/service/PHP_serverService.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.1233672">
-                  <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.1712627">
+                  <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -184,57 +216,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/controls/group/groupNewsController.js" />
-        <option value="$PROJECT_DIR$/js/controls/group/groupVacancyController.js" />
-        <option value="$PROJECT_DIR$/js/controls/group/groupSubscribersController.js" />
-        <option value="$PROJECT_DIR$/js/controls/group/groupGalleryController.js" />
-        <option value="$PROJECT_DIR$/js/controls/group/groupVideoController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleResumeController.js" />
-        <option value="$PROJECT_DIR$/views/people/peopleHeder.jade" />
-        <option value="$PROJECT_DIR$/views/people/peopleProfile.jade" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleHederController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleNewsController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleReviewController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleFollowersController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleGalleryController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleVacancyController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peopleVideoController.js" />
-        <option value="$PROJECT_DIR$/js/controls/people/peoplePagesController.js" />
-        <option value="$PROJECT_DIR$/js/temp.js" />
-        <option value="$PROJECT_DIR$/views/Enter.jade" />
-        <option value="$PROJECT_DIR$/js/controls/enterController.js" />
-        <option value="$PROJECT_DIR$/js/service/dialogServises.js" />
-        <option value="$PROJECT_DIR$/data/Server/test.php" />
-        <option value="$PROJECT_DIR$/data/Server/Connection.php" />
-        <option value="$PROJECT_DIR$/js/service/dialogServices.js" />
-        <option value="$PROJECT_DIR$/data/Server/ErrorClass.php" />
-        <option value="$PROJECT_DIR$/views/main.jade" />
-        <option value="$PROJECT_DIR$/data/Server/Date.php" />
-        <option value="$PROJECT_DIR$/data/Server/postClass.php" />
-        <option value="$PROJECT_DIR$/data/Server/userClass.php" />
-        <option value="$PROJECT_DIR$/js/service/userDataService.js" />
-        <option value="$PROJECT_DIR$/js/service/errorService.js" />
-        <option value="$PROJECT_DIR$/js/controls/mainController.js" />
-        <option value="$PROJECT_DIR$/css/allstyle.css" />
-        <option value="$PROJECT_DIR$/css/style.css" />
-        <option value="$PROJECT_DIR$/css/style.less" />
         <option value="$PROJECT_DIR$/js/controls/indexController.js" />
-        <option value="$PROJECT_DIR$/js/controls/newsController.js" />
         <option value="$PROJECT_DIR$/views/news_new.jade" />
         <option value="$PROJECT_DIR$/views/jobs.jade" />
-        <option value="$PROJECT_DIR$/js/controls/jobsController.js" />
-        <option value="$PROJECT_DIR$/js/controls/videosController.js" />
         <option value="$PROJECT_DIR$/views/videos.jade" />
         <option value="$PROJECT_DIR$/js/controls/photosController.js" />
         <option value="$PROJECT_DIR$/views/photos.jade" />
         <option value="$PROJECT_DIR$/views/left_menu.jade" />
-        <option value="$PROJECT_DIR$/index.jade" />
-        <option value="$PROJECT_DIR$/js/config/router.js" />
-        <option value="$PROJECT_DIR$/js/app.js" />
-        <option value="$PROJECT_DIR$/js/service/PHP_serverService.js" />
-        <option value="$PROJECT_DIR$/js/controls/pageslistsController.js" />
         <option value="$PROJECT_DIR$/views/pageslist.jade" />
+        <option value="$PROJECT_DIR$/js/controls/pageslistsController.js" />
+        <option value="$PROJECT_DIR$/js/controls/jobsController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleResume.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleHederController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleHeder.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleResumeController.js" />
+        <option value="$PROJECT_DIR$/js/controls/newsController.js" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleNewsController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleNews.jade" />
+        <option value="$PROJECT_DIR$/views/people/peopleReview.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleReviewController.js" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleSubscribers.jade" />
+        <option value="$PROJECT_DIR$/views/people/peopleFollowers.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleFollowersController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleGallery.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleGalleryController.js" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleVacancyController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleVacancy.jade" />
+        <option value="$PROJECT_DIR$/js/controls/videosController.js" />
+        <option value="$PROJECT_DIR$/views/people/peopleVideo.jade" />
+        <option value="$PROJECT_DIR$/js/controls/people/peopleVideoController.js" />
+        <option value="$PROJECT_DIR$/js/controls/people/peoplePagesController.js" />
+        <option value="$PROJECT_DIR$/views/people/peoplePages.jade" />
+        <option value="$PROJECT_DIR$/views/pages/pageHeder.jade" />
+        <option value="$PROJECT_DIR$/views/pages/pageSuscribers.jade" />
+        <option value="$PROJECT_DIR$/views/pages/pageVideo.jade" />
+        <option value="$PROJECT_DIR$/index.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageHederController.js" />
+        <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/views/pages/pageResume.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageResumeController.js" />
+        <option value="$PROJECT_DIR$/views/pages/pageNews.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageNewsController.js" />
+        <option value="$PROJECT_DIR$/views/pages/pageVacancy.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageVacancyController.js" />
+        <option value="$PROJECT_DIR$/js/config/router.js" />
+        <option value="$PROJECT_DIR$/views/pages/pageSubscribers.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageSubscribersController.js" />
+        <option value="$PROJECT_DIR$/js/service/PHP_serverService.js" />
+        <option value="$PROJECT_DIR$/views/pages/pageGallery.jade" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageGalleryController.js" />
+        <option value="$PROJECT_DIR$/js/controls/page/pageVideoController.js" />
       </list>
     </option>
   </component>
@@ -256,7 +288,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -275,6 +307,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -304,6 +337,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancietyMain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancesociety" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="people" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancietyMain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancesociety" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,19 +436,58 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controls" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="page" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancietyMain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancesociety" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancietyMain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dancesociety" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/WebstormProjects/sectorgaza" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
@@ -471,26 +579,26 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13814956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15462612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286908" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript Compiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31520224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24968234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38493723" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31520224" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286908" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -525,218 +633,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="56" />
+      <option name="time" value="62" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="36" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleFollowersController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleGalleryController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleVacancyController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4571843">
-          <caret line="354" column="42" selection-start-line="354" selection-start-column="42" selection-end-line="354" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleVideoController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/people/peoplePagesController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5521739">
-          <caret line="41" column="6" selection-start-line="41" selection-start-column="6" selection-end-line="41" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/temp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/dialog/newGroupController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3207547">
-          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/hederController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Sellout/mobile/lib/js/Akcija.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8376812">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/test.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17246377">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Sellout/data/Php/Connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Sellout/data/Php/GetDataJSON.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/Connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/service/dialogServices.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02463768">
-          <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/main.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2622433">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Sellout/data/Php/Lib.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02463768">
-          <caret line="1611" column="43" selection-start-line="1611" selection-start-column="37" selection-end-line="1611" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/userClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.56666666">
-          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/postClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7985507">
-          <caret line="87" column="27" selection-start-line="87" selection-start-column="27" selection-end-line="87" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/Date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.847826">
-          <caret line="132" column="36" selection-start-line="132" selection-start-column="4" selection-end-line="132" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/ErrorClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04927536">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/news_new.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17586207">
-          <caret line="0" column="523" selection-start-line="0" selection-start-column="518" selection-end-line="0" selection-end-column="523" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/mainController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10869565">
-          <caret line="2" column="93" selection-start-line="2" selection-start-column="93" selection-end-line="2" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/allstyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4362069">
-          <caret line="2445" column="13" selection-start-line="2445" selection-start-column="13" selection-end-line="2445" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/service/userDataService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
-          <folding>
-            <element signature="e#78#937#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/service/errorService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/style.less">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -745,111 +646,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/news_new.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6792453">
-          <caret line="152" column="36" selection-start-line="152" selection-start-column="36" selection-end-line="152" selection-end-column="36" />
-          <folding>
-            <element signature="n#tab#0;n#tabset#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#tab-heading#0;n#tab#0;n#tabset#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#section#0;n#tab#0;n#tabset#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#tab#2;n#tabset#0;n#section#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/jobs.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/jobsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding>
-            <element signature="e#266#1819#0" expanded="false" />
-            <element signature="e#284#1805#0" expanded="false" />
-            <element signature="e#1897#2048#0" expanded="false" />
-            <element signature="e#2157#2491#0" expanded="false" />
-            <element signature="e#3049#3720#0" expanded="false" />
-            <element signature="e#3910#4843#0" expanded="false" />
-            <element signature="e#4955#4971#0" expanded="false" />
-            <element signature="e#5052#5926#0" expanded="false" />
-            <element signature="e#6012#6028#0" expanded="false" />
-            <element signature="e#6317#6611#0" expanded="false" />
-            <element signature="e#6697#8454#0" expanded="false" />
-            <element signature="e#9266#10257#0" expanded="false" />
-            <element signature="e#10374#10862#0" expanded="false" />
-            <element signature="e#10986#11863#0" expanded="false" />
-            <element signature="e#11946#12096#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/videos.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4188406">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/photoClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/Server/videoClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.615942">
-          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/videosController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="125" column="20" selection-start-line="113" selection-start-column="17" selection-end-line="125" selection-end-column="20" />
-          <folding>
-            <element signature="e#263#647#0" expanded="false" />
-            <element signature="e#747#1037#0" expanded="false" />
-            <element signature="e#1161#1508#0" expanded="false" />
-            <element signature="e#1523#1646#0" expanded="false" />
-            <element signature="e#1729#2318#0" expanded="false" />
-            <element signature="e#2426#2717#0" expanded="false" />
-            <element signature="e#3214#3337#0" expanded="false" />
-            <element signature="e#4502#4625#0" expanded="false" />
-            <element signature="e#5213#6111#0" expanded="false" />
-            <element signature="e#7032#8289#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/heder.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/grouplists.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.95072466">
-          <caret line="90" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/photos.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.73913044">
           <caret line="30" column="10" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -857,15 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1173913">
           <caret line="8" column="28" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="28" />
-          <folding>
-            <element signature="e#233#405#0" expanded="false" />
-            <element signature="e#1180#1300#0" expanded="false" />
-            <element signature="e#1954#1970#0" expanded="false" />
-            <element signature="e#2183#3181#0" expanded="false" />
-            <element signature="e#3353#3552#0" expanded="false" />
-            <element signature="e#3702#4221#0" expanded="false" />
-            <element signature="e#4310#5222#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -876,100 +667,357 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.jade">
+    <entry file="file://$PROJECT_DIR$/views/left_menu.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3352685">
-          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
-          <folding />
+        <state vertical-scroll-proportion="0.2597968">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/pageslistsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0972424">
+          <caret line="159" column="1" selection-start-line="159" selection-start-column="1" selection-end-line="159" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pageslist.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.616836">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleResume.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleHederController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="15" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleHeder.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04934688">
+          <caret line="2" column="54" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleResumeController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2467344">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/newsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37658226">
+          <caret line="66" column="52" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleNews.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="60" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleReview.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7532656">
+          <caret line="50" column="32" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleReviewController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14804064">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleSubscribers.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69085634">
+          <caret line="28" column="72" selection-start-line="28" selection-start-column="72" selection-end-line="28" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleFollowersController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2467344">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleFollowers.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7648766">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleSubscribersController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="15" selection-start-line="5" selection-start-column="8" selection-end-line="45" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleGallery.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleGalleryController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="15" selection-start-line="14" selection-start-column="8" selection-end-line="38" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleVacancy.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="81" column="56" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleVacancyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/videos.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4188406">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/videosController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleVideoController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73913044">
+          <caret line="39" column="15" selection-start-line="14" selection-start-column="7" selection-end-line="39" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleVideo.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3942029">
+          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peoplePages.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peoplePagesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/pageHeder.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/people/peopleProfile.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/pageVideo.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="58" selection-start-line="21" selection-start-column="58" selection-end-line="21" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageHederController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3347826">
+          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02463768">
+          <caret line="64" column="43" selection-start-line="64" selection-start-column="43" selection-end-line="64" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/jobsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3942029">
+          <caret line="75" column="0" selection-start-line="54" selection-start-column="11" selection-end-line="75" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/people/peopleNewsController.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29608127">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+          <caret line="77" column="47" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="47" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/config/router.js">
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageResumeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49637157">
-          <caret line="76" column="22" selection-start-line="76" selection-start-column="22" selection-end-line="76" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.8142235">
+          <caret line="55" column="11" selection-start-line="32" selection-start-column="2" selection-end-line="55" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/left_menu.jade">
+    <entry file="file://$PROJECT_DIR$/views/pages/pageResume.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2597968">
-          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="0.22206096">
+          <caret line="39" column="2" selection-start-line="39" selection-start-column="2" selection-end-line="39" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/service/PHP_serverService.js">
+    <entry file="file://$PROJECT_DIR$/views/pages/pageNews.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1233672">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.3207547">
+          <caret line="31" column="68" selection-start-line="31" selection-start-column="59" selection-end-line="31" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageNewsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="94" column="15" selection-start-line="69" selection-start-column="6" selection-end-line="94" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/pageVacancy.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="87" selection-start-line="126" selection-start-column="87" selection-end-line="126" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageVacancyController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6415094">
+          <caret line="76" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageSubscribersController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="55" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/pageSubscribers.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7402032">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controls/indexController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="28" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="28" />
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/newsController.js">
+    <entry file="file://$PROJECT_DIR$/views/pages/pageGallery.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="60" selection-start-line="141" selection-start-column="15" selection-end-line="146" selection-end-column="60" />
+          <caret line="21" column="68" selection-start-line="21" selection-start-column="68" selection-end-line="21" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageGalleryController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2467344">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="45" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/config/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="195" column="30" selection-start-line="195" selection-start-column="23" selection-end-line="195" selection-end-column="30" />
           <folding>
-            <element signature="e#460#570#0" expanded="false" />
-            <element signature="e#642#1770#0" expanded="false" />
-            <element signature="e#693#1755#0" expanded="false" />
-            <element signature="e#1885#2212#0" expanded="false" />
-            <element signature="e#2346#2689#0" expanded="false" />
-            <element signature="e#2704#2823#0" expanded="false" />
-            <element signature="e#2894#4672#0" expanded="false" />
-            <element signature="e#7257#7681#0" expanded="false" />
-            <element signature="e#7925#8036#0" expanded="false" />
-            <element signature="e#8540#9846#0" expanded="false" />
-            <element signature="e#10060#10562#0" expanded="false" />
-            <element signature="e#10672#11933#0" expanded="false" />
-            <element signature="e#12124#12869#0" expanded="false" />
-            <element signature="e#12966#13635#0" expanded="false" />
-            <element signature="e#13749#14605#0" expanded="false" />
-            <element signature="e#14703#15161#0" expanded="false" />
+            <element signature="e#214#468#0" expanded="false" />
+            <element signature="e#497#922#0" expanded="false" />
+            <element signature="e#951#1372#0" expanded="false" />
+            <element signature="e#1403#1830#0" expanded="false" />
+            <element signature="e#1861#2288#0" expanded="false" />
+            <element signature="e#2322#2759#0" expanded="false" />
+            <element signature="e#2821#3485#0" expanded="false" />
+            <element signature="e#3523#3683#0" expanded="false" />
+            <element signature="e#3719#3873#0" expanded="false" />
+            <element signature="e#3933#4093#0" expanded="false" />
+            <element signature="e#4162#4336#0" expanded="false" />
+            <element signature="e#4411#4580#0" expanded="false" />
+            <element signature="e#4619#4782#0" expanded="false" />
+            <element signature="e#4821#4984#0" expanded="false" />
+            <element signature="e#5021#5178#0" expanded="false" />
+            <element signature="e#5215#5372#0" expanded="false" />
+            <element signature="e#5433#6182#0" expanded="false" />
+            <element signature="e#6218#6379#0" expanded="false" />
+            <element signature="e#6413#6562#0" expanded="false" />
+            <element signature="e#6599#6757#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pageslist.jade">
+    <entry file="file://$PROJECT_DIR$/js/controls/page/pageVideoController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.2467344">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controls/pageslistsController.js">
+    <entry file="file://$PROJECT_DIR$/js/service/PHP_serverService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.59216255">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <element signature="e#1062#1482#0" expanded="false" />
-            <element signature="e#1673#1873#0" expanded="false" />
-            <element signature="e#6041#6540#0" expanded="false" />
-            <element signature="e#6583#6604#0" expanded="false" />
-            <element signature="e#6692#7511#0" expanded="false" />
-            <element signature="e#7573#8191#0" expanded="false" />
-            <element signature="e#8265#8273#0" expanded="false" />
-            <element signature="e#8364#8372#0" expanded="false" />
-            <element signature="e#8476#8846#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.1712627">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

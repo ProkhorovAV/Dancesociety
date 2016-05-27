@@ -1,6 +1,48 @@
 angular.module('myApp.controllers.PeopleVideo',[])
-.controller('PeopleVideoCtrl',['$scope','PHP_server','notify',
-    function($scope,PHP_server,notify){
+.controller('PeopleVideoCtrl',['$scope','PHP_server','notify','$stateParams',
+    function($scope,PHP_server,notify,$stateParams){
+
+        // все видео
+        $scope.allVideos=[
+            /*
+            {
+            thumb:'data/img/bg1.jpg',
+            title:'title',
+            likes:12
+        }
+        */];
+
+        //! получения видео
+        $scope.getVideoOnId=function(){
+            var req={
+                action:"getVideoOnIdUser",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.Video(req);
+        };
+        //! получение видео
+        $scope.getVideoOnId()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.allVideos=response.data.data;
+                    console.log(response.data.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
 
 
         if (!$scope.newVideo) {
@@ -11,29 +53,9 @@ angular.module('myApp.controllers.PeopleVideo',[])
         $scope.user={
         isMyProfile:true
     };
-    // инициализация
-    $scope.getVideos = function() {
-        var req = {
-            action:'getvideo',
-            'first': 'videos',
-            'second': 'user',
-            'id': $scope.user._id
-        }
-        PHP_server.Video(req)
-            .then(function(resolve) {
-                console.log(resolve.data);
-                //$scope.allVideos = resolve.data;
-            })
-            .then(function(err) {
-                console.log(err);
-            });
-    }
-    // все видео
-    $scope.allVideos=[{
-        thumb:'data/img/bg1.jpg',
-        title:'title',
-        likes:12
-    }];
+
+
+
     // удалиь видео
     $scope.removeVideo = function(video) {
         var req = {

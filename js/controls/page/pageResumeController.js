@@ -1,13 +1,11 @@
-angular.module('myApp.controller.GroupResume',[])
-.controller('GroupResumeCtrl',['$scope','PHP_server',function($scope,PHP_server){
-    // определяющие значение
-    $scope.meData={
-        _id:1
-    };
-    // открытие странички
-    $scope.editMode=true;
-    // главный по группе
-    $scope.group={
+angular.module('myApp.controller.PageResume',[])
+.controller('PageResumeCtrl',['$scope','PHP_server','$stateParams',
+    function($scope,PHP_server,$stateParams){
+
+
+    //  публичная страница
+    $scope.publicPage={
+        /*
         creator:{
             _id:1
         },
@@ -27,10 +25,59 @@ angular.module('myApp.controller.GroupResume',[])
 
         }],
         hasOwnProperty:function(style){
-                return true;
+            return true;
         }
-
+*/
     };
+
+    //! получения вакансий
+    $scope.getPublicPageOnId=function(){
+        var req={
+            action:"getPublicPageOnId",
+            data:{
+                idPage:$stateParams.id
+            }
+        };
+        return PHP_server.PublicPages(req);
+    };
+    //! получение вакансий
+    $scope.getPublicPageOnId()
+        .then(function(response){
+            // если ошибка передачи
+            if (JSON.parse(response.data.error)){
+                ErrorService.error(response.data)
+            }else{
+                // весение данных
+                $scope.publicPage=response.data.data;
+            }
+        },function(err) {
+            console.log('Ошибка в получении жданных');
+            console.log(err);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // определяющие значение
+    $scope.meData={
+        _id:1
+    };
+    // открытие странички
+    $scope.editMode=true;
+
     // города
     $scope.countries=[{
         name:'USA'
@@ -109,21 +156,7 @@ angular.module('myApp.controller.GroupResume',[])
     }
 
 
-    // получение группы
-    function getGroup() {
-        var req={
-            action:'GetAllGroup'
-        }
-        PHP_server.Group(req)
-            .then(function(resolve) {
-                //$scope.group = resolve;
-                console.log(resolve);
-            },function(err){
-                console.log('Ошибка получения группы'+err)
-            });
-    };
 
-    getGroup();
 
     // Метод для получения списка всех стран с нашего сервера
 

@@ -1,5 +1,54 @@
  angular.module('myApp.controllers.PeopleReview',[])
- .controller('PeopleReviewCtrl',['$scope','PHP_server',function($scope,PHP_server){
+ .controller('PeopleReviewCtrl',['$scope','PHP_server','$stateParams',
+     function($scope,PHP_server,$stateParams){
+
+
+
+     // данные об отзывах
+     $scope.reviewsArray={
+         data:[{
+             author:{
+                 _id:1,
+                 userpic:'data/user/face.jpg',
+                 firstname:"Sasha",
+                 secondname:"Prokhorov"
+             },
+             positive:true,
+             created:'12.12.2009',
+             text:'text'
+         }]
+     };
+
+
+     //! получения отзывов о пользователе
+     $scope.getCommentUserOnId=function(){
+         var req={
+             action:"getCommentUserOnId",
+             data:{
+                 idPeople:$stateParams.id
+             }
+         };
+         return PHP_server.Comment(req);
+     };
+     //! получение отзвов о пользователе
+     $scope.getCommentUserOnId()
+         .then(function(response){
+
+             // если ошибка передачи
+             if (JSON.parse(response.data.error)){
+                 ErrorService.error(response.data)
+             }else{
+                 // весение данных
+                 $scope.reviewsArray=response.data.data;
+             }
+         },function(err) {
+             console.log('Ошибка в получении жданных');
+             console.log(err);
+         });
+
+
+
+
      $scope.meData={
         _id:1
      }
@@ -51,20 +100,7 @@
              negative:6
          }
      };
-     // какието данные
-        $scope.reviewsList={
-            data:[{
-                author:{
-                    _id:1,
-                    userpic:'data/user/face.jpg',
-                    firstname:"Sasha",
-                    secondname:"Prokhorov"
-                },
-                positive:true,
-                created:'12.12.2009',
-                text:'text'
-            }]
-        };
+
      // удалить
      $scope.removeReview = function(index) {
          var req={

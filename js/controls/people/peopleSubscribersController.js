@@ -1,26 +1,71 @@
+// подписчики
 angular.module('myApp.controllers.PeopleSubscriers',[])
-    .controller('PeopleSubscriersCtrl',['$scope','PHP_server',function($scope,PHP_server){
+    .controller('PeopleSubscriersCtrl',['$scope','PHP_server','$stateParams',function($scope,PHP_server,$stateParams){
+
+
+        // данные об подписчиках
+        $scope.SubscibersArray={
+            data:[{
+                author:{
+                    _id:1,
+                    userpic:'data/user/face.jpg',
+                    firstname:"Sasha",
+                    secondname:"Prokhorov"
+                },
+                positive:true,
+                created:'12.12.2009',
+                text:'text'
+            }]
+        };
+
+
+        //! получения подписчиков
+        $scope.getSubscibersOnId=function(){
+            var req={
+                action:"getSubscibersOnId",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.User(req);
+        };
+        //! получение подписчиков
+        $scope.getSubscibersOnId()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.SubscibersArray=response.data.data;
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // все
         $scope.meData={
             _id:1
         }
-        // массив
-        $scope.subscribers=[{
-            userpic:'data/user/face.jpg',
-            firstname:'Sasha',
-            secondname:'Prokhorov',
-            work:[{
-            company:'12'
-        }],
-            personalData:{
-                age:12
-            },
-            danceStyles:[{
-                name:"dance"
-            }],
-            _id:1,
-            isFollowing:true
-        }];
+
         // открыть сообщение
         $scope.openUserMessage=function(sub){
             // нет определения
@@ -63,21 +108,7 @@ angular.module('myApp.controllers.PeopleSubscriers',[])
                 });
             });
         };
-        // получение перечня подписчиков
-        $scope.getAllSubscribers = function() {
-            var req = {
-                action:'GetSubscribe',
-                route: 'followers',
-                id: $scope.user._id
-            };
-            return PHP_server.Subscribe(req)
-                .then(function(response) {
-                //$scope.subscribers = response.data;
-                console.log(response);
-            });
-        };
 
-        $scope.getAllSubscribers();
 
 
 

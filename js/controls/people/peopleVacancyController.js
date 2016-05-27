@@ -1,6 +1,112 @@
 angular.module('myApp.controllers.PeopleVacancy',[])
-.controller('PeopleVacancyCtrl',['$scope','PHP_server','notify',
-    function($scope,PHP_server,notify){
+.controller('PeopleVacancyCtrl',['$scope','PHP_server','notify','$stateParams',
+    function($scope,PHP_server,notify,$stateParams){
+
+
+        // все вакансии
+        $scope.allVacancies=[
+            /*{
+            author:{
+                userpic:'data/user/face.jpg',
+                firstname:'Sasha',
+                secondname:'Prokhorov',
+                created:'12.12.2009',
+                _id:1,
+                title:'title',
+                country:{
+                    name:'USA'
+                },
+                city:'USA',
+                scopes:[{}],
+                dances:[{}],
+                price:12,
+                startDate:'12.12.2009',
+                endDate:'12.12.2009',
+                startAge:12,
+                endAge:12,
+                startHeight:123,
+                endHeight:123,
+                text:'text',
+                reposts:1,
+                isLiked:true,
+                likes:10,
+                comments:{
+                    author:{
+                        userpic:'data/user/face.jpg',
+                        firstname:'Sasha',
+                        secondname:'Prokhorov',
+                        _id:1
+                    },
+                    text:'text',
+                    created:'12.12.2009'
+                }
+
+            }
+        }
+        */
+        ];
+
+
+        //! получения вакансий
+        $scope.getVacancyOnId=function(){
+            var req={
+                action:"getVacancyOnId",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.User(req);
+        };
+        //! получение ввакансий
+        $scope.getVacancyOnId()
+            .then(function(response){
+
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.allVacancies=response.data.data;
+                    console.log(response.data.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+        // вакансии новые
+        $scope.newVacancy=[
+            /*{
+             title:'title',
+             country:"USA",
+             city:'USA',
+             startDate:'12.12.2009',
+             endDate:'12.12.2019',
+             price:12,
+             startAge:12,
+             endAge:22,
+             startHeight:123,
+             endHeight:2121,
+             text:'text'
+             }*/
+        ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         $scope.tabs = [{
             'name': 'name',
@@ -17,20 +123,7 @@ angular.module('myApp.controllers.PeopleVacancy',[])
         isMyProfile:1
     };
 
-    // вакансии
-    $scope.newVacancy=[{
-        title:'title',
-        country:"USA",
-        city:'USA',
-        startDate:'12.12.2009',
-        endDate:'12.12.2019',
-        price:12,
-        startAge:12,
-        endAge:22,
-        startHeight:123,
-        endHeight:2121,
-        text:'text'
-    }];
+
     // названия городов
     $scope.countries=[{
         name:'USA'
@@ -59,45 +152,7 @@ angular.module('myApp.controllers.PeopleVacancy',[])
             }
         };
 
-    // все вакансии
-    $scope.allVacancies=[{
-        author:{
-            userpic:'data/user/face.jpg',
-            firstname:'Sasha',
-            secondname:'Prokhorov',
-            created:'12.12.2009',
-            _id:1,
-            title:'title',
-            country:{
-                name:'USA'
-            },
-            city:'USA',
-            scopes:[{}],
-            dances:[{}],
-            price:12,
-            startDate:'12.12.2009',
-            endDate:'12.12.2009',
-            startAge:12,
-            endAge:12,
-            startHeight:123,
-            endHeight:123,
-            text:'text',
-            reposts:1,
-            isLiked:true,
-            likes:10,
-            comments:{
-                author:{
-                    userpic:'data/user/face.jpg',
-                    firstname:'Sasha',
-                    secondname:'Prokhorov',
-                    _id:1
-                },
-                text:'text',
-                created:'12.12.2009'
-            }
 
-        }
-    }];
     // удалить вакансию
         $scope.removeVacancy = function(vacancy_id, index) {
             var req={

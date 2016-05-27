@@ -1,19 +1,53 @@
 angular.module('myApp.controllers.PeopleHeder',[])
-.controller('PeopleHederCtrl',['$scope','$modal','PHP_server',
-    function($scope,$modal,PHP_server){
-    // юзер
+.controller('PeopleHederCtrl',['$scope','$modal','PHP_server','$stateParams',
+    function($scope,$modal,PHP_server,$stateParams){
 
-    $scope.user={
-        bg:{path:'data/img/bg1.jpg'},
-        // непонятная переменная
-        //isMyProfile:true,
-        userpic:{path:'data/user/face.jpg'},
-        firstname:'Sasha',
-        secondname:'Prokhorov',
-        status:0,
-        statusText:'text',
-        isFollowing:true
-    };
+        // выбор человека
+        console.log($stateParams.id);
+        // юзер
+
+        $scope.user={
+            /*
+             bg:{path:'data/img/bg1.jpg'},
+             // непонятная переменная
+             //isMyProfile:true,
+             userpic:{path:'data/user/face.jpg'},
+             firstname:'Sasha',
+             secondname:'Prokhorov',
+             status:0,
+             statusText:'text',
+             isFollowing:true
+             */
+        };
+        //! получения user
+        $scope.getUser=function(){
+            var req={
+                action:"getUserOnId",
+                data:{
+                    idPeople:$stateParams.id
+                }
+            };
+            return PHP_server.User(req);
+        };
+        //! получение user
+        $scope.getUser()
+            .then(function(response){
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.user=response.data.data;
+                    console.log(response.data.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
 
     // выбор картинки
     $scope.selectImage = function(maxCount, type) {

@@ -1,26 +1,70 @@
 angular.module('myApp.controllers.PeopleFollowers',[])
-.controller('PeopleFollowersCtrl',['$scope','PHP_server',function($scope,PHP_server){
-        $scope.meData={
-            _id:1
-        };
-    // подписцики
-        $scope.subscribers=[{
-            _id:1,
-            userpic:'data/user/face.jpg',
-            firstname:'Sasha',
-            secondname:'Prokhorov',
-            work:[{
-                company:'company'
-            }],
-            personalData:{
-                age:12
-            },
-            danceStyles:[{
-                name:'name'
-            }],
-            isFollowing:true
+.controller('PeopleFollowersCtrl',['$scope','PHP_server','$stateParams',
+    function($scope,PHP_server,$stateParams){
 
-        }];
+
+    // данные об подписчиках
+    $scope.followersArray={
+        /*
+        data:[{
+            author:{
+                _id:1,
+                userpic:'data/user/face.jpg',
+                firstname:"Sasha",
+                secondname:"Prokhorov"
+            },
+            positive:true,
+            created:'12.12.2009',
+            text:'text'
+        }]
+        */
+    };
+
+
+    //! получения подписчиков
+    $scope.getfollowersOnId=function(){
+        var req={
+            action:"getFollowersOnId",
+            data:{
+                idPeople:$stateParams.id
+            }
+        };
+        return PHP_server.User(req);
+    };
+    //! получение подписчиков
+    $scope.getfollowersOnId()
+        .then(function(response){
+
+            // если ошибка передачи
+            if (JSON.parse(response.data.error)){
+                ErrorService.error(response.data)
+            }else{
+                // весение данных
+                $scope.followersArray=response.data.data;
+            }
+        },function(err) {
+            console.log('Ошибка в получении жданных');
+            console.log(err);
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $scope.meData={
+        _id:1
+    };
+
     // открыть сообщения
     $scope.openUserMessage=function(sub){
 

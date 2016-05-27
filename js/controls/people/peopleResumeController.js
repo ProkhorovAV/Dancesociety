@@ -1,5 +1,77 @@
 angular.module('myApp.controllers.PeopleResume',[])
-.controller('PeopleResumeCtrl',['$scope',function($scope){
+.controller('PeopleResumeCtrl',['$scope','$stateParams','ErrorService','PHP_server',
+    function($scope,$stateParams,ErrorService,PHP_server){
+
+
+
+        // страничка переменная обо мне
+        $scope.editMode=false;
+
+        // юзер
+        $scope.user={
+            /*
+            isMyProfile:true,
+            preferences:{
+                additionally:'text'
+            },
+            phone:'484 84 8 4',
+            country:'',
+            website:'www.ww.ww',
+            city:'USA',
+            cv_email:'werqw@ffqdwqd',
+            personalData:{
+                male:true,
+                params:"параметры",
+                age:12,
+                eyesColor:"карие",
+                height:123,
+                hairColor:'red',
+                weight:112,
+                nationality:'Rus'
+            },
+            danceStyles:[{
+                name:"name"
+            }],
+            works:[{
+                place: 'Moscow',
+                start:"12.12.2009",
+                end:'12.12.2000',
+                job:"job"
+            }],
+            studys:[{
+                place:'место',
+                start:'12.12.2000',
+                end:'12.12.2000',
+                direction:"spec"
+            }],
+            newPayment:11
+*/
+        };
+    //! получения user
+    $scope.getUser=function(){
+        var req={
+            action:"getUserOnId",
+            data:{
+                idPeople:$stateParams.id
+            }
+        };
+        return PHP_server.User(req);
+    };
+    //! получение user
+    $scope.getUser()
+        .then(function(response){
+            // если ошибка передачи
+            if (JSON.parse(response.data.error)){
+                ErrorService.error(response.data)
+            }else{
+                // весение данных
+                $scope.user=response.data.data;
+            }
+        },function(err) {
+            console.log('Ошибка в получении жданных');
+            console.log(err);
+        });
+
 
     // набор параметров
     /*
@@ -46,47 +118,8 @@ angular.module('myApp.controllers.PeopleResume',[])
             endDate: null
             }
     }
-    // страничка переменная обо мне
-    $scope.editMode=true;
-    // юзер
-    $scope.user={
-        isMyProfile:true,
-        preferences:{
-            additionally:'text'
-        },
-        phone:'484 84 8 4',
-        country:'',
-        website:'www.ww.ww',
-        city:'USA',
-        cv_email:'werqw@ffqdwqd',
-        personalData:{
-            male:true,
-            params:"параметры",
-            age:12,
-            eyesColor:"карие",
-            height:123,
-            hairColor:'red',
-            weight:112,
-            nationality:'Rus'
-        },
-        danceStyles:[{
-            name:"name"
-        }],
-        works:[{
-            place: 'Moscow',
-            start:"12.12.2009",
-            end:'12.12.2000',
-            job:"job"
-        }],
-        studys:[{
-            place:'место',
-            start:'12.12.2000',
-            end:'12.12.2000',
-            direction:"spec"
-        }],
-        newPayment:11
 
-    };
+
     $scope.countries=[{
         name:"USA"
     }];
@@ -431,6 +464,7 @@ angular.module('myApp.controllers.PeopleResume',[])
 
     */
         // получить работников
+        /*
     $scope.getWorks = function(query) {
         var req = {
             action:'getWorker',
@@ -445,7 +479,7 @@ angular.module('myApp.controllers.PeopleResume',[])
                 console.log(err)
             });
     };
-
+*/
     // $scope.addWork = function() {
     // 	$scope.workModel.start = new Date($scope.workModel.date.startDate);
     // 	$scope.workModel.end = new Date($scope.workModel.date.endDate);
@@ -459,11 +493,12 @@ angular.module('myApp.controllers.PeopleResume',[])
 
     // Виды пола для выпадающего списка
 
-
+/*
     if(!$scope.user.personalData.hasOwnProperty('male')) {
         $scope.user.personalData.male = $scope.personal.maleHelper[0];
     }
-
+*/
+        /*
     $scope.getUserPayments = function() {
         $scope.payments = $scope.user.prices.map(function(item) {
             for (var i = 0; i < $scope.availablePayments.length; ++i) {
@@ -476,5 +511,5 @@ angular.module('myApp.controllers.PeopleResume',[])
             }
         });
     }
-
+*/
 }]);

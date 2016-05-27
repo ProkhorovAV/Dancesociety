@@ -7,7 +7,7 @@ section.resume-page__about-me.clearfix(ng-show='!editMode', ng-init='editMode = 
         p.resume-page__about-me__text(ng-bind='user.preferences.additionally')
     .resume-page__container
         .resume-page__contacts.clearfix
-            .col-md-6.col-sm-6.col-reset(ng-if='user.phone || user.country || user.website || user.city || user.cv_email')
+            .col-md-6.col-sm-6.col-reset(ng-if='user.phone || user.country || user.website || user.city || user.email')
                 p.resume-page__about-me__title Контактная информация
                 table.resume-page__contacts__table
                     tr
@@ -30,7 +30,7 @@ section.resume-page__about-me.clearfix(ng-show='!editMode', ng-init='editMode = 
                         th
                             span.resume-page__contacts__label
                                 i.fa.fa-envelope
-                            span.resume-page__contacts__text(ng-bind="user.cv_email || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.email || 'не указано'")
                         th
             .col-md-6.col-sm-6.col-reset
                 p.resume-page__about-me__title Персональные данные
@@ -38,40 +38,40 @@ section.resume-page__about-me.clearfix(ng-show='!editMode', ng-init='editMode = 
                     tr
                         td
                             span.resume-page__contacts__label Пол
-                            span.resume-page__contacts__text(ng-if='user.personalData.male == true') Мужской
-                            span.resume-page__contacts__text(ng-if='user.personalData.male !== true') Женский
+                            span.resume-page__contacts__text(ng-if='user.male == false') Мужской
+                            span.resume-page__contacts__text(ng-if='user.male !== true') Женский
                         td
                             span.resume-page__contacts__label Параметры
-                            span.resume-page__contacts__text(ng-bind="user.personalData.params || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.params || 'не указано'")
                     tr
                         td
                             span.resume-page__contacts__label Возраст
-                            span.resume-page__contacts__text(ng-bind="user.personalData.age || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.age || 'не указано'")
                         td
                             span.resume-page__contacts__label Цвет глаз
-                            span.resume-page__contacts__text(ng-bind="user.personalData.eyesColor || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.eyesColor || 'не указано'")
                     tr
                         td
                             span.resume-page__contacts__label Рост
-                            span.resume-page__contacts__text(ng-bind="user.personalData.height + ' см'")
+                            span.resume-page__contacts__text(ng-bind="user.height + ' см'")
                         td
                             span.resume-page__contacts__label Цвет волос
-                            span.resume-page__contacts__text(ng-bind="user.personalData.hairColor || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.hairColor || 'не указано'")
                     tr
                         td
                             span.resume-page__contacts__label Вес
-                            span.resume-page__contacts__text(ng-bind="user.personalData.weight + ' кг'")
+                            span.resume-page__contacts__text(ng-bind="user.weight + ' кг'")
                         td
                             span.resume-page__contacts__label Гражданство
-                            span.resume-page__contacts__text(ng-bind="user.personalData.nationality || 'не указано'")
+                            span.resume-page__contacts__text(ng-bind="user.nationality || 'не указано'")
     .resume-page__dance-direction
         .resume-page__container
             p.resume-page__about-me__title Танцевальные направления
-            span.dance-direction__text(ng-repeat='style in user.danceStyles', ng-bind='style.name')
+            span.dance-direction__text(ng-repeat='style in user.danceStyle', ng-bind='style')
     .resume-page__payment
         .resume-page__container
             p.resume-page__about-me__title Оплата
-            p(ng-repeat='q in payments')
+            //p(ng-repeat='q in payments')
                 span.resume-page__payment__label(ng-bind="q.name + ':'")
                 span.resume-page__payment__text(ng-bind='q.price')
                 span.resume-page__payment__text USD
@@ -79,7 +79,7 @@ section.resume-page__work.clearfix(ng-show='!editMode')
     .resume-page__container.clearfix
         p.resume-page__about-me__title Работа
         .resume-page__work_list
-            .resume-page__work_list__item.clearfix(ng-repeat='work in user.works track by $index', ng-show='user.works.length > 0')
+            .resume-page__work_list__item.clearfix(ng-repeat='work in user.work track by $index', ng-show='user.work.length > 0')
                 .col-md-6.col-sm-6.col-reset
                     //
                       <p>
@@ -87,7 +87,7 @@ section.resume-page__work.clearfix(ng-show='!editMode')
                       </p>
                     p
                         span.resume-page__contacts__label Место
-                        span.resume-page__contacts__text(ng-bind='work.place')
+                        span.resume-page__contacts__text(ng-bind='work.addres')
                     p
                         span.resume-page__contacts__label Период работы
                         span с
@@ -97,12 +97,12 @@ section.resume-page__work.clearfix(ng-show='!editMode')
                 .col-md-6.col-sm-6.col-reset
                     p
                         span.resume-page__contacts__label Должность
-                        span.resume-page__contacts__text(ng-bind='work.job')
+                        span.resume-page__contacts__text(ng-bind='work.name')
 section.resume-page__study.clearfix(ng-show='!editMode')
     .resume-page__container
         p.resume-page__about-me__title Образование
         .resume-page__work_list
-            .resume-page__work_list__item.clearfix(ng-repeat='study in user.studys', ng-show='user.studys.length > 0')
+            .resume-page__work_list__item.clearfix(ng-repeat='study in user.study', ng-show='user.study.length > 0')
                 .col-md-6.col-sm-6.col-reset
                     //
                       <p>
@@ -110,7 +110,7 @@ section.resume-page__study.clearfix(ng-show='!editMode')
                       </p>
                     p
                         span.resume-page__contacts__label Место
-                        span.resume-page__contacts__text(ng-bind='study.place')
+                        span.resume-page__contacts__text(ng-bind='study.addres')
                     p
                         span.resume-page__contacts__label Учебный период
                         span.resume-page__contacts__text с
@@ -120,7 +120,7 @@ section.resume-page__study.clearfix(ng-show='!editMode')
                 .col-md-6.col-sm-6.col-reset
                     p
                         span.resume-page__contacts__label Специальность
-                        span.resume-page__contacts__text(ng-bind='study.direction')
+                        span.resume-page__contacts__text(ng-bind='study.specialisation')
 section.resume-page__about-me.clearfix(ng-show='editMode')
     .resume-page__container
         .clearfix
@@ -157,7 +157,7 @@ section.resume-page__about-me.clearfix(ng-show='editMode')
                         td
                             span.resume-page__contacts__label
                                 i.fa.fa-envelope
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.cv_email', write-field='changeInfo()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.email', write-field='changeInfo()')
                         td
             .col-md-6.col-sm-6.col-reset
                 p.resume-page__about-me__title Персональные данные
@@ -168,37 +168,37 @@ section.resume-page__about-me.clearfix(ng-show='editMode')
                             //
                               <button type="button" class="btn btn-default" ng-model="user.personalData.male" data-html="1" bs-options="male.id as male.name for male in personal.maleHelper" bs-select  write-field="changePersonal()">
                               </button>
-                            ui-select.user-resume_select(ng-model='user.personalData.male', theme='bootstrap', ng-disabled='disabled', reset-search-input='false', on-select='changePersonal();')
+                            ui-select.user-resume_select(ng-model='user.male', theme='bootstrap', ng-disabled='disabled', reset-search-input='false', on-select='changePersonal();')
                                 ui-select-match(placeholder="Введите стили") {{$select.selected.name}}
                                 //ui-select-choices(repeat='male.id as male in personal.maleHelper track by $index')
                                     div(ng-bind-html='male.name | highlight: $select.search')
                             //
                               <span class="resume-page__contacts__text" ng-bind="'Мужской' | translate" ng-if="user.personalData.male == true"></span>
                               <span class="resume-page__contacts__text" ng-bind="'Женский' | translate" ng-if="user.personalData.male !== true"></span>
-                        td
+                        //td
                             span.resume-page__contacts__label Параметры
                             input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.params', write-field='changePersonal()')
                     tr
                         td
                             span.resume-page__contacts__label Возраст
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.age', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.age', write-field='changePersonal()')
                         td
                             span.resume-page__contacts__label Цвет глаз
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.eyesColor', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.eyesColor', write-field='changePersonal()')
                     tr
                         td
                             span.resume-page__contacts__label Рост
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.height', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.height', write-field='changePersonal()')
                         td
                             span.resume-page__contacts__label Цвет волос
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.hairColor', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.hairColor', write-field='changePersonal()')
                     tr
                         td
                             span.resume-page__contacts__label Вес
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.weight', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.weight', write-field='changePersonal()')
                         td
                             span.resume-page__contacts__label Гражданство
-                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.personalData.nationality', write-field='changePersonal()')
+                            input.resume-page__contacts__text__edit-mode.form-control(type='text', ng-model='user.nationality', write-field='changePersonal()')
     .resume-page__dance-direction
         .resume-page__container.clearfix
             p.resume-page__about-me__title Танцевальные направления
@@ -219,7 +219,7 @@ section.resume-page__about-me.clearfix(ng-show='editMode')
     .resume-page__payment
         .resume-page__container.clearfix
             p.resume-page__about-me__title Оплата
-            .payment-grid.clearfix(ng-repeat='q in payments')
+            //.payment-grid.clearfix(ng-repeat='q in payments')
                 .col-md-6
                     ui-select.dance-payment-select__edit-mode(ng-model='q', theme='bootstrap', ng-disabled='disabled', reset-search-input='false', on-select='putPayments()')
                         ui-select-match(placeholder="Введите тип оплаты") {{$select.selected.name}}
@@ -233,7 +233,7 @@ section.resume-page__about-me.clearfix(ng-show='editMode')
                 .col-md-1
                     p.payment__remove(ng-click='deletePaymentsField($index);', tooltip-placement='top', tooltip='Удалить')
                         i.fa.fa-times
-            .payment-grid.clearfix
+            //.payment-grid.clearfix
                 .col-md-12
                     ui-select.dance-payment-select__edit-mode(ng-model='user.newPayment', theme='bootstrap', ng-disabled='disabled', reset-search-input='false', on-select='addNewPayment(user.newPayment)')
                         ui-select-match(placeholder="Тип оплаты") {{$select.selected.name}}
@@ -254,14 +254,14 @@ section.resume-page__work.clearfix(ng-show='editMode')
                       </div>
                     .form-group
                         label(for='exampleInputPassword2') Место
-                        input#exampleInputPassword2.form-control(type='text', ng-model='work.place', write-field='changeWork()')
+                        input#exampleInputPassword2.form-control(type='text', ng-model='work.addres', write-field='changeWork()')
                     .form-group
                         label(for='exampleInputPassword1') Период работы
-                        input#exampleInputEmail1.form-control.date-picker(date-range-picker='', type='text', ng-model='work.date', ng-change='changeWork()')
+                        input#exampleInputEmail1.form-control.date-picker(date-range-picker='', type='text', ng-model='work.start', ng-change='changeWork()')
                 .col-md-6.col-sm-6.col-reset.clearfix
                     .form-group
                         label(for='exampleInputEmail2') Должность
-                        input#exampleInputEmail2.form-control(type='text', ng-model='work.job', write-field='changeWork()')
+                        input#exampleInputEmail2.form-control(type='text', ng-model='work.name', write-field='changeWork()')
             .col-md-6.col-sm-6.col-reset.clearfix
                 button.btn.btn-success(ng-click='addWorkField();') Добавить
 section.resume-page__study.clearfix(ng-show='editMode')
@@ -279,13 +279,13 @@ section.resume-page__study.clearfix(ng-show='editMode')
                       </div>
                     .form-group
                         label(for='exampleInputPassword2') Место
-                        input#exampleInputPassword2.form-control(type='text', ng-model='study.place', write-field='changeStudy()')
+                        input#exampleInputPassword2.form-control(type='text', ng-model='study.name', write-field='changeStudy()')
                     .form-group
                         label(for='exampleInputPassword1') Учебный период
-                        input#exampleInputEmail1.form-control.date-picker(date-range-picker='', type='text', ng-model='study.date', ng-change='changeStudy()')
+                        input#exampleInputEmail1.form-control.date-picker(date-range-picker='', type='text', ng-model='study.start', ng-change='changeStudy()')
                 .col-md-6.col-sm-6.col-reset.clearfix
                     .form-group
                         label(for='exampleInputEmail2') Специальность
-                        input#exampleInputEmail2.form-control(type='text', ng-model='study.direction', write-field='changeStudy()')
+                        input#exampleInputEmail2.form-control(type='text', ng-model='study.specialisation', write-field='changeStudy()')
             .col-md-6.col-sm-6.col-reset.clearfix
                 button.btn.btn-success(ng-click='addStudyField();') Добавить

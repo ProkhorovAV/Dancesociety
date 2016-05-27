@@ -1,13 +1,89 @@
-angular.module('myApp.controllers.GroupVacancy',[])
-.controller('GroupVacancyCtrl',['$scope','PHP_server','notify','$stateParams',function($scope,PHP_server,notify,$stateParams){
+angular.module('myApp.controllers.PageVacancy',[])
+.controller('PageVacancyCtrl',['$scope','PHP_server','notify','$stateParams',
+    function($scope,PHP_server,notify,$stateParams){
+
+        // все вакансии
+        $scope.allVacancies=[
+            /*{
+            groupAuthor:{
+                photo:'data/img/bg1.jpg',
+                name:'Sasha',
+                created:'12.12.2009',
+                author:{
+                    _id:1
+                },
+                title:"название вакансии",
+                country:{
+                    name:'USA'
+                },
+                city:'USA',
+                scopes:[1,2,3],
+                dances:[1,2,3],
+                price:123,
+                startDate:'12/12/12',
+                endDate:"12/12/12",
+                startAge:12,
+                endAge:22,
+                startHeight:123,
+                endHeight:2222,
+                text:'текст',
+                reposts:12,
+                isLiked:1,
+                likes:12,
+                comments:[{
+                    author:{
+                        userpic:'data/user/face.jpg',
+                        firstname:'Sasha',
+                        secondname:'Prokhorov',
+                        _id:1
+                    },
+                    created:'12.12.2009',
+                    text:'text'
+                }]
+
+
+
+            }
+        }
+        */
+        ]
+
+    //! получения новостей от группы
+    $scope.getPublicPageOnId=function(){
+        var req={
+            action:"getVacancyOnIdPage",
+            data:{
+                idPage:$stateParams.id
+            }
+        };
+        return PHP_server.Vacancy(req);
+    };
+    //! получение новостей от группы
+    $scope.getPublicPageOnId()
+        .then(function(response){
+
+            // если ошибка передачи
+            if (JSON.parse(response.data.error)){
+                ErrorService.error(response.data)
+            }else{
+                // весение данных
+                $scope.allVacancies=response.data.data;
+                console.log(response.data);
+            }
+        },function(err) {
+            console.log('Ошибка в получении жданных');
+            console.log(err);
+        });
+
+
+
         // какая-то таблица
     $scope.tabs = [{
         'name': 'name',
         'active': 'true'
     }]
 
-    // параметр определения группы
-    var groupId = $stateParams.id;
+
    // получить коментарии  по вакансии через функцию getAllVacancies
     var getCommentsToPost = function(vacancy_id, cb) {
         var req = {
@@ -24,36 +100,7 @@ angular.module('myApp.controllers.GroupVacancy',[])
             });
     }
 
-    //инициализация всех вакансии
-    $scope.getAllVacancies = function() {
-        var req = {
-            action:'GetVacancyGrooup',
-            route: 'vacancies',
-            id: groupId
-        }
-        PHP_server.Vacancy(req)
-            .then(function(result) {
-                //$scope.tabs[0].active = true;
-                /*
-                result.data.map(function(el, index) {
-                    el.dances.map(function(el2, index) {
-                        el.dances[index] = el2.name;
-                        return el2;
-                    });
-                    return getCommentsToPost(el._id, function(comments) {
-                        el.comments = comments;
-                        console.log(comments);
-                        return el;
-                    });
-                });
-                */
-                //$scope.newComment = [];
-                //$scope.allVacancies = result.data;
-                console.log($scope.allVacancies);
-            }, function(err) {
-                console.log(err);
-            });
-    };
+
     // группа
     $scope.group={
         creator:{
@@ -82,48 +129,7 @@ angular.module('myApp.controllers.GroupVacancy',[])
         text:'текст'
 
     };
-    // все вакансии
-    $scope.allVacancies=[{
-        groupAuthor:{
-            photo:'data/img/bg1.jpg',
-            name:'Sasha',
-            created:'12.12.2009',
-            author:{
-                _id:1
-            },
-            title:"название вакансии",
-            country:{
-                name:'USA'
-            },
-            city:'USA',
-            scopes:[1,2,3],
-            dances:[1,2,3],
-            price:123,
-            startDate:'12/12/12',
-            endDate:"12/12/12",
-            startAge:12,
-            endAge:22,
-            startHeight:123,
-            endHeight:2222,
-            text:'текст',
-            reposts:12,
-            isLiked:1,
-            likes:12,
-            comments:[{
-                author:{
-                    userpic:'data/user/face.jpg',
-                    firstname:'Sasha',
-                    secondname:'Prokhorov',
-                    _id:1
-                },
-                created:'12.12.2009',
-                text:'text'
-            }]
 
-
-
-        }
-    }]
     $scope.loadTags=[1,2,3];
     $scope.getWorks=[1,2,3];
 
@@ -287,19 +293,7 @@ angular.module('myApp.controllers.GroupVacancy',[])
                 });
             });
     };
-    // получить все вакансии группы
-    function getGroup() {
-        req={
-            action:'GetVacancyGrooup'
-        }
-        PHP_server.Vacancy(req)
-            .then(function(resolve) {
-                //$scope.group = resolve;
-                console.log(resolve);
-            });
-    };
 
-     getGroup();
         // поделиться вакансией
 
     $scope.shareVacancy = function(vacancy) {

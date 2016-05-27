@@ -1,6 +1,7 @@
 section.info-block.clearfix
     .col-md-12.col-sm-12.col-reset
-        section.main-section.add-news.clearfix(ng-show='group.creator._id == meData._id')
+        // открыт если будет пользователь
+        //section.main-section.add-news.clearfix(ng-show='group.creator._id == meData._id')
             .add-news__inputs-block
                 input.form-control.add-news__title_input(type='text', ng-model='title', placeholder="Заголовок")
                 textarea.form-control.add-news__description_area(data-type='text', data-ng-model='text', placeholder="Есть, о чем рассказать?", ng-change='writingComment();')
@@ -28,15 +29,15 @@ section.info-block.clearfix
                             span Урок
             .add-news__tags
                 a(href='#', ng-repeat='tag in newTags track by $index', ng-bind="tag + ' '")
-        section.main-section.post-panel(ng-repeat='post in posts')
+        section.main-section.post-panel(ng-repeat='post in postArray.posts')
             .post-panel__author-grid
                 .post__author.clearfix
                     .post__author__logo
                         a(ui-sref='#')
-                            img(ng-src='{{post.groupAuthor.photo}}')
+                            img(ng-src='{{SERVER.IMAGES_USER}}{{postArray.image}}')
                     .post__author__description
                         .post__author__name
-                            a(ui-sref='#', ng-bind='post.groupAuthor.name')
+                            a(ui-sref='#', ng-bind='postArray.title')
                         .post__date(ng-bind='post.created', ng-hide='post.isShare')
                         .post-share__author(ng-show='post.isShare')
                             .post-share__icon
@@ -55,7 +56,7 @@ section.info-block.clearfix
                 .post__repost-vacancy(ng-show="post.copyFromType == 'vacancy'")
                     p(ng-show='post.copyEntity.country')
                         span.list-title Страна
-                        span.list-result(ng-bind='post.copyEntity.country.name')
+                        span.list-result(ng-bind='post.copyEntity.country')
                     p(ng-show='post.copyEntity.city')
                         span.list-title Город
                         span.list-result(ng-bind='post.copyEntity.city')

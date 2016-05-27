@@ -1,16 +1,16 @@
 angular.module('myApp.controllers.PagesLists',[])
 .controller('PagesListsCtrl',["$scope",'PHP_server','notify','$modal', function($scope,PHP_server,notify,$modal){
 
-    // установка фильтра и окна вида
+    //! установка фильтра и окна вида
     $scope.activeType='public';
 
-    // кнопка смена данных
+    //! кнопка смена данных
     $scope.changeType=function(type){
         console.log(type);
         $scope.activeType = type.name;
 
     };
-    // типы для фильтрации страниц
+    //! типы для фильтрации страниц
     $scope.searchFilterTypes = [{
         label: 'Публичная страница',
         name: 'public'
@@ -19,12 +19,12 @@ angular.module('myApp.controllers.PagesLists',[])
         name: 'personal'
     }];
 
-    // массив публичных страниц
+    //! массив публичных страниц
     $scope.publicPages=[];
     // массив потльзователей
     $scope.users=[];
 
-    //  получить список публичных страниц
+    //!  получить список публичных страниц
     $scope.getPublicPagesList=function(options){
         var params={
             action:'getAllPublicPages'
@@ -33,7 +33,7 @@ angular.module('myApp.controllers.PagesLists',[])
        return  PHP_server.PublicPages(this.config);
     };
 
-    // получение страничек
+    //! получение страничек
 
     $scope.getPublicPagesList()
         .then(function(response){
@@ -54,7 +54,7 @@ angular.module('myApp.controllers.PagesLists',[])
         });
 
 
-    //  получить список людей
+    //!  получить список людей
         $scope.getUsersList=function(options){
             var params={
                 action:'getAllUserData'
@@ -157,18 +157,6 @@ angular.module('myApp.controllers.PagesLists',[])
         $scope.groupSearch={
             // нет данных
         };
-
-
-
-
-
-
-
-
-
-
-
-
 
     // отмена поиска
     $scope.cancelSearch=function(){

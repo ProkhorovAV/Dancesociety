@@ -52,7 +52,7 @@ angular.module("myApp.controllers.Jobs", [])
                 */
             ];
 
-            //! волучения вакансий
+            //! получения вакансий
             $scope.getVacancy=function(){
                 var req={
                     action:"getAllVacancy"

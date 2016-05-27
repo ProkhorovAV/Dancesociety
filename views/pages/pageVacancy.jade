@@ -1,6 +1,6 @@
 section.user-vacancy
     .col-md-12.col-sm-12.col-reset(ng-init='getAllVacancies();')
-        section.main-section.add-news.clearfix(ng-show='group.creator._id === meData._id')
+        //section.main-section.add-news.clearfix(ng-show='group.creator._id === meData._id')
             table.user-vacancy__table
                 tbody
                     tr
@@ -59,15 +59,15 @@ section.user-vacancy
                     tr
                         td
                             button.user-vacancy__publish-btn(type='button', name='button', ng-click='createNewVacancy();') Опубликовать
-        section.main-section.vacancy-panel(ng-repeat='vacancy in allVacancies')
+        section.main-section.vacancy-panel(ng-repeat='vacancy in allVacancies.vacancy')
             .post-vacancy__simple.post-panel__author-grid
                 .post__author.clearfix
                     .post__author__logo
                         a(ui-sref='#')
-                            img(ng-src='{{vacancy.groupAuthor.photo}}', alt='')
+                            img(ng-src='{{vacancy.image}}')
                     .post__author__description
                         .post__author__name
-                            a(ui-sref='#)', ng-bind='vacancy.groupAuthor.name')
+                            a(ui-sref='#)', ng-bind='vacancy.title')
                         .post__date(ng-bind='vacancy.created')
                         //
                           <div class="post__date" ng-bind="post.created | amCalendar">
@@ -78,7 +78,7 @@ section.user-vacancy
             .user-vacancy__text
                 p(ng-show='vacancy.country')
                     span.list-title Страна
-                    span.list-result(ng-bind='vacancy.country.name')
+                    span.list-result(ng-bind='vacancy.country')
                 p(ng-show='vacancy.city')
                     span.list-title Город
                     span.list-result(ng-bind='vacancy.city')

@@ -1,6 +1,7 @@
 section.info-block.clearfix
     .col-md-12.col-sm-12.col-reset
-        section.main-section.add-news.clearfix(ng-show='user.isMyProfile')
+        // здесь открывается только если пользователь тот же
+        //section.main-section.add-news.clearfix(ng-show='user.isMyProfile')
             .add-news__inputs-block
                 input.form-control.add-news__title_input(type='text', ng-model='title', placeholder="Заголовок")
                 textarea.form-control.add-news__description_area(data-type='text', data-ng-model='text', placeholder="Есть, о чем рассказать?", ng-change='writingComment();')
@@ -33,29 +34,29 @@ section.info-block.clearfix
                 .post__author.clearfix
                     .post__author__logo(ui-sref='#')
                         a
-                            img(ng-src='{{post.author.userpic}}')
+                            img(ng-src='{{SERVER.IMAGES_USER}}{{post.autor.image}}')
                     .post__author__description
                         .post__author__name
-                            a(ui-sref='#', ng-bind="post.author.firstname + ' ' + post.author.secondname")
+                            a(ui-sref='#', ng-bind="post.autor.firstName + ' ' + post.autor.secondName")
                         .post__date(ng-bind='post.created', ng-hide='post.isShare')
                         .post-share__author(ng-show='post.isShare')
                             .post-share__icon
-                                img(src='../img/share-author_icon.png')
-                            .post-share__author-img(ui-sref='#')
+                                img(src='{{SERVER.IMAGES_PHOTO}}{{post.autor.image}}')
+                            //.post-share__author-img(ui-sref='#')
                                 a
                                     img(ng-src='{{post.copyEntity.author.userpic}}')
                             .post-share__author-info
-                                .post-share__author-name(ui-sref='#', ng-bind="post.copyEntity.author.firstname + ' ' + post.copyEntity.author.secondname")
-                                .post-share__date(ng-bind='post.copyEntity.created')
+                                .post-share__author-name(ui-sref='#', ng-bind="post.autor.firstName + ' ' + post.autor.secondName")
+                                .post-share__date(ng-bind='post.created')
                     .post__remove_btn(ng-if='post.author._id === meData._id')
-                        i.fa.fa-times.remove-image(ng-click='removePost(post._id, $index);')
+                        i.fa.fa-times.remove-image(ng-click='removePost(post.id, $index);')
             .post-panel__text-grid
                 h2.post_title(ng-bind='post.title')
-                p.post_text(ng-bind='post.text')
-                .post__repost-vacancy(ng-show="post.copyFromType == 'vacancy'")
-                    p(ng-show='post.copyEntity.country')
+                //p.post_text(ng-bind='post.text')
+                //.post__repost-vacancy(ng-show="post.copyFromType == 'vacancy'")
+                    p(ng-show='post.country')
                         span.list-title Страна
-                        span.list-result(ng-bind='post.copyEntity.country.name')
+                        span.list-result(ng-bind='post.country.name')
                     p(ng-show='post.copyEntity.city')
                         span.list-title Город
                         span.list-result(ng-bind='post.copyEntity.city')
@@ -85,11 +86,11 @@ section.info-block.clearfix
                         span.list-description(ng-bind='post.copyEntity.text')
                 ul.post__photos
                     li(ng-repeat='image in post.photos', ng-click='openImage(image)')
-                        img(ng-src='{{image.path}}', alt='')
+                        img(ng-src='{{SERVER.IMAGES_PHOTO}}{{image.src}}')
                 ul.post__videos.clearfix
                     li(ng-repeat='video in post.videos')
                         .user-videos__thumb(ng-click='openVideo(video);')
-                            img(src='{{video.thumb}}')
+                            img(src='{{SERVER.IMAGES_VIDEO}}{{video.imageSrc}}')
                         // <youtube-video video-url="video.link" class="new-video__frame"></youtube-video>
                         .photo__image-info
                             .image-info__name(ng-bind='video.title')
@@ -100,17 +101,17 @@ section.info-block.clearfix
                                   <span>11</span>
                                   </div>
                                 .image-info__like.no-select(ng-click='likeVideo($index, post)')
-                                    span(ng-bind='video.likes')
+                                    span(ng-bind='video.likes.length')
                                     i.image-info__like-btn
                 .post__control-btns.clearfix
                     .control-btns__share(ng-hide='user.isMyProfile', ng-click='sharePost(post);')
                         span Поделиться
                         .share__btn
-                            span(ng-bind='post.reposts')
+                            span(ng-bind='post.reposts.length')
                     .control-btns__like
                         span Круто!
                         .like__btn(ng-click='likePost($index);', ng-class="{'active' : post.isLiked}")
-                            span(ng-bind='post.likes')
+                            span(ng-bind='post.likes.length')
                 //
                   <div class="tags-grid">
                   <ul class="tags-grid_list clearfix">
@@ -120,24 +121,24 @@ section.info-block.clearfix
                   </ul>
                   </div>
             .post__comments
-                .post__comments-list(ng-show='post.comments.data.length > 0')
+                .post__comments-list(ng-show='post.comments.length > 0')
                     .post__comments-list__show-all(ng-show='post.configComments.count < post.comments.count', ng-click='showAllComments(post);')
                         span(ng-bind="(post.comments.count - post.configComments.count) + ' ' + 'коментариев'")
                         i.fa.fa-angle-down
                     ul
-                        li.clearfix(ng-repeat='comment in post.comments.data')
+                        li.clearfix(ng-repeat='comment in post.comments')
                             .col-md-1.col-sm-1.col-reset.post__comment__image(ui-sref='#')
                                 a
-                                    img(ng-src='{{comment.author.userpic}}')
+                                    img(ng-src='{{SERVER.IMAGES_USER}}{{comment.userPhoto}}')
                             .col-md-10.col-sm-10.col-reset.post__comment__description
                                 .post__comment__description-header.clearfix
-                                    a.post__comment__author-name(ui-sref='#', ng-bind="comment.author.firstname + ' ' + comment.author.secondname")
+                                    a.post__comment__author-name(ui-sref='#', ng-bind="comment.userFirstName + ' ' + comment.userSecondName")
                                     span.post__comment__published-date(ng-bind='comment.created')
                                     // <a href="" ng-if="comment.author._id == meData._id" class="post__comment__remove-btn"
                                     // ng-click="removeComment(comment._id, $index, $parent.$parent.$index)">удалить</a>
                                 .post__comment__description-footer
                                     p.post__comment__text(ng-bind='comment.text')
-                            .col-md-1.col-sm-1.col-reset.post__comment__controls(ng-if='comment.author._id == meData._id')
+                            .col-md-1.col-sm-1.col-reset.post__comment__controls(ng-if='comment.userId == meData._id')
                                 .post__comment__controls_remove(ng-click='removeComment(comment._id, $index, $parent.$parent.$index)')
                                     i.icon-trash(tooltip-placement='right', tooltip="Удалить")
                                 //

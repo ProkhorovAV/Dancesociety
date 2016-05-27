@@ -1,12 +1,13 @@
 <?php
 //
-//    здесь можно добавить проверку id пользователя
-//    и открыть все для id = -1 (вход без регистрации)
-//      поставить код ошибок на функции переработки
+//     
+//    
+//      
 
 
 include_once(dirname(__FILE__).'/Connection.php');
-//include $_SERVER['DOCUMENT_ROOT'].'/data/Php/Connection.php';
+include_once(dirname(__FILE__).'/packageClass.php'); 
+include_once(dirname(__FILE__).'/querySQLClass.php'); 
 // соединение с базой SQL
 $connectionBase = mysql_connect($hostBase,$userBase,$passwordBase);
 // условия ошибки и выхода
@@ -18,9 +19,9 @@ mysql_query('SET NAMES utf8');
 /*
 $json=json_decode(file_get_contents('php://input'));
 $obj=new Post();
-$obj->SetSkip($json->skip);
-$obj->SetCount($json->counts);
-$obj->SetUserId($json->userId);
+//$obj->SetSkip($json->skip);
+//$obj->SetCount($json->counts);
+//$obj->SetUserId($json->userId);
 // выводы закоментировать не нужное
 // по id user
 //$obj->GetUserDataIdUser();
@@ -28,7 +29,13 @@ $obj->SetUserId($json->userId);
 //$obj->GetUserDataTop();
 // новости от Top пользователей
 //$obj->GetPostFromTopUser();
-$obj->getPostFromDanciety();
+
+// запрос по новостям от сети
+//$obj->getPostFromDanciety();
+// запрос на новости по id публичной страницы
+$obj->setIdPage($json->data->idPage);         
+$obj->getPostOnIdPage();
+
 echo json_encode($obj->SendData());
  */
 
@@ -36,6 +43,16 @@ echo json_encode($obj->SendData());
 
 // данные по пользователю
 class Post{
+    // id публичной страницы
+    private $idPage=NULL;
+    //  id пользователя
+    private $idPeople=NULL;
+    // упаковка
+    private $packege=NULL;
+    // для  запросов
+    private $querySQL=NULL;
+
+
     private $counts=NULL;
     private $skip=NULL;
     private $userId=NULL;
@@ -47,10 +64,10 @@ class Post{
     private $statusErr=true;
 
     // получить данные по пользователю по id
-    public function GetUserDataIdUser(){
+    public function GetPostDataCountsIdUser(){
         // получение массив id новостей по id пользователю
         $postArrayId=$this->GetArrayIdUserPost();
-        // если имеются новости
+        // если не имеются новости
         if ($postArrayId[0]==NULL){
             $this->statusErr=true;
             $this->sendArrayData='no news';
@@ -125,7 +142,7 @@ class Post{
 
     }
     // новости от Danciety
-    public function getPostFromDanciety(){
+    public function GetPostFromDanciety(){
         // все посты
         $arrayPosts=$this->GetAllPostsDanciety();
          // распоковать пользователя
@@ -147,76 +164,162 @@ class Post{
         $this->sendArrayData=$arrayPosts;
     }
 
+   // получить данные по id публичной страницы
+    public function GetPostOnIdPage(){
+         
+        // получить все новости по id публичной страницы
+        $arrayPosts=$this->GetAllPostsOnIdPage($postArrayId);
+        // распоковать пользователя
+        $arrayPosts['posts']=$this->SetAutorInPost($arrayPosts['posts']);
+        // распоковать фото
+        $arrayPosts['posts']=$this->SetPhotoArray($arrayPosts['posts']);
+        // распоковать видео
+        $arrayPosts['posts']=$this->SetVideoArray($arrayPosts['posts']);
+        // распоковать коментарии
+        $arrayPosts['posts']=$this->SetCommentsArray($arrayPosts['posts']);    
+        // распоковать лайки
+        $arrayPosts['posts']=$this->SetLikesArray($arrayPosts['posts']);
+        // распоковать репосты
+        $arrayPosts['posts']=$this->SetRepostArray($arrayPosts['posts']);  
+            // все получилось
+        $this->statusErr=false;
+        // отправляем данные
+        $this->sendArrayData=$arrayPosts;
+    }
+
+
+
     ////// вспомогательные функции///////
 
-        // получение всех новостей
-        public function GetAllPostsDanciety(){
-            // новости    
+        // установка id users
+        public function SetIdPeople($_idPeople=NULL){
+            $this->idPeople=$_idPeople;
+        }  
+
+        // получение всех новостей и фильтрации их по id user
+        public function GetArrayIdUserPost(){
+            // массив новостей
             $postArray=array();
-            // запрос на все новости
-            $stringQuery="SELECT * FROM Post";
+            // строка запроса на вычисления подписчиков
+            $stringQuery="SELECT Id, Repost FROM Posts";
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
             $row = mysql_fetch_array($query);
-            // объект с данными 
+            // цикл проверки всех подписанных и внесения id новостей в массив
             do {
-                    $postRow=array(
-                        id=>$row['Id'],
-                        title=>$row['Title'],
-                        text=>$row['Text'],
-                        autor=>$row['Autor'],
-                        likes=>$row['Likes'],
-                        repost=>$row['Repost'],
-                        created=>$row['Created'],
-                        remove=>$row['Remove'],
-                        photos=>$row['Photos'],
-                        videos=>$row['Videos'],
-                        comments=>$row['Comments'],
-                         isPublic=>$row['IsPublic']
-                    );
-                        // добавление в массив и сформировали ответ по новостям
-                 array_push($postArray,$postRow);
+                $idUserArray= explode("*",$row['Repost']);
+                foreach ($idUserArray as $element) {
+                    if (($element==$userId) and ($element!='')) {
+                        array_push($postArray, $row['Id']);
+                    }
+                }
             } while($row = mysql_fetch_array($query));
             return $postArray;
         }
+        // получить все посты
+        public function GetAllPosts($_postArrayId){
+            // массив новостей
+            $postArray=array();
+            // запрос
+            $stringQuery="SELECT * FROM Posts WHERE Id IN (".implode(",", $_postArrayId).")";
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+                    // цикл вывода всех новостей пользователя
+                    do {
+                        $postRow=$this->packege->post($row);
+                        // добавление в массив и сформировали ответ по новостям
+                        array_push($postArray,$postRow);
+                    } while($row = mysql_fetch_array($query));
+            return $postArray;
+        }
+        // сформировать и внести данные по автору
+        public function SetAutorInPost($_arrayPosts){
+                    
+                $_arrayPosts= $this->querySQL->openDataOnAutor($_arrayPosts);
+                return  $_arrayPosts;
+        }
+        // формирование массива фотографий
+        public function SetPhotoArray($_arrayPosts){ 
 
-        // получение новостей по пользователем по одному без фильтрации
-        public function GetAllPostsFromIdUser($_array){
-            // окончательный массив данных
+             $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Photos');            
+             return $_arrayPosts;            
+        }
+        // формирование массива видео
+        public function SetVideoArray($_arrayPosts){                 
+               
+                $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Videos');   
+                return $_arrayPosts;            
+        }        
+        // формирование массива коментариев
+        public function SetCommentsArray($_arrayPosts){   
+                     
+               $_arrayPosts= $this->querySQL->openArrauData($_arrayPosts,'Comments');     
+               return $_arrayPosts;            
+        }   
+        // формирования массива лайков
+        public function SetLikesArray($_arrayPosts){
+
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'likes');              
+            return $_arrayPosts;     
+        }
+        // формирования массива репостов
+        public function SetRepostArray($_arrayPosts){
+             // цикл переборки    
+                $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'repost');                 
+                return $_arrayPosts;     
+        }
+        // получение всех новостей и фильтрации их по лайкам
+        public function GetArrayTopLikesPost(){
+            
+            // строка запроса на вычисления подписчиков
+            $stringQuery="SELECT Id, Likes FROM Post";
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными по id Post и Like
+            $postLikesObj=array();
+            // цикл проверки всех подписанных и внесения id новостей в массив
+            do {
+                // вытащить переменную Likes
+                $idUserArray=$this->packege->arrayData($row,'Likes');                 
+                // создать массив с данными  для id новостей               
+                $postLikesObj[$row['Id']]=count($idUserArray);                 
+                
+            } while($row = mysql_fetch_array($query));
+            // сортировать новости  по like           
+            arsort($postLikesObj);
+            //
+            $postResultArray=array();
+                // вставить в массив id новостей
+                foreach ($postLikesObj as $key => $value) {
+                    array_push($postResultArray, $key);
+                } 
+            return $postResultArray;
+        }
+        // получение данных поста по Top
+        public function GetAllPostsTopLikes($_array){
             $resultPost=array();
-            // цикл получение новостей по id
             for ($i=0; $i < count($_array); $i++) { 
-                // запрос
-                $stringQuery="SELECT * FROM Post WHERE Autor=$_array[$i]";
+                // запрос по одному посту
+                $stringQuery="SELECT * FROM Post WHERE Id=$_array[$i]";
                 // запрос
                 $query = mysql_query($stringQuery);
                 // получение первой строки
                 $row = mysql_fetch_array($query);
-                $postRow=array(
-                    id=>$row['Id'],
-                    title=>$row['Title'],
-                    text=>$row['Text'],
-                    autor=>$row['Autor'],
-                    likes=>$row['Likes'],
-                    repost=>$row['Repost'],
-                    created=>$row['Created'],
-                    remove=>$row['Remove'],
-                    photos=>$row['Photos'],
-                    videos=>$row['Videos'],
-                    comments=>$row['Comments'],
-                    isPublic=>$row['IsPublic']
-                    );
+                $postRow=$this->packege->post($row);                
                 // добавление в массив и сформировали ответ по новостям
                 array_push($resultPost,$postRow);
             }
             return $resultPost;
         }
-
         // получения топ пользователей
         public function GetArrayTopUserPost(){
             // строка запроса на вычисления подписчиков
-            $stringQuery="SELECT Id, Reposts FROM People";
+            $stringQuery="SELECT Id, Reposts FROM Peoples";
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
@@ -225,10 +328,8 @@ class Post{
             $peopleSubObj=array();
             // цикл проверки всех пользователей и внесения id подписчиков в массив
             do {
-                // вытащить переменную Likes
-                $subUserArray= explode("*",$row['Reposts']);
-                // удалить пустую строку
-                array_pop($subUserArray);
+                // вытащить переменную 
+                $subUserArray=$this->packege->arrayData($row,'Reposts'); 
                 // создать массив с данными  для id новостей               
                 $peopleSubObj[$row['Id']]=count($subUserArray);                 
                 
@@ -244,292 +345,96 @@ class Post{
  
             return $postResultArray;
         }
-
-        // получение данных поста по Top
-        public function GetAllPostsTopLikes($_array){
+        // получение новостей по пользователем по одному без фильтрации
+        public function GetAllPostsFromIdUser($_array){
+            // окончательный массив данных
             $resultPost=array();
+            // цикл получение новостей по id
             for ($i=0; $i < count($_array); $i++) { 
                 // запрос
-                $stringQuery="SELECT * FROM Post WHERE Id=$_array[$i]";
+                $stringQuery="SELECT * FROM Post WHERE Autor=$_array[$i]";
                 // запрос
                 $query = mysql_query($stringQuery);
                 // получение первой строки
                 $row = mysql_fetch_array($query);
-                $postRow=array(
-                    id=>$row['Id'],
-                    title=>$row['Title'],
-                    text=>$row['Text'],
-                    autor=>$row['Autor'],
-                    likes=>$row['Likes'],
-                    repost=>$row['Repost'],
-                    created=>$row['Created'],
-                    remove=>$row['Remove'],
-                    photos=>$row['Photos'],
-                    videos=>$row['Videos'],
-                    comments=>$row['Comments'],
-                    isPublic=>$row['IsPublic']
-                    );
+                $postRow=$this->packege->post($row);
                 // добавление в массив и сформировали ответ по новостям
                 array_push($resultPost,$postRow);
             }
             return $resultPost;
         }
-
-        // получение всех новостей и фильтрации их по лайкам
-        public function GetArrayTopLikesPost(){
-            
-            // строка запроса на вычисления подписчиков
-            $stringQuery="SELECT Id, Likes FROM Post";
+        // получение всех новостей
+        public function GetAllPostsDanciety(){
+            // новости    
+            $postArray=array();
+            // запрос на все новости
+            $stringQuery="SELECT * FROM Post";
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
             $row = mysql_fetch_array($query);
-            // объект с данными по id Post и Like
-            $postLikesObj=array();
-            // цикл проверки всех подписанных и внесения id новостей в массив
+            // объект с данными 
             do {
-                // вытащить переменную Likes
-                $idUserArray= explode("*",$row['Likes']);
-                // удалить пустую строку
-                array_pop($idUserArray);
-                // создать массив с данными  для id новостей               
-                $postLikesObj[$row['Id']]=count($idUserArray);                 
-                
+                $postRow=$this->packege->post($row);
+                // добавление в массив и сформировали ответ по новостям
+                array_push($postArray,$postRow);
             } while($row = mysql_fetch_array($query));
-            // сортировать новости  по like           
-            arsort($postLikesObj);
-            //
-            $postResultArray=array();
-            // вставить в массив id новостей
-            foreach ($postLikesObj as $key => $value) {
-                array_push($postResultArray, $key);
-            }
+            return $postArray;
+        }
  
-            return $postResultArray;
-        }
-
-      // формирования массива репостов
-        public function SetRepostArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $repostArray=explode("*",$_arrayPosts[$i]['repost']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($repostArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['repost']=$repostArray;                                      
-                } 
-            return $_arrayPosts;     
-        }
-
-        // формирования массива лайков
-        public function SetLikesArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $likeArray=explode("*",$_arrayPosts[$i]['likes']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($likeArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['likes']=$likeArray;                                      
-                } 
-            return $_arrayPosts;     
-        }
-
-        // формирование массива коментариев
-        public function SetCommentsArray($_arrayPosts){   
-                     
-                // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                     // массив комментариев
-                    $comments=array();       
-                    // расщипить                
-                    $commentArray=explode("*",$_arrayPosts[$i]['comments']);
-                    // удалеие последнего элемента пустого                       
-                    array_pop($commentArray);
-                    // запросы на комментарии  
-                    for ($i1=0; $i1 <count($commentArray); $i1++) { 
-                        // запрос на комментарий с автором
-                        $stringQuery="SELECT People.Id as UserId, People.Image, People.FirstName, People.SecondName, Comment.*
-                                      FROM Comment INNER JOIN People on (Comment.Id=$commentArray[$i1]) where (Comment.Autor=People.Id)";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение данных
-                        $row = mysql_fetch_array($query);
-                        $element=array(
-                            userId=>$row['UserId'],
-                            text=>$row['Text'],
-                            userPhoto=>$row['Image'],
-                            userFirstName=>$row['FirstName'],
-                            userSecondName=>$row['SecondName'],
-                            created=>$row['Created']
-                            );
-                        array_push($comments,$element);  
-                    }
-                    $_arrayPosts[$i]['comments']=$comments;                                      
-                } 
-            return $_arrayPosts;            
-        }        
-
-        // формирование массива видео
-        public function SetVideoArray($_arrayPosts){                 
-               // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $videoArray=explode("*",$_arrayPosts[$i]['videos']);
-                    // удалеие последнего элемента пустого                       
-                    array_pop($videoArray);
-                    // переменная результата
-                    $resultVideoArray=array();
-                    // цикл получения полного перечня данных
-                    for ($i1=0; $i1 < count($videoArray); $i1++) { 
-                         // запрос
-                        $stringQuery="SELECT * FROM Video WHERE Id=$videoArray[$i1]";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение первой строки
-                        $row = mysql_fetch_array($query);
-                        // свормировать лайки
-                        $elementLikes=explode("*",$row['Likes']);
-                        // удалить пустую
-                        array_pop( $elementLikes);
-                        $element=array(
-                                id=>$row['Id'],
-                                src=>$row['Src'],
-                                title=>$row['Title'],
-                                likes=>$elementLikes,                               
-                                autor=>$row['Autor'],
-                                created=>$row['Created'],
-                                repost=>$row['Repost'],
-                                remove=>$row['Remove'],
-                                imageSrc=>$row['ImageSrc']
-                            );
-                        array_push($resultVideoArray, $element);
-                    }    
-                    // переопреелить          
-                    $_arrayPosts[$i]['videos']=$resultVideoArray; 
-                } 
-            return $_arrayPosts;            
-        }        
-
-        // формирование массива фотографий
-        public function SetPhotoArray($_arrayPosts){  
-                // массив переменных id фото
-                 $photoArray=array();                 
-                // цикл получения ссылок на видео файлы                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $photoArray=explode("*",$_arrayPosts[$i]['photos']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($photoArray);  
-                     // массив конечных распакованных фото
-                    $resultPhotoArray=array(); 
-                    // запрос на каждое фото
-                    for ($i1=0; $i1 < count($photoArray); $i1++) { 
-                         // запрос
-                        $stringQuery="SELECT * FROM Photo WHERE Id=$photoArray[$i1]";
-                        // запрос
-                        $query = mysql_query($stringQuery);
-                        // получение первой строки
-                        $row = mysql_fetch_array($query);
-                        $element=array(
-                                id=>$row['Id'],
-                                src=>$row['Src'],
-                                title=>$row['Title'],
-                                likes=>$row['Likes'],
-                                autor=>$row['Autor'],
-                                created=>$row['Created'],
-                                repost=>$row['Repost'],
-                                remove=>$row['Remove']
-                            );
-                        array_push($resultPhotoArray, $element);
-                    }
-                     // переопреелить
-                    $_arrayPosts[$i]['photos']=$resultPhotoArray;  
-                }
-           
-            return $_arrayPosts;            
-        }
-
-        // сформировать и внести данные по автору
-        public function SetAutorInPost($_arrayPosts){
-  
-                // расщепление массива авторов          
-                 for ($i=0; $i <count($_arrayPosts) ; $i++) {   
-
-                    $idAutors=$_arrayPosts[$i]['autor'];
-                    // строка запроса
-                    $stringQuery="SELECT * FROM People WHERE Id=$idAutors";
-                    // запрос
-                    $query = mysql_query($stringQuery);
-                    // получение данных
-                    $row = mysql_fetch_array($query);
-                    $_arrayPosts[$i]['autor']=array(
-                            id=>$idAutors,
-                            name=>$row['FirstName'],
-                            secondName=>$row['SecondName'],
-                            firstName=>$row['FirstName'],
-                            image=>$row['Image']
-                        );
-                 } 
-                return  $_arrayPosts;
-
-
-        }
-        // получить все посты
-        public function GetAllPosts($_postArrayId){
-            // массив новостей
+        // получение всех новостей
+        public function GetAllPostsOnIdPage(){
+            // новости    
             $postArray=array();
-            // запрос
-            $stringQuery="SELECT * FROM Post WHERE Id IN (".implode(",", $_postArrayId).")";
+            // запрос на все новости
+            $stringQuery="SELECT * FROM PublicPages WHERE Id=$this->idPage";
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
             $row = mysql_fetch_array($query);
-                    // цикл вывода всех новостей пользователя
-                    do {
-                        $postRow=array(
-                            id=>$row['Id'],
-                            title=>$row['Title'],
-                            text=>$row['Text'],
-                            autor=>$row['Autor'],
-                            likes=>$row['Likes'],
-                            repost=>$row['Repost'],
-                            created=>$row['Created'],
-                            remove=>$row['Remove'],
-                            photos=>$row['Photos'],
-                            videos=>$row['Videos'],
-                            comments=>$row['Comments'],
-                            isPublic=>$row['IsPublic']
-                        );
-                        // добавление в массив и сформировали ответ по новостям
-                        array_push($postArray,$postRow);
-                    } while($row = mysql_fetch_array($query));
-            return $postArray;
-        }
-
-
-        // получение всех новостей и фильтрации их по id user
-        public function GetArrayIdUserPost(){
-            // массив новостей
-            $postArray=array();
-            // строка запроса на вычисления подписчиков
-            $this->stringQuery="SELECT Id, Repost FROM Post";
+            $posts=$this->packege->arrayData($row,'Post');              
+            // сохранение данных о публичной странице
+            $PublicPage=$row; 
+            // строка запроса
+            $stringQuery="SELECT * FROM Posts WHERE Id IN (".implode(",", $posts).")";
             // запрос
-            $this->query = mysql_query($this->stringQuery);
+            $query = mysql_query($stringQuery);
             // получение первой строки
-            $this->row = mysql_fetch_array($this->query);
-            // цикл проверки всех подписанных и внесения id новостей в массив
+            $row = mysql_fetch_array($query);
             do {
-                $idUserArray= explode("*",$this->row['Repost']);
-                foreach ($idUserArray as $element) {
-                    if (($element==$this->userId) and ($element!='')) {
-                    array_push($postArray, $this->row['Id']);
-                    }
-                }
-            } while($this->row = mysql_fetch_array($this->query));
-            return $postArray;
+                $postRow=$this->packege->post($row);
+                // добавление в массив и сформировали ответ по новостям
+                array_push($postArray,$postRow);
+            } while($row = mysql_fetch_array($query));
+            // добавить в общую массу значения постов и публичной страницы
+
+            $megaData=$this->packege->publicPage($postArray,'posts',$PublicPage);           
+            return $megaData;
         }
+        // установка id публичной страницы 
+        public function setIdPage($_idPage){
+            $this->idPage=$_idPage;
+        }
+
+      
+
+        
+       
+       
+      
+
+      
+
+       
+           
+
+       
+       
+
+       
+       
+
+        
 
 
       // формирования массива данных для отправки
@@ -548,10 +453,7 @@ class Post{
             $this->counts=$counts;
 
         }
-        // установка id users
-        public function SetUserId($userId=NULL){
-            $this->userId=$userId;
-        }  
+       
             // получить объект новостей
         public function GetObjPost($_row){
             $postRow=array(
@@ -571,10 +473,16 @@ class Post{
             return $postRow;
         }
 
+        
+
 /////////////// функции обязательные для всех
 
         // конструктор
         public function __construct(){
+            // для упаковки
+             $this->packege=new Pack();
+             // для запросов
+             $this->querySQL=new QuerySQL();
         }
         // возврат ошибок
         public function GetStatusError(){            

@@ -1,6 +1,7 @@
 section.user-vacancy
     .col-md-12.col-sm-12.col-reset(ng-init='getAllVacancies();')
-        section.main-section.add-news.clearfix(ng-show='user.isMyProfile')
+        // открыть когда можно создать вакансию
+        //section.main-section.add-news.clearfix(ng-show='user.isMyProfile')
             table.user-vacancy__table
                 tbody
                     tr
@@ -61,21 +62,21 @@ section.user-vacancy
                 .post__author.clearfix
                     .post__author__logo(ui-sref='#')
                         a
-                            img(ng-src='{{vacancy.author.userpic}}')
+                            img(ng-src='{{SERVER.IMAGES_USER}}{{vacancy.autor.image}}')
                     .post__author__description
                         .post__author__name
-                            a(ui-sref='#', ng-bind="vacancy.author.firstname + ' ' + vacancy.author.secondname")
+                            a(ui-sref='#', ng-bind="vacancy.autor.firstName + ' ' + vacancy.autor.secondName")
                         .post__date(ng-bind='vacancy.created')
                         //
                           <div class="post__date" ng-bind="post.created | amCalendar">
                           </div>
-                    .post__remove_btn(ng-if='vacancy.author._id === meData._id')
-                        i.fa.fa-times.remove-image(ng-click="removeVacancy(vacancy._id, $index, 'pair');")
+                    .post__remove_btn(ng-if='vacancy.autor.id === meData.id')
+                        i.fa.fa-times.remove-image(ng-click="removeVacancy(vacancy.id, $index, 'pair');")
             .user-vacancy__title(ng-bind='vacancy.title')
             .user-vacancy__text
                 p(ng-show='vacancy.country')
                     span.list-title Страна
-                    span.list-result(ng-bind='vacancy.country.name')
+                    span.list-result(ng-bind='vacancy.country')
                 p(ng-show='vacancy.city')
                     span.list-title Город
                     span.list-result(ng-bind='vacancy.city')
@@ -88,18 +89,18 @@ section.user-vacancy
                 p(ng-show='vacancy.price')
                     span.list-title Заработок
                     span.list-result(ng-bind="'от $' + vacancy.price")
-                p(ng-show='vacancy.startDate || vacancy.endDate')
+                p(ng-show='vacancy.start || vacancy.end')
                     span.list-title Период работы
                     span.list-result c
-                    span.list-result(ng-bind="vacancy.startDate | date: 'dd.MM.yyyy'")
+                    span.list-result(ng-bind="vacancy.start | date: 'dd.MM.yyyy'")
                     span.list-result gj
-                    span.list-result(ng-bind="vacancy.endDate | date: 'dd.MM.yyyy'")
-                p(ng-show='vacancy.startAge || vacancy.endAge')
+                    span.list-result(ng-bind="vacancy.end | date: 'dd.MM.yyyy'")
+                p(ng-show='vacancy.ageStart || vacancy.ageEnd')
                     span.list-title Возраст
-                    span.list-result(ng-bind="'от ' + vacancy.startAge + ' до ' + vacancy.endAge")
-                p(ng-show='vacancy.startHeight || vacancy.endHeight')
+                    span.list-result(ng-bind="'от ' + vacancy.ageStart + ' до ' + vacancy.ageEnd")
+                p(ng-show='vacancy.heightStart || vacancy.heightEnd')
                     span.list-title Рост
-                    span.list-result(ng-bind="'от ' + vacancy.startHeight + ' до ' + vacancy.endHeight")
+                    span.list-result(ng-bind="'от ' + vacancy.heightStart + ' до ' + vacancy.heightEnd")
                 p(ng-show='vacancy.text')
                     span.list-title Описание
                     span.list-description(ng-bind='vacancy.text')
@@ -107,7 +108,7 @@ section.user-vacancy
                     .control-btns__share(ng-click='shareVacancy(vacancy)')
                         span Поделиться
                         .share__btn
-                            span(ng-bind='vacancy.reposts')
+                            span(ng-bind='vacancy.reposts.length')
                     .control-btns__like
                         span Круто!
                         .like__btn(ng-click='likeVacancy($index);', ng-class="{'active' : vacancy.isLiked}")
@@ -123,23 +124,23 @@ section.user-vacancy
                         li.clearfix(ng-repeat='comment in vacancy.comments')
                             .col-md-1.col-sm-1.col-reset.post__comment__image(ui-sref='#')
                                 a
-                                    img(ng-src='{{comment.author.userpic}}')
+                                    img(ng-src='{{SERVER.IMAGES_USER}}{{comment.userPhoto}}')
                             .col-md-10.col-sm-10.col-reset.post__comment__description
                                 .post__comment__description-header.clearfix
-                                    a.post__comment__author-name(ui-sref='#', ng-bind="comment.author.firstname + ' ' + comment.author.secondname")
+                                    a.post__comment__author-name(ui-sref='#', ng-bind="comment.userFirstName + ' ' + comment.userSecondName")
                                     span.post__comment__published-date(ng-bind='comment.created')
                                     // <a href="" ng-if="comment.author._id == meData._id" class="post__comment__remove-btn"
                                     // ng-click="removeComment(comment._id, $index, $parent.$parent.$index)">удалить</a>
                                 .post__comment__description-footer
                                     p.post__comment__text(ng-bind='comment.text')
-                            .col-md-1.col-sm-1.col-reset.post__comment__controls(ng-if='comment.author._id == meData._id')
+                            .col-md-1.col-sm-1.col-reset.post__comment__controls(ng-if='comment.author.id == meData.id')
                                 .post__comment__controls_remove(ng-click='removeVacancyComment(comment._id, $index, vacancy)')
                                     i.fa.fa-trash
                                 //
                                   <div class="post__comment__controls_edit">
                                   <i class="fa fa-pencil"></i>
                                   </div>
-                .jobs__create-comment(ng-hide='vacancy.author._id == meData._id')
+                .jobs__create-comment(ng-hide='vacancy.author.id == meData.id')
                     .create-comment__author-image
                         img(ng-src='{{meData.userpic}}')
                     form.clearfix(name='commentForm', ng-submit='newVacancyComment($index);')

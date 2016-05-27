@@ -2,41 +2,42 @@ section.resume-page__about-me.clearfix(ng-show='!editMode', ng-init='editMode = 
     .resume-page__container
         .clearfix
             p.resume-page__about-me__title.pull-left О себе
-            .resume-page__edit-mode.pull-right(ng-show='group.creator._id === meData._id', ng-click='editMode = true;')
+            .resume-page__edit-mode.pull-right(ng-show='publicPage.creator._id === meData._id', ng-click='editMode = true;')
                 i.fa.fa-pencil Изменить
-        p.resume-page__about-me__text(ng-bind='group.fullDescription')
+        p.resume-page__about-me__text(ng-bind='publicPage.fullDescription')
     .resume-page__container
         .resume-page__contacts.clearfix
             .col-md-6.col-sm-6.col-reset
                 p.resume-page__about-me__title Контактная информация
                 table.resume-page__contacts__table
                     tr
-                        th(ng-if='group.phone')
+                        th(ng-if='publicPage.phone')
                             span.resume-page__contacts__label
                                 i.fa.fa-phone-square
-                            span.resume-page__contacts__text(ng-bind='group.phone')
-                        th(ng-if='group.country.name')
+                            span.resume-page__contacts__text(ng-bind='publicPage.phone')
+                        th(ng-if='publicPage.country')
                             span.resume-page__contacts__label Страна
-                            span.resume-page__contacts__text(ng-bind='group.country.name')
+                            span.resume-page__contacts__text(ng-bind='publicPage.country')
                     tr
-                        th(ng-if='group.website')
+                        th(ng-if='publicPage.website')
                             span.resume-page__contacts__label
                                 i.fa.fa-globe
-                            span.resume-page__contacts__text(ng-bind='group.website')
-                        th(ng-if='group.city')
+                            span.resume-page__contacts__text(ng-bind='publicPage.website')
+                        th(ng-if='publicPage.city')
                             span.resume-page__contacts__label Город
-                            span.resume-page__contacts__text(ng-bind='group.city')
+                            span.resume-page__contacts__text(ng-bind='publicPage.city')
                     tr
-                        th(ng-if='group.email')
+                        th(ng-if='publicPage.email')
                             span.resume-page__contacts__label
                                 i.fa.fa-envelope
-                            span.resume-page__contacts__text(ng-bind='group.email')
+                            span.resume-page__contacts__text(ng-bind='publicPage.email')
                         th
     .resume-page__dance-direction
         .resume-page__container
             p.resume-page__about-me__title Танцевальные направления:
-            span.dance-direction__text(ng-repeat='style in group.danceStyles', ng-bind='style.name')
-section.resume-page__about-me.clearfix(ng-show='editMode')
+            span.dance-direction__text(ng-repeat='style in publicPage.danceStyles', ng-bind='style')
+// открывается когда?
+//section.resume-page__about-me.clearfix(ng-show='editMode')
     .resume-page__container
         .clearfix
             p.resume-page__about-me__title.pull-left О себе

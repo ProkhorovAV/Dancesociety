@@ -1,4 +1,4 @@
-// запросы на сервер
+// запросы на сервер структура классов на сервере
 angular.module('myApp.services.PHP_server', [])
     .factory('PHP_server', ['$http', 'SERVER','user_dataService',
         function($http,SERVER,user_dataService ) {
@@ -13,25 +13,32 @@ angular.module('myApp.services.PHP_server', [])
             // все о новостях
             Post: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,skip:data.skip,counts:data.counts , userId:user_dataService.getId()}});
+                    data: {action:data.action,skip:data.skip,counts:data.counts, data:data.data}});
             },
             // все о вакансиях
             Vacancy: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action, user_id:user_dataService.get_id}});
+                    data: {action:data.action,data:data.data}});
             },
             Video: function(data){
 
                 return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,counts:data.counts,skip:data.skip, userId:1}});
+                    data: {action:data.action,counts:data.counts,skip:data.skip, data:data.data}});
             },
             // странички и новости
             PublicPages: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action}});
+                    data: {action:data.action, data:data.data}});
             },
 
-
+            Comment: function(data){
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action,data:data.data}});
+            },
+            Photo: function(data){
+                return $http({method: 'POST',url: SERVER.DATA,
+                    data: {action:data.action,data:data.data}});
+            },
 
 
             /************************************/
@@ -76,10 +83,7 @@ angular.module('myApp.services.PHP_server', [])
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
             },
-            Comment: function(data){
-                return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
-            },
+
             Worker: function(data){
             return $http({method: 'POST',url: SERVER.DATA,
                 data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
@@ -88,10 +92,7 @@ angular.module('myApp.services.PHP_server', [])
             return $http({method: 'POST',url: SERVER.DATA,
                 data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
              },
-            Photo: function(data){
-                return $http({method: 'POST',url: SERVER.DATA,
-                    data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});
-            },
+
             Group: function(data){
                 return $http({method: 'POST',url: SERVER.DATA,
                     data: {action:data.action,data:data.data, user_id:user_dataService.get_id}});

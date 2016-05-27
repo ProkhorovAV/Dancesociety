@@ -1,17 +1,17 @@
 section.info-block.clearfix
-    .subscriber__user(ng-repeat='subscriber in subscribers track by $index')
+    .subscriber__user(ng-repeat='subscriber in SubscibersArray track by $index')
         section.main-section.subscriber-item.clearfix
             .subscriber__photo(ui-sref='#')
                 a
-                    img(ng-src='{{subscriber.userpic}}')
+                    img(ng-src='{{SERVER.IMAGES_USER}}{{subscriber.image}}')
                 .photo__title
-                    p.title__name(ng-bind="subscriber.firstname + ' ' + subscriber.secondname")
+                    p.title__name(ng-bind="subscriber.firstName + ' ' + subscriber.secondName")
                     p.title__work(ng-if='subscriber.work[0].company', ng-bind="'„' + subscriber.work[0].company + '”'")
             .subscibers__description
                 p.subscribers_years
                     span Возраст
-                    span(ng-show='subscriber.personalData.age', ng-bind='subscriber.personalData.age')
-                    span(ng-show='!subscriber.personalData.age') не указано
+                    span(ng-show='subscriber.age', ng-bind='subscriber.age')
+                    span(ng-show='!subscriber.age') не указано
                 p.subscribers_styles
                     span.styles_title Стили
                     span.styles_option(ng-show='subscriber.danceStyles.length <= 0') не указано
@@ -19,13 +19,13 @@ section.info-block.clearfix
             .subscribers__buttons
                 .buttons_write-message(ng-click='openUserMessage(subscriber)')
                     span Написать сообщение
-                .buttons_subscribe(ng-hide='meData._id === subscriber._id', ng-if='!subscriber.isFollowing', ng-click="subscribeToUser(subscriber._id, 'subscribe', $index)")
+                .buttons_subscribe(ng-hide='meData._id === subscriber._id', ng-if='!subscriber.isFollowing', ng-click="subscribeToUser(subscriber.id, 'subscribe', $index)")
                     i.fa.fa-check
                     span Подписаться
-                .buttons_subscribe(ng-hide='meData._id === subscriber._id', ng-if='subscriber.isFollowing', ng-click="subscribeToUser(subscriber._id, 'unsubscribe', $index)")
+                .buttons_subscribe(ng-hide='meData._id === subscriber._id', ng-if='subscriber.isFollowing', ng-click="subscribeToUser(subscriber.id, 'unsubscribe', $index)")
                     i.fa.fa-times
                     span Отписаться
                 a(ui-sref='#')
-                    .buttons_subscribe(ng-if='meData._id === subscriber._id')
+                    .buttons_subscribe(ng-if='meData._id === subscriber.id')
                         i.fa.fa-desktop
                         span Моя страница

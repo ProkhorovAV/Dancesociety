@@ -1,9 +1,52 @@
-angular.module('myApp.controllers.GroupGallery',[])
-.controller('GroupGalleryCtrl',['$scope','PHP_server','notify','$stateParams',
+angular.module('myApp.controllers.PageGallery',[])
+.controller('PageGalleryCtrl',['$scope','PHP_server','notify','$stateParams',
     function($scope,PHP_server,notify,$stateParams){
 
-    // идентификатор группы
-    var groupId = $stateParams.id;
+
+        // все фотограции
+        $scope.allPhoto=[
+            /*
+            {
+            path:'data/user/face.jpg',
+            title:'Заголовок',
+            likes:10
+
+        }
+        */
+        ];
+
+        //! получения новостей от группы
+        $scope.getPhotoPublicPageOnId=function(){
+            var req={
+                action:"getPhotoPublicPageOnId",
+                data:{
+                    idPage:$stateParams.id
+                }
+            };
+            return PHP_server.Photo(req);
+        };
+        //! получение новостей от группы
+        $scope.getPhotoPublicPageOnId()
+            .then(function(response){
+                    console.log(response);
+                return;
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.allPhoto=response.data.data;
+
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
     // новые фотографии
     $scope.newPhotos = [];
 
@@ -22,30 +65,10 @@ angular.module('myApp.controllers.GroupGallery',[])
         isMyProfile:true
     };
 
-    // все фотограции
-    $scope.allPhoto=[{
-        path:'data/user/face.jpg',
-        title:'Заголовок',
-        likes:10
 
-    }];
 
-    // получить все фотографии
-    $scope.getImages = function() {
-        var req = {
-            action:'getPhoto'
-            //'count': 100
-        };
-        PHP_server.Photo(req)
-            .then(function(response) {
-                //$scope.allPhoto = response.data;
-                console.log(response);
-            },function(err){
-                console.log(err);
-            });
-    };
 
-    $scope.getImages();
+
     // выбор картинок
     $scope.selectImage = function(maxCount, type) {
         var modalInstance = $modal.open({
@@ -143,18 +166,6 @@ angular.module('myApp.controllers.GroupGallery',[])
             });
 
     };
-    // получения данных по группе
-    function getGroup() {
-        var req={
-            action:'GetGrouponId'
-        };
-        PHP_server.Images(req)
-            .then(function(resolve) {
-                //$scope.group = resolve;
-                console.log(resolve);
-            });
-    };
 
-    getGroup();
 
 }]);

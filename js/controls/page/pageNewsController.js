@@ -1,6 +1,115 @@
-angular.module('myApp.controller.GroupNews',[])
-.controller('GroupNewsCtrl',['$scope','PHP_server','$stateParams','notify','$modal',
+angular.module('myApp.controller.PageNews',[])
+.controller('PageNewsCtrl',['$scope','PHP_server','$stateParams','notify','$modal',
     function($scope,PHP_server,$stateParams,notify,$modal){
+
+        // посты
+        $scope.postArray=[{
+            groupAuthor:{
+                photo:'data/img/bg1.jpg',
+                name:'имя группы'
+            },
+            created:'12.12.2014',
+            isShare:false,
+            copyEntity:{
+                author:{
+                    userpic:'data/img/bg1.jpg',
+                    firstname:'Sasha',
+                    secondname:'Prokhorov',
+                    _id:1
+                },
+                created:'12.12.2010',
+                country:{
+                    name:'USA'
+                },
+                city:'USA',
+                scopes:[1,2],
+                dances:[1,2],
+                price:12,
+                startDate:"12.12.2011",
+                endDate:'12.12.2019',
+                startAge:10,
+                endAge:20,
+                startHeight:100,
+                endHeight:200,
+                text:'text'
+
+            },
+            _id:1,
+            title:'title',
+            text:'text',
+            copyFromType:'',
+            photos:[{
+                path:'data/img/bg1.jpg'
+            }],
+            video:[{
+                thumb:'data/img/bg1.jpg',
+                title:'text',
+                likes:10
+            }],
+            reposts:1,
+            isLiked:true,
+            likes:10,
+            comments:{
+                data:[{
+                    author:{
+                        userpic:'data/img/bg1.jpg',
+                        firstname:'sasha',
+                        secondname:"Prokhorov",
+                        _id:1
+                    },
+                    created:"12.12.2001",
+                    text:'text'
+                }]
+            },
+            configComments:[{
+
+            }]
+        }];
+
+
+        //! получения новостей от группы
+        $scope.getPublicPageOnId=function(){
+            var req={
+                action:"getPostOnIdPage",
+                data:{
+                    idPage:$stateParams.id
+                }
+            };
+            return PHP_server.Post(req);
+        };
+        //! получение новостей от группы
+        $scope.getPublicPageOnId()
+            .then(function(response){
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.postArray=response.data.data;
+
+                    console.log(response.data);
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     var groupId = $stateParams.id;
 
@@ -22,69 +131,7 @@ angular.module('myApp.controller.GroupNews',[])
             _id:1
         }
     };
-    // посты
-    $scope.posts=[{
-        groupAuthor:{
-            photo:'data/img/bg1.jpg',
-            name:'имя группы'
-        },
-        created:'12.12.2014',
-        isShare:false,
-        copyEntity:{
-            author:{
-                userpic:'data/img/bg1.jpg',
-                firstname:'Sasha',
-                secondname:'Prokhorov',
-                _id:1
-            },
-            created:'12.12.2010',
-            country:{
-                name:'USA'
-            },
-            city:'USA',
-            scopes:[1,2],
-            dances:[1,2],
-            price:12,
-            startDate:"12.12.2011",
-            endDate:'12.12.2019',
-            startAge:10,
-            endAge:20,
-            startHeight:100,
-            endHeight:200,
-            text:'text'
 
-        },
-        _id:1,
-        title:'title',
-        text:'text',
-        copyFromType:'',
-        photos:[{
-            path:'data/img/bg1.jpg'
-        }],
-        video:[{
-            thumb:'data/img/bg1.jpg',
-            title:'text',
-            likes:10
-        }],
-        reposts:1,
-        isLiked:true,
-        likes:10,
-        comments:{
-            data:[{
-                author:{
-                    userpic:'data/img/bg1.jpg',
-                    firstname:'sasha',
-                    secondname:"Prokhorov",
-                    _id:1
-                },
-                created:"12.12.2001",
-                text:'text'
-            }]
-        },
-        configComments:[{
-
-        }]
-    }];
     // новые теги
     $scope.newTags=[{
 
@@ -336,87 +383,11 @@ angular.module('myApp.controller.GroupNews',[])
 
 
     }
-    // получить данные о группе
-    function getGroup() {
-        var req={
-            action:'GetGrouponId',
-            id:1
-        };
-        //PHP_server.Group($stateParams.id)
-        PHP_server.Group(req)
-            .then(function(resolve) {
-                // вывод по значению
-                console.log($stateParams.id);
-                //$scope.group = resolve;
-                console.log(resolve);
-            },function(err){
-                console.log(err);
-            });
-    };
-
-    getGroup();
-
-        // получение коментариев через функцию getAllPosts
-
-        $scope.getComments = function(post) {
-            var req = {
-                first: 'comments',
-                second: 'post',
-                id: post._id,
-                skip: post.configComments.skip,
-                count: post.configComments.count
-            };
-            RestApi.getObject(req).$promise
-                .then(function(data) {
-                    data.data.data = data.data.data.reverse();
-                    post.comments = data.data;
-                });
-        };
-
-        //  получить все новости
-        var getAllPosts = function() {
-            var req = {
-                action:'shatAllPostGroup',
-                first: 'posts',
-                second: 'group'
-            };
-
-            PHP_server.Post(req)
-                .then(function(response) {
-                    console.log(response);
-                    //$scope.posts = response.data;
-                    //console.log(response.data);
-                    /*
-                    $scope.posts.forEach(function(el, id) {
-                        el.configComments = angular.copy(configComments);
-                        if(el.copyFromType == 'post') {
-                            el.isShare = true;
-                            el.photos = el.copyEntity.photos;
-                            el.title = el.copyEntity.title;
-                            el.text = el.copyEntity.text;
-                            el.videos = el.copyEntity.videos;
-                        }
-                        if(el.copyFromType == 'vacancy') {
-                            el.isShare = true;
-                            el.title = el.copyEntity.title;
-                            el.text = el.copyEntity.text;
-                            el.copyEntity.dances.map(function(el2, index) {
-                                el.copyEntity.dances[index] = el2.name;
-                                return el2;
-                            });
-                        }
-                        $scope.getComments(el);
-
-                    });
-                    */
-                },function(err){
-                    console.log(err);
-                });
-        };
 
 
 
-        getAllPosts();
+
+
         // написать коментарий
         $scope.writingComment = function() {
           // var re = /(#[a-z0-9а-я][a-z0-9а-я\-_]*)/g;

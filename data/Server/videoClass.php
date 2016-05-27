@@ -5,6 +5,8 @@
 //       
 
 include_once(dirname(__FILE__).'/Connection.php');
+include_once(dirname(__FILE__).'/packageClass.php'); 
+include_once(dirname(__FILE__).'/querySQLClass.php'); 
 //include $_SERVER['DOCUMENT_ROOT'].'/data/Php/Connection.php';
 // соединение с базой SQL
 $connectionBase = mysql_connect($hostBase,$userBase,$passwordBase);
@@ -34,13 +36,17 @@ echo json_encode($obj->SendData());
 class Video{
     // id пользователя
     private $idUser=NULL;
+    $packege=NULL;
+    // для запросов
+    $querySQL=NUL;
+    private $idPeople=NULL;
     // отправка данных
     private $sendArrayData=array();
     // пересенная установлена - есть ошибка по умолчанию
     private $statusErr=true;
 
     // получение всех вакансий
-    public function getVideoOnIdUser(){
+    public function GetVideoOnIdUser(){
         // получить все видео
         $arrayVacancy=$this->GetVideoDataOnId();
           // распоковать автора
@@ -56,7 +62,7 @@ class Video{
 
     }
     // получение видео от топ пользователей
-    public function getVideoOnTopUser(){
+    public function GetVideoOnTopUser(){
          // получить все id user top
         $arrayVacancy=$this->GetTopUserOnVideo();
         // получить все видео
@@ -74,7 +80,7 @@ class Video{
 
     }
     // получить видео Danciety
-    public function getVideosDanciety(){
+    public function GetVideosDanciety(){
         // получить все видео
         $arrayVacancy=$this->GetAllVideo();
         // распоковать автора
@@ -89,134 +95,33 @@ class Video{
         $this->sendArrayData=$arrayVacancy;
 
     }
+     // получить видео по id page
+    public function GetPhotoPublicPageOnId(){
+         // создать функцию
+
+    }
 
    ///////////////////// дополнительные функции////////
-        // все видео
-        public function GetAllVideo(){
-            // видео   
-            $postArray=array();
-            // запрос на все вакансии
-            $stringQuery="SELECT * FROM Video";            
-            // запрос
-            $query = mysql_query($stringQuery);
-            // получение первой строки
-            $row = mysql_fetch_array($query);
-            // объект с данными 
-            do {
-                    $postRow=array(
-                        id=>$row['Id'],
-                        title=>$row['Title'],
-                        src=>$row['Src'],
-                        autor=>$row['Autor'],
-                        likes=>$row['Likes'],
-                        created=>$row['Created'],                         
-                        repost=>$row['Repost'],
-                        remove=>$row['Remove'],
-                        imageSrc=>$row['ImageSrc']                                              
-                    );
-                        // добавление в массив и сформировали ответ по новостям
-                 array_push($postArray,$postRow);
-            } while($row = mysql_fetch_array($query));
-            return $postArray;
-        }
-
-  
-
-        // получить одно видео по топ пользователей
-        public function GetOneVideoDataOnIdUser($_array){
-
-            $resultVideo=array();
-            for ($i=0; $i < count($_array) ; $i++) {                    
-                
-                // строка запроса на вычисления подписчиков
-                $stringQuery="SELECT * FROM Video where Autor=$_array[$i]";
-                // запрос
-                $query = mysql_query($stringQuery);
-                // получение первой строки
-                $row = mysql_fetch_array($query);
-                $postRow=array(
-                        id=>$row['Id'],
-                        title=>$row['Title'],
-                        src=>$row['Src'],
-                        autor=>$row['Autor'],
-                        likes=>$row['Likes'],
-                        created=>$row['Created'],                         
-                        repost=>$row['Repost'],
-                        remove=>$row['Remove'],
-                        imageSrc=>$row['ImageSrc']                                              
-                );
-                // условие при котором у пользователя есть видео
-                if ($row['Id']!=NULL){
-                    array_push($resultVideo, $postRow);  
-                }               
-            }
-            return $resultVideo;
-        
-        }
-
-
-           // получиь топ юзеров
-        public function GetTopUserOnVideo(){
-             // строка запроса на вычисления подписчиков
-            $stringQuery="SELECT Id, Reposts FROM People";
-            // запрос
-            $query = mysql_query($stringQuery);
-            // получение первой строки
-            $row = mysql_fetch_array($query);
-            // объект с данными по id Peopele и Reposts
-            $peopleSubObj=array();
-            // цикл проверки всех пользователей и внесения id подписчиков в массив
-                do {
-                    // вытащить переменную Likes
-                    $subUserArray= explode("*",$row['Reposts']);
-                    // удалить пустую строку
-                    array_pop($subUserArray);
-                    // создать массив с данными  для id новостей               
-                    $peopleSubObj[$row['Id']]=count($subUserArray);                 
-                    
-                } while($row = mysql_fetch_array($query));
-            // сортировать пользователей           
-            arsort($peopleSubObj);
-            //
-            $postResultArray=array();
-            // вставить в массив id пользователей
-            foreach ($peopleSubObj as $key => $value) {
-                array_push($postResultArray, $key);
-            }
- 
-            return $postResultArray;
-        }
-
-
-        // получить все видео
+         // получить все видео
         public function GetVideoDataOnId(){
             // видео   
             $postArray=array();
             // запрос на все вакансии
-            $stringQuery="SELECT * FROM Video where Autor='$this->idUser'";            
+            $stringQuery="SELECT * FROM Videos where Autor='$this->idPeople'";            
             // запрос
             $query = mysql_query($stringQuery);
             // получение первой строки
             $row = mysql_fetch_array($query);
             // объект с данными 
             do {
-                    $postRow=array(
-                        id=>$row['Id'],
-                        title=>$row['Title'],
-                        src=>$row['Src'],
-                        autor=>$row['Autor'],
-                        likes=>$row['Likes'],
-                        created=>$row['Created'],                         
-                        repost=>$row['Repost'],
-                        remove=>$row['Remove'],
-                        imageSrc=>$row['ImageSrc']                                              
-                    );
-                        // добавление в массив и сформировали ответ по новостям
-                 array_push($postArray,$postRow);
+                $postRow=$this->packege->video($row);
+                // добавление в массив и сформировали ответ по новостям
+                array_push($postArray,$postRow);
             } while($row = mysql_fetch_array($query));
             return $postArray;
-        }
-        // распокавать автора
+        } 
+
+         // распокавать автора
         public function SetAutorInPost($_arrayPosts){ 
            
                 // расщепление массива авторов          
@@ -224,50 +129,99 @@ class Video{
 
                     $idAutors=$_arrayPosts[$i]['autor'];
                     // строка запроса
-                    $stringQuery="SELECT * FROM People WHERE Id=$idAutors";
+                    $stringQuery="SELECT * FROM Peoples WHERE Id=$idAutors";
                     // запрос
                     $query = mysql_query($stringQuery);
                     // получение данных
                     $row = mysql_fetch_array($query);
-                    $_arrayPosts[$i]['autor']=array(
-                            id=>$idAutors,
-                            name=>$row['FirstName'],
-                            secondName=>$row['SecondName'],
-                            firstName=>$row['FirstName'],
-                            image=>$row['Image']
-                        );
+                    $_arrayPosts[$i]['autor']=$this->packege->people($row);
                  } 
                 return  $_arrayPosts;
         }
-         // формирования массива лайков
+        // формирования массива лайков
         public function SetLikesArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $likeArray=explode("*",$_arrayPosts[$i]['likes']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($likeArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['likes']=$likeArray;                                      
-                } 
+
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'likes');
+             
                return $_arrayPosts;     
         }
         // формирования массива репостов
         public function SetRepostArray($_arrayPosts){
-             // цикл переборки                 
-                for ($i=0;$i< count($_arrayPosts); $i++) { 
-                    // расщипить                
-                    $repostArray=explode("*",$_arrayPosts[$i]['repost']);
-                    // удалеие последнего элемента пустого                       
-                     array_pop($repostArray);
-                    // переопреелить          
-                    $_arrayPosts[$i]['repost']=$repostArray;                                      
-                } 
+
+            $_arrayPosts=$this->packege->arrayDataName($_arrayPosts,'repost');
+             
             return $_arrayPosts;     
         }
+        // получиь топ юзеров
+        public function GetTopUserOnVideo(){
+                 // строка запроса на вычисления подписчиков
+                $stringQuery="SELECT Id, Reposts FROM Peoples";
+                // запрос
+                $query = mysql_query($stringQuery);
+                // получение первой строки
+                $row = mysql_fetch_array($query);
+                // объект с данными по id Peopele и Reposts
+                $peopleSubObj=array();
+                // цикл проверки всех пользователей и внесения id подписчиков в массив
+                do {
+                        $subUserArray=$this->packege->arrayData($row,'Reposts');                        
+                        // создать массив с данными  для id новостей               
+                        $peopleSubObj[$row['Id']]=count($subUserArray);                          
+                } while($row = mysql_fetch_array($query));
+                // сортировать пользователей           
+                arsort($peopleSubObj);
+                //
+                $postResultArray=array();
+                // вставить в массив id пользователей
+                foreach ($peopleSubObj as $key => $value) {
+                    array_push($postResultArray, $key);
+                }     
+            return $postResultArray;
+         }
+        // получить одно видео по топ пользователей
+        public function GetOneVideoDataOnIdUser($_array){
+
+            $resultVideo=array();
+            for ($i=0; $i < count($_array) ; $i++) {                    
+                
+                // строка запроса на вычисления подписчиков
+                $stringQuery="SELECT * FROM Videos where Autor=$_array[$i]";
+                // запрос
+                $query = mysql_query($stringQuery);
+                // получение первой строки
+                $row = mysql_fetch_array($query);               
+                // условие при котором у пользователя есть видео
+                if ($row['Id']!=NULL){
+                     $postRow=$this->packege->video($row);
+                    array_push($resultVideo, $postRow);  
+                }               
+            }
+            return $resultVideo;
+        
+        }
+        // все видео
+        public function GetAllVideo(){
+            // видео   
+            $postArray=array();
+            // запрос на все вакансии
+            $stringQuery="SELECT * FROM Videos";            
+            // запрос
+            $query = mysql_query($stringQuery);
+            // получение первой строки
+            $row = mysql_fetch_array($query);
+            // объект с данными 
+            do {
+                $postRow=$this->packege->video($row);
+                // добавление в массив и сформировали ответ по новостям
+                array_push($postArray,$postRow);
+            } while($row = mysql_fetch_array($query));
+            return $postArray;
+        }
+
+   
         // установить id пользователя
-        public function SetUserId($_idUser){
-                $this->idUser=$_idUser;
+        public function SetUserId($_idPeople){
+                $this->idPeople=$_idPeople;
 
         }
  
@@ -276,6 +230,10 @@ class Video{
 
         // конструктор
         public function __construct(){
+             // для упаковки
+             $this->packege=new Pack();
+             // для запросов
+             $this->querySQL=new QuerySQL();
         }
         // возврат ошибок
         public function GetStatusError(){            

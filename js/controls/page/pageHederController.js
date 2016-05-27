@@ -1,5 +1,5 @@
-angular.module('myApp.controllers.GroupHeder',[])
-.controller('GroupHederCtrl',['$scope','$modal','PHP_server',function($scope,$modal,PHP_server){
+angular.module('myApp.controllers.PageHeder',[])
+.controller('PageHederCtrl',['$scope','$modal','PHP_server',function($scope,$modal,PHP_server){
     // нет определения для контроллера
     console.log('grouprheder');
             $scope.meData={

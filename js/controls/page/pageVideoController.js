@@ -1,27 +1,60 @@
-angular.module('myApp.controllers.GroupVideo',[])
-.controller('GroupVideoCtrl',['$scope','PHP_server','notify',
+angular.module('myApp.controllers.PageVideo',[])
+.controller('PageVideoCtrl',['$scope','PHP_server','notify',
     function($scope,PHP_server,notify){
 
-    // получить все видеозаписи
-        $scope.getVideos = function() {
-            var req = {
-                action:'getvideo',
-                'count': 100
-            };
-            PHP_server.Video(req)
-                .then(function(response) {
-                   // $scope.allVideos = response.data;
-                    console.log(response);
-                },function(err){
-
-                });
+        // все видео
+        $scope.allVideos=[
+            /*{
+            thumb:'data/user/face.jpg',
+            title:'title',
+            likes:10
         }
-    // все видео
-   $scope.allVideos=[{
-       thumb:'data/user/face.jpg',
-       title:'title',
-       likes:10
-   }];
+        */];
+
+
+        //! получения фидео
+        $scope.getPhotoPublicPageOnId=function(){
+            var req={
+                action:"getVideoPublicPageOnId",
+                data:{
+                    idPage:$stateParams.id
+                }
+            };
+            return PHP_server.Video(req);
+        };
+        //! получение новостей от группы
+        $scope.getPhotoPublicPageOnId()
+            .then(function(response){
+                console.log(response);
+                return;
+                // если ошибка передачи
+                if (JSON.parse(response.data.error)){
+                    ErrorService.error(response.data)
+                }else{
+                    // весение данных
+                    $scope.allVideos=response.data.data;
+
+                }
+            },function(err) {
+                console.log('Ошибка в получении жданных');
+                console.log(err);
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    $scope.user={
        isMyProfile:true
    };
@@ -81,19 +114,7 @@ angular.module('myApp.controllers.GroupVideo',[])
                 });
 
         };
-        // получение группы
-    function getGroup() {
-        var req={
-            action:'GetGroup'
-        }
-            PHP_server.Group(req)
-            .then(function(resolve) {
-                //$scope.group = resolve;
-                console.log(resolve);
-            });
-    };
 
-    getGroup();
 
 
 }]);
