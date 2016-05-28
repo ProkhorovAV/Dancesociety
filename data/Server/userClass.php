@@ -153,8 +153,8 @@ private $statusErr=true;
         // установить данные по почта и пароль
         public function SetEmailPassword($_email,$_password){             
             $this->email=$_email;
-            $this->password=$password;
-            return true
+            $this->password=$_password;
+            return true;
         }
 
         // получение потльзователя по логину и паролю 
@@ -291,7 +291,7 @@ private $statusErr=true;
             do {
                 $postRow= $this->packege->people($row);
                 // добавление в массив и сформировали ответ по новостям
-                ($postArray,$postRow);
+                array_push($postArray,$postRow);
             } while($row = mysql_fetch_array($query));
                 // компановка данных
             $megaData=$this->packege->publicPage($postArray,'people',$PublicPage);

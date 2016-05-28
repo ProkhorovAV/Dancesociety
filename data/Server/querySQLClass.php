@@ -65,7 +65,7 @@ class QuerySQL{
 	}
 	// выбор функции упаковки
 	public function setPackageData($_name, $_row){
-			$dataRow=new array();
+			$dataRow=array();
 			// выбрать функцию распаковки
                 switch ($_name) {
 	                case 'comments':
